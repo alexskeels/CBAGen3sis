@@ -6,11 +6,11 @@ execute:
 
 # Day 1. {.unnumbered}
 
--   Lecture 1. History and philosophy of simulation modelling in biodiversity studies
+-   Lecture 1. Oskar Hagen (Eucalyptus Room) - History and philosophy of simulation modelling in         biodiversity studies
 
 -   Coffee Break
 
--   Lecture 2. Overview and introduction to Gen3sis
+-   Lecture 2. Oskar and Alex - Overview and introduction to Gen3sis
 
 -   Practical 1. Installation and Set Up
 
@@ -24,23 +24,26 @@ execute:
 
 # Day. 2 {.unnumbered}
 
--   Lecture 3. Biodiversity patterns and data
+-   Lecture 3. Alex - Biodiversity patterns and data
 
 -   Coffee Break
 
--   Practical 3. Biodiversity output from Gen3sis
+-   Practical 3. Running simulations in Gen3sis
 
--   Lunch Break
+-   lunch
 
--   Practical 4. Running simulations in Gen3sis pt. 1
+-   Lecture 4. Tristan Salles – Paleoenvironmental models and data
 
--   Coffee Break
+-   Discussion 
 
--   Practical 5. Running simulations in Gen3sis pt. 2
+-   coffee break
+
+-   Practical 4. Modifying landscapes for Gen3sis
+
 
 # Day 3. {.unnumbered}
 
--   Lecture 4. Designing simulation experiments with Gen3sis
+-   Lecture 4. Alex and Oskar - Designing simulation experiments with Gen3sis
 
 -   Coffee Break
 
@@ -52,4 +55,4 @@ execute:
 
 -   Coffee Break
 
--    Lecture 5. Tristan Salles – Paleoenvironmental models and data
+-   Discussion / Troubleshooting / Wrap up 

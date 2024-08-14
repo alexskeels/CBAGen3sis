@@ -70,22 +70,23 @@ config$gen3sis$general$end_time
 config$gen3sis$general$end_time <- 23
 ```
 
-#Initialization {.unnumbered}
-The first step of any simulation is to populate your landscape with one or more species and assign them traits. This includes geographic distribution, types of traits to be implemented, and values for those traits. Every species in the simulation is stored in a list and consists of an ID, their abundance, trait values, and intraspecies divergence values.
+#Initialization {.unnumbered} The first step of any simulation is to populate your landscape with one or more species and assign them traits. This includes geographic distribution, types of traits to be implemented, and values for those traits. Every species in the simulation is stored in a list and consists of an ID, their abundance, trait values, and intraspecies divergence values.
 
 # Dispersal (migration) {.unnumbered}
+
 How species disperse across the landscape is determined by simulated migration events between habitable cells. The range and behaviour of these events is set by users and can be based on fixed values, draws from probability distributions, species trait values, or anything else thought up by users.
 
 # Speciation (population divergence) {.unnumbered}
+
 The speciation function determines how you want new species to form. This is based on a divergence counter and speciation threshold. Once two clusters within a species diverge enough to reach the speciation threshold, a new species forms. How the counter behaves is entirely up to users!
 
 # Mutation (trait evolution) {.unnumbered}
+
 Each species can have traits set by users. This function provides the opportunity to modify or "mutate" these traits with each time step in the simulation. How these traits change (or not) is entirely customisable.
 
 # Ecology (interactions) {.unnumbered}
+
 Every species present in a cell across the landscape has an abundance value representing the population size of the species in that location. The ecology function allows users to modify this abundance value based on environmental values, species interactions, or anything else relevant to the study. An abundance of 0 leads to the extinction of the species in that cell.
-
-
 
 ```{r}
 output_dir <- "output/SouthAmerica"
