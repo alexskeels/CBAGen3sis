@@ -1,0 +1,7 @@
+# Welcome! {.unnumbered}
+
+Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software. We'll be using this Quarto book to navigate through the workshop. Quarto allows us to embed R code throughout.
+
+```{r}
+1 + 1
+```

@@ -1,0 +1,26 @@
+project:
+  type: book
+  output-dir: docs
+book:
+  title: "Center for Biodiversity Analysis: Gen3sis Workshop 2024"
+  author: "Alexander Skeels and Oskar Hagen"
+  date: "12/07/2024"
+  chapters:
+    - index.qmd
+    - program.qmd
+    - installation.qmd
+    - basics.qmd
+    - output.qmd
+    - considerations.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+  epub:
+    cover-image: cover.png
+editor: visual
+

@@ -1,0 +1,55 @@
+---
+title: "Program"
+execute: 
+  eval: FALSE
+---
+
+# Day 1. {.unnumbered}
+
+-   Lecture 1. History and philosophy of simulation modelling in biodiversity studies
+
+-   Coffee Break
+
+-   Lecture 2. Overview and introduction to Gen3sis
+
+-   Practical 1. Installation and Set Up
+
+-   Lunch Break.
+
+-   Practical 2. Gen3sis Config Basics
+
+-   Coffee Break
+
+-   Practical 2. Gen3sis Config Basics (contd.)
+
+# Day. 2 {.unnumbered}
+
+-   Lecture 3. Biodiversity patterns and data
+
+-   Coffee Break
+
+-   Practical 3. Biodiversity output from Gen3sis
+
+-   Lunch Break
+
+-   Practical 4. Running simulations in Gen3sis pt. 1
+
+-   Coffee Break
+
+-   Practical 5. Running simulations in Gen3sis pt. 2
+
+# Day 3. {.unnumbered}
+
+-   Lecture 4. Designing simulation experiments with Gen3sis
+
+-   Coffee Break
+
+-   Practical 6. Running simulation experiment with Gen3sis pt. 1
+
+-   Lunch break
+
+-   Practical 7. Running simulation experiment with Gen3sis pt. 2
+
+-   Coffee Break
+
+-    Lecture 5. Tristan Salles – Paleoenvironmental models and data
