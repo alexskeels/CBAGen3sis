@@ -36,7 +36,7 @@ max_number_of_species = 50000
 max_number_of_coexisting_species = 10000
 
 # a list of traits to include with each species
-trait_names = c("temp",  "dispersal")
+trait_names = c("temp", "temp_breadth", "dispersal")
 
 # ranges to scale the input environments with:
 environmental_ranges = list("temp" = c(-45, 55), "area"=c(2361.5, 12923.4), "arid"=c(1,0.5))

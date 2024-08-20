@@ -1,0 +1,12 @@
+---
+title: "Day2_Prac3_Outputs"
+author: "Alex Skeels and Oskar Hagen"
+---
+
+# Oututs
+
+```{r} output_dir <- "output/SouthAmerica" sim <- readRDS(file.path(output_dir, "config_southamerica/sgen3sis.rds")) names(sim)    #### Visualize ---------------  #the outputs plot_summary(sim)  # using raster package plot(rasterFromXYZ(sim$summary$`richness-final`))  plot(rasterFromXYZ(sim$summary$`richness-final`), col=gen3sis::color_richness(10))}
+```
+
+```{r} # plot diversity at 3 time slices timesteps <- c(20, 10, 0) par(mfrow = c(1, 3)) for (i in timesteps) {   landscape_i <- readRDS(file.path(output_dir, paste0("config_southamerica/landscapes/landscape_t_",                                                      i, ".rds")))   species_i <- readRDS(file.path(output_dir, paste0("config_southamerica/species/species_t_",                                                    i, ".rds")))   plot_richness(species_i, landscape_i) } #dev.off()}
+```
