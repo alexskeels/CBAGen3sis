@@ -3,6 +3,9 @@ title: "Program"
 execute: 
   eval: FALSE
 ---
+Welcome!
+
+Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software. We'll be using this Quarto book to navigate through the workshop. Quarto allows us to embed R code throughout. We'll be (roughly) following this program.
 
 # Day 1. {.unnumbered}
 
@@ -28,7 +31,7 @@ execute:
 
 # Day. 2 {.unnumbered}
 
--   9am - Lecture 2. Alex and Oskar - Inference from biodiversity data
+-   9am - Lecture 2. Alex and Oskar (Platypus Room) - Inference from biodiversity data
 
 -   10:00 - Practical 4.1. Gen3sis outputs and biodiversity patterns
 
@@ -38,7 +41,7 @@ execute:
 
 -   12:30 - lunch
 
--   13:30 - Lecture 3. Tristan Salles -- Paleoenvironmental models and data
+-   13:30 - Lecture 3. Tristan Salles (Platypus Room) - Paleoenvironmental models and data
 
 -   14:15 - Discussion
 
@@ -52,7 +55,7 @@ execute:
 
 -   09:00 - Lecture 4. Alex and Oskar - Designing simulation experiments with Gen3sis
 
--   10:00 Group work - implementing models in Gen3sis
+-   10:00 - Group work - implementing models in Gen3sis
 
 -   10:30 - Coffee Break
 
@@ -64,6 +67,6 @@ execute:
 
 -   14:45 - Coffee Break
 
--   15:00 - Presenting models and warp up Day 3
+-   15:00 - Presenting models / Wrap up Day 3
 
 -   16:00 - Pub

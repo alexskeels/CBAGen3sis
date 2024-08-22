@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -66,7 +32,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./program.html" rel="next">
+<link href="./Day1_Prac1_setup.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -149,38 +115,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./program.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Program</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./Day1_Prac1_setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installation and set up</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation and set up</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Day1_Prac2_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Config Basics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Config Basics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Day1_Prac3_islands.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Day 1 - Prac 3 - Islands</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Diversification in a Model Island System</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Day2_Prac4_outputs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Day2_Prac3_Outputs</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./considerations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Considerations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Gen3sis outputs and Biodiversity Patterns</span></span></a>
   </div>
 </li>
     </ul>
@@ -194,6 +148,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome!</a></li>
+  <li><a href="#day-1." id="toc-day-1." class="nav-link" data-scroll-target="#day-1.">Day 1.</a></li>
+  <li><a href="#day.-2" id="toc-day.-2" class="nav-link" data-scroll-target="#day.-2">Day. 2</a></li>
+  <li><a href="#day-3." id="toc-day-3." class="nav-link" data-scroll-target="#day-3.">Day 3.</a></li>
   </ul>
 </nav>
     </div>
@@ -233,13 +190,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="welcome" class="level1 unnumbered">
 <h1 class="unnumbered">Welcome!</h1>
-<p>Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software. We’ll be using this Quarto book to navigate through the workshop. Quarto allows us to embed R code throughout.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
+<p>Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software. We’ll be using this Quarto book to navigate through the workshop. Quarto allows us to embed R code throughout. We’ll be (roughly) following this program.</p>
+</section>
+<section id="day-1." class="level1 unnumbered">
+<h1 class="unnumbered">Day 1.</h1>
+<ul>
+<li><p>9:00 - Welcome (Platypus Room) - Introductions and Overview of Gen3sis Workshop</p></li>
+<li><p>9:45 - Lecture 1. Oskar Hagen (Eucalyptus Room) - History and philosophy of simulation modelling in biodiversity studies</p></li>
+<li><p>10:45 - Coffee Break</p></li>
+<li><p>11:00 - Practical 1. Installation and Set Up (30mins - 1hr)</p></li>
+<li><p>12pm - Practical 2. Gen3sis Config Basics</p></li>
+<li><p>12:00 - Lunch Break</p></li>
+<li><p>1:30 - Practical 2. Gen3sis Config Basics (continue - 2hrs)</p></li>
+<li><p>15:30 - Coffee Break</p></li>
+<li><p>15:45pm - Practical 3. Explore island configs</p></li>
+<li><p>16:30 - Questions / Wrap up Day 1</p></li>
+</ul>
+</section>
+<section id="day.-2" class="level1 unnumbered">
+<h1 class="unnumbered">Day. 2</h1>
+<ul>
+<li><p>9am - Lecture 2. Alex and Oskar (Platypus Room) - Inference from biodiversity data</p></li>
+<li><p>10:00 - Practical 4.1. Gen3sis outputs and biodiversity patterns</p></li>
+<li><p>10:30 - Coffee Break</p></li>
+<li><p>10:45 - Practical 4.2 Gen3sis outputs and biodiversity patterns (contd.)</p></li>
+<li><p>12:30 - lunch</p></li>
+<li><p>13:30 - Lecture 3. Tristan Salles (Platypus Room) - Paleoenvironmental models and data</p></li>
+<li><p>14:15 - Discussion</p></li>
+<li><p>14:45 - Coffee break</p></li>
+<li><p>15:00 - Practical 5. Modifying landscapes for Gen3sis</p></li>
+<li><p>16:30 - Questions / Wrap up Day 2</p></li>
+</ul>
+</section>
+<section id="day-3." class="level1 unnumbered">
+<h1 class="unnumbered">Day 3.</h1>
+<ul>
+<li><p>09:00 - Lecture 4. Alex and Oskar - Designing simulation experiments with Gen3sis</p></li>
+<li><p>10:00 - Group work - implementing models in Gen3sis</p></li>
+<li><p>10:30 - Coffee Break</p></li>
+<li><p>10:45 - Group work - implementing models in Gen3sis (contd.)</p></li>
+<li><p>12:30 - Lunch break</p></li>
+<li><p>13:30 - Wrapping up Group work</p></li>
+<li><p>14:45 - Coffee Break</p></li>
+<li><p>15:00 - Presenting models / Wrap up Day 3</p></li>
+<li><p>16:00 - Pub</p></li>
+</ul>
 
 
 </section>
@@ -658,8 +653,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./program.html" class="pagination-link" aria-label="Program">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Program</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Day1_Prac1_setup.html" class="pagination-link" aria-label="Installation and set up">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation and set up</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

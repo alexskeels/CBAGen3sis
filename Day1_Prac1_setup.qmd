@@ -6,19 +6,21 @@ execute:
 
 The first bottleneck for any workshop is getting the software installed and running on everyone's machine. So we'll spend a few minutes here making sure we're all good with installing and taking a look at some of teh data we'll be working with during the workshop, before moving on to the nitty gritty. So, lets start by installing the Gen3sis R package.
 
-You can install the package directly from CRAN as follows.
 
-```{r, eval=FALSE}
-install.packages("gen3sis")
-packageVersion("gen3sis")
-```
 
 Today we'll install the most recent version of the package from GitHub using devtools.
 
 ```{r eval =FALSE}
-install.packages("devtools")
+#install.packages("devtools")
 devtools::install_github(repo = "project-gen3sis/R-package", dependencies = TRUE)
+packageVersion("gen3sis")
+```
 
+You can install a stable version of the package directly from CRAN as follows.
+
+```{r, eval=FALSE}
+install.packages("gen3sis")
+packageVersion("gen3sis")
 ```
 
 ```{r}
