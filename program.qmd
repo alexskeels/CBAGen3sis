@@ -22,31 +22,19 @@ execute:
 
 -   15:30 - Coffee Break
 
-<<<<<<< Updated upstream
--   15:45pm - Guided Exercise 1. Explore island configs
-=======
 -   15:45pm - Practical 3. Explore island configs
->>>>>>> Stashed changes
 
--   16:30 - Questions / Warp up Day 1
+-   16:30 - Questions / Wrap up Day 1
 
 # Day. 2 {.unnumbered}
 
 -   9am - Lecture 2. Alex and Oskar - Inference from biodiversity data
 
-<<<<<<< Updated upstream
--   10:00 - Practical 3.1. Gen3sis outputs and biodiversity patterns
-
--   10:30 - Coffee Break
-
--   10:45 - Practical 3.2 Gen3sis outputs and biodiversity patterns (contd.)
-=======
 -   10:00 - Practical 4.1. Gen3sis outputs and biodiversity patterns
 
 -   10:30 - Coffee Break
 
 -   10:45 - Practical 4.2 Gen3sis outputs and biodiversity patterns (contd.)
->>>>>>> Stashed changes
 
 -   12:30 - lunch
 
@@ -56,11 +44,7 @@ execute:
 
 -   14:45 - Coffee break
 
-<<<<<<< Updated upstream
--   15:00 - Practical 4. Modifying landscapes for Gen3sis
-=======
 -   15:00 - Practical 5. Modifying landscapes for Gen3sis
->>>>>>> Stashed changes
 
 -   16:30 - Questions / Wrap up Day 2
 

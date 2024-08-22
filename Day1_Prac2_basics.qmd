@@ -185,11 +185,3 @@ config$gen3sis$ecology
 Here we use the temp trait (temperature niche position) and temp_breadth (temperature niche breadth) to determine whether a population can survive in cell. We get the absolute difference between the niche position and the temperature value in the grid cell. We then ask if this difference is more than the niche breadth. If it is larger, this means the value of the grid cell is outside the population's niche breadth and it goes extinct in that grid cell. Extinction is indicated by giving the abundance a value of 0 or setting the abundance to FALSE as done here.
 
 OK, that gives you the basic overview of all the main components of the gen3sis model. We will now move on to running some simulations on an island case study. But before we do, we may want to save any changes we made to the config for later. To do this use the following code.
-
-```{r}
-<<<<<<< Updated upstream
-
-=======
-# Oskar
->>>>>>> Stashed changes
-```
