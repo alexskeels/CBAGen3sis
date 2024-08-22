@@ -8,9 +8,10 @@ book:
   chapters:
     - index.qmd
     - program.qmd
-    - installation.qmd
-    - basics.qmd
-    - output.qmd
+    - Day1_Prac1_setup.qmd
+    - Day1_Prac2_basics.qmd
+    - Day1_Prac3_islands.qmd
+    - Day2_Prac4_outputs.qmd
     - considerations.qmd
 
 bibliography: references.bib

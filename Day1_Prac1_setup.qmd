@@ -15,7 +15,11 @@ packageVersion("gen3sis")
 
 Today we'll install the most recent version of the package from GitHub using devtools.
 
+<<<<<<< Updated upstream
 ```{r eval =FALSE}
+=======
+```{r, eval =FALSE}
+>>>>>>> Stashed changes
 install.packages("devtools")
 devtools::install_github(repo = "project-gen3sis/R-package", dependencies = TRUE)
 
