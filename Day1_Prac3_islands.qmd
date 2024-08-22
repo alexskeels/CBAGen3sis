@@ -120,7 +120,7 @@ phy_m1 <- read.nexus("output/islands/config_islands_simple_Day1Prac3_M1/phy.nex"
 plot(phy_m1)
 ```
 
-# Customise the model - M2
+# Customise the model - Model 2
 
 Lets start changing features of the config and compare the outputs to our first model.
 
@@ -158,7 +158,7 @@ sim_m2 <- readRDS("output/islands/config_islands_simple_Day1Prac3_M2/sgen3sis.rd
 plot_summary(sim_m2)
 ```
 
-# Go cray - M3!
+# Go cray - Model 3!
 
 The differences between M1 and M2 are predictable. Speciation happens a bit faster in M2, and you end up with more species. Overall, however, the patterns of richness are pretty similar. This suggests that this change in the rate of speciation isn't having a big impact on geographic variation in where species are forming (at least from a glance). So let's try a new model that has a few more tweaks to see a more measurable effect.
 
@@ -219,7 +219,7 @@ From the small tweak to the divergence factor and the initial conditions, we can
 
 -   Consider how you might modify the configuration or apply it to a specific research question.
 
-# Eager Beavers - M4!
+# Eager Beavers - Model 4!
 
 If you've managed to get thorugh all of this, run M4 config and using what you've learned, plot some of the outputs. What has changed about this config?
 

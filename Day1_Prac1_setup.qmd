@@ -1,5 +1,6 @@
 ---
 title: "Installation and set up"
+author: "Alex Skeels and Oskar Hagen"
 execute: 
   eval: FALSE
 ---

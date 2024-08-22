@@ -1,32 +1,35 @@
-# Welcome! {.unnumbered}
+# Program {.unnumbered}
 
-Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software. We'll be using this Quarto book to navigate through the workshop. Quarto allows us to embed R code throughout. We'll be (roughly) following this program.
+![Gen3sis](figures/fox.png)
+
+
+Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software! We'll be using this Quarto book to navigate through the workshop practicals. Quarto allows us to embed R code throughout. The workshop will be (roughly) following this program. Enjoy!
 
 # Day 1. {.unnumbered}
 
--   9:00 - Welcome (Platypus Room) - Introductions and Overview of Gen3sis Workshop
+-   09:00 - Welcome (Platypus Room) - Introductions and Overview of Gen3sis Workshop
 
--   9:45 - Lecture 1. Oskar Hagen (Eucalyptus Room) - History and philosophy of simulation modelling in biodiversity studies
+-   09:45 - Lecture 1. Oskar Hagen (Eucalyptus Room) - History and philosophy of simulation modelling in biodiversity studies
 
 -   10:45 - Coffee Break
 
 -   11:00 - Practical 1. Installation and Set Up (30mins - 1hr)
 
--   12pm - Practical 2. Gen3sis Config Basics
+-   12:00 - Practical 2. Gen3sis Config Basics
 
--   12:00 - Lunch Break
+-   12:30 - Lunch Break
 
--   1:30 - Practical 2. Gen3sis Config Basics (continue - 2hrs)
+-   13:30 - Practical 2. Gen3sis Config Basics (continue - 2hrs)
 
 -   15:30 - Coffee Break
 
--   15:45pm - Practical 3. Explore island configs
+-   15:45 - Practical 3. Explore island configs
 
 -   16:30 - Questions / Wrap up Day 1
 
 # Day. 2 {.unnumbered}
 
--   9am - Lecture 2. Alex and Oskar (Platypus Room) - Inference from biodiversity data
+-   09:00 - Lecture 2. Alex and Oskar (Platypus Room) - Inference from simulated biodiversity data
 
 -   10:00 - Practical 4.1. Gen3sis outputs and biodiversity patterns
 
@@ -64,5 +67,4 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 
 -   15:00 - Presenting models / Wrap up Day 3
 
--   16:00 - Pub
-
+-   16:00 - Pub!
