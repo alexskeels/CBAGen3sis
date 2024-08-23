@@ -1,5 +1,5 @@
 ---
-title: "Modifying Landscapes"
+title: "🌋 Creating Worlds"
 author: "Oskar Hagen and Alex Skeels"
 execute: 
   eval: FALSE

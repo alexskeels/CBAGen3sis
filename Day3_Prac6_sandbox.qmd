@@ -1,5 +1,5 @@
 ---
-title: "Sandbox"
+title: "🥪 Sandbox"
 author: "Alex Skeels and Oskar Hagen"
 execute: 
   eval: FALSE

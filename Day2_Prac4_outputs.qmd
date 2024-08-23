@@ -1,8 +1,8 @@
 ---
-title: "Gen3sis outputs and Biodiversity Patterns"
+title: "🖥️ Silicodiversity"
 author: "Alex Skeels and Oskar Hagen"
 execute: 
-  eval: FALSE
+  eval: TRUE
 ---
 
 ## Exploring outputs {.unnumbered}

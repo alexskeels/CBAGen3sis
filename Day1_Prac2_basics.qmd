@@ -1,8 +1,8 @@
 ---
-title: "Config Basics"
+title: "⛸️ Configure Skating"
 author: "Alex Skeels and Oskar Hagen"
 execute: 
-  eval: FALSE
+  eval: TRUE
 ---
 
 To begin the dive into what Gen3sis is, and how it operates, we'll start by looking a config file. The config is the code for the ecological and evolutionary rules and other parameters of Gen3sis, such as the random seed, instructions on saving output, etc.

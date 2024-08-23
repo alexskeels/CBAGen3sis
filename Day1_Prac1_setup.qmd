@@ -1,8 +1,8 @@
 ---
-title: "Installation and set up"
+title: "🍍 Gettin' Started"
 author: "Alex Skeels and Oskar Hagen"
 execute: 
-  eval: FALSE
+  eval: TRUE
 ---
 
 The first bottleneck for any workshop is getting the software installed and running on everyone's machine. So we'll spend a few minutes here making sure we're all good with installing and taking a look at some of the data we'll be working with during the workshop, before moving on to the nitty gritty. So, lets start by installing the Gen3sis R package.
@@ -134,7 +134,7 @@ names(config$gen3sis$general)
 
 Now time to run a simulation in South America. We'll just run from 20 million years ago to the present-day at 1 million year intervals so it runs quick enough to finish in a couple of minutes. Note the output as it runs. Think about what its printing.
 
-```{r}
+```{r eval=F}
 sim <- run_simulation(config = file.path(config_dir, "config_southamerica_Day1Prac1.R"), 
                landscape = file.path(data_dir,"landscapes", "SA_coarse"),
                output_directory = "output/SouthAmerica",

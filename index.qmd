@@ -12,17 +12,17 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 
 -   10:45 - Coffee Break
 
--   11:00 - Practical 1. Installation and Set Up (30mins - 1hr)
+-   11:00 - Practical 1. Gettin' Started: Installation and Set Up 
 
--   12:00 - Practical 2. Gen3sis Config Basics
+-   12:00 - Practical 2. Configure Skating: Gen3sis Config Basics
 
 -   12:30 - Lunch Break
 
--   13:30 - Practical 2. Gen3sis Config Basics (continue - 2hrs)
+-   13:30 - Practical 2. Configure Skating: Gen3sis Config Basics (contd.)
 
 -   15:30 - Coffee Break
 
--   15:45 - Practical 3. Explore island configs
+-   15:45 - Practical 3. Island Hopping: Explore a model island system
 
 -   16:30 - Questions / Wrap up Day 1
 
@@ -30,11 +30,11 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 
 -   09:00 - Lecture 2. Alex and Oskar (Platypus Room) - Inference from simulated biodiversity data
 
--   10:00 - Practical 4.1. Gen3sis outputs and biodiversity patterns
+-   10:00 - Practical 4.1. Silicodiversity: Gen3sis outputs and patterns
 
 -   10:30 - Coffee Break
 
--   10:45 - Practical 4.2 Gen3sis outputs and biodiversity patterns (contd.)
+-   10:45 - Practical 4.2 Silicodiversity: Gen3sis outputs and patterns (contd.)
 
 -   12:30 - lunch
 
@@ -44,7 +44,7 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 
 -   14:45 - Coffee break
 
--   15:00 - Practical 5. Modifying landscapes for Gen3sis
+-   15:00 - Practical 5. Creating Worlds: Modifying landscapes as inputs for Gen3sis
 
 -   16:30 - Questions / Wrap up Day 2
 
@@ -52,18 +52,18 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 
 -   09:00 - Lecture 4. Alex and Oskar - Designing simulation experiments with Gen3sis
 
--   10:00 - Group work - implementing models in Gen3sis
+-   10:00 - Practical 6. - Sandbox: implementing models in Gen3sis with friends
 
 -   10:30 - Coffee Break
 
--   10:45 - Group work - implementing models in Gen3sis (contd.)
+-   10:45 - Practical 6. - Sandbox: implementing models in Gen3sis with friends (contd.)
 
 -   12:30 - Lunch break
 
--   13:30 - Wrapping up Group work
+-   13:30 - Wrapping up Sandbox
 
 -   14:45 - Coffee Break
 
--   15:00 - Presenting models / Wrap up Day 3
+-   15:00 - Presenting Sandbox models / Wrap up Day 3
 
 -   16:00 - Pub!

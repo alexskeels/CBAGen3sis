@@ -54,7 +54,7 @@
     "href": "index.html",
     "title": "Center for Biodiversity Analysis: Gen3sis Workshop 2024",
     "section": "",
-    "text": "Program\n\n\n\nGen3sis\n\n\nWelcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software! We’ll be using this Quarto book to navigate through the workshop practicals. Quarto allows us to embed R code throughout. The workshop will be (roughly) following this program. Enjoy!\n\n\nDay 1.\n\n09:00 - Welcome (Platypus Room) - Introductions and Overview of Gen3sis Workshop\n09:45 - Lecture 1. Oskar Hagen (Eucalyptus Room) - History and philosophy of simulation modelling in biodiversity studies\n10:45 - Coffee Break\n11:00 - Practical 1. Installation and Set Up (30mins - 1hr)\n12:00 - Practical 2. Gen3sis Config Basics\n12:30 - Lunch Break\n13:30 - Practical 2. Gen3sis Config Basics (continue - 2hrs)\n15:30 - Coffee Break\n15:45 - Practical 3. Explore island configs\n16:30 - Questions / Wrap up Day 1\n\n\n\nDay. 2\n\n09:00 - Lecture 2. Alex and Oskar (Platypus Room) - Inference from simulated biodiversity data\n10:00 - Practical 4.1. Gen3sis outputs and biodiversity patterns\n10:30 - Coffee Break\n10:45 - Practical 4.2 Gen3sis outputs and biodiversity patterns (contd.)\n12:30 - lunch\n13:30 - Lecture 3. Tristan Salles (Platypus Room) - Paleoenvironmental models and data\n14:15 - Discussion\n14:45 - Coffee break\n15:00 - Practical 5. Modifying landscapes for Gen3sis\n16:30 - Questions / Wrap up Day 2\n\n\n\nDay 3.\n\n09:00 - Lecture 4. Alex and Oskar - Designing simulation experiments with Gen3sis\n10:00 - Group work - implementing models in Gen3sis\n10:30 - Coffee Break\n10:45 - Group work - implementing models in Gen3sis (contd.)\n12:30 - Lunch break\n13:30 - Wrapping up Group work\n14:45 - Coffee Break\n15:00 - Presenting models / Wrap up Day 3\n16:00 - Pub!",
+    "text": "Program\nWelcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software! We’ll be using this Quarto book to navigate through the workshop practicals. Quarto allows us to embed R code throughout. The workshop will be (roughly) following this program. Enjoy!",
     "crumbs": [
       "Program"
     ]
@@ -62,31 +62,31 @@
   {
     "objectID": "Day2_Prac4_outputs.html",
     "href": "Day2_Prac4_outputs.html",
-    "title": "4  Day 2: Gen3sis outputs and Biodiversity Patterns",
+    "title": "4  🖥️ Silicodiversiy 🌈t",
     "section": "",
     "text": "Exploring outputs\nIn this prac we will explore the files outputted from gen3sis using the island simulations we ran yesterday. We will learn how to manipule/wrange these data structures into formats used by common R packages for phylogenetic comparative methods, community phylogenetics, biogeography, etc.\nThe goal for today will be to produce:\nFirst, let’s make sure we have the necessary packages loaded\nrequire(gen3sis)\nrequire(terra)\nrequire(ape)\nrequire(phytools)\nrequire(picante)",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Day 2: Gen3sis outputs and Biodiversity Patterns</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>🖥️ Silicodiversiy 🌈t</span>"
     ]
   },
   {
     "objectID": "Day1_Prac1_setup.html",
     "href": "Day1_Prac1_setup.html",
-    "title": "1  Installation and set up",
+    "title": "1  🍍 Installation and set up",
     "section": "",
     "text": "Download Github Repository\nFirst thing is to download all of the data needed from github and set up our workspace.\nNow you should be able to follow along, copying the code from this Quarto document into your console. The alternative option is to open the RProject file “CBA_Gen3sis_Workshop_2024.Rproj” and work directly within this project.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Installation and set up</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>🍍 Installation and set up</span>"
     ]
   },
   {
     "objectID": "Day1_Prac2_basics.html",
     "href": "Day1_Prac2_basics.html",
-    "title": "2  Config Basics",
+    "title": "2  ⛸️ Configure Skating",
     "section": "",
     "text": "General\nThe first element, ‘general’, sets up some important global parameters of the model\nconfig$gen3sis$general\nThe random seed determines the starting point for random number generators in R. Because the simulations have stochastic processes, to reproduce a result, we need to have the same random seed, so by fixing it in a simulation, we can ensure we will get the exact same results next time we run the sim. Let’s change the seed to 777.\nconfig$gen3sis$general$random_seed\n\nconfig$gen3sis$general$random_seed &lt;- 777\nThe start time is the time-step of the landscape file which the simulation will start at. We saw in the previous chapter that the South American landscape file had 65 time-steps, but we actually only started our simulation at time-step 20, or 20 time-steps before the final one. Each time-step in the landscape is 1 million years apart, so the timestep 20 is 20 million years ago. However, if the landscape units were in 100 thousand years, then time-step 20 would be 2 million years ago. Let’s run the next simulation from an older timepoint, lets say the start of the Oligocene, 34 Ma.\nconfig$gen3sis$general$start_time\n\nconfig$gen3sis$general$start_time &lt;- 34\nOur simulation ran from 20 Ma to the present-day. However, we may wish for the simulation to finish before the present-day, for example just the Oligocene period 34Ma - 23Ma. To do this we can change the ‘end_time’. When left as NA, the simulation will run to the final time-step. So let’s change that to 23 Ma.\nconfig$gen3sis$general$end_time\n\nconfig$gen3sis$general$end_time &lt;- 23\nOther general settings include setting the maximum number of species in simulation, and in each grid cell before the simulation terminates (max_number_of_species, max_number_of_coexisting_species) which is a good way of aborting simulations before they get unwieldy, the names of the traits that each species will have in the simulation (trait_names), and the range of the environmental data (environmental_ranges). We’ll these as is for now.\nconfig$gen3sis$general$max_number_of_species\n\nconfig$gen3sis$general$max_number_of_coexisting_species\n\nconfig$gen3sis$general$trait_names\n\nconfig$gen3sis$general$environmental_ranges\nLast but not least in the general setting is the oberserver function. At each time step in the simulation, users have the option to save different outputs and make different plots. The species object contains a list, where each element is a species. The species has information on the occupancy, abundance, and trait values of populations of that species in all inhabited grid cells. The phylogeny object contains information on the relatedness of all species to each other.\nMost of the biodiversity infromation we simulate is contained in species objects and phylogeny objects so we will save these at each timestep. We will also plot species richness as a way of visualizing how the simulation proceeds.\nconfig$gen3sis$general$end_of_timestep_observer = function(data, vars, config){\n    save_species()\n    save_phylogeny()\n  \n  # plotting function example:\n    plot_richness(data$all_species, data$landscape)\n}",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Config Basics</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>⛸️ Configure Skating</span>"
     ]
   },
   {
@@ -94,7 +94,7 @@
     "href": "Day1_Prac3_islands.html",
     "title": "3  Diversification in a Model Island System",
     "section": "",
-    "text": "Dynamic Island Landscape\n# load landscapes\nlc &lt;- readRDS(file.path(\"data\", \"landscapes\", \"islands\",\"landscapes.rds\"))\n\n# get names of landscape variables\nnames(lc)\n\n# get first time step\nfirst_step_pos &lt;- ncol(lc$mean_temp)\n\n# get first 10 sites of mean temperature for the 2 last time steps and the first (oldest) time step\nlc$mean_temp[100:110, c(1:4, first_step_pos)]\n# plot mean_temp for first and last time step\nplot(rast(lc$mean_temp[ ,c(1:3, first_step_pos)]))\nLook to see if there are any temporal trends in temperature or elevation.\npar(mfrow=c(1,2))\n# plot the change in mean tempereature through time\nmean_temperatures &lt;- colMeans(lc$mean_temp[, 3:ncol(lc$mean_temp)], na.rm=T)\nplot(seq(from=0, to = -5, by=-0.01),mean_temperatures ,  xlab=\"time (Ma)\", ylab=\"mean temperature\", type='l')\n\n# plot the change in mean elevation through time\nmean_elevation &lt;- colMeans(lc$elevation[, 3:ncol(lc$elevation)], na.rm=T)\nplot(seq(from=0, to = -5, by=-0.01), mean_elevation, xlab=\"time (Ma)\", ylab=\"mean elevation\", type='l')",
+    "text": "Dynamic Island Landscape\n# load landscapes\nlc &lt;- readRDS(file.path(\"data\", \"landscapes\", \"islands\",\"landscapes.rds\"))\n\n# get names of landscape variables\nnames(lc)\n\n# get first time step\nfirst_step_pos &lt;- ncol(lc$mean_temp)\n\n# get first 10 sites of mean temperature for the 2 last time steps and the first (oldest) time step\nlc$mean_temp[100:110, c(1:4, first_step_pos)]\n# plot mean_temp for first and last time step\nplot(rast(lc$mean_temp[ ,c(1:3, first_step_pos)]))\nLook to see if there are any temporal trends in temperature or elevation.\npar(mfrow=c(1,2))\n# plot the change in mean tempereature through time\nmean_temperatures &lt;- colMeans(lc$mean_temp[, 3:ncol(lc$mean_temp)], na.rm=T)\nplot(seq(from=0, to = -5, by=-0.01),mean_temperatures ,  xlab=\"time (Ma)\", ylab=\"mean temperature\", type='l')\n\n# plot the change in mean elevation through time\nmean_elevation &lt;- colMeans(lc$elevation[, 3:ncol(lc$elevation)], na.rm=T)\nplot(seq(from=0, to = -5, by=-0.01), mean_elevation, xlab=\"time (Ma)\", ylab=\"mean elevation\", type='l')💅",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Diversification in a Model Island System</span>"
     ]
@@ -122,51 +122,51 @@
   {
     "objectID": "Day1_Prac1_setup.html#download-github-repository",
     "href": "Day1_Prac1_setup.html#download-github-repository",
-    "title": "1  Installation and set up",
+    "title": "1  🍍 Installation and set up",
     "section": "",
     "text": "Go to https://github.com/alexskeels/CBAGen3sis.github.io and download the repository as follows:\n\n\n\nGithub\n\n\nPut it somewhere on your machine that you can readily access\nUnzip the folder\nOpen up RStudio\nSet the working directory to this folder\n\nsetwd(file.path(\"WHERE/YOU/UNZIPPED\",\"CBAGen3sis.github.io\"))",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Installation and set up</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>🍍 Installation and set up</span>"
     ]
   },
   {
     "objectID": "Day1_Prac1_setup.html#install-packages",
     "href": "Day1_Prac1_setup.html#install-packages",
-    "title": "1  Installation and set up",
+    "title": "1  🍍 Installation and set up",
     "section": "Install Packages",
     "text": "Install Packages\nToday we’ll install the stable version of the package directly from CRAN as follows.\n\n# install the package\ninstall.packages(\"gen3sis\")\n\n# check the package version\npackageVersion(\"gen3sis\")\n\nYou could also install the most recent version of the package from GitHub using devtools. But hold off on this today so we’re all working with the same version.\n\n#install.packages(\"devtools\")\n#devtools::install_github(repo = \"project-gen3sis/R-package\", dependencies = TRUE)\n#packageVersion(\"gen3sis\")\n\n\nlibrary(gen3sis)\n\nYou can also install these other packages we’ll use throughout the workshop.\n\nrequire(\"terra\")\nrequire(\"raster\")\nrequire(\"ape\")\nrequire(\"phytools\")\nrequire(\"picante\")",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Installation and set up</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>🍍 Installation and set up</span>"
     ]
   },
   {
     "objectID": "Day1_Prac1_setup.html#access-data",
     "href": "Day1_Prac1_setup.html#access-data",
-    "title": "1  Installation and set up",
+    "title": "1  🍍 Installation and set up",
     "section": "Access Data",
     "text": "Access Data\nAll the data for the workshop is stored in the ‘data’ folder.\n\ndata_dir &lt;- \"data\"\n\nIn this fodler we include a paleoenvironmental reconstruction of South American temperature and aridity at a coarse spatial resolution of 2 degrees, and at a temporal resolution of 1 million years. Load it in and investigate some of it’s features.\n\n# read the R data file\nlandscape &lt;- readRDS(file.path(data_dir,\"landscapes\", \"SA_coarse\", \"landscapes.rds\"))\n\n# class\nclass(landscape)\n\n# names\nnames(landscape)\n\n# dimensions\ndim(landscape$temp)\n\n# take a look at first elements\nlandscape$temp[1:10, 1:10]\n\n# column names\ncolnames(landscape$temp)\n\nCoolies. We can use different spatial R packages to play with our data, and later on, with our simulated output. Parts of gen3sis package use raster, however this package is now depreciated, so we’ll use terra except where stated. Ideally, you’ll have both installed.\n\nlibrary(terra)\n\n# Present Day South America\nSA_1 &lt;- rast(landscape$temp[ ,c(\"x\", \"y\", \"1\")])\nSA_65 &lt;- rast(landscape$temp[,c(\"x\", \"y\", \"65\")])\n\n# plot present day\nplot(SA_1)\n\n\n# plot 65 Million years ago\nplot(SA_65)\n\nLets overlay the maps to get an idea of how much South America has changed since the dinosaurs went extinct.\n\n# overlay\nplot(SA_65, col=rgb(1,0,0))\nplot(SA_1, col=rgb(0,0,1,0.5,1), add=T)",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Installation and set up</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>🍍 Installation and set up</span>"
     ]
   },
   {
     "objectID": "Day1_Prac1_setup.html#access-configs",
     "href": "Day1_Prac1_setup.html#access-configs",
-    "title": "1  Installation and set up",
+    "title": "1  🍍 Installation and set up",
     "section": "Access Configs",
     "text": "Access Configs\nLoad in a config file containing the rules and parameters of a single simulation. We’ll get into what this all means next chapter.\n\nconfig_dir &lt;- \"configs\"\nconfig &lt;- create_input_config(config_file = file.path(config_dir, \"config_southamerica_Day1Prac1.R\"))\nnames(config$gen3sis)\nnames(config$gen3sis$general)",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Installation and set up</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>🍍 Installation and set up</span>"
     ]
   },
   {
     "objectID": "Day1_Prac1_setup.html#run-a-single-simulation",
     "href": "Day1_Prac1_setup.html#run-a-single-simulation",
-    "title": "1  Installation and set up",
+    "title": "1  🍍 Installation and set up",
     "section": "Run a Single Simulation",
     "text": "Run a Single Simulation\nNow time to run a simulation in South America. We’ll just run from 20 million years ago to the present-day at 1 million year intervals so it runs quick enough to finish in a couple of minutes. Note the output as it runs. Think about what its printing.\n\nsim &lt;- run_simulation(config = file.path(config_dir, \"config_southamerica_Day1Prac1.R\"), \n               landscape = file.path(data_dir,\"landscapes\", \"SA_coarse\"),\n               output_directory = \"output/SouthAmerica\",\n               verbose=1)\n\nNow read in some of the output to make sure it’s stored in a sensible place.\n\n# read phylogeny\nphy &lt;- read.nexus(file.path(\"output\", \"SouthAmerica\", \"config_southamerica_Day1Prac1\", \"phy.nex\" ))\n\n# plot phylogeny\nplot(phy, cex=0.1, type=\"fan\")\n\nIf you’ve made it this far, great! You’re equipped with the tools, now we’re ready to explore how Gen3sis works in more detail.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Installation and set up</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>🍍 Installation and set up</span>"
     ]
   },
   {
@@ -182,51 +182,51 @@
   {
     "objectID": "Day1_Prac2_basics.html#initialization",
     "href": "Day1_Prac2_basics.html#initialization",
-    "title": "2  Config Basics",
+    "title": "2  ⛸️ Configure Skating",
     "section": "Initialization",
     "text": "Initialization\nInitialization lets us define the number, abundance, location, and traits of the ancestral species. This is what you start the simulation with. You may want to start with a single species, so the simulation follows the diversification of single monophyletic radiation. Alternatively, you may seed the landscape with many species and this is also possible. Each species must be given the locations in which they will occur, in the form of characters matching the grid cell identifiers, and values for the traits we named in the general settings.\n\nconfig$gen3sis$initialization\n\nIn this example, we are generating five species to begin. We first define a box from which we sample points to use to place the first species on the landscape. We randomly sample a single grid cell to place each initial species in. Next, we give each initial species values for the three traits. Here, we give the value for temp as the temperature value of the grid cell the species will occur in. We set a dispersal equal to 1. We repeat this 5 times, for 5 species. We can create more ancestor species by repeating this process in a loop , or we could manually create ancestral range by hand-selecting grid cells for the species to occur in.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Config Basics</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>⛸️ Configure Skating</span>"
     ]
   },
   {
     "objectID": "Day1_Prac2_basics.html#dispersal-migration",
     "href": "Day1_Prac2_basics.html#dispersal-migration",
-    "title": "2  Config Basics",
+    "title": "2  ⛸️ Configure Skating",
     "section": "Dispersal (migration)",
     "text": "Dispersal (migration)\nHow species disperse across the landscape is determined by simulated migration events between habitable cells. The range and behaviour of these events is set by users and can be based on fixed values, draws from probability distributions, species trait values, or anything else thought up by users.\n\nconfig$gen3sis$dispersal\n\nHere we set the maximum dispersal distance as infinty (e.g., no maximum), and we draw the dispersal values from a Weibull distribution with shape parameter = 1.5 and scale = 133. We can see what this distribution looks like by plotting a histogram.\n\nhist(rweibull(1000, 1.5, 133), main= \"Weibull Distribution 1\", xlab=\"Dispersal Distance (km)\")\n\nYou can see the dispersal kernel is skewed around the scale parameter (here scale =133), so most dispersal is over shorter distances but some dispersal will be over a longer distance. You can play with the parameters to change the dispersal kernel. These could be based on a trait of the species.\n\n#more skewed distribution\nhist(rweibull(1000, 0.5, 133), main= \"Weibull Distribution 2\", xlab=\"Dispersal Distance (km)\")\n\n\n#less skewed distribution\nhist(rweibull(1000, 3, 133), main= \"Weibull Distribution 2\", xlab=\"Dispersal Distance (km)\")",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Config Basics</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>⛸️ Configure Skating</span>"
     ]
   },
   {
     "objectID": "Day1_Prac2_basics.html#speciation-population-divergence",
     "href": "Day1_Prac2_basics.html#speciation-population-divergence",
-    "title": "2  Config Basics",
+    "title": "2  ⛸️ Configure Skating",
     "section": "Speciation (population divergence)",
     "text": "Speciation (population divergence)\nIn the speciation function, we determine how populations diverge from one another and when they are sufficiently divergent to become new species. Populations that are geographically isolated (allopatric) diverge at each time step by the divergence factor and are considered new species when the accumulated divergence is greater than the divergence threshold. Divergence decreases when they come back into secondary contact at a rate of 1 and will coalesce into the same population once divergence is equal to 0.\n\nconfig$gen3sis$speciation\n\nIn this example, the get_divergence_funtion returns a value of 1 each timestep, so the divergence accumulates by a value of 1 at each time step and populations become new species when divergence is greater than the divergence threshold, here given a value of 2. So a new species can form if two populations has been isolated for two timesteps.\nWe can change either the amount of divergence required for speciation…\n\nconfig$gen3sis$speciation$divergence_threshold &lt;- 4\n\n…or the rate at which divergence accumulates.\n\nconfig$gen3sis$speciation$get_divergence_factor &lt;- function(species, cluster_indices, landscape, config) { return(2)}\n\nBoth of these will speed up the rate of speciation, given enough population fragmentation.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Config Basics</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>⛸️ Configure Skating</span>"
     ]
   },
   {
     "objectID": "Day1_Prac2_basics.html#mutation-trait-evolution",
     "href": "Day1_Prac2_basics.html#mutation-trait-evolution",
-    "title": "2  Config Basics",
+    "title": "2  ⛸️ Configure Skating",
     "section": "Mutation (trait evolution)",
     "text": "Mutation (trait evolution)\nIn the evolution function, we determine how the species’ traits change at each timestep and therefore how they evolve over time. In gen3sis, each species is comprised of separate populations in each inhabited grid cell, these populations form geographic clusters that are within dispersal distance of one another and could be considered to exchange individuals, and all geographic clusters together comprise the species.\nWe can evolve traits of each population independently. Alternatively, we could give all populations within a geographic cluster shared trait values and evolve traits at this level of organization, or again at the whole species level. At which level of biological organization you evolve traits will depend on your hypothesis and the system you are trying to represent.\nIn addition to mutating the traits of species, we might also want to homogenise traits of populations that are likely exchanging gene flow.\nThis example, highlights both homogenising traits and evolving traits.\n\nconfig$gen3sis$mutation\n\nHomogensation assigns each geographic cluster the avaerage trait value weighted by the abundance of each population. Here larger populations contribute more than smaller populations to the avergae.\nAfter homogenisation, the trait evolves by drawing random values from a normal distribution and adding these to the traits. A mean of 0 ensures that positive trait changes and negative trait changes are equally likely. The trait_evolutionary_power variable detemines the degree of trait evolution, with higher values leading to higher average trait changes each time step. This process of adding a random normal variable approximates a Brownian motion model of trait evolution.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Config Basics</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>⛸️ Configure Skating</span>"
     ]
   },
   {
     "objectID": "Day1_Prac2_basics.html#ecology-interactions",
     "href": "Day1_Prac2_basics.html#ecology-interactions",
-    "title": "2  Config Basics",
+    "title": "2  ⛸️ Configure Skating",
     "section": "Ecology (interactions)",
     "text": "Ecology (interactions)\nEvery species present in a cell across the landscape has an abundance value representing the population size of the species in that location. The ecology function allows users to modify this abundance value based on environmental values, species interactions, or anything else relevant to the study. An abundance of 0 leads to the extinction of the species in that cell.\n\nconfig$gen3sis$ecology\n\nHere we use the temp trait (temperature niche position) and temp_breadth (temperature niche breadth) to determine whether a population can survive in cell. We get the absolute difference between the niche position and the temperature value in the grid cell. We then ask if this difference is more than the niche breadth. If it is larger, this means the value of the grid cell is outside the population’s niche breadth and it goes extinct in that grid cell. Extinction is indicated by giving the abundance a value of 0 or setting the abundance to FALSE as done here.\nOK, that gives you the basic overview of all the main components of the gen3sis model. We will now move on to running some simulations on an island case study. But before we do, we may want to save any changes we made to the config for later. To do this use the following code.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Config Basics</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>⛸️ Configure Skating</span>"
     ]
   },
   {
@@ -267,6 +267,96 @@
     "text": "Eager Beavers - Model 4\nIf you’ve managed to get thorugh all of this, run M4 config and using what you’ve learned, plot some of the outputs. What has changed about this config?\n\nsim_m4 &lt;- run_simulation(config=\"configs/config_islands_simple_Day1Prac3_M4.R\", landscape=\"data/landscapes/islands\", output_directory=\"output/islands\")",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Diversification in a Model Island System</span>"
+    ]
+  },
+  {
+    "objectID": "Day1_Prac3_islands.html#model-1-config-time",
+    "href": "Day1_Prac3_islands.html#model-1-config-time",
+    "title": "3  Diversification in a Model Island System",
+    "section": "Model 1: Config Time!",
+    "text": "Model 1: Config Time!\nload in a the m1 config\n\n# load config\nconf_m1 &lt;- create_input_config(\"configs/config_islands_simple_Day1Prac3_M1.R\")\n\n# list all main elements of the config file\nnames(conf_m1$gen3sis)\n\n# list all elements of the general section, i.e. the main settings and not so much on the eco-evolutionary processes\nnames(conf_m1$gen3sis$general)\n\n# if you're game take a look at the whole thing - whats different to the South America example?\nconf_m1\n\nOk now run the sim. Note that we’re usinga start time of 50 with 100-thousand-year time steps. So only the last 500 thousand years rather than the full 5 million. This is because\n\n# run simulation\nsim_m1 &lt;- run_simulation(config = \"configs/config_islands_simple_Day1Prac3_M1.R\", \n                      landscape = \"data/landscapes/islands\", \n                      output_directory = \"output/islands\")\n\nInvestigate the output\n\nsim_m1 &lt;- readRDS(\"output/islands/config_islands_simple_Day1Prac3_M1/sgen3sis.rds\")\n\n\n# visualize the outputs\nplot_summary(sim_m1)\n\n\n# plot richness from summary in custom fashion\nna_mask &lt;- is.na(lc$elevation[,\"0\"])\nrich_m1 &lt;- sim_m1$summary$`richness-final`\nrich_m1[na_mask,3] &lt;- NA\nplot(rast(rich_m1, type=\"xyz\"), main=\"Richness\")\n\nPick a couple of random time points to look at specifically.\n\n# plot richness at time step 32 using saved data\nsps32 &lt;- readRDS(\"output/islands/config_islands_simple_Day1Prac3_M1/species/species_t_32.rds\")\nlc32 &lt;- readRDS(\"output/islands/config_islands_simple_Day1Prac3_M1/landscapes/landscape_t_32.rds\")\nplot_richness(sps32, lc32)\n\n# plot richness at time step 12 using saved data\nsps12 &lt;- readRDS(\"output/islands/config_islands_simple_Day1Prac3_M1/species/species_t_12.rds\")\nlc12 &lt;- readRDS(\"output/islands/config_islands_simple_Day1Prac3_M1/landscapes/landscape_t_12.rds\")\nplot_richness(sps12, lc12)\n\nNow look at the phylogeny\n\n# Now lets look at the Phylogeny\nlibrary(ape)\nphy_m1 &lt;- read.nexus(\"output/islands/config_islands_simple_Day1Prac3_M1/phy.nex\")\nplot(phy_m1)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Diversification in a Model Island System</span>"
+    ]
+  },
+  {
+    "objectID": "Day1_Prac3_islands.html#model-2-customise",
+    "href": "Day1_Prac3_islands.html#model-2-customise",
+    "title": "3  Diversification in a Model Island System",
+    "section": "Model 2: Customise 💅",
+    "text": "Model 2: Customise 💅\nLets start changing features of the config and compare the outputs to our first model.\n\n# load in config M2\nconf_m2 &lt;- create_input_config(\"configs/config_islands_simple_Day1Prac3_M2.R\")\n\n# previously, in M1, populations need 10 time steps to complete speciation\nconf_m1$gen3sis$speciation$divergence_threshold\n\n# now populations only need 5 time steps to complete speciation\nconf_m2$gen3sis$speciation$divergence_threshold\n\n#We have also change the observer function to save the presence/absence matrix for each time step.\n# see original config\nconf_m1$gen3sis$general$end_of_timestep_observer \n\n# see modeified config\nconf_m2$gen3sis$general$end_of_timestep_observer \n\nRun M2!\n\n# run the new model\nsim_m2 &lt;- run_simulation(config=\"configs/config_islands_simple_Day1Prac3_M2.R\", landscape=\"data/landscapes/islands\", output_directory=\"output/islands\")\n\n\n# original dynamics\nplot_summary(sim_m1)\n\n# modified dynamics\nsim_m2 &lt;- readRDS(\"output/islands/config_islands_simple_Day1Prac3_M2/sgen3sis.rds\")\nplot_summary(sim_m2)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Diversification in a Model Island System</span>"
+    ]
+  },
+  {
+    "objectID": "Day1_Prac3_islands.html#model-3-specialise",
+    "href": "Day1_Prac3_islands.html#model-3-specialise",
+    "title": "3  Diversification in a Model Island System",
+    "section": "Model 3: Specialise🏝️",
+    "text": "Model 3: Specialise🏝️\nThe differences between M1 and M2 are predictable. Speciation happens a bit faster in M2, and you end up with more species. Overall, however, the patterns of richness are pretty similar. This suggests that this change in the rate of speciation isn’t having a big impact on geographic variation in where species are forming (at least from a glance). So let’s try a new model that has a few more tweaks to see a more measurable effect.\n\n#load in the config for model M3\nconf_m3 &lt;- create_input_config(\"configs/config_islands_simple_Day1Prac3_M3.R\")\n\n# take a look at the initialisation\nconf_m3$gen3sis$initialization\n\nThere is a big differences here. In the initialization stage we give each species a different value of it’s dispersal ability and temperature width trait (niche breadth), and these are inversely related - high dispersing species have narrow niche breadths and low dispering species have wide niche breadths. This may create an interesting trade-off in dynamics of island colonization.\nRun the simulation\n\nsim_m3 &lt;- run_simulation(config=\"configs/config_islands_simple_Day1Prac3_M3.R\", \n                         landscape=\"data/landscapes/islands\",\n                         output_directory=\"output/islands\")\n\nNow compare the dynamics\n\nsim_m3 &lt;- readRDS(\"output/islands/config_islands_simple_Day1Prac3_M3/sgen3sis.rds\")\n\n# compare the plot summaries\nplot_summary(sim_m1)\nplot_summary(sim_m2)\nplot_summary(sim_m3)\n\n\n# lets also compare the phylogenies\npar(mfrow=c(1,3))\nphy_m1 &lt;- read.nexus(\"output/islands/config_islands_simple_Day1Prac3_M1/phy.nex\")\nplot(phy_m1)\nphy_m2 &lt;- read.nexus(\"output/islands/config_islands_simple_Day1Prac3_M2/phy.nex\")\nplot(phy_m2)\nphy_m3 &lt;- read.nexus(\"output/islands/config_islands_simple_Day1Prac3_M3/phy.nex\")\nplot(phy_m3)\n\n\nExercise\nFrom the small tweak to the divergence factor and the initial conditions, we can see more species being generated in M2 and M3 compared to M1. We can also see extremely asymmetrical trees.\nReview the M2 and M3 config files and try to understand what they’re doing.\n\nHow are the dynamics through time in M2 and M3 different to M1, and how are they similar?\nAre the original occupants of each island diversifying at the same pace? How could you test this?\nConsider how you might modify the configuration or apply it to a specific research question.\nDo you think all islands would have similar degrees of phylogenetic diversity or turnover?\n\nWe’ll explore some of these questions tomorrow!",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Diversification in a Model Island System</span>"
+    ]
+  },
+  {
+    "objectID": "Day1_Prac3_islands.html#model-4-real",
+    "href": "Day1_Prac3_islands.html#model-4-real",
+    "title": "3  Diversification in a Model Island System",
+    "section": "Model 4: Real👀",
+    "text": "Model 4: Real👀\nIf you’ve managed to get thorugh all of this, run M4 config and using what you’ve learned, plot some of the outputs. What has changed about this config?\n\nsim_m4 &lt;- run_simulation(config=\"configs/config_islands_simple_Day1Prac3_M4.R\", landscape=\"data/landscapes/islands\", output_directory=\"output/islands\")",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Diversification in a Model Island System</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#day-1.",
+    "href": "index.html#day-1.",
+    "title": "Center for Biodiversity Analysis: Gen3sis Workshop 2024",
+    "section": "Day 1.",
+    "text": "Day 1.\n\n09:00 - Welcome (Platypus Room) - Introductions and Overview of Gen3sis Workshop\n09:45 - Lecture 1. Oskar Hagen (Eucalyptus Room) - History and philosophy of simulation modelling in biodiversity studies\n10:45 - Coffee Break\n11:00 - Practical 1. Installation and Set Up (30mins - 1hr)\n12:00 - Practical 2. Gen3sis Config Basics\n12:30 - Lunch Break\n13:30 - Practical 2. Gen3sis Config Basics (continue - 2hrs)\n15:30 - Coffee Break\n15:45 - Practical 3. Explore island configs\n16:30 - Questions / Wrap up Day 1",
+    "crumbs": [
+      "Program"
+    ]
+  },
+  {
+    "objectID": "index.html#day.-2",
+    "href": "index.html#day.-2",
+    "title": "Center for Biodiversity Analysis: Gen3sis Workshop 2024",
+    "section": "Day. 2",
+    "text": "Day. 2\n\n09:00 - Lecture 2. Alex and Oskar (Platypus Room) - Inference from simulated biodiversity data\n10:00 - Practical 4.1. Gen3sis outputs and biodiversity patterns\n10:30 - Coffee Break\n10:45 - Practical 4.2 Gen3sis outputs and biodiversity patterns (contd.)\n12:30 - lunch\n13:30 - Lecture 3. Tristan Salles (Platypus Room) - Paleoenvironmental models and data\n14:15 - Discussion\n14:45 - Coffee break\n15:00 - Practical 5. Modifying landscapes for Gen3sis\n16:30 - Questions / Wrap up Day 2",
+    "crumbs": [
+      "Program"
+    ]
+  },
+  {
+    "objectID": "index.html#day-3.",
+    "href": "index.html#day-3.",
+    "title": "Center for Biodiversity Analysis: Gen3sis Workshop 2024",
+    "section": "Day 3.",
+    "text": "Day 3.\n\n09:00 - Lecture 4. Alex and Oskar - Designing simulation experiments with Gen3sis\n10:00 - Group work - implementing models in Gen3sis\n10:30 - Coffee Break\n10:45 - Group work - implementing models in Gen3sis (contd.)\n12:30 - Lunch break\n13:30 - Wrapping up Group work\n14:45 - Coffee Break\n15:00 - Presenting models / Wrap up Day 3\n16:00 - Pub!",
+    "crumbs": [
+      "Program"
+    ]
+  },
+  {
+    "objectID": "Day2_Prac4_outputs.html#exploring-outputs",
+    "href": "Day2_Prac4_outputs.html#exploring-outputs",
+    "title": "4  🖥️ Silicodiversiy 🌈t",
+    "section": "",
+    "text": "A map of Species Richness from the simulation summary object\nA plot of Lineages Through Time from the phylogeny\nPlot of species trait values on a phylogenetic tree, by linking the species objects to the phylogeny\nMaps of Phylogenetic Diversity by linking species objects to the landscape and phylogeny\n\n\n\n\nSimulation summary object (sgen3sis.rds)\nThe first object we will look at today is the sgenesis.rds file. This file contains a summary of the simulation. Which we can plot (as we did yesterday) with the plot_summary function.\n\noutput_dir &lt;- \"output/islands\" \n\nsim &lt;- readRDS(file.path(output_dir, \"config_islands_simple_Day1Prac3_M1/sgen3sis.rds\")) \n\n# look at what the simulation summary contains\nnames(sim) \n\nThe first element is the sim summary. This conatins a record of the history of speciation, extinction, and species richness through time (phylo_summary), a history of the number of total grid cells occupied during the simulation through time (occupancy) and the species richness of each grid cell at the final time step.\n\nstr(sim$summary)\n\n# phylo summary\nhead(sim$summary$phylo_summary)\n\n# occupancy\nhead(sim$summary$occupancy)\n\n# occupancy\nhead(sim$summary$`richness-final`)\n\nThese data are called on in the plot_summary function\n\n# Visualize the outputs \nplot_summary(sim) \n\nWe can also use these data to map out patterns of species richness\n\n# make sure the landscape is loaded\nlc &lt;- readRDS(file.path(\"data\", \"landscapes\", \"islands\",\"landscapes.rds\"))\n\n# can remove cells with elevation below sea level at timestep 0 (present-day) to see the outlines of the islands\nna_mask &lt;- is.na(lc$elevation[,\"0\"])\nrich &lt;- sim$summary$`richness-final`\nrich[na_mask,3] &lt;- NA\n\n# turn richness summary into a raster \nrichness &lt;- rast(rich, type=\"xyz\")\n\n# plot\nplot(richness, col=c(\"grey\", gen3sis::color_richness(12)))\n\nThe next part of the simulation summary object is the flag which will tell us if the simulation ran successfully. It should give “OK”\n\nsim$flag\n\nNext is the system summary. This is information about the R version, R packages, and operating system used in the simulation. This ensures complete repeatability. It also tells us the runtime of the simulation.\n\nsim$system\n\nFinally the summary object contains the config infromation and model parameters used.\n\nsim$parameters\n\n\n\nPhylogeny object (phy.nex)\nThe phylogeny object is pretty straight forward. It is a newxus file containing the relationships between the species.\n\n# read phy\nphy &lt;- read.nexus(file.path(output_dir, \"config_islands_simple_Day1Prac3_M1/phy.nex\"))\n\n# plot phy\nplot(phy)\n\nFrom this object we can look at lineages through time plots and estimate trends in diversification, such as using the gamma statistic to detect diversification slowdowns or speedups.\n\n# plot an ltt\nltt_M1 &lt;-ltt(phy)\n\n# look at the gamma statistic\nprint(paste0(\"Gamma = \", round(ltt_M1$gamma, 2)))\n\n# is there a significant deviation from conatant rates?\nprint(paste0(\"P = \", round(ltt_M1$p, 2)))\n\n\n\nSpecies objects (phy.nex)\nNow its time to get into the meat of the gen3sis outputs. Most of the infromation from the simulation is stored in the species objects. These are .rds files that contain a list which includes information on every species, extinct or extant, that existed during the simulation. We saved these at every time step. The naming convention is “species_t_0.rds” for time step 0 (present-day), and “species_t_50” for timestep 50, etc.\n\n# load object\nspecies_t_0 &lt;- readRDS(file.path(output_dir, \"config_islands_simple_Day1Prac3_M1\", \"species\", \"species_t_0.rds\"))\n\n# look at object class and length\nclass(species_t_0)\nlength(species_t_0)\n\n# compare to number of tips in the phylogeny\nNtip(phy)\n\nWe can see there are 14 elements in the list, representing our 14 species and this number matches the number of species in our phylogeny. No species went extinct in this particular simulation, but if they did, they would match extinct tips in the phylogeny.\nLets look at a single species\n\nnames(species_t_0[[1]])\n\nThe species has an ID which allows us to match it to the phylogeny.\n\nspecies_t_0[[1]]$id\n\nThe species also has its abundances, which are linked to grid cells in the landscape which can matched with their names.\n\nspecies_t_0[[1]]$abundance\n\nIn this case the species has abundance values of 1 in all populations from the cells that it occupies. Thyis is because we set abundances to be binary: 1=present, 0=absent. We can see the species occupies cells 2767,2768,2769, etc.\nThe species also has values of it’s traits for each of those populations.\n\nhead(species_t_0[[1]]$traits)\n\nWe can see the population that each row is linked to by the rownames. Here you can see 2767, 2768, 2769, etc. These each have a dispersal trait of 5 (because we didn;t vary this) slightly different temp_mean traits (because these evolved stochastically under a Brownian motion like model) and a temp width of 1 (again, we didn;t vary this in model 1).\nSo, if we want to map out the distribution of species 1 at timestep 0, we just need to link those cell names (267/268/etc) to the landscape object and make a raster. Why don;t we try and see what islands species 1 is found on.\n\npar(mfrow=c(1,2))\n\n# first plot the sialnds out from the landscape objet\npatch_xyz &lt;- rast(lc$patch[,c(\"x\", \"y\", \"0\")], type=\"xyz\")\nplot(patch_xyz, main=\"Island Patches\", col=palette()[c(2,3,4,6)])\n\n# pull out values of the landscape where the species is found\nspecies1_xyz &lt;- lc$patch[which(rownames(lc$patch) %in% rownames(species_t_0[[1]]$traits)), c(\"x\", \"y\", \"0\")]\n\n# turn it into a raster\nspecies1_xyz &lt;- rast(species1_xyz, type=\"xyz\")\nspecies1_xyz &lt;- extend(species1_xyz, patch_xyz)\nplot(species1_xyz, main= \"Species 1 Distribution\")\n\n\n\nLinking the species object and phylogeny\nLets try and link the species trait data to the phylogeny to start learning something about what exactly took place during our simulation! Let’s get the mean trait value of the temperature niche and also the islands that each species belongs too.\n\n# lets create a data frame\ndf &lt;- data.frame(\"id\"= paste0(\"species\",sapply(species_t_0, function(x)x$id)),\n                 \"mean_temp\"=NA,\n                 \"island1\"=0,\n                 \"island2\"=0,\n                 \"island3\"=0,\n                 \"island4\"=0, \n                 \"island_start\"=NA)\n\n# take a look\nhead(df)\n\n# Use sapply on the species object to get their mean trait values\ndf$mean_temp &lt;- sapply(species_t_0, function(x)mean(x$traits[, \"temp_mean\"], na.rm=T))\n\n# to get the island patch id values we'll use a for loop\nfor(i in 1:length(species_t_0)){\n  \n  # as before we get the lanscape values of each species\n  speciesi_xyz &lt;- lc$patch[which(rownames(lc$patch) %in% rownames(species_t_0[[i]]$traits)), c(\"x\", \"y\", \"0\")]\n  \n  # then pull out the unique values (note that species might occur on more than one island)\n  islands &lt;- unique(speciesi_xyz[, 3])\n  \n  # then if species are on the island, give that column a value of 1\n  df$island1[i] &lt;- ifelse(1 %in% islands, 1, 0)\n  df$island2[i] &lt;- ifelse(2 %in% islands, 1, 0)\n  df$island3[i] &lt;- ifelse(3 %in% islands, 1, 0)\n  df$island4[i] &lt;- ifelse(4 %in% islands, 1, 0)\n}\n\n# get the starting island from the traits object because we recorded this in the initialisation step\ndf$island_start &lt;- sapply(species_t_0, function(x) unique(x$traits[, \"start_island\"]))\n\nNow look again at the data frame\n\nhead(df)\n\nPlot out the continuously evolving temperature niche trait\n\n# create a named vector for the log of the temperature niche trait\ntemp_niche &lt;- log(df$mean_temp)\nnames(temp_niche) &lt;- df$id\n\n# plot it out with dots = trait\ndotTree(phy,temp_niche,ftype=\"i\")\n\nNot much variation in that trait, due to the combined effects of trait homogenisation and a low rate of change. Lets plot the tip states of the islands on the phylogeny using the phytools package\n\n# format each island\nformatIsland &lt;- function(island, phy=phy){\n  islandf &lt;- as.factor(df[, island])\n  names(islandf) &lt;- df$id\n  islandmat&lt;-to.matrix(islandf,levels(islandf))\n  islandmat&lt;-islandmat[phy$tip.label,]\n  return(list(islandf, islandmat))\n}\n\n\nplotTree(phy,ftype=\"i\",offset=1,fsize=0.9, xlim=c(0, 75))\n\ntiplabels(pie=formatIsland(island=\"island1\", phy=phy)[[2]],piecol=palette()[c(8,2)],cex=0.6, adj=12+1)\ntiplabels(pie=formatIsland(island=\"island2\", phy=phy)[[2]],piecol=palette()[c(8,3)],cex=0.6, adj=12+3)\ntiplabels(pie=formatIsland(island=\"island3\", phy=phy)[[2]],piecol=palette()[c(8,4)],cex=0.6, adj=12+5)\ntiplabels(pie=formatIsland(island=\"island4\", phy=phy)[[2]],piecol=palette()[c(8,6)],cex=0.6, adj=12+7)\n\n\nlegend(\"topleft\",levels(island1),pch=21,pt.bg=palette()[c(8,2)],\n    pt.cex=2.2)\n\nInteresting. What do you notice about the distribution of species on islands? Could you predict which island each lineage began on?\nWe actually know which islands each lineage started on because we recorded this as a trait (we could also look at the past species objects to figure this out but we have used a short cut method).\n\npar(mfrow=c(1,2))\nplotTree(phy,ftype=\"i\",offset=1,fsize=0.4, xlim=c(0, 75))\n\ntiplabels(pie=formatIsland(island=\"island1\", phy=phy)[[2]],piecol=palette()[c(8,2)],cex=0.6, adj=12+1)\ntiplabels(pie=formatIsland(island=\"island2\", phy=phy)[[2]],piecol=palette()[c(8,3)],cex=0.6, adj=12+3)\ntiplabels(pie=formatIsland(island=\"island3\", phy=phy)[[2]],piecol=palette()[c(8,4)],cex=0.6, adj=12+5)\ntiplabels(pie=formatIsland(island=\"island4\", phy=phy)[[2]],piecol=palette()[c(8,6)],cex=0.6, adj=12+7)\n# add the starting island as a fifth colum\ntiplabels(pie=formatIsland(island=\"island_start\", phy=phy)[[2]],piecol=palette()[c(2,3,4,6)],cex=0.6, adj=12+9)\n\n# add island plot\nplot(patch_xyz, main=\"Island Patches\", col=palette()[c(2,3,4,6)])\n\nSo whats really apparent here is that the clade that originated on the green island has speciated allopatrically into the red island multiple times in the recent past. The same is true fro the red clade, however the deeper divergence between species9 and species3 have had enough time to recolonise both islands.\n\n\n4.0.0.1 Linking the species object, landscape, and phylogeny\nCommon spatial biodiversity analyses link information measured at the species level to maps of their distribution in space using presence-absence matrices or PAMs. PAMs typically are data frame with each row representing a site, could be an island or could be a grid cell, and each column representing a species. Values of 1 are given if the species is present in the site, if not a value of 0 is given.\n\n# grid cell level PAM\n\n# create an empty data frame with the dimensions of species x sites\nPAM &lt;- data.frame(matrix(0, nrow=nrow(lc$elevation), ncol=length(species_t_0)))\n\n# given names to rows and columns\nrownames(PAM) &lt;- rownames(lc$elevation)\ncolnames(PAM) &lt;- paste0(\"species\", sapply(species_t_0, function(x)x$id))\n\n# loop over species and add value of 1 to all sites the species is present\nfor(i in 1:length(species_t_0)){\n  \n  PAM[which(rownames(PAM) %in% names(species_t_0[[i]]$abundance)), i] &lt;- 1\n}\n\n# how does it look?\nprint(PAM[1:10, 1:10])\n\n\n# we can estimate Phylogenetic diversity\npd_islands &lt;- pd(PAM, phy)\n\n# we can also measure mean phylogenetic distance and mean nearest neighbour distance\nmpd_islands &lt;- mpd(PAM, cophenetic(phy))\nmntd_islands &lt;- mntd(PAM,cophenetic(phy))\n\n# link these back back with the landscape by joining to the lanscape lat/lons\ncommunity_phylo &lt;- cbind(lc$elevation[, c(\"x\", \"y\")], pd_islands, mpd_islands, mntd_islands)\n\npar(mfrow=c(2,2))\nsr_ras &lt;- rast(community_phylo[, c(\"x\", \"y\", \"SR\")], type=\"xyz\")\npd_ras &lt;- rast(community_phylo[, c(\"x\", \"y\", \"PD\")], type=\"xyz\")\nmpd_ras &lt;- rast(community_phylo[, c(\"x\", \"y\", \"mpd_islands\")], type=\"xyz\")\nmntd_ras &lt;- rast(community_phylo[, c(\"x\", \"y\", \"mntd_islands\")], type=\"xyz\")\n\nplot(sr_ras, main=\"Species Richness\")\nplot(pd_ras, main=\"Phylogenetic Diversity\")\nplot(mpd_ras, main=\"Mean Phylogenetic Pairwise Distance\")\nplot(mntd_ras, main= \"Mean Nearest Neighbour Phylogenetic Distance\")",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>🖥️ Silicodiversiy 🌈t</span>"
+    ]
+  },
+  {
+    "objectID": "Day2_Prac4_outputs.html#sensitivity-analysis",
+    "href": "Day2_Prac4_outputs.html#sensitivity-analysis",
+    "title": "4  🖥️ Silicodiversiy 🌈t",
+    "section": "Sensitivity analysis",
+    "text": "Sensitivity analysis",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>🖥️ Silicodiversiy 🌈t</span>"
     ]
   }
 ]

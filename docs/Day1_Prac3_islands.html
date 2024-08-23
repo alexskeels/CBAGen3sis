@@ -194,13 +194,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#dynamic-island-landscape" id="toc-dynamic-island-landscape" class="nav-link active" data-scroll-target="#dynamic-island-landscape">Dynamic Island Landscape</a></li>
-  <li><a href="#config-time---model-1" id="toc-config-time---model-1" class="nav-link" data-scroll-target="#config-time---model-1">Config Time! - Model 1</a></li>
-  <li><a href="#customise-the-model---model-2" id="toc-customise-the-model---model-2" class="nav-link" data-scroll-target="#customise-the-model---model-2">Customise the model - Model 2</a></li>
-  <li><a href="#go-cray---model-3" id="toc-go-cray---model-3" class="nav-link" data-scroll-target="#go-cray---model-3">Go cray - Model 3</a>
+  <li><a href="#model-1-config-time" id="toc-model-1-config-time" class="nav-link" data-scroll-target="#model-1-config-time">Model 1: Config Time!</a></li>
+  <li><a href="#model-2-customise" id="toc-model-2-customise" class="nav-link" data-scroll-target="#model-2-customise">Model 2: Customise 💅</a></li>
+  <li><a href="#model-3-specialise" id="toc-model-3-specialise" class="nav-link" data-scroll-target="#model-3-specialise">Model 3: Specialise🏝️</a>
   <ul class="collapse">
   <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
   </ul></li>
-  <li><a href="#eager-beavers---model-4" id="toc-eager-beavers---model-4" class="nav-link" data-scroll-target="#eager-beavers---model-4">Eager Beavers - Model 4</a></li>
+  <li><a href="#model-4-real" id="toc-model-4-real" class="nav-link" data-scroll-target="#model-4-real">Model 4: Real👀</a></li>
   </ul>
 </nav>
     </div>
@@ -267,11 +267,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the change in mean elevation through time</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>mean_elevation <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(lc<span class="sc">$</span>elevation[, <span class="dv">3</span><span class="sc">:</span><span class="fu">ncol</span>(lc<span class="sc">$</span>elevation)], <span class="at">na.rm=</span>T)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">by=</span><span class="sc">-</span><span class="fl">0.01</span>), mean_elevation, <span class="at">xlab=</span><span class="st">"time (Ma)"</span>, <span class="at">ylab=</span><span class="st">"mean elevation"</span>, <span class="at">type=</span><span class="st">'l'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">by=</span><span class="sc">-</span><span class="fl">0.01</span>), mean_elevation, <span class="at">xlab=</span><span class="st">"time (Ma)"</span>, <span class="at">ylab=</span><span class="st">"mean elevation"</span>, <span class="at">type=</span><span class="st">'l'</span>)💅</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="config-time---model-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="config-time---model-1">Config Time! - Model 1</h2>
+<section id="model-1-config-time" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="model-1-config-time">Model 1: Config Time!</h2>
 <p>load in a the m1 config</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load config</span></span>
@@ -328,8 +328,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phy_m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="customise-the-model---model-2" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="customise-the-model---model-2">Customise the model - Model 2</h2>
+<section id="model-2-customise" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="model-2-customise">Model 2: Customise 💅</h2>
 <p>Lets start changing features of the config and compare the outputs to our first model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in config M2</span></span>
@@ -362,8 +362,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_summary</span>(sim_m2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="go-cray---model-3" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="go-cray---model-3">Go cray - Model 3</h2>
+<section id="model-3-specialise" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="model-3-specialise">Model 3: Specialise🏝️</h2>
 <p>The differences between M1 and M2 are predictable. Speciation happens a bit faster in M2, and you end up with more species. Overall, however, the patterns of richness are pretty similar. This suggests that this change in the rate of speciation isn’t having a big impact on geographic variation in where species are forming (at least from a glance). So let’s try a new model that has a few more tweaks to see a more measurable effect.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load in the config for model M3</span></span>
@@ -411,8 +411,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We’ll explore some of these questions tomorrow!</p>
 </section>
 </section>
-<section id="eager-beavers---model-4" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="eager-beavers---model-4">Eager Beavers - Model 4</h2>
+<section id="model-4-real" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="model-4-real">Model 4: Real👀</h2>
 <p>If you’ve managed to get thorugh all of this, run M4 config and using what you’ve learned, plot some of the outputs. What has changed about this config?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sim_m4 <span class="ot">&lt;-</span> <span class="fu">run_simulation</span>(<span class="at">config=</span><span class="st">"configs/config_islands_simple_Day1Prac3_M4.R"</span>, <span class="at">landscape=</span><span class="st">"data/landscapes/islands"</span>, <span class="at">output_directory=</span><span class="st">"output/islands"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
