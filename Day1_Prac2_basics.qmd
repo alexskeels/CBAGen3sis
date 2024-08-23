@@ -5,21 +5,41 @@ execute:
   eval: FALSE
 ---
 
-To begin the dive into what Gen3sis is, and how it operates, we'll start by looking a config file. The config is the code for the ecological and evolutionary rules and other parameters of Gen3sis, such as the random see, instructions on saving output, etc.
+To begin the dive into what Gen3sis is, and how it operates, we'll start by looking a config file. The config is the code for the ecological and evolutionary rules and other parameters of Gen3sis, such as the random seed, instructions on saving output, etc.
 
-A config file is a a stand-alone R script which is modified by you. We can generate a new blank config file automatically to specified location in your configs folder and open it in R. Give that try.
+A config file is a a stand-alone R script which is modified by you. You can modify a config in two ways. The first way and most practical, is to open up a config file. For example you can navigate to the folder open the file, or you can use this line and it should appear in your RStudio window.
 
 ```{r}
-write_config_skeleton("configs/blank_config")
+file.edit('configs/config_southamerica_Day1_Prac1.R')
 ```
 
-Once you've got the hang of Gen3sis it's straightforward to populate these with functions. However, for now, lets start with the config we used in the previous section. We should still have that config loaded in our workspaces, but if not run this code.
+Alternatively you can load a config into the RAM and modify there. We'll do this now as its a bit easier to demonstrate. Lets start with the config we used in the previous section. We should still have that config loaded in our workspaces, but if not run this code.
 
 ```{r}
 config <- create_input_config(config_file = "configs/config_southamerica_Day1_Prac1.R")
 ```
 
-lets take a look at the config
+So these two ways of editing the config lend themselves to two different ways of running the config. We can either point the *run_simulation* function to the config file or the config stored in memory.
+
+```{r}
+# DON'T RUN
+
+# run from config file
+sim <- run_simulation(config = file.path(config_dir, "config_southamerica_Day1Prac1.R"), 
+               landscape = file.path(data_dir,"landscapes", "SA_coarse"),
+               output_directory = "output/SouthAmerica",
+               verbose=1)
+
+# run from config in memory
+sim <- run_simulation(config = config, 
+               landscape = file.path(data_dir,"landscapes", "SA_coarse"),
+               output_directory = "output/SouthAmerica",
+               verbose=1)
+```
+
+This isn't that important for now but we are just flagging it for future reference.
+
+So lets take a look at the config.
 
 ```{r}
 config

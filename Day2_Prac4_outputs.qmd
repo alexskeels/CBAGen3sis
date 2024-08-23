@@ -5,12 +5,35 @@ execute:
   eval: FALSE
 ---
 
-## Outputs and Biodiversity Patterns - Part 1: Exploring outputs
+### Exploring outputs {.unnumbered}
+
+In this prac we will explore the files outputted from gen3sis using the island simulations we ran yesterday. We will learn how to manipule/wrange these data structures into formats used by common R packages for phylogenetic comparative methods, community phylogenetics, biogeography, etc.
+
+The goal for today will be to produce:
+
+1.  A map of Species Richness from the simulation summary object
+
+2.  A plot of Lineages Through Time from the phylogeny
+
+3.  Plot of species trait values on a phylogenetic tree, by linking the species objects to the phylogeny
+
+4.  Maps of Phylogenetic DIversity, and Phylogenetic Endemism by linking species objects to the landscape and phylogeny
+
+5.  Graph temporal trends in diversity in different biogeographic regions (islands)
+
+First, let's make sure we have the necessary packages loaded
 
 ```{r}
-library(gen3sis)
-library(terra)
+require(gen3sis)
+require(terra)
+require(ape)
+require(phytools)
+require(picante)
 ```
+
+#### Simulation summary object (sgen3sis.rds) {.unnumbered}
+
+The first object we will look at today is the sgenesis.rds file. This file contains a summary of the simulation. Which we can plot (as we did yesterday) with the plot_summary function.
 
 ```{r}
 output_dir <- "output/islands" 
@@ -18,26 +41,243 @@ output_dir <- "output/islands"
 sim <- readRDS(file.path(output_dir, "config_islands_simple_Day1Prac3_M1/sgen3sis.rds")) 
 
 # look at what the simulation summary contains
-names(sim)    
-
-#### Visualize the outputs 
-plot_summary(sim) 
-
-# or just the richness
-richness <- rast(sim$summary$`richness-final`, type="xyz")
-plot(richness, col=gen3sis::color_richness(10))
+names(sim) 
 ```
+
+The first element is the sim summary. This conatins a record of the history of speciation, extinction, and species richness through time (phylo_summary), a history of the number of total grid cells occupied during the simulation through time (occupancy) and the species richness of each grid cell at the final time step.
 
 ```{r}
-# plot diversity at 3 time slices 
-timesteps <- c(20, 10, 0) 
-par(mfrow = c(1, 3)) 
-for (i in timesteps) {   
-  landscape_i <- readRDS(file.path(output_dir, paste0("config_southamerica/landscapes/landscape_t_",                                                      i, ".rds")))   
-  species_i <- readRDS(file.path(output_dir, paste0("config_southamerica/species/species_t_",                                                    i, ".rds")))   
-  plot_richness(species_i, landscape_i) } 
-#dev.off()
+str(sim$summary)
+
+# phylo summary
+head(sim$summary$phylo_summary)
+
+# occupancy
+head(sim$summary$occupancy)
+
+# occupancy
+head(sim$summary$`richness-final`)
 ```
+
+These data are called on in the plot_summary function
+
+```{r}
+# Visualize the outputs 
+plot_summary(sim) 
+```
+
+We can also use these data to map out patterns of species richness
+
+```{r}
+# make sure the landscape is loaded
+lc <- readRDS(file.path("data", "landscapes", "islands","landscapes.rds"))
+
+# can remove cells with elevation below sea level at timestep 0 (present-day) to see the outlines of the islands
+na_mask <- is.na(lc$elevation[,"0"])
+rich <- sim$summary$`richness-final`
+rich[na_mask,3] <- NA
+
+# turn richness summary into a raster 
+richness <- rast(rich, type="xyz")
+
+# plot
+plot(richness, col=c("grey", gen3sis::color_richness(7)))
+```
+
+The next part of the simulation summary object is the flag which will tell us if the simulation ran successfully. It should give "OK"
+
+```{r}
+sim$flag
+```
+
+Next is the system summary. This is information about the R version, R packages, and operating system used in the simulation. This ensures complete repeatability. It also tells us the runtime of the simulation.
+
+```{r}
+sim$system
+```
+
+Finally the summary object contains the config infromation and model parameters used.
+
+```{r}
+sim$parameters
+```
+
+#### Phylogeny object (phy.nex) {.unnumbered}
+
+The phylogeny object is pretty straight forward. It is a newxus file containing the relationships between the species.
+
+```{r}
+# read phy
+phy <- read.nexus(file.path(output_dir, "config_islands_simple_Day1Prac3_M1/phy.nex"))
+
+# plot phy
+plot(phy)
+```
+
+From this object we can look at lineages through time plots and estimate trends in diversification, such as using the gamma statistic to detect diversification slowdowns or speedups.
+
+```{r}
+# plot an ltt
+ltt_m1 <-ltt(phy)
+
+# look at the gamma statistic
+print(paste0("Gamma = ", round(ltt_m1$gamma, 2)))
+
+# is there a significant deviation from conatant rates?
+print(paste0("P = ", round(ltt_m1$p, 2)))
+```
+
+#### Species objects (phy.nex) {.unnumbered}
+
+Now its time to get into the meat of the gen3sis outputs. Most of the infromation from the simulation is stored in the species objects. These are .rds files that contain a list which includes information on every species, extinct or extant, that existed during the simulation. We saved these at every time step. The naming convention is "species_t_0.rds" for time step 0 (present-day), and "species_t_50" for timestep 50, etc.
+
+```{r}
+# load object
+species_t_0 <- readRDS(file.path(output_dir, "config_islands_simple_Day1Prac3_M1", "species", "species_t_0.rds"))
+
+# look at object class and length
+class(species_t_0)
+length(species_t_0)
+
+# compare to number of tips in the phylogeny
+Ntip(phy)
+```
+
+We can see there are 14 elements in the list, representing our 14 species and this number matches the number of species in our phylogeny. No species went extinct in this particular simulation, but if they did, they would match extinct tips in the phylogeny.
+
+Lets look at a single species
+
+```{r}
+names(species_t_0[[1]])
+
+
+```
+
+The species has an ID which allows us to match it to the phylogeny.
+
+```{r}
+species_t_0[[1]]$id
+```
+
+The species also has its abundances, which are linked to grid cells in the landscape which can matched with their names.
+
+```{r}
+species_t_0[[1]]$abundance
+```
+
+In this case the species has abundance values of 1 in all populations from the cells that it occupies. Thyis is because we set abundances to be binary: 1=present, 0=absent. We can see the species occupies cells 2767,2768,2769, etc.
+
+The species also has values of it's traits for each of those populations.
+
+```{r}
+head(species_t_0[[1]]$traits)
+```
+
+We can see the population that each row is linked to by the rownames. Here you can see 2767, 2768, 2769, etc. These each have a dispersal trait of 5 (because we didn;t vary this) slightly different temp_mean traits (because these evolved stochastically under a Brownian motion like model) and a temp width of 1 (again, we didn;t vary this in model 1).
+
+So, if we want to map out the distribution of species 1 at timestep 0, we just need to link those cell names (267/268/etc) to the landscape object and make a raster. Why don;t we try and see what islands species 1 is found on.
+
+```{r}
+par(mfrow=c(1,2))
+
+# first plot the sialnds out from the landscape objet
+patch_xyz <- rast(lc$patch[,c("x", "y", "0")], type="xyz")
+plot(patch_xyz, main="Island Patches")
+
+# pull out values of the landscape where the species is found
+species1_xyz <- lc$patch[which(rownames(lc$patch) %in% rownames(species_t_0[[1]]$traits)), c("x", "y", "0")]
+
+# turn it into a raster
+species1_xyz <- rast(species1_xyz, type="xyz")
+species1_xyz <- extend(species1_xyz, patch_xyz)
+plot(species1_xyz, main= "Species 1 Distribution")
+```
+
+#### Linking the species object and phylogeny
+
+Lets try and link the species trait data to the phylogeny to start learning something about what exactly took place during our simulation! Let's get the mean trait value of the temperature niche and also the islands that each species belongs too.
+
+```{r}
+# lets create a data frame
+df <- data.frame("id"= paste0("species",sapply(species_t_0, function(x)x$id)),
+                 "mean_temp"=NA,
+                 "island1"=0,
+                 "island2"=0,
+                 "island3"=0,
+                 "island4"=0)
+
+# take a look
+head(df)
+
+# Use sapply on the species object to get their mean trait values
+df$mean_temp <- sapply(species_t_0, function(x)mean(x$traits[, "temp_mean"], na.rm=T))
+
+# to get the island patch id values we'll use a for loop
+
+for(i in 1:length(species_t_0)){
+  
+  # as before we get the lanscape values of each species
+  speciesi_xyz <- lc$patch[which(rownames(lc$patch) %in% rownames(species_t_0[[i]]$traits)), c("x", "y", "0")]
+  
+  # then pull out the unique values (note that species might occur on more than one island)
+  islands <- unique(speciesi_xyz[, 3])
+  
+  # then if species are on the island, give that column a value of 1
+  df$island1[i] <- ifelse(1 %in% islands, 1, 0)
+  df$island2[i] <- ifelse(2 %in% islands, 1, 0)
+  df$island3[i] <- ifelse(3 %in% islands, 1, 0)
+  df$island4[i] <- ifelse(4 %in% islands, 1, 0)
+}
+```
+
+Now look again at the data frame
+
+```{r}
+head(df)
+```
+
+Plot out the continuously evolving temperature niche trait
+
+```{r}
+
+# create a named vector for the log of the temperature niche trait
+temp_niche <- log(df$mean_temp)
+names(temp_niche) <- df$id
+
+# plot it out with dots = trait
+dotTree(phy,temp_niche,ftype="i")
+```
+
+Not much variation in that trait, due to the combined effects of trait homogenisation and a low rate of change. Lets plot the tip states of the islands on the phylogeny using the phytools package
+
+```{r}
+
+# format each island
+formatIsland <- function(island, phy=phy){
+  islandf <- as.factor(df[, island])
+  names(islandf) <- df$id
+  islandmat<-to.matrix(islandf,levels(islandf))
+  islandmat<-islandmat[phy$tip.label,]
+  return(list(islandf, islandmat))
+}
+
+
+plotTree(phy,ftype="i",offset=1,fsize=0.9, xlim=c(0, 75))
+
+tiplabels(pie=formatIsland(island="island1", phy=phy)[[2]],piecol=palette()[c(8,2)],cex=0.6, adj=12+1)
+tiplabels(pie=formatIsland(island="island2", phy=phy)[[2]],piecol=palette()[c(8,3)],cex=0.6, adj=12+3)
+tiplabels(pie=formatIsland(island="island3", phy=phy)[[2]],piecol=palette()[c(8,4)],cex=0.6, adj=12+5)
+tiplabels(pie=formatIsland(island="island4", phy=phy)[[2]],piecol=palette()[c(8,6)],cex=0.6, adj=12+7)
+
+
+legend("topleft",levels(island1),pch=21,pt.bg=palette()[c(8,2)],
+    pt.cex=2.2)
+
+```
+
+Interesting. What do you notice about the distribution of species on islands? Could you predict which island each lineage began on?
+
+We actually can know where each transition between islands happened by looking at the species object back in time.
 
 ## Outputs and Biodiversity Patterns - Part 2: Island Biogeography
 

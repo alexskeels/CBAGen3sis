@@ -5,29 +5,65 @@ execute:
   eval: FALSE
 ---
 
-The first bottleneck for any workshop is getting the software installed and running on everyone's machine. So we'll spend a few minutes here making sure we're all good with installing and taking a look at some of teh data we'll be working with during the workshop, before moving on to the nitty gritty. So, lets start by installing the Gen3sis R package.
+The first bottleneck for any workshop is getting the software installed and running on everyone's machine. So we'll spend a few minutes here making sure we're all good with installing and taking a look at some of the data we'll be working with during the workshop, before moving on to the nitty gritty. So, lets start by installing the Gen3sis R package.
 
+## Download Github Repository {.unnumbered}
 
+First thing is to download all of the data needed from github and set up our workspace.
 
-Today we'll install the most recent version of the package from GitHub using devtools.
+1.  Go to <https://github.com/alexskeels/CBAGen3sis.github.io> and download the repository as follows:
 
-```{r eval =FALSE}
-#install.packages("devtools")
-devtools::install_github(repo = "project-gen3sis/R-package", dependencies = TRUE)
+    ![Github](figures/github.png)
+
+2.  Put it somewhere on your machine that you can readily access
+
+3.  Unzip the folder
+
+4.  Open up RStudio
+
+5.  Set the working directory to this folder
+
+    ```{r}
+    setwd(file.path("WHERE/YOU/UNZIPPED","CBAGen3sis.github.io"))
+    ```
+
+Now you should be able to follow along, copying the code from this Quarto document into your console. The alternative option is to open the RProject file "CBA_Gen3sis_Workshop_2024.Rproj" and work directly within this project.
+
+## Install Packages {.unnumbered}
+
+Today we'll install the stable version of the package directly from CRAN as follows.
+
+```{r, eval=FALSE}
+# install the package
+install.packages("gen3sis")
+
+# check the package version
 packageVersion("gen3sis")
 ```
 
-You can install a stable version of the package directly from CRAN as follows.
+You could also install the most recent version of the package from GitHub using devtools. But hold off on this today so we're all working with the same version.
 
-```{r, eval=FALSE}
-install.packages("gen3sis")
-packageVersion("gen3sis")
+```{r eval =FALSE}
+#install.packages("devtools")
+#devtools::install_github(repo = "project-gen3sis/R-package", dependencies = TRUE)
+#packageVersion("gen3sis")
 ```
 
 ```{r}
 library(gen3sis)
-packageVersion("gen3sis")
 ```
+
+You can also install these other packages we'll use throughout the workshop.
+
+```{r}
+require("terra")
+require("raster")
+require("ape")
+require("phytools")
+require("picante")
+```
+
+## Access Data {.unnumbered}
 
 All the data for the workshop is stored in the 'data' folder.
 
@@ -57,12 +93,7 @@ landscape$temp[1:10, 1:10]
 colnames(landscape$temp)
 ```
 
-Coolies. We can use different spatial R packages to play with our data, and later on, with our simulated output. Parts of gen3sis package use raster, however this package is now depreciated, so we'll use terra except where stated. Ideally, you'll install both.
-
-```{r}
-install.packages("terra")
-install.packages("raster")
-```
+Coolies. We can use different spatial R packages to play with our data, and later on, with our simulated output. Parts of gen3sis package use raster, however this package is now depreciated, so we'll use terra except where stated. Ideally, you'll have both installed.
 
 ```{r}
 library(terra)
@@ -88,14 +119,18 @@ plot(SA_65, col=rgb(1,0,0))
 plot(SA_1, col=rgb(0,0,1,0.5,1), add=T)
 ```
 
+## Access Configs {.unnumbered}
+
 Load in a config file containing the rules and parameters of a single simulation. We'll get into what this all means next chapter.
 
 ```{r}
-config_dir <- "configs/SouthAmerica"
+config_dir <- "configs"
 config <- create_input_config(config_file = file.path(config_dir, "config_southamerica_Day1Prac1.R"))
 names(config$gen3sis)
 names(config$gen3sis$general)
 ```
+
+## Run a Single Simulation {.unnumbered}
 
 Now time to run a simulation in South America. We'll just run from 20 million years ago to the present-day at 1 million year intervals so it runs quick enough to finish in a couple of minutes. Note the output as it runs. Think about what its printing.
 
@@ -104,6 +139,17 @@ sim <- run_simulation(config = file.path(config_dir, "config_southamerica_Day1Pr
                landscape = file.path(data_dir,"landscapes", "SA_coarse"),
                output_directory = "output/SouthAmerica",
                verbose=1)
+```
+
+Now read in some of the output to make sure it's stored in a sensible place.
+
+```{r}
+
+# read phylogeny
+phy <- read.nexus(file.path("output", "SouthAmerica", "config_southamerica_Day1Prac1", "phy.nex" ))
+
+# plot phylogeny
+plot(phy, cex=0.1, type="fan")
 ```
 
 If you've made it this far, great! You're equipped with the tools, now we're ready to explore how Gen3sis works in more detail.

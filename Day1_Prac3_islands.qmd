@@ -16,7 +16,7 @@ library(terra)
 
 You can look at an animation of the landscape [here](https://raw.githubusercontent.com/ohagen/DispDiv3/main/figures/AnimationS1_patch_dynamics.gif). We'll also have a quick look now.
 
-# Dynamic Island Landscape
+# Dynamic Island Landscape {.unnumbered}
 
 ```{r}
 # load landscapes
@@ -40,17 +40,17 @@ plot(rast(lc$mean_temp[ ,c(1:3, first_step_pos)]))
 Look to see if there are any temporal trends in temperature or elevation.
 
 ```{r}
-par(mfrow=c(2,1))
+par(mfrow=c(1,2))
 # plot the change in mean tempereature through time
 mean_temperatures <- colMeans(lc$mean_temp[, 3:ncol(lc$mean_temp)], na.rm=T)
-plot(0:500,mean_temperatures ,  xlab="time (kya)", ylab="mean temperature", type='l')
+plot(seq(from=0, to = -5, by=-0.01),mean_temperatures ,  xlab="time (Ma)", ylab="mean temperature", type='l')
 
 # plot the change in mean elevation through time
 mean_elevation <- colMeans(lc$elevation[, 3:ncol(lc$elevation)], na.rm=T)
-plot(0:500,mean_elevation ,  xlab="time (kya)", ylab="mean elevation", type='l')
+plot(seq(from=0, to = -5, by=-0.01), mean_elevation, xlab="time (Ma)", ylab="mean elevation", type='l')
 ```
 
-# Config Time! - Model 1
+# Config Time! - Model 1 {.unnumbered}
 
 load in a the m1 config
 
@@ -68,7 +68,7 @@ names(conf_m1$gen3sis$general)
 conf_m1
 ```
 
-Ok now run the sim.
+Ok now run the sim. Note that we're usinga  start time of 50 with 100-thousand-year time steps. So only the last 500 thousand years rather than the full 5 million. This is because
 
 ```{r eval=F}
 # run simulation
@@ -120,7 +120,7 @@ phy_m1 <- read.nexus("output/islands/config_islands_simple_Day1Prac3_M1/phy.nex"
 plot(phy_m1)
 ```
 
-# Customise the model - Model 2
+# Customise the model - Model 2 {.unnumbered}
 
 Lets start changing features of the config and compare the outputs to our first model.
 
@@ -205,21 +205,24 @@ phy_m3 <- read.nexus("output/islands/config_islands_simple_Day1Prac3_M3/phy.nex"
 plot(phy_m3)
 ```
 
-```{r}
-species_m1 <- readRDS("output/islands/config_islands_simple_Day1Prac3_M1/species/species_t_0.rds")
-```
 
-## Exercise
+## Exercise {.unnumbered}
 
-From the small tweak to the divergence factor and the initial conditions, we can see more species being generated in M2 and M3 compared to M1. Review the M2 and M3 config files and try to understand what they're doing.
+From the small tweak to the divergence factor and the initial conditions, we can see more species being generated in M2 and M3 compared to M1. We can also see extremely asymmetrical trees. 
 
--   How are the dynamics through time different to M1, and how are they similar?
+Review the M2 and M3 config files and try to understand what they're doing.
+
+-   How are the dynamics through time in M2 and M3 different to M1, and how are they similar?
 
 -   Are the original occupants of each island diversifying at the same pace? How could you test this?
 
 -   Consider how you might modify the configuration or apply it to a specific research question.
 
-# Eager Beavers - Model 4!
+- Do you think all islands would have similar degrees of phylogenetic diversity or turnover?
+
+ We'll explore some of these questions tomorrow!
+ 
+# Eager Beavers - Model 4! {.unnumbered}
 
 If you've managed to get thorugh all of this, run M4 config and using what you've learned, plot some of the outputs. What has changed about this config?
 

@@ -12,7 +12,7 @@ initial_abundance =  1
 # set for first time
 # assign("ss_eff", ss_eff_emp, envir = .GlobalEnv)
 # a list of traits to include with each species, traits with ss_eff_ are hack traits to extract in cell processes
-trait_names = c("dispersal", "temp_mean", "temp_width")
+trait_names = c("dispersal", "temp_mean", "temp_width", "start_island")
 
 # ranges to scale the input environemts with:
 # not listed variable:         no scaling takes place
@@ -88,25 +88,29 @@ create_ancestor_species <- function(landscape, config) {
   new_species[[1]] <- create_species(rownames(species_coords[[1]]), config)
   new_species[[1]]$traits[ , "dispersal"] <- 10
   new_species[[1]]$traits[ , "temp_mean"] <- mean(landscape$environment[rownames(species_coords[[1]]), "mean_temp"])
-  new_species[[1]]$traits[ , "temp_width"] <- 0.25
+  new_species[[1]]$traits[ , "temp_width"] <- 0.5
+  new_species[[1]]$traits[ , "start_island"] <- unique(landscape$environment[rownames(species_coords[[1]]), "patch"])
   
   # Species 2 - medium-high dispersal, medium-low niche breadth
   new_species[[2]] <- create_species(rownames(species_coords[[2]]), config)
   new_species[[2]]$traits[ , "dispersal"] <- 7.5
   new_species[[2]]$traits[ , "temp_mean"] <- mean(landscape$environment[rownames(species_coords[[2]]), "mean_temp"])
-  new_species[[2]]$traits[ , "temp_width"] <- 0.5
+  new_species[[2]]$traits[ , "temp_width"] <- 1
+  new_species[[2]]$traits[ , "start_island"] <- unique(landscape$environment[rownames(species_coords[[2]]), "patch"])
   
   # Species 3 - medium-low dispersal, medium-high niche breadth
   new_species[[3]] <- create_species(rownames(species_coords[[3]]), config)
   new_species[[3]]$traits[ , "dispersal"] <- 5
   new_species[[3]]$traits[ , "temp_mean"] <- mean(landscape$environment[rownames(species_coords[[3]]), "mean_temp"])
-  new_species[[3]]$traits[ , "temp_width"] <- 1
+  new_species[[3]]$traits[ , "temp_width"] <- 2
+  new_species[[3]]$traits[ , "start_island"] <- unique(landscape$environment[rownames(species_coords[[3]]), "patch"])
   
   # Species 4 -low dispersal,high niche breadth
   new_species[[4]] <- create_species(rownames(species_coords[[4]]), config)
   new_species[[4]]$traits[ , "dispersal"] <- 2.5
   new_species[[4]]$traits[ , "temp_mean"] <- mean(landscape$environment[rownames(species_coords[[4]]), "mean_temp"])
-  new_species[[4]]$traits[ , "temp_width"] <- 2
+  new_species[[4]]$traits[ , "temp_width"] <- 4
+  new_species[[4]]$traits[ , "start_island"] <- unique(landscape$environment[rownames(species_coords[[4]]), "patch"])
   
   return(new_species)
 }
@@ -141,7 +145,7 @@ get_divergence_factor <- function(species, cluster_indices, landscape, config) {
 
 apply_evolution <- function(species, cluster_indices, landscape, config) {
   # cell names
-  trait_evolutionary_power <-0.01
+  trait_evolutionary_power <-0.05
   traits <- species[["traits"]]
   cells <- rownames(traits)
   #homogenize trait based on abundance
