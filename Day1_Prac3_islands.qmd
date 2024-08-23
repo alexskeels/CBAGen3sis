@@ -70,7 +70,7 @@ conf_m1
 
 Ok now run the sim. Note that we're usinga start time of 50 with 100-thousand-year time steps. So only the last 500 thousand years rather than the full 5 million. This is because
 
-```{r eval=F}
+```{r, eval=F}
 # run simulation
 sim_m1 <- run_simulation(config = "configs/config_islands_simple_Day1Prac3_M1.R", 
                       landscape = "data/landscapes/islands", 
@@ -144,7 +144,7 @@ conf_m2$gen3sis$general$end_of_timestep_observer
 
 Run M2!
 
-```{r eval =F}
+```{r, eval =F}
 # run the new model
 sim_m2 <- run_simulation(config="configs/config_islands_simple_Day1Prac3_M2.R", landscape="data/landscapes/islands", output_directory="output/islands")
 ```
@@ -175,7 +175,7 @@ There is a big differences here. In the initialization stage we give each specie
 
 Run the simulation
 
-```{r eval = F}
+```{r, eval = F}
 sim_m3 <- run_simulation(config="configs/config_islands_simple_Day1Prac3_M3.R", 
                          landscape="data/landscapes/islands",
                          output_directory="output/islands")
@@ -225,6 +225,6 @@ We'll explore some of these questions tomorrow!
 
 If you've managed to get thorugh all of this, run M4 config and using what you've learned, plot some of the outputs. What has changed about this config?
 
-```{r eval=F}
+```{r, eval=F}
 sim_m4 <- run_simulation(config="configs/config_islands_simple_Day1Prac3_M4.R", landscape="data/landscapes/islands", output_directory="output/islands")
 ```

@@ -9,30 +9,31 @@ To begin the dive into what Gen3sis is, and how it operates, we'll start by look
 
 A config file is a a stand-alone R script which is modified by you. You can modify a config in two ways. The first way and most practical, is to open up a config file. For example you can navigate to the folder open the file, or you can use this line and it should appear in your RStudio window.
 
-```{r}
+```{r, eval=F}
 file.edit('configs/config_southamerica_Day1_Prac1.R')
 ```
 
 Alternatively you can load a config into the RAM and modify there. We'll do this now as its a bit easier to demonstrate. Lets start with the config we used in the previous section. We should still have that config loaded in our workspaces, but if not run this code.
 
 ```{r}
+library(gen3sis)
 config <- create_input_config(config_file = "configs/config_southamerica_Day1_Prac1.R")
 ```
 
 So these two ways of editing the config lend themselves to two different ways of running the config. We can either point the *run_simulation* function to the config file or the config stored in memory.
 
-```{r}
+```{r, eval=F}
 # DON'T RUN
 
 # run from config file
-sim <- run_simulation(config = file.path(config_dir, "config_southamerica_Day1Prac1.R"), 
-               landscape = file.path(data_dir,"landscapes", "SA_coarse"),
+sim <- run_simulation(config = file.path("configs", "config_southamerica_Day1Prac1.R"), 
+               landscape = file.path("data","landscapes", "SA_coarse"),
                output_directory = "output/SouthAmerica",
                verbose=1)
 
 # run from config in memory
 sim <- run_simulation(config = config, 
-               landscape = file.path(data_dir,"landscapes", "SA_coarse"),
+               landscape = file.path("data","landscapes", "SA_coarse"),
                output_directory = "output/SouthAmerica",
                verbose=1)
 ```

@@ -356,7 +356,7 @@ function (data, vars, config)
 {
     save_species()
 }
-&lt;environment: 0x00000232c45fbce0&gt;
+&lt;environment: 0x00000251ba8f2288&gt;
 
 $gen3sis$general$trait_names
 [1] "dispersal"    "temp_mean"    "temp_width"   "start_island"
@@ -416,7 +416,7 @@ function (landscape, config)
         "patch"])
     return(new_species)
 }
-&lt;environment: 0x00000232c45fbce0&gt;
+&lt;environment: 0x00000251ba8f2288&gt;
 
 
 $gen3sis$dispersal
@@ -429,7 +429,7 @@ function (n, species, landscape, config)
     values &lt;- rexp(n, rate = 1/species$traits[, "dispersal"])
     return(values)
 }
-&lt;environment: 0x00000232c45fbce0&gt;
+&lt;environment: 0x00000251ba8f2288&gt;
 
 
 $gen3sis$speciation
@@ -441,7 +441,7 @@ function (species, cluster_indices, landscape, config)
 {
     return(1)
 }
-&lt;environment: 0x00000232c45fbce0&gt;
+&lt;environment: 0x00000251ba8f2288&gt;
 
 
 $gen3sis$mutation
@@ -466,7 +466,7 @@ function (species, cluster_indices, landscape, config)
     traits[, "temp_mean"] &lt;- traits[, "temp_mean"] + mutation_deltas
     return(traits)
 }
-&lt;environment: 0x00000232c45fbce0&gt;
+&lt;environment: 0x00000251ba8f2288&gt;
 
 
 $gen3sis$ecology
@@ -478,7 +478,7 @@ function (abundance, traits, landscape, config)
     abundance[diff &lt;= traits[, "temp_width"]] &lt;- 1
     return(abundance)
 }
-&lt;environment: 0x00000232c45fbce0&gt;
+&lt;environment: 0x00000251ba8f2288&gt;
 
 
 
@@ -602,7 +602,7 @@ Attaching package: 'ape'</code></pre>
 {
     save_species()
 }
-&lt;environment: 0x00000232c45fbce0&gt;</code></pre>
+&lt;environment: 0x00000251ba8f2288&gt;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># see modeified config</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>conf_m2<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>end_of_timestep_observer </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -611,7 +611,7 @@ Attaching package: 'ape'</code></pre>
 {
     save_species()
 }
-&lt;environment: 0x00000232d88aefb0&gt;</code></pre>
+&lt;environment: 0x00000251cf43fe80&gt;</code></pre>
 </div>
 </div>
 <p>Run M2!</p>
@@ -698,7 +698,7 @@ function (landscape, config)
         "patch"])
     return(new_species)
 }
-&lt;environment: 0x00000232cb6add78&gt;</code></pre>
+&lt;environment: 0x00000251c190f288&gt;</code></pre>
 </div>
 </div>
 <p>There is a big differences here. In the initialization stage we give each species a different value of it’s dispersal ability and temperature width trait (niche breadth), and these are inversely related - high dispersing species have narrow niche breadths and low dispering species have wide niche breadths. This may create an interesting trade-off in dynamics of island colonization.</p>

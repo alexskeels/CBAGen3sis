@@ -23,7 +23,7 @@ First thing is to download all of the data needed from github and set up our wor
 
 5.  Set the working directory to this folder
 
-    ```{r eval = FALSE}
+    ```{r, eval = FALSE}
     setwd(file.path("WHERE/YOU/UNZIPPED","CBAGen3sis.github.io"))
     ```
 

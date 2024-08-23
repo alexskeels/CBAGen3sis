@@ -270,10 +270,6 @@ tiplabels(pie=formatIsland(island="island2", phy=phy)[[2]],piecol=palette()[c(8,
 tiplabels(pie=formatIsland(island="island3", phy=phy)[[2]],piecol=palette()[c(8,4)],cex=0.6, adj=12+5)
 tiplabels(pie=formatIsland(island="island4", phy=phy)[[2]],piecol=palette()[c(8,6)],cex=0.6, adj=12+7)
 
-
-legend("topleft",levels(island1),pch=21,pt.bg=palette()[c(8,2)],
-    pt.cex=2.2)
-
 ```
 
 Interesting. What do you notice about the distribution of species on islands? Could you predict which island each lineage began on?
