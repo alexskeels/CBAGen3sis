@@ -4,7 +4,7 @@
 
 Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software! We'll be using this Quarto book to navigate through the workshop practicals. Quarto allows us to embed R code throughout. The workshop will be (roughly) following this program. Enjoy!
 
-# Day 1. {.unnumbered}
+## Day 1. {.unnumbered}
 
 -   09:00 - Welcome (Platypus Room) - Introductions and Overview of Gen3sis Workshop
 
@@ -26,7 +26,7 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 
 -   16:30 - Questions / Wrap up Day 1
 
-# Day. 2 {.unnumbered}
+## Day. 2 {.unnumbered}
 
 -   09:00 - Lecture 2. Alex and Oskar (Platypus Room) - Inference from simulated biodiversity data
 
@@ -48,7 +48,7 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 
 -   16:30 - Questions / Wrap up Day 2
 
-# Day 3. {.unnumbered}
+## Day 3. {.unnumbered}
 
 -   09:00 - Lecture 4. Alex and Oskar - Designing simulation experiments with Gen3sis
 

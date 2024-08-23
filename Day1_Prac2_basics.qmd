@@ -58,7 +58,7 @@ We can see that the config is a list with 3 components: 1. gen3sis, 2. user, 3. 
 names(config$gen3sis)
 ```
 
-# General {.unnumbered}
+## General {.unnumbered}
 
 The first element, 'general', sets up some important global parameters of the model
 
@@ -117,7 +117,7 @@ config$gen3sis$general$end_of_timestep_observer = function(data, vars, config){
 
 ```
 
-# Initialization {.unnumbered}
+## Initialization {.unnumbered}
 
 Initialization lets us define the number, abundance, location, and traits of the ancestral species. **This is what you start the simulation with**. You may want to start with a single species, so the simulation follows the diversification of single monophyletic radiation. Alternatively, you may seed the landscape with many species and this is also possible. Each species must be given the locations in which they will occur, in the form of characters matching the grid cell identifiers, and values for the traits we named in the general settings.
 
@@ -127,7 +127,7 @@ config$gen3sis$initialization
 
 In this example, we are generating five species to begin. We first define a box from which we sample points to use to place the first species on the landscape. We randomly sample a single grid cell to place each initial species in. Next, we give each initial species values for the three traits. Here, we give the value for *temp* as the temperature value of the grid cell the species will occur in. We set a *dispersal* equal to 1. We repeat this 5 times, for 5 species. We can create more ancestor species by repeating this process in a loop , or we could manually create ancestral range by hand-selecting grid cells for the species to occur in.
 
-# Dispersal (migration) {.unnumbered}
+## Dispersal (migration) {.unnumbered}
 
 How species disperse across the landscape is determined by simulated migration events between habitable cells. The range and behaviour of these events is set by users and can be based on fixed values, draws from probability distributions, species trait values, or anything else thought up by users.
 
@@ -153,7 +153,7 @@ hist(rweibull(1000, 0.5, 133), main= "Weibull Distribution 2", xlab="Dispersal D
 hist(rweibull(1000, 3, 133), main= "Weibull Distribution 2", xlab="Dispersal Distance (km)")
 ```
 
-# Speciation (population divergence) {.unnumbered}
+## Speciation (population divergence) {.unnumbered}
 
 In the *speciation* function, we determine how populations diverge from one another and when they are sufficiently divergent to become new species. Populations that are geographically isolated (allopatric) diverge at each time step by the divergence factor and are considered new species when the accumulated divergence is greater than the divergence threshold. Divergence decreases when they come back into secondary contact at a rate of 1 and will coalesce into the same population once divergence is equal to 0.
 
@@ -177,7 +177,7 @@ config$gen3sis$speciation$get_divergence_factor <- function(species, cluster_ind
 
 Both of these will speed up the rate of speciation, given enough population fragmentation.
 
-# Mutation (trait evolution) {.unnumbered}
+## Mutation (trait evolution) {.unnumbered}
 
 In the *evolution* function, we determine how the species' traits change at each timestep and therefore how they evolve over time. In *gen3sis*, each species is comprised of separate populations in each inhabited grid cell, these populations form geographic clusters that are within dispersal distance of one another and could be considered to exchange individuals, and all geographic clusters together comprise the species.
 
@@ -195,7 +195,7 @@ Homogensation assigns each geographic cluster the avaerage trait value weighted 
 
 After homogenisation, the trait evolves by drawing random values from a normal distribution and adding these to the traits. A mean of 0 ensures that positive trait changes and negative trait changes are equally likely. The *trait_evolutionary_power* variable detemines the degree of trait evolution, with higher values leading to higher average trait changes each time step. This process of adding a random normal variable approximates a Brownian motion model of trait evolution.
 
-# Ecology (interactions) {.unnumbered}
+## Ecology (interactions) {.unnumbered}
 
 Every species present in a cell across the landscape has an abundance value representing the population size of the species in that location. The ecology function allows users to modify this abundance value based on environmental values, species interactions, or anything else relevant to the study. An abundance of 0 leads to the extinction of the species in that cell.
 

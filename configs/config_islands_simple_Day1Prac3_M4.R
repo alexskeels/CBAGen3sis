@@ -27,41 +27,9 @@ trait_names = c("dispersal", "temp_mean", "temp_width", "start_island")
 
 end_of_timestep_observer = function(data, vars, config){  
   
-  plot_richness(data$all_species, data$landscape)
+  #plot_richness(data$all_species, data$landscape)
   
-  # make p/a matrices
-  
-  out_dir <- config$directories$output
-  
-  if(!file.exists(file.path(out_dir,"occs"))){
-    
-    dir.create(file.path(out_dir, "occs"))
-    
-  }
-  
-  # cell names
-  
-  all_cells <- rownames(data$landscape$coordinates)
-  
-  # get 0 for absence and 1 for presence in each grid cell
-  
-  asp <- do.call(cbind,
-                 
-                 lapply(data$all_species, FUN = function(x) {
-                   
-                   ifelse(all_cells %in% names(x$abundance), 1, 0)
-                   
-                 }))
-  
-  # colnames are species names
-  
-  colnames(asp ) <- unlist(lapply(data$all_species, function(x){x$id}))
-  
-  # column bind with x/y coordinates
-  
-  presence_absence_matrix <- cbind(data$landscape$coordinates, asp)
-  
-  saveRDS(presence_absence_matrix, file=file.path(out_dir,"occs", paste0("pa_t_",vars$ti, ".rds")))
+  save_species() # saves a species and landscape objects for desired timesteps
   
 }
 

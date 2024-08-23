@@ -11,6 +11,8 @@ book:
     - Day1_Prac2_basics.qmd
     - Day1_Prac3_islands.qmd
     - Day2_Prac4_outputs.qmd
+    - Day2_Prac5_landscapes.qmd
+    - Day3_Prac6_sandbox.qmd
 
 bibliography: references.bib
 
