@@ -1,0 +1,15 @@
+{
+  "hash": "0946aa32a099ccb4b5122465387fa772",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Welcome! {.unnumbered}\n\nWelcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software. We'll be using this Quarto book to navigate through the workshop. Quarto allows us to embed R code throughout.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

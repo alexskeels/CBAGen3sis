@@ -1,0 +1,32 @@
+{
+  "basics.qmd": {
+    "basics.html": "e4149c4f"
+  },
+  "index.qmd": {
+    "index.html": "1c4f0be6"
+  },
+  "program.qmd": {
+    "program.html": "ee2b8d48"
+  },
+  "installation.qmd": {
+    "installation.html": "3554c5c1"
+  },
+  "output.qmd": {
+    "output.html": "dd6206a0"
+  },
+  "considerations.qmd": {
+    "considerations.html": "68e528f5"
+  },
+  "Day2_Prac4_outputs.qmd": {
+    "Day2_Prac4_outputs.html": "74126f79"
+  },
+  "Day1_Prac1_setup.qmd": {
+    "Day1_Prac1_setup.html": "1457f4a6"
+  },
+  "Day1_Prac2_basics.qmd": {
+    "Day1_Prac2_basics.html": "0d022bc2"
+  },
+  "Day1_Prac3_islands.qmd": {
+    "Day1_Prac3_islands.html": "c85aec19"
+  }
+}

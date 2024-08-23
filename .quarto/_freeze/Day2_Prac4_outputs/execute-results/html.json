@@ -1,0 +1,15 @@
+{
+  "hash": "25401e2663ad39ff4993a1a413e69ee2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Gen3sis outputs and Biodiversity Patterns\"\nauthor: \"Alex Skeels and Oskar Hagen\"\nexecute: \n  eval: FALSE\n---\n\n\n## Outputs and Biodiversity Patterns - Part 1: Exploring outputs\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(gen3sis)\nlibrary(terra)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\noutput_dir <- \"output/islands\" \n\nsim <- readRDS(file.path(output_dir, \"config_islands_simple_Day1Prac3_M1/sgen3sis.rds\")) \n\n# look at what the simulation summary contains\nnames(sim)    \n\n#### Visualize the outputs \nplot_summary(sim) \n\n# or just the richness\nrichness <- rast(sim$summary$`richness-final`, type=\"xyz\")\nplot(richness, col=gen3sis::color_richness(10))\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# plot diversity at 3 time slices \ntimesteps <- c(20, 10, 0) \npar(mfrow = c(1, 3)) \nfor (i in timesteps) {   \n  landscape_i <- readRDS(file.path(output_dir, paste0(\"config_southamerica/landscapes/landscape_t_\",                                                      i, \".rds\")))   \n  species_i <- readRDS(file.path(output_dir, paste0(\"config_southamerica/species/species_t_\",                                                    i, \".rds\")))   \n  plot_richness(species_i, landscape_i) } \n#dev.off()\n```\n:::\n\n\n## Outputs and Biodiversity Patterns - Part 2: Island Biogeography\n\nLets dive even further into the outputs and see if the simulations we did yesterday offer any fundamental insights into island biogeography theory.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
