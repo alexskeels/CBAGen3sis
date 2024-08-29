@@ -4,3 +4,12 @@ author: "Alex Skeels and Oskar Hagen"
 execute: 
   eval: FALSE
 ---
+
+```{r}
+library(gen3sis)
+lc <- readRDS("data/landscapes/islands/landscape.rds")
+
+sim_m1 <- run_simulation(config = "configs/config_islands_Day3_ELH.R", 
+                      landscape = "data/landscapes/islands", 
+                      output_directory = "output/islands")
+```

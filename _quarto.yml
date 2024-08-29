@@ -4,7 +4,7 @@ project:
 book:
   title: "Center for Biodiversity Analysis: Gen3sis Workshop 2024"
   author: "Alexander Skeels and Oskar Hagen"
-  date: "12/07/2024"
+  date: "23.07.2024"
   chapters:
     - index.qmd
     - Day1_Prac1_setup.qmd

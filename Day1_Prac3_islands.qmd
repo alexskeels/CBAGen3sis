@@ -221,7 +221,7 @@ Review the M2 and M3 config files and try to understand what they're doing.
 
 We'll explore some of these questions tomorrow!
 
-## Model 4: Real👀  {.unnumbered}
+## Model 4: Real👀 {.unnumbered}
 
 If you've managed to get thorugh all of this, run M4 config and using what you've learned, plot some of the outputs. What has changed about this config?
 
