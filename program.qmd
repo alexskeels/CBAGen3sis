@@ -3,11 +3,10 @@ title: "Program"
 execute: 
   eval: FALSE
 ---
+
 Welcome!
 
-
 Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software. We'll be using this Quarto book to navigate through the workshop. Quarto allows us to embed R code throughout. We'll be (roughly) following this program.
-
 
 # Day 1. {.unnumbered}
 
@@ -71,4 +70,4 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 
 -   15:00 - Presenting models / Wrap up Day 3
 
--   16:00 - Pub!
+-   16:00 - Pub! 🍻
