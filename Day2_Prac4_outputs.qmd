@@ -13,7 +13,7 @@ The goal for today will be to produce:
 
 1.  A map of Species Richness from the simulation summary object
 
-2.  A plot of Lineages Through Time from the phylogeny
+2.  edeA plot of Lineages Through Time from the phylogeny
 
 3.  Plot of species trait values on a phylogenetic tree, by linking the species objects to the phylogeny
 
@@ -342,3 +342,220 @@ plot(mntd_ras, main= "Mean Nearest Neighbour Phylogenetic Distance")
 ```
 
 ## Sensitivity analysis {.unnumbered}
+
+In this part we are going to load in a data set from Skeels et al. (2022) *SystBiol* in which we simulated data with Gen3sis under four alternative models to test the evolutionary speed hypoithesis (ESH). The ESH hypothesizes that faster rates of evolution occurs in lineages from warm regions like the tropics because they are have higher mutagenesis from faster life hisories associated with warm temperatures and smaller body sizes. The four models were
+
+-   M0 - the null. population divergence is independent of temperature and body size
+
+-   M1 - environmental temperature drives rate of population divergence
+
+-   M2 - body size drives the rate of population divergence
+
+-   M3 - environmental temperature and body size drives the rate of population divergence
+
+![Skeels et al. 2022 Syst. Biol. Figure 1](figures/systbiol_fig1.jpeg)
+
+Not only did we change the overall model of evolution, we also varied key parameters for rates of niche evolution (simga_squared_t), rates of body size evolution (sigma_squared_bs), dispersal, and the temperature niche breadth (omega), the exponent of the divergence factor with temp/body size (lambda), and the divergence threshold. Load in the data and take a look, the first 6 columns are the model parameters we varied.
+
+```{r}
+sim_data <- read.csv("data/simulated_summary_statistics.csv")
+
+# look at the first few columns
+head(sim_data)
+
+# look at the models
+unique(sim_data$m)
+```
+
+This data set has 27 metrics used in our paper to measure patterns in the distribution of species, such as range size metrics, or correlations between temperature and diversity, as well as phylogenetic tree shape metrics, such as gamma, and measures of functional diversity, like body size variance. We predicted that these different models of evolution (M0-M4) should leave discernible signatures in these metrics. We can plot a few associations between biodiversity metrics and these model parameters to test this hypothesis.
+
+```{r}
+require(ggplot2)
+
+# how is diversity related to the dispersal ability of a clade?
+ggplot(sim_data, aes(x=m, y=log(n_extant_diversity), fill=m))+
+  geom_point(alpha=0.7, position = "jitter")+
+  geom_boxplot(alpha=0.7)+
+  stat_smooth()+
+  theme_classic()
+
+# how about the temperature~diversity gradient?
+ggplot(sim_data, aes(x=m, y=richness_temp0mya_cor, fill=m))+
+  geom_point(alpha=0.7, position = "jitter")+
+  geom_boxplot(alpha=0.7)+
+  stat_smooth()+
+  theme_classic()
+
+# how about the relationship between  body size and diversification rate?
+ggplot(sim_data, aes(x=m, y=bodysize_DR_cor, fill=m))+
+  geom_point(alpha=0.7, position = "jitter")+
+  geom_boxplot(alpha=0.7)+
+  stat_smooth()+
+  theme_classic()
+
+# how about the relationship between temperature and diversification rate?
+ggplot(sim_data, aes(x=m, y=temp_DR_cor, fill=m))+
+  geom_point(alpha=0.7, position = "jitter")+
+  geom_boxplot(alpha=0.7)+
+  stat_smooth()+
+  theme_classic()
+```
+
+Do these patterns fit our predictions? We can also look at how some of these metrics varied with the continuous model parameters such as dispersal ability.
+
+```{r}
+# how is diversity related to the dispersal ability of a clade?
+ggplot(sim_data, aes(x=dispersal, y=log(n_extant_diversity)))+
+  geom_point(alpha=0.7)+
+  stat_smooth()+
+  theme_classic()
+
+# how about the latitude diversity gradient?
+ggplot(sim_data, aes(x=dispersal, y=temp_DR_cor))+
+  geom_point(alpha=0.7)+
+  stat_smooth()+
+  theme_classic()
+```
+
+To perform a simple kind of sensitivity test we might ask how each of the model parameters predicts linear changes in the distribution of a biodiversity patterns using a multiple regression model. One example where we have a good idea of what the relationship should be is the how variance in the distribution of temperature niches across species (e.g., skewness of the distribution) relates to model paramaters. We expect that this should scale with the rate of rate of temperature niche evolution - faster rates of change = more variation in the trait = more kutosis.
+
+```{r}
+
+# first scale parameters to be in the same units
+sim_data_scaled <- sim_data
+sim_data_scaled[,1:6] <- scale(sim_data_scaled[,1:6] )
+
+# fit the multiple regression
+lm1  <- lm(temp_kurtosis ~ divergence_threshold+lambda+omega+sigma_squared_bs+sigma_squared_t+dispersal, data=sim_data_scaled)
+
+# look at model coefficients
+summary(lm1)
+```
+
+What do you see? Are our expectations met? Any surprises? Let's try a few other biodiversity patterns where the predictions are less clear.
+
+```{r}
+# fit the multiple regressions
+
+# Gamma statsitic for phylogenetic tree shape
+lm2  <- lm(gamma ~ divergence_threshold+lambda+omega+sigma_squared_bs+sigma_squared_t+dispersal, data=sim_data_scaled)
+
+# skewness of the range size distribution of species
+lm3  <- lm(rs_skewness ~ divergence_threshold+lambda+omega+sigma_squared_bs+sigma_squared_t+dispersal, data=sim_data_scaled)
+
+# correlation between species range sizes and temperature
+lm4  <- lm(rangesize_temp_cor ~ divergence_threshold+lambda+omega+sigma_squared_bs+sigma_squared_t+dispersal, data=sim_data_scaled)
+
+# look at model coefficients
+summary(lm2)
+summary(lm3)
+summary(lm4)
+```
+
+In all these cases there are interesting associations between model parameters and the biodiversity metrics. However, look at the R-squared values and what do you find? They are highly variable and in some cases quite low. This means that lots of variance in these biodiversity metrics are not explained by a linear combination of our model parameters. This is important when interpreting the effect. There are other ways of inferring more complex relationships between model parameters and biodiversity metrics, such as by including quadratic effects, exploring interaction terms, fitting non-linear models such as generalised additive models (GAMs), or even using machine learning methods such as neural networks which allow for highly-dimension non-linear effects. We won't cover these today but they are all useful options to explore during sensitivity analysis.
+
+### Model Selection
+
+Once we have established that some biodiversity metrics showed predictable relationships with model parameters or the generative model (e.g., M0-M4) we can use these metrics to perform model selection on empirical data. Here we are using the match between observed biodiversity patterns and simulated biodiversity patterns, to ask which model might be most likely to have generated the real patterns.
+
+![Skeels et al. 2022 Syst. Biol. Figure 2](figures/systbiol_fig2.jpeg)
+
+To do this we are going to perform a linear discriminant analysis which is a classification tool that can fit fit fairly quickly compared to some of the other models. We want to validate how well the model performs so we will perform a 10-fold cross validation repeated 10 times. Here we train the model on a subset of the data, repeating the process and optimising the predictive capacity. Then we predict how good a job our classifier is on a witheld portion of the data (test data). If the model performs well we should be able to accurately predict what models generated what biodiversity metrics.
+
+```{r}
+require(caret)
+# get just the biodiversity metrics
+sim_data_ms <- sim_data[,7:ncol(sim_data)]
+
+# remove MRDs variables from sim data
+sim_data_ms <- sim_data_ms[, -which(grepl("MRDs",colnames(sim_data_ms)))]
+
+# partition into a training and testing dataset for cross validation
+train_index <- createDataPartition(sim_data_ms$m, p = .66, list = FALSE,  times = 1)
+train_data <- sim_data_ms[ train_index ,]
+test_data  <- sim_data_ms[-train_index ,]
+
+# preprocess values - we will scale and center values
+preprocessed_values <- preProcess(train_data, method = c("center", "scale"))
+train_transformed   <- predict(preprocessed_values, train_data)
+test_transformed    <- predict(preprocessed_values, test_data )
+
+# configure the cross-validation paramaters
+train_control <- trainControl( method = "repeatedcv", number = 10, repeats = 10, classProbs = TRUE, savePredictions = TRUE)
+
+# FIT MODELS
+f1 <- formula(paste("m ~ ", paste(names(sim_data_ms)[2:c(length(names(sim_data_ms)))], collapse=" + ")))
+
+## LINEAR DISCRIMINANT ANALYSIS
+# note we'll run an LDA because they're quick - many other kinds of models to choose from 
+lda_train        <- train(f1, data=train_transformed, method = "lda", trControl = train_control, verbose = T)
+
+#predict on test data
+lda_test        <- predict(lda_train, test_transformed)
+
+# classification accuracy
+lda_cm        <- confusionMatrix(data = lda_test, reference = as.factor(test_transformed$m), mode = "prec_recall")
+
+# how well did the model perform
+lda_cm 
+
+```
+
+Whats the overall accuracy? Are some models predicted better than others?
+
+Now we'll use this model to predict the possible model of diversification in orders of terrestrial vertebrates.
+
+```{r}
+# first subset and clean the colnames of the empirical data
+empirical_data <- read.csv("data/order_empirical_summary_statistics.csv")
+
+# just want to look at diverse clades
+empirical_data <- na.omit(empirical_data[which(empirical_data$n_species >= 20),])
+
+# make labels lower case
+empirical_data$taxon <- tolower(empirical_data$taxon)
+
+# clean up a few names because I'm a grub
+colnames(empirical_data)[which(colnames(empirical_data) == "taxon")] <- "m"
+colnames(empirical_data)[which(colnames(empirical_data)=="rs_kutosis")] <- "rs_kurtosis"
+colnames(empirical_data)[which(colnames(empirical_data)=="n_species")] <- "n_extant_diversity"
+colnames(empirical_data) <- gsub("_p_cor", "_cor",colnames(empirical_data)) # change _p_cor for posterior samplescould also change _m_cor to use MCC samples
+colnames(empirical_data) <- gsub("DivRate", "DR",colnames(empirical_data))
+colnames(empirical_data)[which(colnames(empirical_data) == "taxon")] <- "m"
+colnames(empirical_data)[which(colnames(empirical_data) == "collessI_posterior")] <- "collessI"
+colnames(empirical_data)[which(colnames(empirical_data) == "sackinI_mcc")] <- "sackinI"
+colnames(empirical_data)[which(colnames(empirical_data) == "gamma_mcc")] <- "gamma"
+
+
+# ok these should be able to be matched now
+empirical_data <- empirical_data[, which(colnames(empirical_data) %in% colnames(sim_data_ms))]
+empirical_subset <- empirical_data[, match(colnames(sim_data_ms), colnames(empirical_data))]
+
+# check names match
+colnames(sim_data_ms)[which(!colnames(sim_data_ms) %in% colnames(empirical_subset))]
+colnames(empirical_subset)[which(!colnames(empirical_subset) %in% colnames(sim_data_ms))]
+colnames(empirical_subset) == colnames(sim_data_ms)
+
+# Process empirical data in the same way as for the simulated data
+simulated_transformed <- predict(preprocessed_values, sim_data_ms )
+empirical_transformed <- predict(preprocessed_values, empirical_subset )
+
+model_set <- list(lda_train)
+
+# predict on empirical
+class_predictions   <- predict(model_set, newdata = empirical_transformed, type = "raw", na.action = na.omit)
+class_probabilities <- predict(model_set, newdata = empirical_transformed, type = "prob", na.action = na.omit)
+
+# sum the classes
+colSums(do.call(rbind, class_prediction_table))
+
+# now we can see which model is the most supported for each order
+cbind(empirical_transformed$m, as.character(class_predictions[[1]]))
+
+table(class_predictions[[1]])
+
+# can also look at the variation in this
+cbind(empirical_transformed$m, round(class_probabilities[[1]], 3))
+```
+
+What patterns do you see? Which models are the most supported?
