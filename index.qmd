@@ -5,7 +5,7 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 # Program {.unnumbered}
 ## Day 1. {.unnumbered}
 
--   09:00 - Welcome (Platypus Room) - Introductions and Overview of Gen3sis Workshop
+-   09:00 - Welcome (Platypus Room) - Coffee, introductions, and overview of Gen3sis workshop
 
 -   09:45 - Lecture 1. Oskar Hagen (Eucalyptus Room) - History and philosophy of simulation modelling in biodiversity studies
 
