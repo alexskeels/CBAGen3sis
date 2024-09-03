@@ -49,3 +49,14 @@ po/*~
 rsconnect/
 
 /.quarto/
+
+
+# Ignore everything in the output folder
+output/*
+
+# But don't ignore directories inside the output folder
+!output/**/
+
+# Include specific files regardless of their location inside the output folder
+!output/**/**/phy.nex
+!output/**/**/sgen3sis.rds

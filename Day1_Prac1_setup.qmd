@@ -5,9 +5,9 @@ execute:
   eval: TRUE
 ---
 
-The first bottleneck for any workshop is getting the software installed and running on everyone's machine. So we'll spend a few minutes here making sure we're all good with installing and taking a look at some of the data we'll be working with during the workshop, before moving on to the nitty gritty. So, lets start by installing the Gen3sis R package.
+The first step to a successful workshop is ensuring everyone has the necessary software up and running on everyone's machine. We'll take a few minutes to get everything set up and take a sneak peek at some of the  data we'll be working with throughout the session, before moving on to the nitty gritty.
 
-## Download Github Repository {.unnumbered}
+## Download workshop files Github Repository {.unnumbered}
 
 First thing is to download all of the data needed from github and set up our workspace.
 
@@ -21,11 +21,17 @@ First thing is to download all of the data needed from github and set up our wor
 
 4.  Open up RStudio
 
-5.  Set the working directory to this folder
+5.  Set the working directory to this folder using here package.
 
     ```{r, eval = FALSE}
-    setwd(file.path("WHERE/YOU/UNZIPPED","CBAGen3sis.github.io"))
+    if (!require("here")) {
+      install.packages("here")
+    }
+    library(here)
+    #setwd(file.path("WHERE/YOU/UNZIPPED","CBAGen3sis.github.io"))
     ```
+
+This will make sure all the paths in the code are relative to the root, and things should work like magic.
 
 Now you should be able to follow along, copying the code from this Quarto document into your console. The alternative option is to open the RProject file "CBA_Gen3sis_Workshop_2024.Rproj" and work directly within this project.
 
@@ -37,7 +43,7 @@ Today we'll install the stable version of the package directly from CRAN as foll
 # install the package
 install.packages("gen3sis")
 
-# check the package version
+# check the package version, we are on 1.5.11
 packageVersion("gen3sis")
 ```
 
@@ -49,33 +55,40 @@ You could also install the most recent version of the package from GitHub using 
 #packageVersion("gen3sis")
 ```
 
+load gen3sis
+
 ```{r}
 library(gen3sis)
 ```
 
+Now, lets source our support functions, to load some of the functions we'll be going throughout the workshop. The first one is just a convenient way of installing packages if they are not already installed.
+
+
 You can also install these other packages we'll use throughout the workshop.
 
 ```{r}
-require("terra")
-require("raster")
-require("ape")
-require("phytools")
-require("picante")
+# Vector of packages to load and install if necessary
+packages_to_load <- c("terra", "raster", "here", "ape", "phytools", "picante")
+
+# Call the function with the vector of package names
+unlist(lapply(packages_to_load, require, character.only = T))
+
 ```
 
 ## Access Data {.unnumbered}
 
-All the data for the workshop is stored in the 'data' folder.
+All the data for the workshop is stored in the 'data' folder, for your convenience, we set the paths to the variable data_dir (and others) on our support.R file
 
 ```{r}
-data_dir <- "data"
+source("support.R")
 ```
 
-In this fodler we include a paleoenvironmental reconstruction of South American temperature and aridity at a coarse spatial resolution of 2 degrees, and at a temporal resolution of 1 million years. Load it in and investigate some of it's features.
+In this folder we include a paleoenvironmental reconstruction of South American temperature and aridity at a coarse spatial resolution of 2 degrees, and at a temporal resolution of 1 million years. This is a very rough temporal resolution but should do for our tutorial.
+Load it in and investigate some of it's features.
 
 ```{r}
 # read the R data file
-landscape <- readRDS(file.path(data_dir,"landscapes", "SA_coarse", "landscapes.rds"))
+landscape <- readRDS(file.path("data","landscapes", "SA_coarse", "landscapes.rds"))
 
 # class
 class(landscape)
@@ -93,7 +106,7 @@ landscape$temp[1:10, 1:10]
 colnames(landscape$temp)
 ```
 
-Coolies. We can use different spatial R packages to play with our data, and later on, with our simulated output. Parts of gen3sis package use raster, however this package is now depreciated, so we'll use terra except where stated. Ideally, you'll have both installed.
+Coolies. We can use different spatial R packages to play with our data, and later on, with our simulated output.
 
 ```{r}
 library(terra)
@@ -121,11 +134,10 @@ plot(SA_1, col=rgb(0,0,1,0.5,1), add=T)
 
 ## Access Configs {.unnumbered}
 
-Load in a config file containing the rules and parameters of a single simulation. We'll get into what this all means next chapter.
+Load in a config file containing the rules and parameters of a single simulation. We'll get into what this all means in the next chapter.
 
 ```{r}
-config_dir <- "configs"
-config <- create_input_config(config_file = file.path(config_dir, "config_southamerica_Day1Prac1.R"))
+config <- create_input_config(config_file = file.path("configs", "config_southamerica_Day1Prac1.R"))
 names(config$gen3sis)
 names(config$gen3sis$general)
 ```
@@ -135,13 +147,13 @@ names(config$gen3sis$general)
 Now time to run a simulation in South America. We'll just run from 20 million years ago to the present-day at 1 million year intervals so it runs quick enough to finish in a couple of minutes. Note the output as it runs. Think about what its printing.
 
 ```{r eval=F}
-sim <- run_simulation(config = file.path(config_dir, "config_southamerica_Day1Prac1.R"), 
+sim <- run_simulation(config = file.path("configs", "config_southamerica_Day1Prac1.R"), 
                landscape = file.path(data_dir,"landscapes", "SA_coarse"),
                output_directory = "output/SouthAmerica",
                verbose=1)
 ```
 
-Now read in some of the output to make sure it's stored in a sensible place.
+Now read in some of the outputs.
 
 ```{r}
 
