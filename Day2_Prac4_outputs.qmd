@@ -297,7 +297,7 @@ tiplabels(pie=formatIsland(island="island_start", phy=phy)[[2]],piecol=palette()
 plot(patch_xyz, main="Island Patches", col=palette()[c(2,3,4,6)])
 ```
 
-So whats really apparent here is that the clade that originated on the green island has speciated allopatrically into the red island multiple times in the recent past. The same is true fro the red clade, however the deeper divergence between species9 and species3 have had enough time to recolonise both islands.
+So whats really apparent here is that the clade that originated on the green island has speciated allopatrically into the red island multiple times in the recent past. The same is true for the red clade, however the deeper divergence between species9 and species3 have had enough time to recolonize both islands.
 
 #### Linking the species object, landscape, and phylogeny
 
@@ -331,7 +331,7 @@ pd_islands <- pd(PAM, phy)
 mpd_islands <- mpd(PAM, cophenetic(phy))
 mntd_islands <- mntd(PAM,cophenetic(phy))
 
-# link these back back with the landscape by joining to the lanscape lat/lons
+# link these back with the landscape by joining to the landscape lat/long
 community_phylo <- cbind(lc$elevation[, c("x", "y")], pd_islands, mpd_islands, mntd_islands)
 
 par(mfrow=c(2,2))
@@ -340,7 +340,7 @@ pd_ras <- rast(community_phylo[, c("x", "y", "PD")], type="xyz")
 mpd_ras <- rast(community_phylo[, c("x", "y", "mpd_islands")], type="xyz")
 mntd_ras <- rast(community_phylo[, c("x", "y", "mntd_islands")], type="xyz")
 
-plot(sr_ras, main="Species Richness")
+plot(sr_ras, main="Species Richness", na.color ="red")
 plot(pd_ras, main="Phylogenetic Diversity")
 plot(mpd_ras, main="Mean Phylogenetic Pairwise Distance")
 plot(mntd_ras, main= "Mean Nearest Neighbour Phylogenetic Distance")
@@ -348,15 +348,15 @@ plot(mntd_ras, main= "Mean Nearest Neighbour Phylogenetic Distance")
 
 ## Sensitivity analysis {.unnumbered}
 
-In this part we are going to load in a data set from Skeels et al. (2022) *SystBiol* in which we simulated data with Gen3sis under four alternative models to test the evolutionary speed hypoithesis (ESH). The ESH hypothesizes that faster rates of evolution occurs in lineages from warm regions like the tropics because they are have higher mutagenesis from faster life hisories associated with warm temperatures and smaller body sizes. The four models were
+In this part we are going to load in a data set from Skeels et al. (2022) *SystBiol* in which we simulated data with Gen3sis under four alternative models to test the evolutionary speed hypothesis (ESH). The ESH hypothesizes that faster rates of evolution occurs in lineages from warm regions like the tropics because they are have higher mutagenesis from faster life histories associated with warm temperatures and smaller body sizes. The four models used there were
 
 -   M0 - the null. population divergence is independent of temperature and body size
 
--   M1 - environmental temperature drives rate of population divergence
+-   M1 - Temperature Trailblazer. environmental temperature drives rate of population divergence
 
--   M2 - body size drives the rate of population divergence
+-   M2 - Size Shaper. body size drives the rate of population divergence
 
--   M3 - environmental temperature and body size drives the rate of population divergence
+-   M3 - Synergistic Drivers. environmental temperature and body size drives the rate of population divergence
 
 ![Skeels et al. 2022 Syst. Biol. Figure 1](figures/systbiol_fig1.jpeg)
 
