@@ -36,7 +36,7 @@ end_of_timestep_observer = function(data, vars, config){
 ######################
 
 create_ancestor_species <- function(landscape, config) {
-  # browser()
+  browser()
   co <- landscape$coordinates
   sp1 <- co[which(co[,1]<20&co[,2]<30),]
   sp2 <- co[which(co[,1]>20&co[,2]<30),]

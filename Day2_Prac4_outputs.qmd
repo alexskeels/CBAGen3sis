@@ -62,7 +62,7 @@ These data can be visualized with the plot_summary function
 
 ```{r}
 # Visualize the outputs 
-plot_summary(sim) 
+plot_summary(sim)
 ```
 
 We can also use these data to map out patterns of species richness
@@ -79,8 +79,8 @@ rich[na_mask,3] <- NA
 # turn richness summary into a raster 
 richness <- rast(rich, type="xyz")
 
-# plot
-plot(richness, col=c("grey", gen3sis::color_richness(12)))
+# plot, the sea is darblue, given by hexadecimal color code 
+plot(richness, col=c("grey", gen3sis::color_richness(12)), colNA="#000033")
 ```
 
 The next part of the simulation summary object is the flag which will tell us if the simulation ran successfully. It should give "OK"
@@ -177,11 +177,10 @@ We can see the population that each row is linked by the rownames. Here you can 
 So, if we want to map out the distribution of species 1 at timestep 0, we just need to link those cell names (267/268/etc) to the landscape object and make a raster. Why don;t we try and see what islands species 1 is found on.
 
 ```{r}
-par(mfrow=c(1,2))
-
-# first plot the sialnds out from the landscape objet
+par(mfrow=c(1,3))
+# first plot the islands out from the landscape object
 patch_xyz <- rast(lc$patch[,c("x", "y", "0")], type="xyz")
-plot(patch_xyz, main="Island Patches", col=palette()[c(2,3,4,6)])
+plot(patch_xyz, main="Island Patches", col=palette()[c(2,3,4,6)], colNA="#000033")
 
 # pull out values of the landscape where the species is found
 species1_xyz <- lc$patch[which(rownames(lc$patch) %in% rownames(species_t_0[[1]]$traits)), c("x", "y", "0")]
@@ -189,7 +188,13 @@ species1_xyz <- lc$patch[which(rownames(lc$patch) %in% rownames(species_t_0[[1]]
 # turn it into a raster
 species1_xyz <- rast(species1_xyz, type="xyz")
 species1_xyz <- extend(species1_xyz, patch_xyz)
-plot(species1_xyz, main= "Species 1 Distribution")
+plot(species1_xyz, main= "Species 1 Distribution", colNA="#000033")
+
+# alternatively we can use the plot_species function on gen3sis..
+# for that we load the landscape object of the respective time-step
+landscape_t_0 <- readRDS(file.path(output_dir, "config_islands_simple_Day1Prac3_M1", "landscapes", "landscape_t_0.rds"))
+gen3sis::plot_species_presence(species_t_0[[1]], landscape_t_0)
+
 ```
 
 #### Linking the species object and phylogeny {.unnumbered}
