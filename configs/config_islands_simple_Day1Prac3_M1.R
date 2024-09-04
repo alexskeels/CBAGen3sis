@@ -61,9 +61,9 @@ create_ancestor_species <- function(landscape, config) {
   # Species 2 - medium-high dispersal, medium-low niche breadth
   new_species[[2]] <- create_species(names(pv[pv==2]), config)
   new_species[[2]]$traits[ , "dispersal"] <- 5
-  new_species[[2]]$traits[ , "temp_niche_centre"] <- mean(landscape$environment[rownames(species_coords[[2]]), "mean_temp"])
+  new_species[[2]]$traits[ , "temp_niche_centre"] <- mean(landscape$environment[pv==2, "mean_temp"])
   new_species[[2]]$traits[ , "temp_width"] <- 1
-  new_species[[2]]$traits[ , "start_island"] <- unique(landscape$environment[rownames(species_coords[[2]]), "patch"])
+  new_species[[2]]$traits[ , "start_island"] <- unique(landscape$environment[pv==2, "patch"])
   
   # Species 3 - medium-low dispersal, medium-high niche breadth
   new_species[[3]] <- create_species(names(pv[pv==3]), config)
