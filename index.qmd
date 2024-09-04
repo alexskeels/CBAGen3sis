@@ -1,8 +1,9 @@
 Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software! We'll be using this Quarto book to navigate through the workshop practicals. Quarto allows us to embed R code throughout. The workshop will be (roughly) following this program. Enjoy!
 
-![Gen3sis](figures/gen3sis_ANU_2024.gif)
+![Gen3sis](figures/fox.png){width="2646"}![ANU](figures/gen3sis_ANU_2024.gif)
 
 # Program {.unnumbered}
+
 ## Day 1. {.unnumbered}
 
 -   09:00 - Welcome (Platypus Room) - Coffee, introductions, and overview of Gen3sis workshop
@@ -11,7 +12,7 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 
 -   10:45 - Coffee Break
 
--   11:00 - Practical 1. Gettin' Started: Installation and Set Up 
+-   11:00 - Practical 1. Gettin' Started: Installation and Set Up
 
 -   12:00 - Practical 2. Configure Skating: Gen3sis Config Basics
 
