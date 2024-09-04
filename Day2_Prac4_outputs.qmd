@@ -41,7 +41,6 @@ sim <- readRDS(file.path(output_dir, "config_islands_simple_Day1Prac3_M1/sgen3si
 
 # look at what the simulation summary contains
 names(sim)
-sim$flag # flag should be ok
 ```
 
 The first element is the sim summary. This contains a record of the history of speciation, extinction, and species richness through time (phylo_summary), a history of the number of total grid cells occupied during the simulation through time (occupancy) and the species richness of each grid cell at the final time step.
@@ -104,7 +103,7 @@ sim$parameters
 
 #### Phylogeny object (phy.nex) {.unnumbered}
 
-The phylogeny object is pretty straight forward. It is a newxus file containing the relationships between the species.
+The phylogeny object is pretty straight forward. It is a nexus file containing the relationships between the species.
 
 ```{r}
 # read phy
