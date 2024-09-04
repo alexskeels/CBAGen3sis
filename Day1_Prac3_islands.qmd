@@ -75,7 +75,7 @@ plot_summary(sim_m1)
 ```
 
 ```{r}
-# plot richness from summary in custom fashion
+# plot richness from summary in custom fashion, jsut to be familiar with the output
 na_mask <- is.na(lc$elevation[,"0"])
 rich_m1 <- sim_m1$summary$`richness-final`
 rich_m1[na_mask,3] <- NA
