@@ -262,7 +262,7 @@ dotTree(phy,temp_niche,ftype="i")
 
 Not much variation in that trait, due to the combined effects of trait homogenization and a low rate of change. Lets plot the tip states of the islands on the phylogeny using the phytools package
 
-```{r}
+```{r, eval=TRUE}
 # format each island
 formatIsland <- function(island, phy=phy){
   islandf <- as.factor(df[, island])
