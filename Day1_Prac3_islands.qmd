@@ -195,7 +195,6 @@ phy_m3 <- read.nexus("output/islands/config_islands_simple_Day1Prac3_M3/phy.nex"
 plot(phy_m3)
 
 trees <- list(phy_m1, phy_m2, phy_m3)
-install.packages("treestats")
 library("ape")
 lapply(trees, function(x){
   mt <- ape::balance(x)

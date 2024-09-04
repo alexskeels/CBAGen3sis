@@ -231,6 +231,7 @@ for(i in 1:length(species_t_0)){
   islands <- unique(speciesi_xyz[, 3])
   
   # then if species are on the island, give that column a value of 1
+  
   daf$island1[i] <- ifelse(1 %in% islands, 1, 0)
   daf$island2[i] <- ifelse(2 %in% islands, 1, 0)
   daf$island3[i] <- ifelse(3 %in% islands, 1, 0)
@@ -238,7 +239,7 @@ for(i in 1:length(species_t_0)){
 }
 
 # get the starting island from the traits object since we recorded this in the initialization step
-daf$island_start <- sapply(species_t_0, function(x) unique(x$traits[, "start_island"]))
+daf$island_start <- sapply(species_t_0, function(xasa) unique(xasa$traits[, "start_island"]))
 ```
 
 Now look again at the data frame
@@ -262,7 +263,6 @@ dotTree(phy,temp_niche,ftype="i")
 Not much variation in that trait, due to the combined effects of trait homogenization and a low rate of change. Lets plot the tip states of the islands on the phylogeny using the phytools package
 
 ```{r}
-
 # format each island
 formatIsland <- function(island, phy=phy){
   islandf <- as.factor(df[, island])
