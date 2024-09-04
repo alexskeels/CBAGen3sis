@@ -60,3 +60,11 @@ output/*
 # Include specific files regardless of their location inside the output folder
 !output/**/**/phy.nex
 !output/**/**/sgen3sis.rds
+
+# dont igonere specific species and landscape files mentioned in the code
+# Time step 32 files
+!output/islands/config_islands_simple_Day1Prac3_M1/species/species_t_32.rds
+!output/islands/config_islands_simple_Day1Prac3_M1/landscapes/landscape_t_32.rds
+# Time step 12 files
+!output/islands/config_islands_simple_Day1Prac3_M1/species/species_t_12.rds
+!output/islands/config_islands_simple_Day1Prac3_M1/landscapes/landscape_t_12.rds
