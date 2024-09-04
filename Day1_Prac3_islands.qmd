@@ -103,6 +103,7 @@ Now look at the phylogeny
 # Now lets look at the Phylogeny
 library(ape)
 phy_m1 <- read.nexus("output/islands/config_islands_simple_Day1Prac3_M1/phy.nex")
+par(mfrow=c(1,1))
 plot(phy_m1)
 ```
 
@@ -111,6 +112,9 @@ plot(phy_m1)
 Lets start changing features of the config and compare the outputs to our first model.
 
 ```{r }
+# load in config M1
+conf_m1 <- create_input_config("configs/config_islands_simple_Day1Prac3_M1.R")
+
 # load in config M2
 conf_m2 <- create_input_config("configs/config_islands_simple_Day1Prac3_M2.R")
 
@@ -146,7 +150,7 @@ plot_summary(sim_m2)
 
 ## Model 3: Specialise🏝️ {.unnumbered}
 
-The differences between M1 and M2 are predictable. Speciation happens a bit faster in M2, and you end up with more species. Overall, however, the patterns of richness are pretty similar. This suggests that this change in the rate of speciation isn't having a big impact on geographic variation in where species are forming (at least from a glance). So let's try a new model that has a few more tweaks to see a more measurable effect.
+The differences between M1 and M2 are predictable. Speciation happens a bit faster in M2, and you end up with more species. Overall, however, the patterns of richness are pretty similar. This suggests that this change in the rate of speciation isn't having a big impact on geographic variation in where species are forming (at least from a first glance). So let's try a new model that has a few more tweaks to see a more measurable effect.
 
 ```{r}
 #load in the config for model M3
