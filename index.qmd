@@ -1,6 +1,6 @@
 Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software! We'll be using this Quarto book to navigate through the workshop practicals. Quarto allows us to embed R code throughout. The workshop will be (roughly) following this program. Enjoy!
 
-![Gen3sis](figures/fox.png)
+![Gen3sis](figures/gen3sis_ANU_2024.gif)
 
 # Program {.unnumbered}
 ## Day 1. {.unnumbered}
