@@ -26,7 +26,7 @@ trait_names = c("dispersal", "mean_temp", "temp_width")
 #########################
 
 end_of_timestep_observer = function(data, vars, config){
-  plot_richness(data$all_species, data$landscape)
+  plot_richness(data$all_species, data$landscape) # plot richness
   save_species() # saves a species and landscape objects for desired timesteps
 }
 
@@ -38,7 +38,7 @@ end_of_timestep_observer = function(data, vars, config){
 create_ancestor_species <- function(landscape, config) {
   co <- landscape$coordinates
   new_species <- create_species(rownames(co), config)
-  new_species$traits[ , "dispersal"] <-5 # denominator of exponential distribution
+  new_species$traits[ , "dispersal"] <- 5 # denominator of exponential distribution
   new_species$traits[ , "mean_temp"] <- 20
   new_species$traits[ , "temp_width"] <- 2
   return(list(new_species))
