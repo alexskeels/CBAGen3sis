@@ -95,7 +95,7 @@ Next is the system summary. This is information about the R version, R packages,
 sim$system
 ```
 
-Finally the summary object contains the config infromation and model parameters used.
+Finally the summary object contains the config information and model parameters used.
 
 ```{r}
 sim$parameters
@@ -128,7 +128,7 @@ print(paste0("P = ", round(ltt_M1$p, 2)))
 
 #### Species objects (phy.nex) {.unnumbered}
 
-Now its time to get into the meat of the gen3sis outputs. Most of the infromation from the simulation is stored in the species objects. These are .rds files that contain a list which includes information on every species, extinct or extant, that existed during the simulation. We saved these at every time step. The naming convention is "species_t_0.rds" for time step 0 (present-day), and "species_t_50" for timestep 50, etc.
+Now its time to get into the meat of the gen3sis outputs. Most of the information from the simulation is stored in the species objects. These are .rds files that contain a list which includes information on every species, extinct or extant, that existed during the simulation. These are saved per default at every time step, but can be fine tuned according to your needs. The naming convention is "species_t_0.rds" for time step 0 (present-day), and "species_t_50" for timestep 50, etc.
 
 ```{r}
 # load object
@@ -142,7 +142,7 @@ length(species_t_0)
 Ntip(phy)
 ```
 
-We can see there are 14 elements in the list, representing our 14 species and this number matches the number of species in our phylogeny. No species went extinct in this particular simulation, but if they did, they would match extinct tips in the phylogeny.
+There are 14 elements in the list, representing our 14 species and this number matches the number of species in our phylogeny. No species went extinct in this particular simulation, but if they did, they would match extinct tips in the phylogeny.
 
 Lets look at a single species
 
@@ -158,21 +158,21 @@ The species has an ID which allows us to match it to the phylogeny.
 species_t_0[[1]]$id
 ```
 
-The species also has its abundances, which are linked to grid cells in the landscape which can matched with their names.
+The species' abundances are also linked to grid cells in the landscape, which can be matched with their corresponding names.
 
 ```{r}
 species_t_0[[1]]$abundance
 ```
 
-In this case the species has abundance values of 1 in all populations from the cells that it occupies. Thyis is because we set abundances to be binary: 1=present, 0=absent. We can see the species occupies cells 2767,2768,2769, etc.
+In this case the species has abundance values of 1 in all populations from the cells that it occupies. This is because we set abundances to be binary: 1=present, 0=absent. We can see the species occupies cells 2767,2768,2769, etc.
 
-The species also has values of it's traits for each of those populations.
+The species also has values of it's traits for each of its populations.
 
 ```{r}
 head(species_t_0[[1]]$traits)
 ```
 
-We can see the population that each row is linked to by the rownames. Here you can see 2767, 2768, 2769, etc. These each have a dispersal trait of 5 (because we didn;t vary this) slightly different temp_mean traits (because these evolved stochastically under a Brownian motion like model) and a temp width of 1 (again, we didn;t vary this in model 1).
+We can see the population that each row is linked by the rownames. Here you can see 2767, 2768, 2769, etc. Each of these populations have a dispersal trait of 5 (because we didn't vary this) slightly different temp_mean traits (because these evolved stochastically under a Brownian motion model) and a temp width of 1 (again, we didn;t vary this in model 1).
 
 So, if we want to map out the distribution of species 1 at timestep 0, we just need to link those cell names (267/268/etc) to the landscape object and make a raster. Why don;t we try and see what islands species 1 is found on.
 
@@ -198,7 +198,7 @@ Lets try and link the species trait data to the phylogeny to start learning some
 
 ```{r}
 # lets create a data frame
-df <- data.frame("id"= paste0("species",sapply(species_t_0, function(x)x$id)),
+daf <- data.frame("id"= paste0("species",sapply(species_t_0, function(x)x$id)),
                  "mean_temp"=NA,
                  "island1"=0,
                  "island2"=0,
@@ -207,14 +207,18 @@ df <- data.frame("id"= paste0("species",sapply(species_t_0, function(x)x$id)),
                  "island_start"=NA)
 
 # take a look
-head(df)
+head(daf)
 
 # Use sapply on the species object to get their mean trait values
-df$mean_temp <- sapply(species_t_0, function(x)mean(x$traits[, "temp_mean"], na.rm=T))
+daf$mean_temp <- sapply(species_t_0, function(x){
+  # x <- species_t_0[[1]]
+  mean(x$traits[, "temp_niche_centre"], na.rm=T)
+  })
 
-# to get the island patch id values we'll use a for loop
+# Get the island patch id values in a for loop
 for(i in 1:length(species_t_0)){
-  
+  #I'm here because it is a good idea to test code on a single species before running it on all species
+  # i <- 1 
   # as before we get the lanscape values of each species
   speciesi_xyz <- lc$patch[which(rownames(lc$patch) %in% rownames(species_t_0[[i]]$traits)), c("x", "y", "0")]
   
@@ -222,20 +226,20 @@ for(i in 1:length(species_t_0)){
   islands <- unique(speciesi_xyz[, 3])
   
   # then if species are on the island, give that column a value of 1
-  df$island1[i] <- ifelse(1 %in% islands, 1, 0)
-  df$island2[i] <- ifelse(2 %in% islands, 1, 0)
-  df$island3[i] <- ifelse(3 %in% islands, 1, 0)
-  df$island4[i] <- ifelse(4 %in% islands, 1, 0)
+  daf$island1[i] <- ifelse(1 %in% islands, 1, 0)
+  daf$island2[i] <- ifelse(2 %in% islands, 1, 0)
+  daf$island3[i] <- ifelse(3 %in% islands, 1, 0)
+  daf$island4[i] <- ifelse(4 %in% islands, 1, 0)
 }
 
-# get the starting island from the traits object because we recorded this in the initialisation step
-df$island_start <- sapply(species_t_0, function(x) unique(x$traits[, "start_island"]))
+# get the starting island from the traits object since we recorded this in the initialization step
+daf$island_start <- sapply(species_t_0, function(x) unique(x$traits[, "start_island"]))
 ```
 
 Now look again at the data frame
 
 ```{r}
-head(df)
+head(daf)
 ```
 
 Plot out the continuously evolving temperature niche trait
@@ -243,14 +247,14 @@ Plot out the continuously evolving temperature niche trait
 ```{r}
 
 # create a named vector for the log of the temperature niche trait
-temp_niche <- log(df$mean_temp)
-names(temp_niche) <- df$id
+temp_niche <- daf$mean_temp
+names(temp_niche) <- daf$id
 
 # plot it out with dots = trait
 dotTree(phy,temp_niche,ftype="i")
 ```
 
-Not much variation in that trait, due to the combined effects of trait homogenisation and a low rate of change. Lets plot the tip states of the islands on the phylogeny using the phytools package
+Not much variation in that trait, due to the combined effects of trait homogenization and a low rate of change. Lets plot the tip states of the islands on the phylogeny using the phytools package
 
 ```{r}
 
@@ -275,7 +279,7 @@ tiplabels(pie=formatIsland(island="island4", phy=phy)[[2]],piecol=palette()[c(8,
 
 Interesting. What do you notice about the distribution of species on islands? Could you predict which island each lineage began on?
 
-We actually know which islands each lineage started on because we recorded this as a trait (we could also look at the past species objects to figure this out but we have used a short cut method).
+We actually know which islands each lineage started on because we recorded this as a trait (we could also look at the past species objects to figure this out but we have used a shortcut though the traits).
 
 ```{r}
 
