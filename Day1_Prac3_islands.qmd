@@ -52,23 +52,9 @@ plot(seq(from=0, to = -5, by=-0.01), mean_elevation, xlab="time (Ma)", ylab="mea
 
 ## Model 1: Config Time ⏰ {.unnumbered}
 
-load in a the m1 config
+Open the configs/config_islands_simple_Day1Prac3_M1.R script and have a look at it.
 
-```{r}
-# load config
-conf_m1 <- create_input_config("configs/config_islands_simple_Day1Prac3_M1.R")
-
-# list all main elements of the config file
-names(conf_m1$gen3sis)
-
-# list all elements of the general section, i.e. the main settings and not so much on the eco-evolutionary processes
-names(conf_m1$gen3sis$general)
-
-# if you're game take a look at the whole thing - whats different to the South America example?
-conf_m1
-```
-
-Ok now run the sim. Note that we're usinga start time of 50 with 100-thousand-year time steps. So only the last 500 thousand years rather than the full 5 million. This is because
+Once you are done, run a simulation. Note that we're using a start time of 50 with 10-thousand-year time steps. So only the last 500 thousand years rather than the full 5 million. We will do this to keep things small.
 
 ```{r, eval=F}
 # run simulation

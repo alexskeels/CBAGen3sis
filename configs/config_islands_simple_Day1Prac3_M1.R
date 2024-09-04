@@ -12,7 +12,7 @@ initial_abundance =  1
 # set for first time
 # assign("ss_eff", ss_eff_emp, envir = .GlobalEnv)
 # a list of traits to include with each species, traits with ss_eff_ are hack traits to extract in cell processes
-trait_names = c("dispersal", "temp_niche_centre", "temp_niche_width", "start_island")
+trait_names = c("dispersal", "temp_niche_centre", "temp_width", "start_island")
 
 # ranges to scale the input environemts with:
 # not listed variable:         no scaling takes place
