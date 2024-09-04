@@ -7,7 +7,7 @@ execute:
 
 ## Exploring outputs {.unnumbered}
 
-In this prac we will explore the files outputted from gen3sis using the island simulations we ran yesterday. We will learn how to manipule/wrange these data structures into formats used by common R packages for phylogenetic comparative methods, community phylogenetics, biogeography, etc.
+In this practical we will explore the outputs from gen3sis using the island simulations we ran yesterday. We will learn how to use this data with common R packages for phylogenetic comparative methods, community phylogenetics, biogeography and much more.
 
 The goal for today will be to produce:
 
@@ -31,7 +31,8 @@ require(picante)
 
 #### Simulation summary object (sgen3sis.rds) {.unnumbered}
 
-The first object we will look at today is the sgenesis.rds file. This file contains a summary of the simulation. Which we can plot (as we did yesterday) with the plot_summary function.
+The first object we will look at today is the sgenesis.rds file. This file contains a summary of the simulation. Which we can plot (as we did yesterday) with the plot_summary function. This is the same 
+object, that you would have in memory by running a simulation with run_simulation.
 
 ```{r}
 output_dir <- "output/islands" 
@@ -39,10 +40,11 @@ output_dir <- "output/islands"
 sim <- readRDS(file.path(output_dir, "config_islands_simple_Day1Prac3_M1/sgen3sis.rds")) 
 
 # look at what the simulation summary contains
-names(sim) 
+names(sim)
+sim$flag # flag should be ok
 ```
 
-The first element is the sim summary. This conatins a record of the history of speciation, extinction, and species richness through time (phylo_summary), a history of the number of total grid cells occupied during the simulation through time (occupancy) and the species richness of each grid cell at the final time step.
+The first element is the sim summary. This contains a record of the history of speciation, extinction, and species richness through time (phylo_summary), a history of the number of total grid cells occupied during the simulation through time (occupancy) and the species richness of each grid cell at the final time step.
 
 ```{r}
 str(sim$summary)
@@ -57,7 +59,7 @@ head(sim$summary$occupancy)
 head(sim$summary$`richness-final`)
 ```
 
-These data are called on in the plot_summary function
+These data can be visualized with the plot_summary function
 
 ```{r}
 # Visualize the outputs 
