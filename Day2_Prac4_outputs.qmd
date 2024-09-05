@@ -31,8 +31,7 @@ require(picante)
 
 #### Simulation summary object (sgen3sis.rds) {.unnumbered}
 
-The first object we will look at today is the sgenesis.rds file. This file contains a summary of the simulation. Which we can plot (as we did yesterday) with the plot_summary function. This is the same 
-object, that you would have in memory by running a simulation with run_simulation.
+The first object we will look at today is the sgenesis.rds file. This file contains a summary of the simulation. Which we can plot (as we did yesterday) with the plot_summary function. This is the same object, that you would have in memory by running a simulation with run_simulation.
 
 ```{r}
 output_dir <- "output/islands" 
@@ -262,7 +261,7 @@ dotTree(phy,temp_niche,ftype="i")
 
 Not much variation in that trait, due to the combined effects of trait homogenization and a low rate of change. Lets plot the tip states of the islands on the phylogeny using the phytools package
 
-```{r, eval=TRUE}
+```{r, eval=FALSE}
 # format each island
 formatIsland <- function(island, phy=phy){
   islandf <- as.factor(df[, island])
@@ -286,7 +285,7 @@ Interesting. What do you notice about the distribution of species on islands? Co
 
 We actually know which islands each lineage started on because we recorded this as a trait (we could also look at the past species objects to figure this out but we have used a shortcut though the traits).
 
-```{r}
+```{r, eval=FALSE}
 
 par(mfrow=c(1,2))
 plotTree(phy,ftype="i",offset=1,fsize=0.4, xlim=c(0, 75))
