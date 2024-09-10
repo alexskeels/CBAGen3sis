@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alex Skeels and Oskar Hagen">
+
+<title>Center for Biodiversity Analysis: Gen3sis Workshop 2024 - 4&nbsp; 🖥️ Silicodiversity</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Day2_Prac5_landscapes.html" rel="next">
+<link href="./Day1_Prac3_islands.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Day2_Prac4_outputs.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">🖥️ Silicodiversity</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Center for Biodiversity Analysis: Gen3sis Workshop 2024</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Program</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Day1_Prac1_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">🍍 Gettin’ Started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Day1_Prac2_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">⛸️ Configure Skating</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Day1_Prac3_islands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🏝️ Island Hopping</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Day2_Prac4_outputs.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">🖥️ Silicodiversity</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Day2_Prac5_landscapes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🌋 Creating Worlds</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Day3_Prac6_sandbox.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🥪 Sandbox</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#exploring-outputs" id="toc-exploring-outputs" class="nav-link active" data-scroll-target="#exploring-outputs">Exploring outputs</a></li>
+  <li><a href="#sensitivity-analysis" id="toc-sensitivity-analysis" class="nav-link" data-scroll-target="#sensitivity-analysis">Sensitivity analysis</a>
+  <ul class="collapse">
+  <li><a href="#model-selection" id="toc-model-selection" class="nav-link" data-scroll-target="#model-selection"><span class="header-section-number">4.0.1</span> Model Selection</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">🖥️ Silicodiversity</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alex Skeels and Oskar Hagen </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="exploring-outputs" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exploring-outputs">Exploring outputs</h2>
+<p>In this practical we will explore the outputs from gen3sis using the island simulations we ran yesterday. We will learn how to use this data with common R packages for phylogenetic comparative methods, community phylogenetics, biogeography and much more.</p>
+<p>The goal for today will be to produce:</p>
+<ol type="1">
+<li><p>A map of Species Richness from the simulation summary object</p></li>
+<li><p>edeA plot of Lineages Through Time from the phylogeny</p></li>
+<li><p>Plot of species trait values on a phylogenetic tree, by linking the species objects to the phylogeny</p></li>
+<li><p>Maps of Phylogenetic Diversity by linking species objects to the landscape and phylogeny</p></li>
+</ol>
+<p>First, let’s make sure we have the necessary packages loaded</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(gen3sis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: gen3sis</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'gen3sis' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,
+which was just loaded, will retire in October 2023.
+Please refer to R-spatial evolution reports for details, especially
+https://r-spatial.org/r/2023/05/15/evolution4.html.
+It may be desirable to make the sf package available;
+package maintainers should consider adding sf to Suggests:.
+The sp package is now running under evolution status 2
+     (status 2 uses the sf package in place of rgdal)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(terra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: terra</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'terra' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>terra 1.7.39</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: ape</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ape'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:terra':
+
+    rotate, trans, zoom</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(phytools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: phytools</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: maps</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(picante)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: picante</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: vegan</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'vegan' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: permute</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: lattice</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>This is vegan 2.6-4</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'vegan'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:phytools':
+
+    scores</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: nlme</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: here</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at C:/Users/am92guke/Documents/iDiv/code/gen3sis_Australia_ANU_2024/CBAGen3sis</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="fu">here</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="simulation-summary-object-sgen3sis.rds" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="simulation-summary-object-sgen3sis.rds">Simulation summary object (sgen3sis.rds)</h4>
+<p>The first object we will look at today is the sgenesis.rds file. This file contains a summary of the simulation. Which we can plot (as we did yesterday) with the plot_summary function. This is the same object, that you would have in memory by running a simulation with run_simulation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>output_dir <span class="ot">&lt;-</span> <span class="st">"output/islands"</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(output_dir, <span class="st">"config_islands_simple_Day1Prac3_M1/sgen3sis.rds"</span>)) </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># look at what the simulation summary contains</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "summary"    "flag"       "system"     "parameters"</code></pre>
+</div>
+</div>
+<p>The first element is the sim summary. This contains a record of the history of speciation, extinction, and species richness through time (phylo_summary), a history of the number of total grid cells occupied during the simulation through time (occupancy) and the species richness of each grid cell at the final time step.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sim<span class="sc">$</span>summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 3
+ $ phylo_summary : num [1:52, 1:4] 4 4 4 4 4 4 4 4 4 4 ...
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : chr [1:52] "initial" "50" "49" "48" ...
+  .. ..$ : chr [1:4] "total" "alive" "speciations" "extinctions"
+ $ occupancy     : Named num [1:52] 1 0.353 0.338 0.325 0.317 ...
+  ..- attr(*, "names")= chr [1:52] "initial" "50" "49" "48" ...
+ $ richness-final: num [1:3600, 1:3] 0.5 1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 ...
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : chr [1:3600] "1" "2" "3" "4" ...
+  .. ..$ : chr [1:3] "x" "y" "0"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># phylo summary</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sim<span class="sc">$</span>summary<span class="sc">$</span>phylo_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        total alive speciations extinctions
+initial     4     4           4           0
+50          4     4           0           0
+49          4     4           0           0
+48          4     4           0           0
+47          4     4           0           0
+46          4     4           0           0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># occupancy</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sim<span class="sc">$</span>summary<span class="sc">$</span>occupancy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  initial        50        49        48        47        46 
+1.0000000 0.3530592 0.3384913 0.3254939 0.3166969 0.3069481 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># occupancy</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sim<span class="sc">$</span>summary<span class="sc">$</span><span class="st">`</span><span class="at">richness-final</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    x    y 0
+1 0.5 59.5 0
+2 1.5 59.5 0
+3 2.5 59.5 0
+4 3.5 59.5 0
+5 4.5 59.5 0
+6 5.5 59.5 0</code></pre>
+</div>
+</div>
+<p>These data can be visualized with the plot_summary function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the outputs </span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_summary</span>(sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can also use these data to map out patterns of species richness</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure the landscape is loaded</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>lc <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"landscapes"</span>, <span class="st">"islands"</span>,<span class="st">"landscapes.rds"</span>))</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># can remove cells with elevation below sea level at timestep 0 (present-day) to see the outlines of the islands</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>na_mask <span class="ot">&lt;-</span> <span class="fu">is.na</span>(lc<span class="sc">$</span>elevation[,<span class="st">"0"</span>])</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>rich <span class="ot">&lt;-</span> sim<span class="sc">$</span>summary<span class="sc">$</span><span class="st">`</span><span class="at">richness-final</span><span class="st">`</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>rich[na_mask,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co"># turn richness summary into a raster </span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>richness <span class="ot">&lt;-</span> <span class="fu">rast</span>(rich, <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot, the sea is darblue, given by hexadecimal color code </span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(richness, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"grey"</span>, gen3sis<span class="sc">::</span><span class="fu">color_richness</span>(<span class="dv">12</span>)), <span class="at">colNA=</span><span class="st">"#000033"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The next part of the simulation summary object is the flag which will tell us if the simulation ran successfully. It should give “OK”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>flag</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "OK"</code></pre>
+</div>
+</div>
+<p>Next is the system summary. This is information about the R version, R packages, and operating system used in the simulation. This ensures complete repeatability. It also tells us the runtime of the simulation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>system</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`runtime-hours`
+[1] 0.05880596
+
+$`gen3sis-version`
+[1] '1.5.11'
+
+$`R-version`
+               _                                
+platform       x86_64-w64-mingw32               
+arch           x86_64                           
+os             mingw32                          
+crt            ucrt                             
+system         x86_64, mingw32                  
+status                                          
+major          4                                
+minor          2.2                              
+year           2022                             
+month          10                               
+day            31                               
+svn rev        83211                            
+language       R                                
+version.string R version 4.2.2 (2022-10-31 ucrt)
+nickname       Innocent and Trusting            
+
+$OS
+  sysname 
+"Windows" 
+
+$`session-information`
+R version 4.2.2 (2022-10-31 ucrt)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 19045)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_World.utf8  LC_CTYPE=English_World.utf8   
+[3] LC_MONETARY=English_World.utf8 LC_NUMERIC=C                  
+[5] LC_TIME=English_World.utf8    
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] picante_1.8.2       nlme_3.1-160        vegan_2.6-4        
+ [4] lattice_0.20-45     permute_0.9-7       phytools_1.2-0     
+ [7] maps_3.4.1          apTreeshape_1.5-0.1 ape_5.6-2          
+[10] terra_1.7-39        gen3sis_1.5.11     
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.10             compiler_4.2.2          tools_4.2.2            
+ [4] pkgload_1.3.2.1         lifecycle_1.0.3         gdistance_1.6.4        
+ [7] mgcv_1.8-41             pkgconfig_2.0.3         rlang_1.1.1            
+[10] fastmatch_1.1-3         Matrix_1.5-3            igraph_1.5.0.1         
+[13] cli_3.4.1               rstudioapi_0.14         parallel_4.2.2         
+[16] SparseM_1.81            expm_0.999-6            xfun_0.39              
+[19] coda_0.19-4             cluster_2.1.4           stringr_1.5.0          
+[22] raster_3.6-23           knitr_1.43              generics_0.1.3         
+[25] vctrs_0.6.3             MatrixModels_0.5-1      scatterplot3d_0.3-42   
+[28] combinat_0.0-8          grid_4.2.2              glue_1.6.2             
+[31] plotrix_3.8-2           pbapply_1.6-0           optimParallel_1.0-2    
+[34] survival_3.4-0          phangorn_2.10.0         sp_2.0-0               
+[37] magrittr_2.0.3          codetools_0.2-18        MASS_7.3-58.1          
+[40] splines_4.2.2           mnormt_2.1.1            cubature_2.0.4.5       
+[43] numDeriv_2016.8-1.1     quadprog_1.5-8          quantreg_5.94          
+[46] stringi_1.7.8           clusterGeneration_1.3.7</code></pre>
+</div>
+</div>
+<p>Finally the summary object contains the config information and model parameters used.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>parameters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$gen3sis
+$gen3sis$general
+$gen3sis$general$random_seed
+[1] 666
+
+$gen3sis$general$start_time
+[1] 50
+
+$gen3sis$general$end_time
+[1] 0
+
+$gen3sis$general$max_number_of_species
+[1] 50000
+
+$gen3sis$general$max_number_of_coexisting_species
+[1] 20000
+
+$gen3sis$general$end_of_timestep_observer
+function(data, vars, config){
+  plot_richness(data$all_species, data$landscape)
+  save_species() # saves a species and landscape objects for desired timesteps
+}
+&lt;environment: 0x00000158758e4698&gt;
+
+$gen3sis$general$trait_names
+[1] "dispersal"         "temp_niche_centre" "temp_width"       
+[4] "start_island"     
+
+$gen3sis$general$environmental_ranges
+list()
+
+$gen3sis$general$verbose
+[1] 1
+
+
+$gen3sis$initialization
+$gen3sis$initialization$initial_abundance
+[1] 1
+
+$gen3sis$initialization$create_ancestor_species
+function(landscape, config) {
+  # browser()
+  co &lt;- landscape$coordinates
+  
+  # If we wouldn't have passe the patches though the environment, we could have done this:
+  # sp1 &lt;- co[which(co[,1]&lt;20&amp;co[,2]&lt;30),]
+  # sp2 &lt;- co[which(co[,1]&gt;20&amp;co[,2]&lt;30),]
+  # sp3 &lt;- co[which(co[,1]&lt;20&amp;co[,2]&gt;30),]
+  # sp4 &lt;- co[which(co[,1]&gt;20&amp;co[,2]&gt;30),]
+  
+  # however, we made thinks simpler to you.
+  # get patches vector
+  pv &lt;- landscape$environment[, "patch"]
+  
+  # species_coords &lt;- list(sp1,
+  #                        sp2,
+  #                        sp3,
+  #                        sp4)
+  new_species &lt;- list()
+  
+  
+  # Species 1 - high dispersal, low niche breadth
+  # Species 2 - medium-high dispersal, medium-low niche breadth
+  # Species 3 - medium-low dispersal, medium-high niche breadth
+  # Species 4 - low dispersal, high niche breadth
+  
+  manual_traits &lt;- list(
+    "dispersal" = c(5, 5, 5, 5),
+    "temp_width" = c(1, 1, 1, 1)
+  )
+  
+  for (sp_i in 1:4){
+    # create a species empty object
+    new_species[[sp_i]] &lt;- create_species(names(pv[pv==sp_i]), config)
+    # set manual dispersal and niche width
+    new_species[[sp_i]]$traits[ , "dispersal"] &lt;- manual_traits$"dispersal"[sp_i]
+    new_species[[sp_i]]$traits[ , "temp_width"] &lt;- manual_traits$"temp_width"[sp_i]
+    # set species 1 start to island 1, species 2 to island 2, etc...
+    new_species[[sp_i]]$traits[ , "start_island"] &lt;- unique(landscape$environment[pv==sp_i, "patch"]) # this is just a sanity check
+    # set species mean temp to the mean temp of the patches
+    new_species[[sp_i]]$traits[ , "temp_niche_centre"] &lt;- mean(landscape$environment[pv==sp_i, "mean_temp"])
+  }
+  
+  return(new_species)
+}
+&lt;environment: 0x00000158758e4698&gt;
+
+
+$gen3sis$dispersal
+$gen3sis$dispersal$max_dispersal
+[1] Inf
+
+$gen3sis$dispersal$get_dispersal_values
+function(n, species, landscape, config){
+  values &lt;- rexp(n, rate = 1/species$traits[,"dispersal"])
+  return(values)
+}
+&lt;environment: 0x00000158758e4698&gt;
+
+
+$gen3sis$speciation
+$gen3sis$speciation$divergence_threshold
+[1] 10
+
+$gen3sis$speciation$get_divergence_factor
+function(species, cluster_indices, landscape, config) {
+  return(1)
+}
+&lt;environment: 0x00000158758e4698&gt;
+
+
+$gen3sis$mutation
+$gen3sis$mutation$apply_evolution
+function(species, cluster_indices, landscape, config) {
+  # browser()
+  # cell names
+  trait_evolutionary_power &lt;-0.01
+  traits &lt;- species[["traits"]]
+  cells &lt;- rownames(traits)
+  #homogenize trait based on abundance
+  # Homogenize all traits by weighted abundance, attention, exclude here any trait that should be more neutral
+  trn &lt;- config$gen3sis$general$trait_names # get trait names
+  trn &lt;- trn[!trn %in% c("start_island")] # exclude start_island
+  for(cluster_index in unique(cluster_indices)){
+    # cluster_index &lt;- 1
+    cells_cluster &lt;- cells[which(cluster_indices == cluster_index)]
+    # hist(traits[cells_cluster, "temp"], main="before")
+    mean_abd &lt;- mean(species$abundance[cells_cluster])
+    weight_abd &lt;- species$abundance[cells_cluster]/mean_abd
+    for (ti in trn){
+      traits[cells_cluster, ti] &lt;- mean(traits[cells_cluster, ti]*weight_abd)
+    }
+    # hist(traits[cells_cluster, "temp"], main="after") # usefull to see spread
+  }
+  
+  # mutate mean temperature
+  mutation_deltas &lt;-rnorm(length(traits[, ti]), mean=0, sd=trait_evolutionary_power)
+  traits[, "temp_niche_centre"] &lt;- traits[, "temp_niche_centre"] + mutation_deltas
+  return(traits)
+}
+&lt;bytecode: 0x00000158758c2dc8&gt;
+&lt;environment: 0x00000158758e4698&gt;
+
+
+$gen3sis$ecology
+$gen3sis$ecology$apply_ecology
+function(abundance, traits, landscape, config) {
+  # get the difference between species and site mean temp
+  diff &lt;- abs(traits[, "temp_niche_centre"]-landscape[,"mean_temp"])
+  # set the abundance of species with a difference in mean temp larger than the species temp width to zero and the ones below to one
+  abundance[diff&gt;traits[,"temp_width"]] &lt;- 0
+  abundance[diff&lt;=traits[,"temp_width"]] &lt;- 1
+  return(abundance)
+}
+&lt;environment: 0x00000158758e4698&gt;
+
+
+
+$user
+list()
+
+$directories
+$directories$input
+[1] "data/landscapes/islands"
+
+$directories$output
+[1] "output/islands/config_islands_simple_Day1Prac3_M1"
+
+$directories$output_plots
+[1] "output/islands/config_islands_simple_Day1Prac3_M1/plots"
+
+
+attr(,"class")
+[1] "gen3sis_config"</code></pre>
+</div>
+</div>
+</section>
+<section id="phylogeny-object-phy.nex" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="phylogeny-object-phy.nex">Phylogeny object (phy.nex)</h4>
+<p>The phylogeny object is pretty straight forward. It is a nexus file containing the relationships between the species.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read phy</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>phy <span class="ot">&lt;-</span> <span class="fu">read.nexus</span>(<span class="fu">file.path</span>(output_dir, <span class="st">"config_islands_simple_Day1Prac3_M1/phy.nex"</span>))</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot phy</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>From this object we can look at lineages through time plots and estimate trends in diversification, such as using the gamma statistic to detect diversification slowdowns or speedups.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot an ltt</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>ltt_M1 <span class="ot">&lt;-</span><span class="fu">ltt</span>(phy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the gamma statistic</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"Gamma = "</span>, <span class="fu">round</span>(ltt_M1<span class="sc">$</span>gamma, <span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Gamma = -0.67"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is there a significant deviation from conatant rates?</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"P = "</span>, <span class="fu">round</span>(ltt_M1<span class="sc">$</span>p, <span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "P = 0.5"</code></pre>
+</div>
+</div>
+</section>
+<section id="species-objects-phy.nex" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="species-objects-phy.nex">Species objects (phy.nex)</h4>
+<p>Now its time to get into the meat of the gen3sis outputs. Most of the information from the simulation is stored in the species objects. These are .rds files that contain a list which includes information on every species, extinct or extant, that existed during the simulation. These are saved per default at every time step, but can be fine tuned according to your needs. The naming convention is “species_t_0.rds” for time step 0 (present-day), and “species_t_50” for timestep 50, etc.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load object</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>species_t_0 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(output_dir, <span class="st">"config_islands_simple_Day1Prac3_M1"</span>, <span class="st">"species"</span>, <span class="st">"species_t_0.rds"</span>))</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># look at object class and length</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(species_t_0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(species_t_0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare to number of tips in the phylogeny</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Ntip</span>(phy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<p>There are 14 elements in the list, representing our 14 species and this number matches the number of species in our phylogeny. No species went extinct in this particular simulation, but if they did, they would match extinct tips in the phylogeny.</p>
+<p>Lets look at a single species</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(species_t_0[[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "id"         "abundance"  "traits"     "divergence"</code></pre>
+</div>
+</div>
+<p>The species has an ID which allows us to match it to the phylogeny.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>species_t_0[[<span class="dv">1</span>]]<span class="sc">$</span>id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1"</code></pre>
+</div>
+</div>
+<p>The species’ abundances are also linked to grid cells in the landscape, which can be matched with their corresponding names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>species_t_0[[<span class="dv">1</span>]]<span class="sc">$</span>abundance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>247 248 249 250 251 252 253 288 289 290 291 292 294 306 307 308 310 311 312 313 
+  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
+314 315 316 317 318 348 349 351 352 353 354 355 363 364 365 366 367 376 377 378 
+  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
+379 406 407 408 414 415 416 422 423 424 437 438 439 440 465 466 467 475 476 482 
+  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
+483 500 501 524 525 526 536 537 542 559 560 561 584 585 597 602 618 619 620 621 
+  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
+644 645 646 656 657 662 663 676 677 678 679 680 705 706 716 717 722 723 736 737 
+  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
+738 765 766 767 775 776 777 783 784 785 786 794 795 796 797 827 829 834 835 836 
+  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
+844 845 846 847 848 849 850 851 852 853 854 855 856 887 888 889 890 891 892 893 
+  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
+894 895 906 907 908 909 910 911 912 913 949 950 951 952 953 
+  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 </code></pre>
+</div>
+</div>
+<p>In this case the species has abundance values of 1 in all populations from the cells that it occupies. This is because we set abundances to be binary: 1=present, 0=absent. We can see the species occupies cells 2767,2768,2769, etc.</p>
+<p>The species also has values of it’s traits for each of its populations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(species_t_0[[<span class="dv">1</span>]]<span class="sc">$</span>traits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    dispersal temp_niche_centre temp_width start_island
+247         5          20.84468          1            1
+248         5          20.82800          1            1
+249         5          20.83316          1            1
+250         5          20.83969          1            1
+251         5          20.82486          1            1
+252         5          20.83450          1            1</code></pre>
+</div>
+</div>
+<p>We can see the population that each row is linked by the rownames. Here you can see 2767, 2768, 2769, etc. Each of these populations have a dispersal trait of 5 (because we didn’t vary this) slightly different temp_mean traits (because these evolved stochastically under a Brownian motion model) and a temp width of 1 (again, we didn;t vary this in model 1).</p>
+<p>So, if we want to map out the distribution of species 1 at timestep 0, we just need to link those cell names (267/268/etc) to the landscape object and make a raster. Why don;t we try and see what islands species 1 is found on.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co"># first plot the islands out from the landscape object</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>patch_xyz <span class="ot">&lt;-</span> <span class="fu">rast</span>(lc<span class="sc">$</span>patch[,<span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"0"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)], <span class="at">colNA=</span><span class="st">"#000033"</span>)</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="co"># pull out values of the landscape where the species is found</span></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>species1_xyz <span class="ot">&lt;-</span> lc<span class="sc">$</span>patch[<span class="fu">which</span>(<span class="fu">rownames</span>(lc<span class="sc">$</span>patch) <span class="sc">%in%</span> <span class="fu">rownames</span>(species_t_0[[<span class="dv">1</span>]]<span class="sc">$</span>traits)), <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"0"</span>)]</span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="co"># turn it into a raster</span></span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>species1_xyz <span class="ot">&lt;-</span> <span class="fu">rast</span>(species1_xyz, <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>species1_xyz <span class="ot">&lt;-</span> <span class="fu">extend</span>(species1_xyz, patch_xyz)</span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(species1_xyz, <span class="at">main=</span> <span class="st">"Species 1 Distribution"</span>, <span class="at">colNA=</span><span class="st">"#000033"</span>)</span>
+<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-14"><a href="#cb68-14" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively we can use the plot_species function on gen3sis..</span></span>
+<span id="cb68-15"><a href="#cb68-15" aria-hidden="true" tabindex="-1"></a><span class="co"># for that we load the landscape object of the respective time-step</span></span>
+<span id="cb68-16"><a href="#cb68-16" aria-hidden="true" tabindex="-1"></a>landscape_t_0 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(output_dir, <span class="st">"config_islands_simple_Day1Prac3_M1"</span>, <span class="st">"landscapes"</span>, <span class="st">"landscape_t_0.rds"</span>))</span>
+<span id="cb68-17"><a href="#cb68-17" aria-hidden="true" tabindex="-1"></a>gen3sis<span class="sc">::</span><span class="fu">plot_species_presence</span>(species_t_0[[<span class="dv">1</span>]], landscape_t_0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="linking-the-species-object-and-phylogeny" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="linking-the-species-object-and-phylogeny">Linking the species object and phylogeny</h4>
+<p>Lets try and link the species trait data to the phylogeny to start learning something about what exactly took place during our simulation! Let’s get the mean trait value of the temperature niche and also the islands that each species belongs too.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets create a data frame</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>daf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"id"</span><span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"species"</span>,<span class="fu">sapply</span>(species_t_0, <span class="cf">function</span>(x)x<span class="sc">$</span>id)),</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"mean_temp"</span><span class="ot">=</span><span class="cn">NA</span>,</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"island1"</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"island2"</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"island3"</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"island4"</span><span class="ot">=</span><span class="dv">0</span>, </span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"island_start"</span><span class="ot">=</span><span class="cn">NA</span>)</span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="co"># take a look</span></span>
+<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(daf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        id mean_temp island1 island2 island3 island4 island_start
+1 species1        NA       0       0       0       0           NA
+2 species2        NA       0       0       0       0           NA
+3 species3        NA       0       0       0       0           NA
+4 species4        NA       0       0       0       0           NA
+5 species5        NA       0       0       0       0           NA
+6 species6        NA       0       0       0       0           NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use sapply on the species object to get their mean trait values</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>daf<span class="sc">$</span>mean_temp <span class="ot">&lt;-</span> <span class="fu">sapply</span>(species_t_0, <span class="cf">function</span>(x){</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># x &lt;- species_t_0[[1]]</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(x<span class="sc">$</span>traits[, <span class="st">"temp_niche_centre"</span>], <span class="at">na.rm=</span>T)</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the island patch id values in a for loop</span></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(species_t_0)){</span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#I'm here because it is a good idea to test code on a single species before running it on all species</span></span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># i &lt;- 1 </span></span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># as before we get the lanscape values of each species</span></span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a>  speciesi_xyz <span class="ot">&lt;-</span> lc<span class="sc">$</span>patch[<span class="fu">which</span>(<span class="fu">rownames</span>(lc<span class="sc">$</span>patch) <span class="sc">%in%</span> <span class="fu">rownames</span>(species_t_0[[i]]<span class="sc">$</span>traits)), <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"0"</span>)]</span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># then pull out the unique values (note that species might occur on more than one island)</span></span>
+<span id="cb71-15"><a href="#cb71-15" aria-hidden="true" tabindex="-1"></a>  islands <span class="ot">&lt;-</span> <span class="fu">unique</span>(speciesi_xyz[, <span class="dv">3</span>])</span>
+<span id="cb71-16"><a href="#cb71-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb71-17"><a href="#cb71-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># then if species are on the island, give that column a value of 1</span></span>
+<span id="cb71-18"><a href="#cb71-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb71-19"><a href="#cb71-19" aria-hidden="true" tabindex="-1"></a>  daf<span class="sc">$</span>island1[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="dv">1</span> <span class="sc">%in%</span> islands, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb71-20"><a href="#cb71-20" aria-hidden="true" tabindex="-1"></a>  daf<span class="sc">$</span>island2[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="dv">2</span> <span class="sc">%in%</span> islands, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb71-21"><a href="#cb71-21" aria-hidden="true" tabindex="-1"></a>  daf<span class="sc">$</span>island3[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="dv">3</span> <span class="sc">%in%</span> islands, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb71-22"><a href="#cb71-22" aria-hidden="true" tabindex="-1"></a>  daf<span class="sc">$</span>island4[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="dv">4</span> <span class="sc">%in%</span> islands, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb71-23"><a href="#cb71-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb71-24"><a href="#cb71-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-25"><a href="#cb71-25" aria-hidden="true" tabindex="-1"></a><span class="co"># get the starting island from the traits object since we recorded this in the initialization step</span></span>
+<span id="cb71-26"><a href="#cb71-26" aria-hidden="true" tabindex="-1"></a>daf<span class="sc">$</span>island_start <span class="ot">&lt;-</span> <span class="fu">sapply</span>(species_t_0, <span class="cf">function</span>(xasa) <span class="fu">unique</span>(xasa<span class="sc">$</span>traits[, <span class="st">"start_island"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now look again at the data frame</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(daf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        id mean_temp island1 island2 island3 island4 island_start
+1 species1  20.82727       1       1       0       0            1
+2 species2  20.98489       1       1       0       0            2
+3 species3  21.09256       0       0       1       0            3
+4 species4  22.00088       0       0       0       1            4
+5 species5  20.97409       1       1       0       0            2
+6 species6  20.82458       1       1       0       0            1</code></pre>
+</div>
+</div>
+<p>Plot out the continuously evolving temperature niche trait</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a named vector for the log of the temperature niche trait</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>temp_niche <span class="ot">&lt;-</span> daf<span class="sc">$</span>mean_temp</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(temp_niche) <span class="ot">&lt;-</span> daf<span class="sc">$</span>id</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot it out with dots = trait</span></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dotTree</span>(phy,temp_niche,<span class="at">ftype=</span><span class="st">"i"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Not much variation in that trait, due to the combined effects of trait homogenization and a low rate of change. Lets plot the tip states of the islands on the phylogeny using the phytools package</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># format each island</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>formatIsland <span class="ot">&lt;-</span> <span class="cf">function</span>(island, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf){</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  islandf <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(daf[, island])</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(islandf) <span class="ot">&lt;-</span> daf<span class="sc">$</span>id</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>  islandmat<span class="ot">&lt;-</span><span class="fu">to.matrix</span>(islandf,<span class="fu">levels</span>(islandf))</span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>  islandmat<span class="ot">&lt;-</span>islandmat[phy<span class="sc">$</span>tip.label,]</span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(islandf, islandmat))</span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plotTree</span>(phy,<span class="at">ftype=</span><span class="st">"i"</span>,<span class="at">offset=</span><span class="dv">1</span>,<span class="at">fsize=</span><span class="fl">0.9</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">75</span>))</span>
+<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island1"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island2"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">3</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">3</span>)</span>
+<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island3"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">5</span>)</span>
+<span id="cb75-16"><a href="#cb75-16" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island4"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Interesting. What do you notice about the distribution of species on islands? Could you predict which island each lineage began on?</p>
+<p>We actually know which islands each lineage started on because we recorded this as a trait (we could also look at the past species objects to figure this out but we have used a shortcut though the traits).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotTree</span>(phy,<span class="at">ftype=</span><span class="st">"i"</span>,<span class="at">offset=</span><span class="dv">1</span>,<span class="at">fsize=</span><span class="fl">0.4</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">75</span>))</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>my_cex<span class="ot">=</span><span class="fl">1.2</span></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island1"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island2"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">3</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">3</span>)</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island3"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">5</span>)</span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island4"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">7</span>)</span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add the starting island as a fifth colum</span></span>
+<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island_start"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">9</span>)</span>
+<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a><span class="co"># add island plot</span></span>
+<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>So whats really apparent here is that the clade that originated on the green island has speciated allopatrically into the red island multiple times in the recent past. The same is true for the red clade, however the deeper divergence between species9 and species3 have had enough time to recolonize both islands.</p>
+</section>
+<section id="linking-the-species-object-landscape-and-phylogeny" class="level4" data-number="4.0.0.1">
+<h4 data-number="4.0.0.1" class="anchored" data-anchor-id="linking-the-species-object-landscape-and-phylogeny"><span class="header-section-number">4.0.0.1</span> Linking the species object, landscape, and phylogeny</h4>
+<p>Common spatial biodiversity analyses link information measured at the species level to maps of their distribution in space using presence-absence matrices or PAMs. PAMs typically are data frame with each row representing a site, could be an island or could be a grid cell, and each column representing a species. Values of 1 are given if the species is present in the site, if not a value of 0 is given.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grid cell level PAM</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create an empty data frame with the dimensions of species x sites</span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>PAM <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow=</span><span class="fu">nrow</span>(lc<span class="sc">$</span>elevation), <span class="at">ncol=</span><span class="fu">length</span>(species_t_0)))</span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="co"># given names to rows and columns</span></span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(PAM) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(lc<span class="sc">$</span>elevation)</span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(PAM) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"species"</span>, <span class="fu">sapply</span>(species_t_0, <span class="cf">function</span>(x)x<span class="sc">$</span>id))</span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a><span class="co"># loop over species and add value of 1 to all sites the species is present</span></span>
+<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(species_t_0)){</span>
+<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a>  PAM[<span class="fu">which</span>(<span class="fu">rownames</span>(PAM) <span class="sc">%in%</span> <span class="fu">names</span>(species_t_0[[i]]<span class="sc">$</span>abundance)), i] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb77-15"><a href="#cb77-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-16"><a href="#cb77-16" aria-hidden="true" tabindex="-1"></a><span class="co"># how does it look?</span></span>
+<span id="cb77-17"><a href="#cb77-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(PAM[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   species1 species2 species3 species4 species5 species6 species7 species8
+1         0        0        0        0        0        0        0        0
+2         0        0        0        0        0        0        0        0
+3         0        0        0        0        0        0        0        0
+4         0        0        0        0        0        0        0        0
+5         0        0        0        0        0        0        0        0
+6         0        0        0        0        0        0        0        0
+7         0        0        0        0        0        0        0        0
+8         0        0        0        0        0        0        0        0
+9         0        0        0        0        0        0        0        0
+10        0        0        0        0        0        0        0        0
+   species9 species10
+1         0         0
+2         0         0
+3         0         0
+4         0         0
+5         0         0
+6         0         0
+7         0         0
+8         0         0
+9         0         0
+10        0         0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can estimate Phylogenetic diversity</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>pd_islands <span class="ot">&lt;-</span> <span class="fu">pd</span>(PAM, phy)</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co"># we can also measure mean phylogenetic distance and mean nearest neighbour distance</span></span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>mpd_islands <span class="ot">&lt;-</span> <span class="fu">mpd</span>(PAM, <span class="fu">cophenetic</span>(phy))</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>mntd_islands <span class="ot">&lt;-</span> <span class="fu">mntd</span>(PAM,<span class="fu">cophenetic</span>(phy))</span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a><span class="co"># link these back with the landscape by joining to the landscape lat/long</span></span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>community_phylo <span class="ot">&lt;-</span> <span class="fu">cbind</span>(lc<span class="sc">$</span>elevation[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)], pd_islands, mpd_islands, mntd_islands)</span>
+<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a>sr_ras <span class="ot">&lt;-</span> <span class="fu">rast</span>(community_phylo[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"SR"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a>pd_ras <span class="ot">&lt;-</span> <span class="fu">rast</span>(community_phylo[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"PD"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb79-14"><a href="#cb79-14" aria-hidden="true" tabindex="-1"></a>mpd_ras <span class="ot">&lt;-</span> <span class="fu">rast</span>(community_phylo[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"mpd_islands"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb79-15"><a href="#cb79-15" aria-hidden="true" tabindex="-1"></a>mntd_ras <span class="ot">&lt;-</span> <span class="fu">rast</span>(community_phylo[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"mntd_islands"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb79-16"><a href="#cb79-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-17"><a href="#cb79-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sr_ras, <span class="at">main=</span><span class="st">"Species Richness"</span>, <span class="at">na.color =</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot.window(...): "na.color" is not a graphical parameter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in plot.xy(xy, type, ...): "na.color" is not a graphical parameter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in title(...): "na.color" is not a graphical parameter</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pd_ras, <span class="at">main=</span><span class="st">"Phylogenetic Diversity"</span>)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpd_ras, <span class="at">main=</span><span class="st">"Mean Phylogenetic Pairwise Distance"</span>)</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mntd_ras, <span class="at">main=</span> <span class="st">"Mean Nearest Neighbour Phylogenetic Distance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="sensitivity-analysis" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sensitivity-analysis">Sensitivity analysis</h2>
+<p>In this part we are going to load in a data set from Skeels et al.&nbsp;(2022) <em>SystBiol</em> in which we simulated data with Gen3sis under four alternative models to test the evolutionary speed hypothesis (ESH). The ESH hypothesizes that faster rates of evolution occurs in lineages from warm regions like the tropics because they are have higher mutagenesis from faster life histories associated with warm temperatures and smaller body sizes. The four models used there were</p>
+<ul>
+<li><p>M0 - the null. population divergence is independent of temperature and body size</p></li>
+<li><p>M1 - Temperature Trailblazer. environmental temperature drives rate of population divergence</p></li>
+<li><p>M2 - Size Shaper. body size drives the rate of population divergence</p></li>
+<li><p>M3 - Synergistic Drivers. environmental temperature and body size drives the rate of population divergence</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/systbiol_fig1.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Skeels et al.&nbsp;2022 Syst. Biol. Figure 1</figcaption>
+</figure>
+</div>
+<p>Not only did we change the overall model of evolution, we also varied key parameters for rates of niche evolution (simga_squared_t), rates of body size evolution (sigma_squared_bs), dispersal, and the temperature niche breadth (omega), the exponent of the divergence factor with temp/body size (lambda), and the divergence threshold. Load in the data and take a look, the first 6 columns are the model parameters we varied.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>sim_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/simulated_summary_statistics.csv"</span>)</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few columns</span></span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sim_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  divergence_threshold lambda omega sigma_squared_bs sigma_squared_t dispersal
+1                    6  3.497 0.022            0.010           0.008     2.748
+2                    8  2.743 0.029            0.006           0.012     2.119
+3                    4  4.251 0.016            0.015           0.004     3.376
+4                    5  3.120 0.026            0.003           0.013     3.691
+5                    9  4.629 0.013            0.013           0.006     2.433
+6                    7  2.365 0.019            0.008           0.003     3.062
+   m n_extant_diversity richness_lat_cor richness_temp0mya_cor temp_skewness
+1 m0               3763       -0.5123028             0.4603989    -0.3377488
+2 m0               2514       -0.4425833             0.3879755    -0.4301348
+3 m0               2881       -0.6090030             0.5980889    -0.5485366
+4 m0               3259       -0.2692291             0.2709599    -0.4056149
+5 m0               1720       -0.6320276             0.5569583    -0.2034315
+6 m0               2040       -0.6901237             0.7143851    -0.5818263
+  temp_kurtosis rs_skewness rs_kurtosis bodysize_temp_cor
+1      2.404199    7.054563    70.57922      0.0001267958
+2      2.781235    7.065556    73.60686     -0.0573601538
+3      2.686734    6.568041    66.80411      0.0627634742
+4      2.578726    6.372164    56.40946     -0.0099951252
+5      2.039092    5.943670    62.21730     -0.0491801922
+6      2.692505    5.557220    43.19415     -0.1425113733
+  bodysize_rangesize_cor rangesize_temp_cor bodysize_MRDa_cor bodysize_MRDn_cor
+1           -0.021888162          0.3166909       -0.22987475       -0.22987475
+2           -0.004099039          0.3750050        0.11431674        0.11431674
+3           -0.007583409          0.1745926       -0.17385167       -0.17385167
+4            0.019477523          0.3315223        0.15882106        0.15882106
+5           -0.020735305          0.3106268       -0.01367189       -0.01367189
+6           -0.068035906          0.2386339       -0.25345879       -0.25345879
+  bodysize_MRDs_cor bodysize_ED_cor bodysize_ES_cor bodysize_DR_cor
+1       -0.22987475    -0.004220075    -0.001379360     0.004220206
+2        0.11431674    -0.048918445    -0.047336234     0.048918445
+3       -0.17385167     0.156214848     0.124189954    -0.156214848
+4        0.15882106     0.025569939     0.020867045    -0.025569939
+5       -0.01367189    -0.091018579    -0.071841554     0.091018579
+6       -0.25345879    -0.011839185    -0.009998883     0.011839185
+  temp_MRDa_cor temp_MRDn_cor temp_MRDs_cor temp_ED_cor temp_ES_cor temp_DR_cor
+1   -0.26576712   -0.26576712   -0.26576712  0.26183743   0.2202009 -0.26183732
+2   -0.17175772   -0.17175772   -0.17175772  0.24312164   0.2193826 -0.24312164
+3   -0.26126033   -0.26126033   -0.26126033  0.20306519   0.2015201 -0.20306519
+4   -0.18047283   -0.18047283   -0.18047283  0.09627562   0.0921575 -0.09627562
+5   -0.29855804   -0.29855804   -0.29855804  0.51772365   0.4230468 -0.51772365
+6    0.05847105    0.05847105    0.05847105  0.11024859   0.1080941 -0.11024859
+  rangesize_MRDa_cor rangesize_MRDn_cor rangesize_MRDs_cor rangesize_ED_cor
+1        -0.06934918        -0.06934918        -0.06934918       0.08511133
+2        -0.10091990        -0.10091990        -0.10091990       0.12507118
+3         0.04022504         0.04022504         0.04022504      -0.09452590
+4        -0.04660310        -0.04660310        -0.04660310       0.07933631
+5        -0.13259037        -0.13259037        -0.13259037       0.18191779
+6         0.06267093         0.06267093         0.06267093      -0.01025940
+  rangesize_ES_cor rangesize_DR_cor  collessI    sackinI     gamma  lat_pd_cor
+1      0.077434173      -0.08511127 1.2941150  1.2446979 -2.842964  0.31465895
+2      0.122658910      -0.12507118 0.2469526  0.3055442 -3.432895  0.25315279
+3     -0.069705157       0.09452590 1.7248814  1.6445494  3.552396  0.18284230
+4      0.087443271      -0.07933631 0.1092457 -0.1254847 -2.856134  0.11539323
+5      0.147346956      -0.18191779 1.9250034  1.8373325  1.221135 -0.06489522
+6      0.006120436       0.01025940 1.4952264  1.3605311 -5.120426  0.53662583
+  lat_mpd_cor lat_mntd_cor temp_pd_cor temp_mpd_cor temp_mntd_cor
+1  0.03036122   0.33145967 -0.24781657   0.01816540  -0.268472337
+2  0.10829373   0.24772423 -0.19630776  -0.09235074  -0.184665665
+3  0.18551711   0.24143456 -0.18427695  -0.19302604  -0.243213118
+4 -0.03477720   0.15145822 -0.09837927   0.03810852  -0.129764794
+5 -0.20454388   0.09798374  0.14050779   0.24629073  -0.006957113
+6  0.46224942   0.53924111 -0.54984407  -0.47923803  -0.551691573
+  richness_pd_cor richness_mpd_cor richness_mntd_cor temp_bsm_cor temp_bssd_cor
+1      -0.7653721      -0.41190740        -0.7499123   0.13029352    0.10296607
+2      -0.5019377      -0.13404370        -0.4901978   0.02405246    0.32276835
+3      -0.4206957      -0.37006059        -0.5361401   0.29116267    0.28959998
+4      -0.6620540      -0.41176821        -0.6769946  -0.05320780    0.04856645
+5      -0.1328847       0.06086838        -0.2905060  -0.08286640    0.08193951
+6      -0.8328187      -0.71895993        -0.8346579   0.31747185    0.34586235
+  richness_bsm_cor richness_bssd_cor   pd_bsm_cor mpd_bsm_cor mntd_bsm_cor
+1       0.11558582         0.2699839  0.003325102   0.2260060  -0.05039301
+2      -0.04537885         0.3499518 -0.263036186  -0.2484294  -0.25064129
+3       0.23668036         0.3628398  0.515713659   0.4795434   0.49672112
+4       0.04042515         0.1778522 -0.052266148  -0.1187109  -0.03605613
+5       0.31046985         0.3722813  0.061612978   0.1029425   0.06221910
+6       0.45747017         0.3837205 -0.038428520   0.3474728  -0.12562991</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the models</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(sim_data<span class="sc">$</span>m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "m0" "m1" "m2" "m3"</code></pre>
+</div>
+</div>
+<p>This data set has 27 metrics used in our paper to measure patterns in the distribution of species, such as range size metrics, or correlations between temperature and diversity, as well as phylogenetic tree shape metrics, such as gamma, and measures of functional diversity, like body size variance. We predicted that these different models of evolution (M0-M4) should leave discernible signatures in these metrics. We can plot a few associations between biodiversity metrics and these model parameters to test this hypothesis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: ggplot2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how is diversity related to the dispersal ability of a clade?</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x=</span>m, <span class="at">y=</span><span class="fu">log</span>(n_extant_diversity), <span class="at">fill=</span>m))<span class="sc">+</span></span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.7</span>, <span class="at">position =</span> <span class="st">"jitter"</span>)<span class="sc">+</span></span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>()<span class="sc">+</span></span>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how about the temperature~diversity gradient?</span></span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x=</span>m, <span class="at">y=</span>richness_temp0mya_cor, <span class="at">fill=</span>m))<span class="sc">+</span></span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.7</span>, <span class="at">position =</span> <span class="st">"jitter"</span>)<span class="sc">+</span></span>
+<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>()<span class="sc">+</span></span>
+<span id="cb93-6"><a href="#cb93-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-25-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how about the relationship between  body size and diversification rate?</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x=</span>m, <span class="at">y=</span>bodysize_DR_cor, <span class="at">fill=</span>m))<span class="sc">+</span></span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.7</span>, <span class="at">position =</span> <span class="st">"jitter"</span>)<span class="sc">+</span></span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>()<span class="sc">+</span></span>
+<span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-25-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how about the relationship between temperature and diversification rate?</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x=</span>m, <span class="at">y=</span>temp_DR_cor, <span class="at">fill=</span>m))<span class="sc">+</span></span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.7</span>, <span class="at">position =</span> <span class="st">"jitter"</span>)<span class="sc">+</span></span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>()<span class="sc">+</span></span>
+<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-25-4.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Do these patterns fit our predictions? We can also look at how some of these metrics varied with the continuous model parameters such as dispersal ability.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how is diversity related to the dispersal ability of a clade?</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x=</span>dispersal, <span class="at">y=</span><span class="fu">log</span>(n_extant_diversity)))<span class="sc">+</span></span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>()<span class="sc">+</span></span>
+<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how about the latitude diversity gradient?</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x=</span>dispersal, <span class="at">y=</span>temp_DR_cor))<span class="sc">+</span></span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>()<span class="sc">+</span></span>
+<span id="cb101-5"><a href="#cb101-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-26-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>To perform a simple kind of sensitivity test we might ask how each of the model parameters predicts linear changes in the distribution of a biodiversity patterns using a multiple regression model. One example where we have a good idea of what the relationship should be is the how variance in the distribution of temperature niches across species (e.g., skewness of the distribution) relates to model paramaters. We expect that this should scale with the rate of rate of temperature niche evolution - faster rates of change = more variation in the trait = more kutosis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first scale parameters to be in the same units</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>sim_data_scaled <span class="ot">&lt;-</span> sim_data</span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>sim_data_scaled[,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">scale</span>(sim_data_scaled[,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] )</span>
+<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="co"># fit the multiple regression</span></span>
+<span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a>lm1  <span class="ot">&lt;-</span> <span class="fu">lm</span>(temp_kurtosis <span class="sc">~</span> divergence_threshold<span class="sc">+</span>lambda<span class="sc">+</span>omega<span class="sc">+</span>sigma_squared_bs<span class="sc">+</span>sigma_squared_t<span class="sc">+</span>dispersal, <span class="at">data=</span>sim_data_scaled)</span>
+<span id="cb103-7"><a href="#cb103-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-8"><a href="#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="co"># look at model coefficients</span></span>
+<span id="cb103-9"><a href="#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = temp_kurtosis ~ divergence_threshold + lambda + 
+    omega + sigma_squared_bs + sigma_squared_t + dispersal, data = sim_data_scaled)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.7214 -0.7281 -0.3103  0.2481 22.9740 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           3.26301    0.04670  69.872  &lt; 2e-16 ***
+divergence_threshold  0.48515    0.04978   9.745  &lt; 2e-16 ***
+lambda                0.22304    0.04717   4.729 2.49e-06 ***
+omega                 0.07447    0.04769   1.562    0.119    
+sigma_squared_bs      0.02415    0.04677   0.516    0.606    
+sigma_squared_t       0.29197    0.04690   6.225 6.37e-10 ***
+dispersal             0.26180    0.04915   5.326 1.17e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.737 on 1377 degrees of freedom
+Multiple R-squared:  0.1076,    Adjusted R-squared:  0.1037 
+F-statistic: 27.68 on 6 and 1377 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>What do you see? Are our expectations met? Any surprises? Let’s try a few other biodiversity patterns where the predictions are less clear.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit the multiple regressions</span></span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Gamma statsitic for phylogenetic tree shape</span></span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a>lm2  <span class="ot">&lt;-</span> <span class="fu">lm</span>(gamma <span class="sc">~</span> divergence_threshold<span class="sc">+</span>lambda<span class="sc">+</span>omega<span class="sc">+</span>sigma_squared_bs<span class="sc">+</span>sigma_squared_t<span class="sc">+</span>dispersal, <span class="at">data=</span>sim_data_scaled)</span>
+<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-6"><a href="#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="co"># skewness of the range size distribution of species</span></span>
+<span id="cb105-7"><a href="#cb105-7" aria-hidden="true" tabindex="-1"></a>lm3  <span class="ot">&lt;-</span> <span class="fu">lm</span>(rs_skewness <span class="sc">~</span> divergence_threshold<span class="sc">+</span>lambda<span class="sc">+</span>omega<span class="sc">+</span>sigma_squared_bs<span class="sc">+</span>sigma_squared_t<span class="sc">+</span>dispersal, <span class="at">data=</span>sim_data_scaled)</span>
+<span id="cb105-8"><a href="#cb105-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-9"><a href="#cb105-9" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation between species range sizes and temperature</span></span>
+<span id="cb105-10"><a href="#cb105-10" aria-hidden="true" tabindex="-1"></a>lm4  <span class="ot">&lt;-</span> <span class="fu">lm</span>(rangesize_temp_cor <span class="sc">~</span> divergence_threshold<span class="sc">+</span>lambda<span class="sc">+</span>omega<span class="sc">+</span>sigma_squared_bs<span class="sc">+</span>sigma_squared_t<span class="sc">+</span>dispersal, <span class="at">data=</span>sim_data_scaled)</span>
+<span id="cb105-11"><a href="#cb105-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-12"><a href="#cb105-12" aria-hidden="true" tabindex="-1"></a><span class="co"># look at model coefficients</span></span>
+<span id="cb105-13"><a href="#cb105-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = gamma ~ divergence_threshold + lambda + omega + 
+    sigma_squared_bs + sigma_squared_t + dispersal, data = sim_data_scaled)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-14.6901  -3.3262  -0.3125   3.0625  19.1039 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           1.58975    0.13209  12.035  &lt; 2e-16 ***
+divergence_threshold -1.67245    0.14081 -11.877  &lt; 2e-16 ***
+lambda               -0.36850    0.13341  -2.762  0.00582 ** 
+omega                 1.13745    0.13489   8.432  &lt; 2e-16 ***
+sigma_squared_bs      0.04682    0.13230   0.354  0.72347    
+sigma_squared_t      -0.17454    0.13266  -1.316  0.18848    
+dispersal             0.99940    0.13903   7.188 1.07e-12 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.914 on 1377 degrees of freedom
+Multiple R-squared:  0.2175,    Adjusted R-squared:  0.2141 
+F-statistic: 63.78 on 6 and 1377 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = rs_skewness ~ divergence_threshold + lambda + omega + 
+    sigma_squared_bs + sigma_squared_t + dispersal, data = sim_data_scaled)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5.5219 -1.7186 -0.2771  1.3923 21.2181 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           6.14631    0.06701  91.717  &lt; 2e-16 ***
+divergence_threshold -2.11448    0.07144 -29.598  &lt; 2e-16 ***
+lambda               -0.60219    0.06768  -8.897  &lt; 2e-16 ***
+omega                -0.31157    0.06844  -4.553 5.76e-06 ***
+sigma_squared_bs      0.22387    0.06712   3.335 0.000875 ***
+sigma_squared_t      -0.57043    0.06730  -8.476  &lt; 2e-16 ***
+dispersal            -1.33498    0.07053 -18.927  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.493 on 1377 degrees of freedom
+Multiple R-squared:  0.4552,    Adjusted R-squared:  0.4528 
+F-statistic: 191.8 on 6 and 1377 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = rangesize_temp_cor ~ divergence_threshold + lambda + 
+    omega + sigma_squared_bs + sigma_squared_t + dispersal, data = sim_data_scaled)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.72559 -0.08895  0.01488  0.09329  0.68488 
+
+Coefficients:
+                      Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           0.197748   0.004238  46.658  &lt; 2e-16 ***
+divergence_threshold -0.029361   0.004518  -6.498 1.13e-10 ***
+lambda               -0.022882   0.004281  -5.345 1.05e-07 ***
+omega                -0.042760   0.004328  -9.879  &lt; 2e-16 ***
+sigma_squared_bs     -0.001199   0.004245  -0.283    0.778    
+sigma_squared_t       0.041124   0.004256   9.662  &lt; 2e-16 ***
+dispersal            -0.019362   0.004461  -4.340 1.53e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1577 on 1377 degrees of freedom
+Multiple R-squared:  0.1388,    Adjusted R-squared:  0.135 
+F-statistic: 36.99 on 6 and 1377 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>In all these cases there are interesting associations between model parameters and the biodiversity metrics. However, look at the R-squared values and what do you find? They are highly variable and in some cases quite low. This means that lots of variance in these biodiversity metrics are not explained by a linear combination of our model parameters. This is important when interpreting the effect. There are other ways of inferring more complex relationships between model parameters and biodiversity metrics, such as by including quadratic effects, exploring interaction terms, fitting non-linear models such as generalised additive models (GAMs), or even using machine learning methods such as neural networks which allow for highly-dimension non-linear effects. We won’t cover these today but they are all useful options to explore during sensitivity analysis.</p>
+<section id="model-selection" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="model-selection"><span class="header-section-number">4.0.1</span> Model Selection</h3>
+<p>Once we have established that some biodiversity metrics showed predictable relationships with model parameters or the generative model (e.g., M0-M4) we can use these metrics to perform model selection on empirical data. Here we are using the match between observed biodiversity patterns and simulated biodiversity patterns, to ask which model might be most likely to have generated the real patterns.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/systbiol_fig2.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Skeels et al.&nbsp;2022 Syst. Biol. Figure 2</figcaption>
+</figure>
+</div>
+<p>To do this we are going to perform a linear discriminant analysis which is a classification tool that can fit fit fairly quickly compared to some of the other models. We want to validate how well the model performs so we will perform a 10-fold cross validation repeated 10 times. Here we train the model on a subset of the data, repeating the process and optimising the predictive capacity. Then we predict how good a job our classifier is on a witheld portion of the data (test data). If the model performs well we should be able to accurately predict what models generated what biodiversity metrics.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: caret</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'caret'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:vegan':
+
+    tolerance</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get just the biodiversity metrics</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>sim_data_ms <span class="ot">&lt;-</span> sim_data[,<span class="dv">7</span><span class="sc">:</span><span class="fu">ncol</span>(sim_data)]</span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="co"># remove MRDs variables from sim data</span></span>
+<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a>sim_data_ms <span class="ot">&lt;-</span> sim_data_ms[, <span class="sc">-</span><span class="fu">which</span>(<span class="fu">grepl</span>(<span class="st">"MRDs"</span>,<span class="fu">colnames</span>(sim_data_ms)))]</span>
+<span id="cb115-6"><a href="#cb115-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-7"><a href="#cb115-7" aria-hidden="true" tabindex="-1"></a><span class="co"># partition into a training and testing dataset for cross validation</span></span>
+<span id="cb115-8"><a href="#cb115-8" aria-hidden="true" tabindex="-1"></a>train_index <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(sim_data_ms<span class="sc">$</span>m, <span class="at">p =</span> .<span class="dv">66</span>, <span class="at">list =</span> <span class="cn">FALSE</span>,  <span class="at">times =</span> <span class="dv">1</span>)</span>
+<span id="cb115-9"><a href="#cb115-9" aria-hidden="true" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> sim_data_ms[ train_index ,]</span>
+<span id="cb115-10"><a href="#cb115-10" aria-hidden="true" tabindex="-1"></a>test_data  <span class="ot">&lt;-</span> sim_data_ms[<span class="sc">-</span>train_index ,]</span>
+<span id="cb115-11"><a href="#cb115-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a><span class="co"># preprocess values - we will scale and center values</span></span>
+<span id="cb115-13"><a href="#cb115-13" aria-hidden="true" tabindex="-1"></a>preprocessed_values <span class="ot">&lt;-</span> <span class="fu">preProcess</span>(train_data, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">"center"</span>, <span class="st">"scale"</span>))</span>
+<span id="cb115-14"><a href="#cb115-14" aria-hidden="true" tabindex="-1"></a>train_transformed   <span class="ot">&lt;-</span> <span class="fu">predict</span>(preprocessed_values, train_data)</span>
+<span id="cb115-15"><a href="#cb115-15" aria-hidden="true" tabindex="-1"></a>test_transformed    <span class="ot">&lt;-</span> <span class="fu">predict</span>(preprocessed_values, test_data )</span>
+<span id="cb115-16"><a href="#cb115-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-17"><a href="#cb115-17" aria-hidden="true" tabindex="-1"></a><span class="co"># configure the cross-validation paramaters</span></span>
+<span id="cb115-18"><a href="#cb115-18" aria-hidden="true" tabindex="-1"></a>train_control <span class="ot">&lt;-</span> <span class="fu">trainControl</span>( <span class="at">method =</span> <span class="st">"repeatedcv"</span>, <span class="at">number =</span> <span class="dv">10</span>, <span class="at">repeats =</span> <span class="dv">10</span>, <span class="at">classProbs =</span> <span class="cn">TRUE</span>, <span class="at">savePredictions =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb115-19"><a href="#cb115-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-20"><a href="#cb115-20" aria-hidden="true" tabindex="-1"></a><span class="co"># FIT MODELS</span></span>
+<span id="cb115-21"><a href="#cb115-21" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">formula</span>(<span class="fu">paste</span>(<span class="st">"m ~ "</span>, <span class="fu">paste</span>(<span class="fu">names</span>(sim_data_ms)[<span class="dv">2</span><span class="sc">:</span><span class="fu">c</span>(<span class="fu">length</span>(<span class="fu">names</span>(sim_data_ms)))], <span class="at">collapse=</span><span class="st">" + "</span>)))</span>
+<span id="cb115-22"><a href="#cb115-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-23"><a href="#cb115-23" aria-hidden="true" tabindex="-1"></a><span class="do">## LINEAR DISCRIMINANT ANALYSIS</span></span>
+<span id="cb115-24"><a href="#cb115-24" aria-hidden="true" tabindex="-1"></a><span class="co"># note we'll run an LDA because they're quick - many other kinds of models to choose from </span></span>
+<span id="cb115-25"><a href="#cb115-25" aria-hidden="true" tabindex="-1"></a>lda_train        <span class="ot">&lt;-</span> <span class="fu">train</span>(f1, <span class="at">data=</span>train_transformed, <span class="at">method =</span> <span class="st">"lda"</span>, <span class="at">trControl =</span> train_control, <span class="at">verbose =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear
+
+Warning in lda.default(x, grouping, ...): variables are collinear</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co">#predict on test data</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>lda_test        <span class="ot">&lt;-</span> <span class="fu">predict</span>(lda_train, test_transformed)</span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co"># classification accuracy</span></span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a>lda_cm        <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(<span class="at">data =</span> lda_test, <span class="at">reference =</span> <span class="fu">as.factor</span>(test_transformed<span class="sc">$</span>m), <span class="at">mode =</span> <span class="st">"prec_recall"</span>)</span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="co"># how well did the model perform</span></span>
+<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a>lda_cm </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction m0 m1 m2 m3
+        m0 97 23  3  5
+        m1  7 85  3  6
+        m2  2  2 83 26
+        m3 11  6 28 80
+
+Overall Statistics
+                                          
+               Accuracy : 0.7388          
+                 95% CI : (0.6964, 0.7781)
+    No Information Rate : 0.2505          
+    P-Value [Acc &gt; NIR] : &lt; 2e-16         
+                                          
+                  Kappa : 0.6516          
+                                          
+ Mcnemar's Test P-Value : 0.08074         
+
+Statistics by Class:
+
+                     Class: m0 Class: m1 Class: m2 Class: m3
+Precision               0.7578    0.8416    0.7345    0.6400
+Recall                  0.8291    0.7328    0.7094    0.6838
+F1                      0.7918    0.7834    0.7217    0.6612
+Prevalence              0.2505    0.2484    0.2505    0.2505
+Detection Rate          0.2077    0.1820    0.1777    0.1713
+Detection Prevalence    0.2741    0.2163    0.2420    0.2677
+Balanced Accuracy       0.8702    0.8436    0.8118    0.7776</code></pre>
+</div>
+</div>
+<p>Whats the overall accuracy? Are some models predicted better than others?</p>
+<p>Now we’ll use this model to predict the possible model of diversification in orders of terrestrial vertebrates.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first subset and clean the colnames of the empirical data</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>empirical_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/order_empirical_summary_statistics.csv"</span>)</span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="co"># just want to look at diverse clades</span></span>
+<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>empirical_data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(empirical_data[<span class="fu">which</span>(empirical_data<span class="sc">$</span>n_species <span class="sc">&gt;=</span> <span class="dv">20</span>),])</span>
+<span id="cb119-6"><a href="#cb119-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-7"><a href="#cb119-7" aria-hidden="true" tabindex="-1"></a><span class="co"># make labels lower case</span></span>
+<span id="cb119-8"><a href="#cb119-8" aria-hidden="true" tabindex="-1"></a>empirical_data<span class="sc">$</span>taxon <span class="ot">&lt;-</span> <span class="fu">tolower</span>(empirical_data<span class="sc">$</span>taxon)</span>
+<span id="cb119-9"><a href="#cb119-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-10"><a href="#cb119-10" aria-hidden="true" tabindex="-1"></a><span class="co"># clean up a few names because I'm a grub</span></span>
+<span id="cb119-11"><a href="#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data)[<span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data) <span class="sc">==</span> <span class="st">"taxon"</span>)] <span class="ot">&lt;-</span> <span class="st">"m"</span></span>
+<span id="cb119-12"><a href="#cb119-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data)[<span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data)<span class="sc">==</span><span class="st">"rs_kutosis"</span>)] <span class="ot">&lt;-</span> <span class="st">"rs_kurtosis"</span></span>
+<span id="cb119-13"><a href="#cb119-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data)[<span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data)<span class="sc">==</span><span class="st">"n_species"</span>)] <span class="ot">&lt;-</span> <span class="st">"n_extant_diversity"</span></span>
+<span id="cb119-14"><a href="#cb119-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"_p_cor"</span>, <span class="st">"_cor"</span>,<span class="fu">colnames</span>(empirical_data)) <span class="co"># change _p_cor for posterior samplescould also change _m_cor to use MCC samples</span></span>
+<span id="cb119-15"><a href="#cb119-15" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"DivRate"</span>, <span class="st">"DR"</span>,<span class="fu">colnames</span>(empirical_data))</span>
+<span id="cb119-16"><a href="#cb119-16" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data)[<span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data) <span class="sc">==</span> <span class="st">"taxon"</span>)] <span class="ot">&lt;-</span> <span class="st">"m"</span></span>
+<span id="cb119-17"><a href="#cb119-17" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data)[<span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data) <span class="sc">==</span> <span class="st">"collessI_posterior"</span>)] <span class="ot">&lt;-</span> <span class="st">"collessI"</span></span>
+<span id="cb119-18"><a href="#cb119-18" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data)[<span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data) <span class="sc">==</span> <span class="st">"sackinI_mcc"</span>)] <span class="ot">&lt;-</span> <span class="st">"sackinI"</span></span>
+<span id="cb119-19"><a href="#cb119-19" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data)[<span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data) <span class="sc">==</span> <span class="st">"gamma_mcc"</span>)] <span class="ot">&lt;-</span> <span class="st">"gamma"</span></span>
+<span id="cb119-20"><a href="#cb119-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-21"><a href="#cb119-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-22"><a href="#cb119-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ok these should be able to be matched now</span></span>
+<span id="cb119-23"><a href="#cb119-23" aria-hidden="true" tabindex="-1"></a>empirical_data <span class="ot">&lt;-</span> empirical_data[, <span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data) <span class="sc">%in%</span> <span class="fu">colnames</span>(sim_data_ms))]</span>
+<span id="cb119-24"><a href="#cb119-24" aria-hidden="true" tabindex="-1"></a>empirical_subset <span class="ot">&lt;-</span> empirical_data[, <span class="fu">match</span>(<span class="fu">colnames</span>(sim_data_ms), <span class="fu">colnames</span>(empirical_data))]</span>
+<span id="cb119-25"><a href="#cb119-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-26"><a href="#cb119-26" aria-hidden="true" tabindex="-1"></a><span class="co"># check names match</span></span>
+<span id="cb119-27"><a href="#cb119-27" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sim_data_ms)[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">colnames</span>(sim_data_ms) <span class="sc">%in%</span> <span class="fu">colnames</span>(empirical_subset))]</span>
+<span id="cb119-28"><a href="#cb119-28" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_subset)[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">colnames</span>(empirical_subset) <span class="sc">%in%</span> <span class="fu">colnames</span>(sim_data_ms))]</span>
+<span id="cb119-29"><a href="#cb119-29" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_subset) <span class="sc">==</span> <span class="fu">colnames</span>(sim_data_ms)</span>
+<span id="cb119-30"><a href="#cb119-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-31"><a href="#cb119-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Process empirical data in the same way as for the simulated data</span></span>
+<span id="cb119-32"><a href="#cb119-32" aria-hidden="true" tabindex="-1"></a>simulated_transformed <span class="ot">&lt;-</span> <span class="fu">predict</span>(preprocessed_values, sim_data_ms )</span>
+<span id="cb119-33"><a href="#cb119-33" aria-hidden="true" tabindex="-1"></a>empirical_transformed <span class="ot">&lt;-</span> <span class="fu">predict</span>(preprocessed_values, empirical_subset )</span>
+<span id="cb119-34"><a href="#cb119-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-35"><a href="#cb119-35" aria-hidden="true" tabindex="-1"></a>model_set <span class="ot">&lt;-</span> <span class="fu">list</span>(lda_train)</span>
+<span id="cb119-36"><a href="#cb119-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-37"><a href="#cb119-37" aria-hidden="true" tabindex="-1"></a><span class="co"># predict on empirical</span></span>
+<span id="cb119-38"><a href="#cb119-38" aria-hidden="true" tabindex="-1"></a>class_predictions   <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_set, <span class="at">newdata =</span> empirical_transformed, <span class="at">type =</span> <span class="st">"raw"</span>, <span class="at">na.action =</span> na.omit)</span>
+<span id="cb119-39"><a href="#cb119-39" aria-hidden="true" tabindex="-1"></a>class_probabilities <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_set, <span class="at">newdata =</span> empirical_transformed, <span class="at">type =</span> <span class="st">"prob"</span>, <span class="at">na.action =</span> na.omit)</span>
+<span id="cb119-40"><a href="#cb119-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-41"><a href="#cb119-41" aria-hidden="true" tabindex="-1"></a><span class="co"># sum the classes</span></span>
+<span id="cb119-42"><a href="#cb119-42" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">do.call</span>(rbind, class_prediction_table)) <span class="co"># </span><span class="al">TODO</span><span class="co"> define class prediction table</span></span>
+<span id="cb119-43"><a href="#cb119-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-44"><a href="#cb119-44" aria-hidden="true" tabindex="-1"></a><span class="co"># now we can see which model is the most supported for each order</span></span>
+<span id="cb119-45"><a href="#cb119-45" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(empirical_transformed<span class="sc">$</span>m, <span class="fu">as.character</span>(class_predictions[[<span class="dv">1</span>]]))</span>
+<span id="cb119-46"><a href="#cb119-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-47"><a href="#cb119-47" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(class_predictions[[<span class="dv">1</span>]])</span>
+<span id="cb119-48"><a href="#cb119-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-49"><a href="#cb119-49" aria-hidden="true" tabindex="-1"></a><span class="co"># can also look at the variation in this</span></span>
+<span id="cb119-50"><a href="#cb119-50" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(empirical_transformed<span class="sc">$</span>m, <span class="fu">round</span>(class_probabilities[[<span class="dv">1</span>]], <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What patterns do you see? Which models are the most supported?</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Day1_Prac3_islands.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🏝️ Island Hopping</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Day2_Prac5_landscapes.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🌋 Creating Worlds</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

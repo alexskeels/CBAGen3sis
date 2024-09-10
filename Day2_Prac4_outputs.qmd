@@ -516,7 +516,7 @@ Whats the overall accuracy? Are some models predicted better than others?
 
 Now we'll use this model to predict the possible model of diversification in orders of terrestrial vertebrates.
 
-```{r}
+```{r, eval=FALSE}
 # first subset and clean the colnames of the empirical data
 empirical_data <- read.csv("data/order_empirical_summary_statistics.csv")
 
@@ -558,7 +558,7 @@ class_predictions   <- predict(model_set, newdata = empirical_transformed, type 
 class_probabilities <- predict(model_set, newdata = empirical_transformed, type = "prob", na.action = na.omit)
 
 # sum the classes
-colSums(do.call(rbind, class_prediction_table)) # TODO
+colSums(do.call(rbind, class_prediction_table)) # TODO define class prediction table
 
 # now we can see which model is the most supported for each order
 cbind(empirical_transformed$m, as.character(class_predictions[[1]]))
