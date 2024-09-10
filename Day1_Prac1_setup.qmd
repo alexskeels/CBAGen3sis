@@ -57,7 +57,7 @@ You could also install the most recent version of the package from GitHub using 
 
 load gen3sis
 
-```{r}
+```{r, echo=FALSE}
 library(gen3sis)
 ```
 
@@ -66,7 +66,7 @@ Now, lets source our support functions, to load some of the functions we'll be g
 
 You can also install these other packages we'll use throughout the workshop.
 
-```{r}
+```{r, echo=FALSE}
 # Vector of packages to load and install if necessary
 packages_to_load <- c("terra", "raster", "here", "ape", "phytools", "picante")
 
@@ -109,8 +109,6 @@ colnames(landscape$temp)
 Coolies. We can use different spatial R packages to play with our data, and later on, with our simulated output.
 
 ```{r}
-library(terra)
-
 # Present Day South America
 SA_1 <- rast(landscape$temp[ ,c("x", "y", "1")])
 SA_65 <- rast(landscape$temp[,c("x", "y", "65")])

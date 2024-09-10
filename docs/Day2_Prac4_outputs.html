@@ -510,7 +510,7 @@ function(data, vars, config){
   plot_richness(data$all_species, data$landscape)
   save_species() # saves a species and landscape objects for desired timesteps
 }
-&lt;environment: 0x00000158758e4698&gt;
+&lt;environment: 0x0000018f5ce1c778&gt;
 
 $gen3sis$general$trait_names
 [1] "dispersal"         "temp_niche_centre" "temp_width"       
@@ -573,7 +573,7 @@ function(landscape, config) {
   
   return(new_species)
 }
-&lt;environment: 0x00000158758e4698&gt;
+&lt;environment: 0x0000018f5ce1c778&gt;
 
 
 $gen3sis$dispersal
@@ -585,7 +585,7 @@ function(n, species, landscape, config){
   values &lt;- rexp(n, rate = 1/species$traits[,"dispersal"])
   return(values)
 }
-&lt;environment: 0x00000158758e4698&gt;
+&lt;environment: 0x0000018f5ce1c778&gt;
 
 
 $gen3sis$speciation
@@ -596,7 +596,7 @@ $gen3sis$speciation$get_divergence_factor
 function(species, cluster_indices, landscape, config) {
   return(1)
 }
-&lt;environment: 0x00000158758e4698&gt;
+&lt;environment: 0x0000018f5ce1c778&gt;
 
 
 $gen3sis$mutation
@@ -628,8 +628,8 @@ function(species, cluster_indices, landscape, config) {
   traits[, "temp_niche_centre"] &lt;- traits[, "temp_niche_centre"] + mutation_deltas
   return(traits)
 }
-&lt;bytecode: 0x00000158758c2dc8&gt;
-&lt;environment: 0x00000158758e4698&gt;
+&lt;bytecode: 0x0000018f5cdfac88&gt;
+&lt;environment: 0x0000018f5ce1c778&gt;
 
 
 $gen3sis$ecology
@@ -642,7 +642,7 @@ function(abundance, traits, landscape, config) {
   abundance[diff&lt;=traits[,"temp_width"]] &lt;- 1
   return(abundance)
 }
-&lt;environment: 0x00000158758e4698&gt;
+&lt;environment: 0x0000018f5ce1c778&gt;
 
 
 
@@ -1579,32 +1579,32 @@ Warning in lda.default(x, grouping, ...): variables are collinear</code></pre>
 
           Reference
 Prediction m0 m1 m2 m3
-        m0 97 23  3  5
-        m1  7 85  3  6
-        m2  2  2 83 26
-        m3 11  6 28 80
+        m0 92 24  3  4
+        m1  9 85  0 10
+        m2  3  0 87 29
+        m3 13  7 27 74
 
 Overall Statistics
                                           
-               Accuracy : 0.7388          
-                 95% CI : (0.6964, 0.7781)
+               Accuracy : 0.7238          
+                 95% CI : (0.6808, 0.7639)
     No Information Rate : 0.2505          
-    P-Value [Acc &gt; NIR] : &lt; 2e-16         
+    P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
                                           
-                  Kappa : 0.6516          
+                  Kappa : 0.6317          
                                           
- Mcnemar's Test P-Value : 0.08074         
+ Mcnemar's Test P-Value : NA              
 
 Statistics by Class:
 
                      Class: m0 Class: m1 Class: m2 Class: m3
-Precision               0.7578    0.8416    0.7345    0.6400
-Recall                  0.8291    0.7328    0.7094    0.6838
-F1                      0.7918    0.7834    0.7217    0.6612
+Precision               0.7480    0.8173    0.7311    0.6116
+Recall                  0.7863    0.7328    0.7436    0.6325
+F1                      0.7667    0.7727    0.7373    0.6218
 Prevalence              0.2505    0.2484    0.2505    0.2505
-Detection Rate          0.2077    0.1820    0.1777    0.1713
-Detection Prevalence    0.2741    0.2163    0.2420    0.2677
-Balanced Accuracy       0.8702    0.8436    0.8118    0.7776</code></pre>
+Detection Rate          0.1970    0.1820    0.1863    0.1585
+Detection Prevalence    0.2634    0.2227    0.2548    0.2591
+Balanced Accuracy       0.8489    0.8393    0.8261    0.7491</code></pre>
 </div>
 </div>
 <p>Whats the overall accuracy? Are some models predicted better than others?</p>
