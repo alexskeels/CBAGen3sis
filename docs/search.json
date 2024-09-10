@@ -159,5 +159,26 @@
     "title": "6  🥪 Sandbox",
     "section": "",
     "text": "library(gen3sis)\nlc &lt;- readRDS(\"data/landscapes/islands/landscape.rds\")\n\nsim_m1 &lt;- run_simulation(config = \"configs/config_islands_Day3_ELH.R\", \n                      landscape = \"data/landscapes/islands\", \n                      output_directory = \"output/islands\")"
+  },
+  {
+    "objectID": "index.html#day-1",
+    "href": "index.html#day-1",
+    "title": "Center for Biodiversity Analysis: Gen3sis Workshop 2024",
+    "section": "Day 1",
+    "text": "Day 1\n\n\n\n\n\n\n\nTime\nEvent\n\n\n\n\n09:00 - 09:45\n👋 Welcome (Platypus Room) - Coffee, introductions, and overview of Gen3sis workshop\n\n\n09:45 - 10:45\n🎓 Lecture 1 - Oskar Hagen (Eucalyptus Room): History and philosophy of simulation modelling in biodiversity studies\n\n\n10:45 - 11:00\n☕ Coffee Break\n\n\n11:00 - 12:00\n🛠️ Practical 1 - Gettin’ Started: Installation and Set Up\n\n\n12:00 - 12:30\n🛠️ Practical 2 - Configure Skating: Gen3sis Config Basics\n\n\n12:30 - 13:30\n🍽️ Lunch Break\n\n\n13:30 - 15:30\n🛠️ Practical 2 - Configure Skating: Gen3sis Config Basics (contd.)\n\n\n15:30 - 15:45\n☕ Coffee Break\n\n\n15:45 - 16:30\n🏝️ Practical 3 - Island Hopping: Explore a model island system\n\n\n16:30 - 17:00\n❓ Questions / Wrap up Day 1"
+  },
+  {
+    "objectID": "index.html#day-2",
+    "href": "index.html#day-2",
+    "title": "Center for Biodiversity Analysis: Gen3sis Workshop 2024",
+    "section": "Day 2",
+    "text": "Day 2\n\n\n\n\n\n\n\nTime\nEvent\n\n\n\n\n09:00 - 10:00\n🎓 Lecture 2 - Alex and Oskar (Platypus Room): Inference from simulated biodiversity data\n\n\n10:00 - 10:30\n🌍 Practical 4.1 - Silicodiversity: Gen3sis outputs and patterns\n\n\n10:30 - 10:45\n☕ Coffee Break\n\n\n10:45 - 12:30\n🌍 Practical 4.2 - Silicodiversity: Gen3sis outputs and patterns (contd.)\n\n\n12:30 - 13:30\n🍽️ Lunch Break\n\n\n13:30 - 14:15\n🎓 Lecture 3 - Tristan Salles (Platypus Room): Paleoenvironmental models and data\n\n\n14:15 - 14:45\n💬 Discussion\n\n\n14:45 - 15:00\n☕ Coffee Break\n\n\n15:00 - 16:30\n🌍 Practical 5 - Creating Worlds: Modifying landscapes as inputs for Gen3sis\n\n\n16:30 - 17:00\n❓ Questions / Wrap up Day 2"
+  },
+  {
+    "objectID": "index.html#day-3",
+    "href": "index.html#day-3",
+    "title": "Center for Biodiversity Analysis: Gen3sis Workshop 2024",
+    "section": "Day 3",
+    "text": "Day 3\n\n\n\n\n\n\n\nTime\nEvent\n\n\n\n\n09:00 - 10:00\n🎓 Lecture 4 - Alex and Oskar: Designing simulation experiments with Gen3sis\n\n\n10:00 - 10:30\n🛠️ Practical 6 - Sandbox: Implementing models in Gen3sis with friends\n\n\n10:30 - 10:45\n☕ Coffee Break\n\n\n10:45 - 12:30\n🛠️ Practical 6 - Sandbox: Implementing models in Gen3sis with friends (contd.)\n\n\n12:30 - 13:30\n🍽️ Lunch Break\n\n\n13:30 - 14:45\n🛠️ Wrapping up Sandbox\n\n\n14:45 - 15:00\n☕ Coffee Break\n\n\n15:00 - 16:00\n🎤 Presenting Sandbox models / Wrap up Day 3\n\n\n16:00 - 16:10\n📝 Feedback session - Gathering final thoughts and suggestions\n\n\n16:10\n🍻 Pub!"
   }
 ]
