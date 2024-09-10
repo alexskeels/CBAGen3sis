@@ -3,4 +3,4 @@ Prac notes and code for the Center for Biodiversity Analysis hosted workshop on 
 
 ![Australia 2024](figures/gen3sis_ANU_2024.gif)
 
-Html [here](https://alexskeels.github.io/CBAGen3sis.github.io/)
+Html [here](https://alexskeels.github.io/CBAGen3sis/)
