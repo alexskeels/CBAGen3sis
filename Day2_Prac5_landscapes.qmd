@@ -4,3 +4,265 @@ author: "Oskar Hagen and Alex Skeels"
 execute: 
   eval: FALSE
 ---
+
+# Introduction {.unnumbered}
+
+Welcome, brave explorer of virtual worlds! Today, you’ll learn how to create entire landscapes (no pressure!) using R. We'll shrink the universe to an **experimental size**.
+
+In this tutorial, we will:
+
+1.  Create a spatial grid (our world map)
+2.  Add some random elevation and temperature (because flat worlds are boring)
+3.  Visualize your masterpiece (see your creation)
+4.  Modify the shape and dynamics of your island (why stop here?)
+
+## Step 1: Setup (Gather Your Tools) {.unnumbered}
+
+Before we build our world, let’s make sure we have the right tools. No one builds a universe without a hammer... and `ggplot2`.
+
+```{r}
+# Load the necessary libraries for plotting and data wrangling
+# why not in another way as we did before?
+lib <- c("terra", "raster", "lattice", "rayimage", "viridis", "gen3sis", "ggplot2", "persp")
+sapply(lib, require, character.only = TRUE, quietly = TRUE, warn.conflicts = TRUE)
+```
+
+## Step 2: Declare your functions (Make your tools) {.unnumbered}
+
+Now that our libraries are ready, we need tools to help us generate the world. Below are custom functions to plot the terrain (plot_persp), simulate shape (drop and gaussian_2d), and generate random landscapes (random_landscape). These functions allow us to manipulate and visualize spatial grids with elevation data.
+
+```{r}
+plot_persp <- function(x, y, z, lcol=topo.colors, ...) {
+  zz <- (z[-1,-1] + z[-1,-ncol(z)] + z[-nrow(z),-1] + z[-nrow(z),-ncol(z)])/4
+  breaks <- hist(zz, plot=FALSE)$breaks
+  cols <- lcol(length(breaks)-1)
+  zzz <- cut(zz, breaks=breaks, labels=cols)
+  persp(x, y, z, col=as.character(zzz),
+        phi=30, theta=-25, ltheta = -70,
+        expand = 0.5, border = NA, box = FALSE, shade = 0.75, ...)
+  list(breaks=breaks)
+}
+
+
+# 'shape
+
+drop <- function(x,y, a=3, ...) { 
+  r <- sqrt(x^2+y^2) 
+  z <- a * sin(r)/r 
+}
+
+gaussian_2d <- function(x,y, x0, y0, sdx, sdy, a) { 
+  r <- (((x-x0)^2)/(2*sdx^2))+(((y-y0)^2)/(2*sdy^2))
+  z <- a*exp(-r)
+  return(z)
+}
+
+# 'generator
+
+random_lanscape <- function(x,y, n=2){
+  zf <- 0
+  for (i in 1:n){
+  zf <- zf+outer(x, y, gaussian_2d, x0=sample(x,1), y0=sample(y,1), sdx=rnorm(1,2,5), sdy=rnorm(1,2,5), a=rnorm(1,2,2))
+  }
+  return(zf)
+}
+
+set_landscape_t <- function(x=seq(-10, 10, length=60),y=NA, t=-4:0, 
+                            x0t=function(t){rep(0,length(t))}, 
+                            y0t=function(t){rep(0,length(t))}, 
+                            sdxt=function(t){2/(abs(t)+1)}, sdyt=NA, 
+                            at=function(t){abs(t)+1}){
+  if (any(is.na(y))){y=x}
+  if (any(is.na(sdyt))){sdyt=sdxt}
+  l <- list()
+  for (i in 1:length(t)){
+    ti <- t[i]
+    l[[i]] <- outer(x, y, gaussian_2d, x0=x0t(ti), y0=y0t(ti), sdx=sdxt(ti), sdy=sdyt(ti), a=at(ti))
+    names(l)[i] <- paste0("x0=",x0t(ti), "|y0=",y0t(ti), "|sdx=", sdxt(ti),"|sdy=",sdyt(ti),"|a=", at(ti))
+  }
+  return(l)
+}
+
+```
+
+
+Every world (i.e raster) needs a grid to hold it together.
+
+```{r}
+# size of the grid
+nlg <- 30
+
+### single simple -----
+x <- seq(-10, 10, length=nlg)
+y <- x
+z <- outer(x, y, gaussian_2d, x0=0, y0=0, sdx=2, sdy=2, a=10)
+plot_persp(x, y, z)
+
+```
+
+Next, let's make an island-like shape
+
+The drop function can be used to create a terrain similar to an island by generating a peak that gradually descends towards the edges. This creates a radial pattern of decreasing elevation, much like a small volcanic island with some surrounding lagoons, this is not really realistic, ask Tristan!.
+
+```{r}
+### single simple drop -----
+x <- seq(-10, 10, length=nlg)
+y <- x
+z <- outer(x, y, drop, x0=0, y0=0, a=10)
+plot_persp(x, y, z)
+```
+
+
+Now, let's make it dynamic!
+Here we use time (ti) as the input to dynamically adjust the standard deviation in the Gaussian function. This represents the idea of landscape evolving over time, as the terrain smoothens and flattens.
+
+```{r}
+### multiple -----
+x <- seq(-10, 10, length=nlg)
+y <- x
+l <- list()
+for (ti in 1:6){ # set the number of time steps
+  l[[ti]] <- outer(x, y, gaussian_2d, x0=0, y0=0, sdx=ti, sdy=ti, a=ti^-0.8)
+  # add constant sea level
+  l[[ti]][l[[ti]]<0.1] <- 0.1
+}
+# plot_multiple_persp(l, lcol=terrain.colors)
+
+```
+
+## Build Your Own Tools Again, forget about steps... {.unnumbered}
+The process of creating and refining tools never stops in world-building. Below is a function to plot multiple landscapes at different time steps in one visualization. No need to dive in, there is probably a better method out there, rest assured.
+```{r}
+plot_multiple_persp <- function(l, lcol = topo.colors, scol = "darkblue", legend_title = "Legend", ...) {
+  # 'l' is the list of z values...
+  lv <- do.call(c, l)
+  breaks <- hist(lv, plot = FALSE)$breaks
+  cols <- c(scol, lcol(length(breaks) - 2))
+  
+  # Save the original par settings
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
+  
+  # Number of subplots
+  times <- length(l)
+  
+  # Dynamically define number of rows and columns for layout based on the number of steps
+  n_cols <- ceiling(sqrt(times))  # Number of columns
+  n_rows <- ceiling(times / n_cols)  # Number of rows
+  
+  # Set the plot margins: Adjust `mar` to make the plots closer to each other
+  par(mar = c(2, 2, 2, 2)*0.3)  # Reduce margins around each plot
+  
+  # Set the layout for the subplots (without extra row for legend)
+  par(mfrow = c(n_rows, n_cols))
+  
+  # Loop through the list of z-matrices and create the persp plots
+  for (i in seq_along(l)) {
+    zi <- l[[i]]
+    zz <- (zi[-1, -1] + zi[-1, -ncol(zi)] + zi[-nrow(zi), -1] + zi[-nrow(zi), -ncol(zi)]) / 4
+    zzz <- cut(zz, breaks = breaks, labels = cols)
+    
+    # Plot each 3D surface with persp
+    persp(x, y, zi,
+          zlim = range(lv, na.rm = TRUE),
+          col = as.character(zzz),
+          phi = 30, theta = -25, ltheta = -70,
+          expand = 0.5, border = NA, box = FALSE, shade = 0.25, ...)
+    
+    # Add titles if names are available
+    if (!any(is.na(names(l)))) {
+      title(names(l)[i])
+    }
+    
+    # If it's the first plot, add a color scale (legend) on top of it
+    if (i == 1) {
+      # Use a small inset to add the legend (e.g., top-right corner)
+      legend("topright", legend = round(breaks, 2), fill = cols, title = legend_title, cex = 0.7, inset = 0.05)
+    }
+  }
+}
+
+
+plot_multiple_persp(l, lcol=terrain.colors)
+```
+
+## Add more islands!
+It's time to create more complex terrains by adding multiple islands. We can simulate this by layering multiple Gaussian functions.
+
+```{r, height=50%}
+# par(mfrow=c(1,3), mai=c(1,1,1,1)*0.3)
+# First island
+x <- seq(-10, 10, length=nlg)
+y <- x
+z1 <- outer(x, y, gaussian_2d, x0=-5, y0=-5, sdx=2, sdy=2, a=7)
+plot_persp(x, y, z1, main="z1")
+
+# Second island
+z2 <- outer(x, y, gaussian_2d, x0=4, y0=5, sdx=3, sdy=4, a=5)
+plot_persp(x, y, z2, main="z2")
+
+# Combine the two islands
+zf <- z1 + z2
+plot_persp(x, y, zf, main="z1+z2")
+```
+Now let's use the same concept to create a time-evolving landscape with three islands. The islands will grow and change over time, creating a dynamic world.
+```{r}
+# Create a time-evolving landscape
+l <- list(z1 = zf,
+          z2 = zf + outer(x, y, gaussian_2d, x0 = 0, y0 = -3, sdx = 3, sdy = 1, a = 3),
+          z3 = zf + outer(x, y, gaussian_2d, x0 = 0, y0 = -3, sdx = 2.5, sdy = 0.8, a = 4))
+plot_multiple_persp(l, lcol=terrain.colors)
+
+# Convert the landscapes to raster bricks
+rb <- brick(lapply(l, raster))
+plot(rb)
+
+# Apply sea level cuts to the landscapes
+selev <- c(1, 2, 1)
+ls <- l
+for (zi in 1:3) {
+  ms <- ls[[zi]] <= selev[zi]
+  ls[[zi]][ms] <- NA
+}
+rb <- brick(lapply(ls, raster))
+plot(rb, col = viridis(255))
+
+
+```
+## Generating a Landscape with Multiple Peaks
+Now let's generate a more complex landscape with multiple peaks to add more details to our world.
+
+```{r}
+nlg <- 50  
+x <- seq(-100, 100, length=nlg)
+y <- x
+# Few random peaks
+plot_persp(x, y, random_lanscape(x, y, 30))
+```
+Play with it, it's beautiful!
+```{r}
+# Many random peaks for a rougher landscape
+
+
+plot_persp(x, y, random_lanscape(x, y, 200), lcol=terrain.colors)
+
+```
+
+## Prepare something simple to play with {.unnumbered}
+```{r}
+nlg <- 20  # decrease the grid size for faster calculations   
+x <- seq(-100, 100, length=nlg)
+y <- x
+# Few random peaks
+plot_persp(x, y, random_lanscape(x, y, 30))
+```
+
+
+
+Now you can see how your island evolved from humble beginnings to a rugged, dynamic landscape. It’s like watching a time-lapse video of a planet forming—very satisfying!
+
+## Conclusion {.unnumbered}
+
+Congratulations, you’ve successfully created your very own world, played around with its shape, and made it evolve over time. It might not be ready for civilization just yet, but hey, Rome wasn’t built in a day either.
+
+Now go forth and continue your journey as a master world-builder. 🌍✨

@@ -510,7 +510,7 @@ function(data, vars, config){
   plot_richness(data$all_species, data$landscape)
   save_species() # saves a species and landscape objects for desired timesteps
 }
-&lt;environment: 0x0000018f5ce1c778&gt;
+&lt;environment: 0x000001c0a15be768&gt;
 
 $gen3sis$general$trait_names
 [1] "dispersal"         "temp_niche_centre" "temp_width"       
@@ -573,7 +573,7 @@ function(landscape, config) {
   
   return(new_species)
 }
-&lt;environment: 0x0000018f5ce1c778&gt;
+&lt;environment: 0x000001c0a15be768&gt;
 
 
 $gen3sis$dispersal
@@ -585,7 +585,7 @@ function(n, species, landscape, config){
   values &lt;- rexp(n, rate = 1/species$traits[,"dispersal"])
   return(values)
 }
-&lt;environment: 0x0000018f5ce1c778&gt;
+&lt;environment: 0x000001c0a15be768&gt;
 
 
 $gen3sis$speciation
@@ -596,7 +596,7 @@ $gen3sis$speciation$get_divergence_factor
 function(species, cluster_indices, landscape, config) {
   return(1)
 }
-&lt;environment: 0x0000018f5ce1c778&gt;
+&lt;environment: 0x000001c0a15be768&gt;
 
 
 $gen3sis$mutation
@@ -628,8 +628,8 @@ function(species, cluster_indices, landscape, config) {
   traits[, "temp_niche_centre"] &lt;- traits[, "temp_niche_centre"] + mutation_deltas
   return(traits)
 }
-&lt;bytecode: 0x0000018f5cdfac88&gt;
-&lt;environment: 0x0000018f5ce1c778&gt;
+&lt;bytecode: 0x000001c0a159ae28&gt;
+&lt;environment: 0x000001c0a15be768&gt;
 
 
 $gen3sis$ecology
@@ -642,7 +642,7 @@ function(abundance, traits, landscape, config) {
   abundance[diff&lt;=traits[,"temp_width"]] &lt;- 1
   return(abundance)
 }
-&lt;environment: 0x0000018f5ce1c778&gt;
+&lt;environment: 0x000001c0a15be768&gt;
 
 
 
@@ -895,16 +895,18 @@ attr(,"class")
 <div class="cell">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotTree</span>(phy,<span class="at">ftype=</span><span class="st">"i"</span>,<span class="at">offset=</span><span class="dv">1</span>,<span class="at">fsize=</span><span class="fl">0.4</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">75</span>))</span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>my_cex<span class="ot">=</span><span class="fl">1.2</span></span>
-<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island1"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island2"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">3</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">3</span>)</span>
-<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island3"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">5</span>)</span>
-<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island4"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">7</span>)</span>
-<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add the starting island as a fifth colum</span></span>
-<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island_start"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">9</span>)</span>
-<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a><span class="co"># add island plot</span></span>
-<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>my_cex<span class="ot">=</span><span class="fl">0.9</span></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add the starting island as a fifth colum</span></span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island_start"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)],<span class="at">cex=</span>my_cex<span class="sc">*</span><span class="dv">3</span>, <span class="at">adj=</span><span class="dv">12</span>)</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island1"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island2"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">3</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">3</span>)</span>
+<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island3"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">5</span>)</span>
+<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island4"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">7</span>)</span>
+<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-13"><a href="#cb76-13" aria-hidden="true" tabindex="-1"></a><span class="co"># add island plot</span></span>
+<span id="cb76-14"><a href="#cb76-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So whats really apparent here is that the clade that originated on the green island has speciated allopatrically into the red island multiple times in the recent past. The same is true for the red clade, however the deeper divergence between species9 and species3 have had enough time to recolonize both islands.</p>
 </section>
@@ -1579,32 +1581,32 @@ Warning in lda.default(x, grouping, ...): variables are collinear</code></pre>
 
           Reference
 Prediction m0 m1 m2 m3
-        m0 92 24  3  4
-        m1  9 85  0 10
-        m2  3  0 87 29
-        m3 13  7 27 74
+        m0 97 18  5  6
+        m1 12 88  3  4
+        m2  3  1 88 27
+        m3  5  9 21 80
 
 Overall Statistics
                                           
-               Accuracy : 0.7238          
-                 95% CI : (0.6808, 0.7639)
+               Accuracy : 0.7559          
+                 95% CI : (0.7143, 0.7942)
     No Information Rate : 0.2505          
-    P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+    P-Value [Acc &gt; NIR] : &lt;2e-16          
                                           
-                  Kappa : 0.6317          
+                  Kappa : 0.6745          
                                           
- Mcnemar's Test P-Value : NA              
+ Mcnemar's Test P-Value : 0.4858          
 
 Statistics by Class:
 
                      Class: m0 Class: m1 Class: m2 Class: m3
-Precision               0.7480    0.8173    0.7311    0.6116
-Recall                  0.7863    0.7328    0.7436    0.6325
-F1                      0.7667    0.7727    0.7373    0.6218
+Precision               0.7698    0.8224    0.7395    0.6957
+Recall                  0.8291    0.7586    0.7521    0.6838
+F1                      0.7984    0.7892    0.7458    0.6897
 Prevalence              0.2505    0.2484    0.2505    0.2505
-Detection Rate          0.1970    0.1820    0.1863    0.1585
-Detection Prevalence    0.2634    0.2227    0.2548    0.2591
-Balanced Accuracy       0.8489    0.8393    0.8261    0.7491</code></pre>
+Detection Rate          0.2077    0.1884    0.1884    0.1713
+Detection Prevalence    0.2698    0.2291    0.2548    0.2463
+Balanced Accuracy       0.8731    0.8522    0.8318    0.7919</code></pre>
 </div>
 </div>
 <p>Whats the overall accuracy? Are some models predicted better than others?</p>

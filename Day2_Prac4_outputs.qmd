@@ -291,13 +291,15 @@ We actually know which islands each lineage started on because we recorded this 
 
 par(mfrow=c(1,2))
 plotTree(phy,ftype="i",offset=1,fsize=0.4, xlim=c(0, 75))
-my_cex=1.2
+my_cex=0.9
+# add the starting island as a fifth colum
+tiplabels(pie=formatIsland(island="island_start", phy=phy, daf=daf)[[2]],piecol=palette()[c(2,3,4,6)],cex=my_cex*3, adj=12)
+
 tiplabels(pie=formatIsland(island="island1", phy=phy, daf=daf)[[2]],piecol=palette()[c(8,2)],cex=my_cex, adj=12+1)
 tiplabels(pie=formatIsland(island="island2", phy=phy, daf=daf)[[2]],piecol=palette()[c(8,3)],cex=my_cex, adj=12+3)
 tiplabels(pie=formatIsland(island="island3", phy=phy, daf=daf)[[2]],piecol=palette()[c(8,4)],cex=my_cex, adj=12+5)
 tiplabels(pie=formatIsland(island="island4", phy=phy, daf=daf)[[2]],piecol=palette()[c(8,6)],cex=my_cex, adj=12+7)
-# add the starting island as a fifth colum
-tiplabels(pie=formatIsland(island="island_start", phy=phy, daf=daf)[[2]],piecol=palette()[c(2,3,4,6)],cex=my_cex, adj=12+9)
+
 
 # add island plot
 plot(patch_xyz, main="Island Patches", col=palette()[c(2,3,4,6)])
