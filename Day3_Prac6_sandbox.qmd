@@ -5,11 +5,26 @@ execute:
   eval: FALSE
 ---
 
-```{r}
-library(gen3sis)
-lc <- readRDS("data/landscapes/islands/landscape.rds")
+The aim for this practical is to try and take what you've learned about how Gen3sis works and attempt to elaborate on the configs you have been already playing with. As a case study, and because there's so many ways it could be possible to implement, we think it would be fun to try and implement different ways to test the Ecological Limits Hypothesis (ELH) in small groups.
 
-sim_m1 <- run_simulation(config = "configs/config_islands_Day3_ELH.R", 
-                      landscape = "data/landscapes/islands", 
-                      output_directory = "output/islands")
-```
+::: {.callout-note}
+If you have a particular hypothesis or case study you'd like to work on instead, let us know and we might be able to tailor this.
+:::
+
+The day will be quite free-form and we'll be around to guide you, but a straight forward way to do this would be to:
+
+1.  Take an existing landscape you have used already, such as South America or the simulated islands
+
+2.  Take an existing config from day 1 (M1-M4)
+
+3.  Modify the existing config, probably in the ecology function, to implement the ELH
+
+4.  Run the simulation, troubleshooting any errors you get along the way
+
+5.  Plot out some key biodiversity patterns (like richness) and explore how they differ to the original config
+
+Of course, you don't have to do the basic version of this prac, you might want to make more dramatic changes, such as by:
+
+1.   Using different landscapes - either simulating them following Day 2's landscape modification prac, or from empirical data such as paleoenvironmenta data from [Tristan's work](https://www.science.org/doi/10.1126/science.add2541), future climate projections under climate change for terrestrial ([CHELSA](https://chelsa-climate.org/)) or marine ([Bio-oracle](https://www.bio-oracle.org/)) systems, or recent historical climate change from the last glacial maximum to the present (LGM; [CHELSA](https://chelsa-climate.org/last-glacial-maximum-climate/))
+
+2.  Creating the whole config, or parts of it, from scratch. For example you may want to implement different models of trait evolution, or include different traits, different dispersal functions etc. You are not limited to the configs we have provided!

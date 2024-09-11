@@ -4,9 +4,11 @@ author: "Alex Skeels and Oskar Hagen"
 execute: 
   eval: TRUE
 ---
-```{r setup, include=FALSE} 
+
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
+
 ## Exploring outputs {.unnumbered}
 
 In this practical we will explore the outputs from gen3sis using the island simulations we ran yesterday. We will learn how to use this data with common R packages for phylogenetic comparative methods, community phylogenetics, biogeography and much more.
@@ -15,7 +17,7 @@ The goal for today will be to produce:
 
 1.  A map of Species Richness from the simulation summary object
 
-2.  edeA plot of Lineages Through Time from the phylogeny
+2.  A plot of Lineages Through Time from the phylogeny
 
 3.  Plot of species trait values on a phylogenetic tree, by linking the species objects to the phylogeny
 
@@ -40,7 +42,7 @@ The first object we will look at today is the sgenesis.rds file. This file conta
 ```{r}
 output_dir <- "output/islands" 
 
-sim <- readRDS(file.path(output_dir, "config_islands_simple_Day1Prac3_M1/sgen3sis.rds")) 
+sim <- readRDS(file.path(output_dir, "config_islands_simple_Day1Prac3_M3/sgen3sis.rds")) 
 
 # look at what the simulation summary contains
 names(sim)
@@ -110,13 +112,13 @@ The phylogeny object is pretty straight forward. It is a nexus file containing t
 
 ```{r}
 # read phy
-phy <- read.nexus(file.path(output_dir, "config_islands_simple_Day1Prac3_M1/phy.nex"))
+phy <- read.nexus(file.path(output_dir, "config_islands_simple_Day1Prac3_M3/phy.nex"))
 
 # plot phy
 plot(phy)
 ```
 
-From this object we can look at lineages through time plots and estimate trends in diversification, such as using the gamma statistic to detect diversification slowdowns or speedups.
+From this object we can look at lineages through time plots and estimate trends in diversification. The gamma statistic is one way to detect diversification slowdowns or speedups, with positive values indicating nodes are more closely pushed up towards the tips (speed up) and negative values indicating nodes are closer to the root (slowdown) ([Pybus and Harvey 2000](https://royalsocietypublishing.org/doi/10.1098/rspb.2000.1278)). There are lots of other kinds of measures of phylogenetic tree shape, such as metrics of tree imbalance (Colless's Index, Beta-Splitting Paramater, etc.)
 
 ```{r}
 # plot an ltt
@@ -125,7 +127,7 @@ ltt_M1 <-ltt(phy)
 # look at the gamma statistic
 print(paste0("Gamma = ", round(ltt_M1$gamma, 2)))
 
-# is there a significant deviation from conatant rates?
+# is there a significant deviation from constant rates?
 print(paste0("P = ", round(ltt_M1$p, 2)))
 ```
 
@@ -135,7 +137,7 @@ Now its time to get into the meat of the gen3sis outputs. Most of the informatio
 
 ```{r}
 # load object
-species_t_0 <- readRDS(file.path(output_dir, "config_islands_simple_Day1Prac3_M1", "species", "species_t_0.rds"))
+species_t_0 <- readRDS(file.path(output_dir, "config_islands_simple_Day1Prac3_M3", "species", "species_t_0.rds"))
 
 # look at object class and length
 class(species_t_0)
@@ -167,7 +169,7 @@ The species' abundances are also linked to grid cells in the landscape, which ca
 species_t_0[[1]]$abundance
 ```
 
-In this case the species has abundance values of 1 in all populations from the cells that it occupies. This is because we set abundances to be binary: 1=present, 0=absent. We can see the species occupies cells 2767,2768,2769, etc.
+In this case the species has abundance values of 1 in all populations from the cells that it occupies. This is because we set abundances to be binary: 1=present, 0=absent. We can see the species occupies cells 247, 248, 249, etc.
 
 The species also has values of it's traits for each of its populations.
 
@@ -175,7 +177,7 @@ The species also has values of it's traits for each of its populations.
 head(species_t_0[[1]]$traits)
 ```
 
-We can see the population that each row is linked by the rownames. Here you can see 2767, 2768, 2769, etc. Each of these populations have a dispersal trait of 5 (because we didn't vary this) slightly different temp_mean traits (because these evolved stochastically under a Brownian motion model) and a temp width of 1 (again, we didn;t vary this in model 1).
+We can see the population that each row is linked by the rownames. Here you can see 247, 248, 249, etc. Each of these populations have a dispersal trait of 5 (because we didn't vary this) slightly different temp_mean traits (because these evolved stochastically under a Brownian motion model) and a temp width of 1 (again, we didn;t vary this in model 1).
 
 So, if we want to map out the distribution of species 1 at timestep 0, we just need to link those cell names (267/268/etc) to the landscape object and make a raster. Why don;t we try and see what islands species 1 is found on.
 
@@ -260,12 +262,14 @@ temp_niche <- daf$mean_temp
 names(temp_niche) <- daf$id
 
 # plot it out with dots = trait
-dotTree(phy,temp_niche,ftype="i")
+dotTree(phy,temp_niche,ftype="i", length=8, fsize=1.2, standardize=T)
 ```
 
 Not much variation in that trait, due to the combined effects of trait homogenization and a low rate of change. Lets plot the tip states of the islands on the phylogeny using the phytools package
 
 ```{r, eval=FALSE}
+par(mfrow=c(1,2))
+
 # format each island
 formatIsland <- function(island, phy=phy, daf=daf){
   islandf <- as.factor(daf[, island])
@@ -283,6 +287,7 @@ tiplabels(pie=formatIsland(island="island2", phy=phy, daf=daf)[[2]],piecol=palet
 tiplabels(pie=formatIsland(island="island3", phy=phy, daf=daf)[[2]],piecol=palette()[c(8,4)],cex=0.6, adj=12+5)
 tiplabels(pie=formatIsland(island="island4", phy=phy, daf=daf)[[2]],piecol=palette()[c(8,6)],cex=0.6, adj=12+7)
 
+plot(patch_xyz, main="Island Patches", col=palette()[c(2,3,4,6)])
 ```
 
 Interesting. What do you notice about the distribution of species on islands? Could you predict which island each lineage began on?
@@ -298,8 +303,9 @@ tiplabels(pie=formatIsland(island="island1", phy=phy, daf=daf)[[2]],piecol=palet
 tiplabels(pie=formatIsland(island="island2", phy=phy, daf=daf)[[2]],piecol=palette()[c(8,3)],cex=my_cex, adj=12+3)
 tiplabels(pie=formatIsland(island="island3", phy=phy, daf=daf)[[2]],piecol=palette()[c(8,4)],cex=my_cex, adj=12+5)
 tiplabels(pie=formatIsland(island="island4", phy=phy, daf=daf)[[2]],piecol=palette()[c(8,6)],cex=my_cex, adj=12+7)
+
 # add the starting island as a fifth colum
-tiplabels(pie=formatIsland(island="island_start", phy=phy, daf=daf)[[2]],piecol=palette()[c(2,3,4,6)],cex=my_cex, adj=12+9)
+tiplabels(pie=formatIsland(island="island_start", phy=phy, daf=daf)[[2]],piecol=palette()[c(2,3,4,6)],cex=1.6, adj=12+9, pch=7)
 
 # add island plot
 plot(patch_xyz, main="Island Patches", col=palette()[c(2,3,4,6)])
