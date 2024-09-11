@@ -449,7 +449,7 @@ function(data, vars, config){
   save_species() # saves a species and landscape objects for desired timesteps
   
 }
-&lt;environment: 0x000001142af14c40&gt;
+&lt;environment: 0x00000208771f4170&gt;
 
 $gen3sis$general$trait_names
 [1] "dispersal"         "temp_niche_centre" "temp_niche_width" 
@@ -507,7 +507,7 @@ function(landscape, config) {
   
   return(new_species)
 }
-&lt;environment: 0x000001142af14c40&gt;
+&lt;environment: 0x00000208771f4170&gt;
 
 
 $gen3sis$dispersal
@@ -520,7 +520,7 @@ function(n, species, landscape, config){
   values &lt;- rexp(n, rate = 1/species$traits[,"dispersal"])
   return(values)
 }
-&lt;environment: 0x000001142af14c40&gt;
+&lt;environment: 0x00000208771f4170&gt;
 
 
 $gen3sis$speciation
@@ -531,7 +531,7 @@ $gen3sis$speciation$get_divergence_factor
 function(species, cluster_indices, landscape, config) {
   return(1)
 }
-&lt;environment: 0x000001142af14c40&gt;
+&lt;environment: 0x00000208771f4170&gt;
 
 
 $gen3sis$mutation
@@ -561,7 +561,7 @@ function(species, cluster_indices, landscape, config) {
   traits[, "temp_niche_centre"] &lt;- traits[, "temp_niche_centre"] + mutation_deltas
   return(traits)
 }
-&lt;environment: 0x000001142af14c40&gt;
+&lt;environment: 0x00000208771f4170&gt;
 
 
 $gen3sis$ecology
@@ -574,7 +574,7 @@ function(abundance, traits, landscape, config) {
   abundance[diff&lt;=traits[,"temp_niche_width"]] &lt;- 1
   return(abundance)
 }
-&lt;environment: 0x000001142af14c40&gt;
+&lt;environment: 0x00000208771f4170&gt;
 
 
 
@@ -835,6 +835,13 @@ attr(,"class")
 <span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island4"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">7</span>)</span>
 <span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Interesting. What do you notice about the distribution of species on islands? Could you predict which island each lineage began on?</p>
 <p>We actually know which islands each lineage started on because we recorded this as a trait (we could also look at the past species objects to figure this out but we have used a shortcut though the traits).</p>
@@ -852,6 +859,13 @@ attr(,"class")
 <span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add island plot</span></span>
 <span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day2_Prac4_outputs_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>So whats really apparent here is that the clade that originated on the green island has speciated allopatrically into the red island multiple times in the recent past. The same is true for the red clade, however the deeper divergence between species9 and species3 have had enough time to recolonize both islands.</p>
 </section>
@@ -1307,33 +1321,33 @@ F-statistic: 36.99 on 6 and 1377 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code>Confusion Matrix and Statistics
 
           Reference
-Prediction  m0  m1  m2  m3
-        m0 110  15   5  13
-        m1   4  95   1   4
-        m2   0   0  83  27
-        m3   3   6  28  73
+Prediction m0 m1 m2 m3
+        m0 97 23  2 10
+        m1 15 84  0  6
+        m2  1  3 81 24
+        m3  4  6 34 77
 
 Overall Statistics
-                                          
-               Accuracy : 0.773           
-                 95% CI : (0.7323, 0.8102)
-    No Information Rate : 0.2505          
-    P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
-                                          
-                  Kappa : 0.6973          
-                                          
- Mcnemar's Test P-Value : 0.004102        
+                                         
+               Accuracy : 0.7259         
+                 95% CI : (0.683, 0.7659)
+    No Information Rate : 0.2505         
+    P-Value [Acc &gt; NIR] : &lt;2e-16         
+                                         
+                  Kappa : 0.6345         
+                                         
+ Mcnemar's Test P-Value : 0.1567         
 
 Statistics by Class:
 
                      Class: m0 Class: m1 Class: m2 Class: m3
-Precision               0.7692    0.9135    0.7545    0.6636
-Recall                  0.9402    0.8190    0.7094    0.6239
-F1                      0.8462    0.8636    0.7313    0.6432
+Precision               0.7348    0.8000    0.7431    0.6364
+Recall                  0.8291    0.7241    0.6923    0.6581
+F1                      0.7791    0.7602    0.7168    0.6471
 Prevalence              0.2505    0.2484    0.2505    0.2505
-Detection Rate          0.2355    0.2034    0.1777    0.1563
-Detection Prevalence    0.3062    0.2227    0.2355    0.2355
-Balanced Accuracy       0.9229    0.8967    0.8161    0.7591</code></pre>
+Detection Rate          0.2077    0.1799    0.1734    0.1649
+Detection Prevalence    0.2827    0.2248    0.2334    0.2591
+Balanced Accuracy       0.8645    0.8322    0.8062    0.7662</code></pre>
 </div>
 </div>
 <p>Whats the overall accuracy? Are some models predicted better than others?</p>
@@ -1392,120 +1406,120 @@ Balanced Accuracy       0.9229    0.8967    0.8161    0.7591</code></pre>
 <span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a><span class="co"># sum the classes</span></span>
 <span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">do.call</span>(rbind, class_predictions)) <span class="co"># </span><span class="al">TODO</span><span class="co"> define class prediction table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 2 1 2 1 1 4 1 3 3 1 4 2 3 1 4 2 4 3 2 1 1 3 2 1 1 2 2 4 3 2 1 4 4 3 4 1 2
-[39] 1 4 1 3 4 3 4 2 4 1</code></pre>
+<pre><code> [1] 3 2 2 2 1 2 4 1 4 4 1 1 2 1 2 4 2 1 2 2 4 1 3 2 4 2 2 2 2 4 1 2 4 2 3 4 1 2
+[39] 2 4 1 1 1 3 2 2 1 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now we can see which model is the most supported for each order</span></span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(empirical_transformed<span class="sc">$</span>m, <span class="fu">as.character</span>(class_predictions[[<span class="dv">1</span>]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      [,1]                [,2]
- [1,] "serpentes"         "m0"
+ [1,] "serpentes"         "m2"
  [2,] "anguimorpha"       "m1"
- [3,] "dibamia"           "m0"
+ [3,] "dibamia"           "m1"
  [4,] "gekkota"           "m1"
  [5,] "iguania"           "m0"
- [6,] "lacertoidea"       "m0"
+ [6,] "lacertoidea"       "m1"
  [7,] "scincoidea"        "m3"
  [8,] "afrosoricida"      "m0"
- [9,] "carnivora"         "m2"
-[10,] "cetartiodactyla"   "m2"
+ [9,] "carnivora"         "m3"
+[10,] "cetartiodactyla"   "m3"
 [11,] "chiroptera"        "m0"
-[12,] "cingulata"         "m3"
+[12,] "cingulata"         "m0"
 [13,] "dasyuromorphia"    "m1"
-[14,] "didelphimorphia"   "m2"
-[15,] "diprotodontia"     "m0"
+[14,] "didelphimorphia"   "m0"
+[15,] "diprotodontia"     "m1"
 [16,] "eulipotyphla"      "m3"
 [17,] "lagomorpha"        "m1"
-[18,] "primates"          "m3"
-[19,] "rodentia"          "m2"
+[18,] "primates"          "m0"
+[19,] "rodentia"          "m1"
 [20,] "scandentia"        "m1"
-[21,] "accipitriformes"   "m0"
+[21,] "accipitriformes"   "m3"
 [22,] "anseriformes"      "m0"
 [23,] "apodiformes"       "m2"
 [24,] "bucerotiformes"    "m1"
-[25,] "caprimulgiformes"  "m0"
-[26,] "charadriiformes"   "m0"
+[25,] "caprimulgiformes"  "m3"
+[26,] "charadriiformes"   "m1"
 [27,] "columbiformes"     "m1"
 [28,] "coraciiformes"     "m1"
-[29,] "cuculiformes"      "m3"
-[30,] "falconiformes"     "m2"
-[31,] "galliformes"       "m1"
-[32,] "gruiformes"        "m0"
+[29,] "cuculiformes"      "m1"
+[30,] "falconiformes"     "m3"
+[31,] "galliformes"       "m0"
+[32,] "gruiformes"        "m1"
 [33,] "musophagiformes"   "m3"
-[34,] "otidiformes"       "m3"
+[34,] "otidiformes"       "m1"
 [35,] "passeriformes"     "m2"
 [36,] "pelecaniformes"    "m3"
 [37,] "piciformes"        "m0"
 [38,] "procellariiformes" "m1"
-[39,] "psittaciformes"    "m0"
+[39,] "psittaciformes"    "m1"
 [40,] "strigiformes"      "m3"
 [41,] "suliformes"        "m0"
-[42,] "tinamiformes"      "m2"
-[43,] "trogoniformes"     "m3"
+[42,] "tinamiformes"      "m0"
+[43,] "trogoniformes"     "m0"
 [44,] "anura"             "m2"
-[45,] "caudata"           "m3"
+[45,] "caudata"           "m1"
 [46,] "gymnophiona"       "m1"
-[47,] "crocodylia"        "m3"
+[47,] "crocodylia"        "m0"
 [48,] "testudines"        "m0"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(class_predictions[[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 m0 m1 m2 m3 
-16 11  9 12 </code></pre>
+14 20  4 10 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can also look at the variation in this</span></span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(empirical_transformed<span class="sc">$</span>m, <span class="fu">round</span>(class_probabilities[[<span class="dv">1</span>]], <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   empirical_transformed$m    m0    m1    m2    m3
-1                serpentes 0.517 0.000 0.483 0.000
-2              anguimorpha 0.000 0.598 0.000 0.402
-3                  dibamia 1.000 0.000 0.000 0.000
-4                  gekkota 0.000 0.999 0.000 0.001
-5                  iguania 1.000 0.000 0.000 0.000
-6              lacertoidea 1.000 0.000 0.000 0.000
-7               scincoidea 0.000 0.000 0.000 1.000
-8             afrosoricida 1.000 0.000 0.000 0.000
-9                carnivora 0.000 0.000 1.000 0.000
-10         cetartiodactyla 0.041 0.000 0.959 0.000
-11              chiroptera 0.828 0.000 0.172 0.000
-12               cingulata 0.000 0.000 0.000 1.000
+1                serpentes 0.035 0.001 0.794 0.170
+2              anguimorpha 0.002 0.880 0.000 0.117
+3                  dibamia 0.000 0.998 0.000 0.002
+4                  gekkota 0.001 0.997 0.000 0.002
+5                  iguania 0.987 0.005 0.002 0.006
+6              lacertoidea 0.028 0.971 0.000 0.001
+7               scincoidea 0.003 0.076 0.025 0.896
+8             afrosoricida 0.869 0.131 0.000 0.000
+9                carnivora 0.003 0.031 0.007 0.958
+10         cetartiodactyla 0.019 0.003 0.409 0.569
+11              chiroptera 0.491 0.041 0.220 0.249
+12               cingulata 0.750 0.089 0.000 0.160
 13          dasyuromorphia 0.000 1.000 0.000 0.000
-15         didelphimorphia 0.000 0.000 1.000 0.000
-16           diprotodontia 1.000 0.000 0.000 0.000
-17            eulipotyphla 0.000 0.000 0.000 1.000
+15         didelphimorphia 0.449 0.044 0.273 0.234
+16           diprotodontia 0.000 1.000 0.000 0.000
+17            eulipotyphla 0.005 0.310 0.009 0.676
 19              lagomorpha 0.000 1.000 0.000 0.000
-28                primates 0.000 0.000 0.000 1.000
-30                rodentia 0.002 0.000 0.998 0.000
-31              scandentia 0.012 0.988 0.000 0.000
-33         accipitriformes 1.000 0.000 0.000 0.000
-34            anseriformes 1.000 0.000 0.000 0.000
-35             apodiformes 0.000 0.000 1.000 0.000
+28                primates 0.994 0.000 0.004 0.001
+30                rodentia 0.118 0.644 0.010 0.229
+31              scandentia 0.000 1.000 0.000 0.000
+33         accipitriformes 0.026 0.003 0.323 0.648
+34            anseriformes 0.984 0.013 0.002 0.002
+35             apodiformes 0.000 0.000 0.971 0.029
 37          bucerotiformes 0.000 1.000 0.000 0.000
-38        caprimulgiformes 1.000 0.000 0.000 0.000
-41         charadriiformes 0.979 0.021 0.000 0.000
-44           columbiformes 0.000 0.965 0.000 0.035
-45           coraciiformes 0.000 0.664 0.000 0.336
-46            cuculiformes 0.000 0.000 0.000 1.000
-48           falconiformes 0.147 0.000 0.853 0.000
-49             galliformes 0.000 0.983 0.000 0.017
-51              gruiformes 1.000 0.000 0.000 0.000
-53         musophagiformes 0.000 0.000 0.000 1.000
-54             otidiformes 0.000 0.000 0.000 1.000
-55           passeriformes 0.001 0.000 0.995 0.004
-56          pelecaniformes 0.000 0.000 0.291 0.709
-59              piciformes 0.998 0.000 0.001 0.000
+38        caprimulgiformes 0.000 0.000 0.129 0.871
+41         charadriiformes 0.129 0.871 0.000 0.000
+44           columbiformes 0.363 0.582 0.001 0.054
+45           coraciiformes 0.008 0.874 0.000 0.119
+46            cuculiformes 0.023 0.975 0.000 0.002
+48           falconiformes 0.044 0.172 0.062 0.721
+49             galliformes 0.952 0.047 0.000 0.001
+51              gruiformes 0.091 0.903 0.000 0.006
+53         musophagiformes 0.054 0.018 0.309 0.619
+54             otidiformes 0.019 0.880 0.000 0.100
+55           passeriformes 0.002 0.000 0.994 0.004
+56          pelecaniformes 0.000 0.003 0.015 0.982
+59              piciformes 0.997 0.002 0.000 0.001
 61       procellariiformes 0.000 1.000 0.000 0.000
-62          psittaciformes 0.767 0.233 0.000 0.000
-66            strigiformes 0.000 0.000 0.000 1.000
-67              suliformes 1.000 0.000 0.000 0.000
-68            tinamiformes 0.000 0.000 0.981 0.019
-69           trogoniformes 0.000 0.000 0.000 1.000
-70                   anura 0.001 0.000 0.885 0.114
-71                 caudata 0.000 0.000 0.000 1.000
-72             gymnophiona 0.000 1.000 0.000 0.000
-73              crocodylia 0.000 0.134 0.000 0.866
-74              testudines 1.000 0.000 0.000 0.000</code></pre>
+62          psittaciformes 0.008 0.991 0.000 0.002
+66            strigiformes 0.007 0.013 0.217 0.763
+67              suliformes 0.965 0.035 0.000 0.000
+68            tinamiformes 1.000 0.000 0.000 0.000
+69           trogoniformes 0.871 0.128 0.000 0.001
+70                   anura 0.010 0.000 0.950 0.040
+71                 caudata 0.000 0.973 0.000 0.027
+72             gymnophiona 0.210 0.789 0.000 0.001
+73              crocodylia 0.979 0.014 0.006 0.002
+74              testudines 0.783 0.016 0.081 0.120</code></pre>
 </div>
 </div>
 <p>What patterns do you see? Which models are the most supported?</p>

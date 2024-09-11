@@ -267,7 +267,7 @@ dotTree(phy,temp_niche,ftype="i", length=8, fsize=1.2, standardize=T)
 
 Not much variation in that trait, due to the combined effects of trait homogenization and a low rate of change. Lets plot the tip states of the islands on the phylogeny using the phytools package
 
-```{r, eval=FALSE}
+```{r}
 par(mfrow=c(1,2))
 
 # format each island
@@ -294,7 +294,7 @@ Interesting. What do you notice about the distribution of species on islands? Co
 
 We actually know which islands each lineage started on because we recorded this as a trait (we could also look at the past species objects to figure this out but we have used a shortcut though the traits).
 
-```{r, eval=FALSE}
+```{r}
 
 par(mfrow=c(1,2))
 plotTree(phy,ftype="i",offset=1,fsize=0.4, xlim=c(0, 75))
