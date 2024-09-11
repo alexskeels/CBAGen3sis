@@ -12,7 +12,7 @@ initial_abundance =  1
 # set for first time
 # assign("ss_eff", ss_eff_emp, envir = .GlobalEnv)
 # a list of traits to include with each species, traits with ss_eff_ are hack traits to extract in cell processes
-trait_names = c("dispersal", "temp_niche_centre", "temp_width", "start_island")
+trait_names = c("dispersal", "temp_niche_centre", "temp_niche_width", "start_island")
 
 # ranges to scale the input environemts with:
 # not listed variable:         no scaling takes place
@@ -55,15 +55,10 @@ create_ancestor_species <- function(landscape, config) {
   #                        sp4)
   new_species <- list()
   
-  
-  # Species 1 - high dispersal, low niche breadth
-  # Species 2 - medium-high dispersal, medium-low niche breadth
-  # Species 3 - medium-low dispersal, medium-high niche breadth
-  # Species 4 - low dispersal, high niche breadth
-  
+
   manual_traits <- list(
     "dispersal" = c(5, 5, 5, 5),
-    "temp_width" = c(1, 1, 1, 1)
+    "temp_niche_width" = c(1, 1, 1, 1)
   )
   
   for (sp_i in 1:4){
@@ -71,7 +66,7 @@ create_ancestor_species <- function(landscape, config) {
     new_species[[sp_i]] <- create_species(names(pv[pv==sp_i]), config)
     # set manual dispersal and niche width
     new_species[[sp_i]]$traits[ , "dispersal"] <- manual_traits$"dispersal"[sp_i]
-    new_species[[sp_i]]$traits[ , "temp_width"] <- manual_traits$"temp_width"[sp_i]
+    new_species[[sp_i]]$traits[ , "temp_niche_width"] <- manual_traits$"temp_niche_width"[sp_i]
     # set species 1 start to island 1, species 2 to island 2, etc...
     new_species[[sp_i]]$traits[ , "start_island"] <- unique(landscape$environment[pv==sp_i, "patch"]) # this is just a sanity check
     # set species mean temp to the mean temp of the patches
@@ -145,7 +140,7 @@ apply_ecology <- function(abundance, traits, landscape, config) {
   # get the difference between species and site mean temp
   diff <- abs(traits[, "temp_niche_centre"]-landscape[,"mean_temp"])
   # set the abundance of species with a difference in mean temp larger than the species temp width to zero and the ones below to one
-  abundance[diff>traits[,"temp_width"]] <- 0
-  abundance[diff<=traits[,"temp_width"]] <- 1
+  abundance[diff>traits[,"temp_niche_width"]] <- 0
+  abundance[diff<=traits[,"temp_niche_width"]] <- 1
   return(abundance)
 }
