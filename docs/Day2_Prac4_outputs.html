@@ -235,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The goal for today will be to produce:</p>
 <ol type="1">
 <li><p>A map of Species Richness from the simulation summary object</p></li>
-<li><p>edeA plot of Lineages Through Time from the phylogeny</p></li>
+<li><p>A plot of Lineages Through Time from the phylogeny</p></li>
 <li><p>Plot of species trait values on a phylogenetic tree, by linking the species objects to the phylogeny</p></li>
 <li><p>Maps of Phylogenetic Diversity by linking species objects to the landscape and phylogeny</p></li>
 </ol>
@@ -255,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>output_dir <span class="ot">&lt;-</span> <span class="st">"output/islands"</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(output_dir, <span class="st">"config_islands_simple_Day1Prac3_M1/sgen3sis.rds"</span>)) </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(output_dir, <span class="st">"config_islands_simple_Day1Prac3_M3/sgen3sis.rds"</span>)) </span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># look at what the simulation summary contains</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -268,11 +268,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sim<span class="sc">$</span>summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
- $ phylo_summary : num [1:52, 1:4] 4 4 4 4 4 4 4 4 4 4 ...
+ $ phylo_summary : num [1:52, 1:4] 4 4 4 4 4 4 4 4 5 5 ...
   ..- attr(*, "dimnames")=List of 2
   .. ..$ : chr [1:52] "initial" "50" "49" "48" ...
   .. ..$ : chr [1:4] "total" "alive" "speciations" "extinctions"
- $ occupancy     : Named num [1:52] 1 0.353 0.338 0.325 0.317 ...
+ $ occupancy     : Named num [1:52] 1 0.522 0.523 0.521 0.512 ...
   ..- attr(*, "names")= chr [1:52] "initial" "50" "49" "48" ...
  $ richness-final: num [1:3600, 1:3] 0.5 1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 ...
   ..- attr(*, "dimnames")=List of 2
@@ -294,7 +294,7 @@ initial     4     4           4           0
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sim<span class="sc">$</span>summary<span class="sc">$</span>occupancy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  initial        50        49        48        47        46 
-1.0000000 0.3530592 0.3384913 0.3254939 0.3166969 0.3069481 </code></pre>
+1.0000000 0.5215647 0.5232108 0.5211665 0.5117967 0.5004398 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># occupancy</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sim<span class="sc">$</span>summary<span class="sc">$</span><span class="st">`</span><span class="at">richness-final</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -355,7 +355,7 @@ initial     4     4           4           0
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sim<span class="sc">$</span>system</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$`runtime-hours`
-[1] 0.04478534
+[1] 0.05406023
 
 $`gen3sis-version`
 [1] '1.5.11'
@@ -398,15 +398,26 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] terra_1.7-29   gen3sis_1.5.11
+ [1] here_1.0.1      picante_1.8.2   nlme_3.1-160    vegan_2.6-4    
+ [5] lattice_0.20-45 permute_0.9-7   phytools_2.1-1  maps_3.4.1     
+ [9] ape_5.7-1       terra_1.7-29    gen3sis_1.5.11 
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.10      lattice_0.20-45  codetools_0.2-19 grid_4.2.2      
- [5] lifecycle_1.0.4  magrittr_2.0.3   stringi_1.7.12   rlang_1.1.3     
- [9] cli_3.6.0        rstudioapi_0.14  raster_3.6-26    sp_2.1-4        
-[13] Matrix_1.6-5     vctrs_0.6.0      tools_4.2.2      stringr_1.5.1   
-[17] glue_1.6.2       igraph_2.0.3     xfun_0.47        compiler_4.2.2  
-[21] pkgconfig_2.0.3  gdistance_1.6.4  knitr_1.48      </code></pre>
+ [1] Rcpp_1.0.10             compiler_4.2.2          iterators_1.0.14       
+ [4] tools_4.2.2             digest_0.6.31           lifecycle_1.0.4        
+ [7] gdistance_1.6.4         mgcv_1.8-42             pkgconfig_2.0.3        
+[10] rlang_1.1.3             fastmatch_1.1-3         Matrix_1.6-5           
+[13] foreach_1.5.2           igraph_2.0.3            cli_3.6.0              
+[16] rstudioapi_0.14         parallel_4.2.2          expm_0.999-7           
+[19] xfun_0.47               coda_0.19-4.1           cluster_2.1.4          
+[22] stringr_1.5.1           raster_3.6-26           knitr_1.48             
+[25] vctrs_0.6.0             generics_0.1.3          rprojroot_2.0.4        
+[28] scatterplot3d_0.3-44    combinat_0.0-8          grid_4.2.2             
+[31] glue_1.6.2              optimParallel_1.0-2     phangorn_2.11.1        
+[34] sp_2.1-4                magrittr_2.0.3          splines_4.2.2          
+[37] codetools_0.2-19        MASS_7.3-58.3           mnormt_2.1.1           
+[40] numDeriv_2016.8-1.1     quadprog_1.5-8          stringi_1.7.12         
+[43] doParallel_1.0.17       clusterGeneration_1.3.8</code></pre>
 </div>
 </div>
 <p>Finally the summary object contains the config information and model parameters used.</p>
@@ -431,11 +442,14 @@ $gen3sis$general$max_number_of_coexisting_species
 [1] 20000
 
 $gen3sis$general$end_of_timestep_observer
-function(data, vars, config){
+function(data, vars, config){  
+  
   plot_richness(data$all_species, data$landscape)
+  
   save_species() # saves a species and landscape objects for desired timesteps
+  
 }
-&lt;environment: 0x0000024e4148a7f8&gt;
+&lt;environment: 0x000001142af14c40&gt;
 
 $gen3sis$general$trait_names
 [1] "dispersal"         "temp_niche_centre" "temp_niche_width" 
@@ -473,10 +487,10 @@ function(landscape, config) {
   #                        sp4)
   new_species &lt;- list()
   
-
+  
   manual_traits &lt;- list(
-    "dispersal" = c(5, 5, 5, 5),
-    "temp_niche_width" = c(1, 1, 1, 1)
+    "dispersal" = c(10, 7.5, 5, 2.5),
+    "temp_niche_width" = c(0.5, 1, 2, 4)
   )
   
   for (sp_i in 1:4){
@@ -493,7 +507,7 @@ function(landscape, config) {
   
   return(new_species)
 }
-&lt;environment: 0x0000024e4148a7f8&gt;
+&lt;environment: 0x000001142af14c40&gt;
 
 
 $gen3sis$dispersal
@@ -502,35 +516,34 @@ $gen3sis$dispersal$max_dispersal
 
 $gen3sis$dispersal$get_dispersal_values
 function(n, species, landscape, config){
+  #browser()
   values &lt;- rexp(n, rate = 1/species$traits[,"dispersal"])
   return(values)
 }
-&lt;environment: 0x0000024e4148a7f8&gt;
+&lt;environment: 0x000001142af14c40&gt;
 
 
 $gen3sis$speciation
 $gen3sis$speciation$divergence_threshold
-[1] 10
+[1] 5
 
 $gen3sis$speciation$get_divergence_factor
 function(species, cluster_indices, landscape, config) {
   return(1)
 }
-&lt;environment: 0x0000024e4148a7f8&gt;
+&lt;environment: 0x000001142af14c40&gt;
 
 
 $gen3sis$mutation
 $gen3sis$mutation$apply_evolution
 function(species, cluster_indices, landscape, config) {
-  # browser()
   # cell names
-  trait_evolutionary_power &lt;-0.01
+  trait_evolutionary_power &lt;-0.05
   traits &lt;- species[["traits"]]
   cells &lt;- rownames(traits)
   #homogenize trait based on abundance
   # Homogenize all traits by weighted abundance, attention, exclude here any trait that should be more neutral
-  trn &lt;- config$gen3sis$general$trait_names # get trait names
-  trn &lt;- trn[!trn %in% c("start_island")] # exclude start_island
+  trn &lt;- config$gen3sis$general$trait_names
   for(cluster_index in unique(cluster_indices)){
     # cluster_index &lt;- 1
     cells_cluster &lt;- cells[which(cluster_indices == cluster_index)]
@@ -540,7 +553,7 @@ function(species, cluster_indices, landscape, config) {
     for (ti in trn){
       traits[cells_cluster, ti] &lt;- mean(traits[cells_cluster, ti]*weight_abd)
     }
-    # hist(traits[cells_cluster, "temp"], main="after") # usefull to see spread
+    # hist(traits[cells_cluster, "temp"], main="after")
   }
   
   # mutate mean temperature
@@ -548,7 +561,7 @@ function(species, cluster_indices, landscape, config) {
   traits[, "temp_niche_centre"] &lt;- traits[, "temp_niche_centre"] + mutation_deltas
   return(traits)
 }
-&lt;environment: 0x0000024e4148a7f8&gt;
+&lt;environment: 0x000001142af14c40&gt;
 
 
 $gen3sis$ecology
@@ -561,7 +574,7 @@ function(abundance, traits, landscape, config) {
   abundance[diff&lt;=traits[,"temp_niche_width"]] &lt;- 1
   return(abundance)
 }
-&lt;environment: 0x0000024e4148a7f8&gt;
+&lt;environment: 0x000001142af14c40&gt;
 
 
 
@@ -573,10 +586,10 @@ $directories$input
 [1] "data/landscapes/islands"
 
 $directories$output
-[1] "output/islands/config_islands_simple_Day1Prac3_M1"
+[1] "output/islands/config_islands_simple_Day1Prac3_M3"
 
 $directories$output_plots
-[1] "output/islands/config_islands_simple_Day1Prac3_M1/plots"
+[1] "output/islands/config_islands_simple_Day1Prac3_M3/plots"
 
 
 attr(,"class")
@@ -589,7 +602,7 @@ attr(,"class")
 <p>The phylogeny object is pretty straight forward. It is a nexus file containing the relationships between the species.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read phy</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>phy <span class="ot">&lt;-</span> <span class="fu">read.nexus</span>(<span class="fu">file.path</span>(output_dir, <span class="st">"config_islands_simple_Day1Prac3_M1/phy.nex"</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>phy <span class="ot">&lt;-</span> <span class="fu">read.nexus</span>(<span class="fu">file.path</span>(output_dir, <span class="st">"config_islands_simple_Day1Prac3_M3/phy.nex"</span>))</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot phy</span></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -601,7 +614,7 @@ attr(,"class")
 </div>
 </div>
 </div>
-<p>From this object we can look at lineages through time plots and estimate trends in diversification, such as using the gamma statistic to detect diversification slowdowns or speedups.</p>
+<p>From this object we can look at lineages through time plots and estimate trends in diversification. The gamma statistic is one way to detect diversification slowdowns or speedups, with positive values indicating nodes are more closely pushed up towards the tips (speed up) and negative values indicating nodes are closer to the root (slowdown) (<a href="https://royalsocietypublishing.org/doi/10.1098/rspb.2000.1278">Pybus and Harvey 2000</a>). There are lots of other kinds of measures of phylogenetic tree shape, such as metrics of tree imbalance (Colless’s Index, Beta-Splitting Paramater, etc.)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot an ltt</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>ltt_M1 <span class="ot">&lt;-</span><span class="fu">ltt</span>(phy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -615,12 +628,12 @@ attr(,"class")
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the gamma statistic</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"Gamma = "</span>, <span class="fu">round</span>(ltt_M1<span class="sc">$</span>gamma, <span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Gamma = -0.67"</code></pre>
+<pre><code>[1] "Gamma = -0.69"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is there a significant deviation from conatant rates?</span></span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is there a significant deviation from constant rates?</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"P = "</span>, <span class="fu">round</span>(ltt_M1<span class="sc">$</span>p, <span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "P = 0.5"</code></pre>
+<pre><code>[1] "P = 0.49"</code></pre>
 </div>
 </div>
 </section>
@@ -629,7 +642,7 @@ attr(,"class")
 <p>Now its time to get into the meat of the gen3sis outputs. Most of the information from the simulation is stored in the species objects. These are .rds files that contain a list which includes information on every species, extinct or extant, that existed during the simulation. These are saved per default at every time step, but can be fine tuned according to your needs. The naming convention is “species_t_0.rds” for time step 0 (present-day), and “species_t_50” for timestep 50, etc.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load object</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>species_t_0 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(output_dir, <span class="st">"config_islands_simple_Day1Prac3_M1"</span>, <span class="st">"species"</span>, <span class="st">"species_t_0.rds"</span>))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>species_t_0 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(output_dir, <span class="st">"config_islands_simple_Day1Prac3_M3"</span>, <span class="st">"species"</span>, <span class="st">"species_t_0.rds"</span>))</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># look at object class and length</span></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(species_t_0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -638,12 +651,12 @@ attr(,"class")
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(species_t_0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10</code></pre>
+<pre><code>[1] 79</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare to number of tips in the phylogeny</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Ntip</span>(phy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10</code></pre>
+<pre><code>[1] 79</code></pre>
 </div>
 </div>
 <p>There are 14 elements in the list, representing our 14 species and this number matches the number of species in our phylogeny. No species went extinct in this particular simulation, but if they did, they would match extinct tips in the phylogeny.</p>
@@ -665,39 +678,33 @@ attr(,"class")
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>species_t_0[[<span class="dv">1</span>]]<span class="sc">$</span>abundance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>247 248 249 250 251 252 253 288 289 290 291 292 294 306 307 308 310 311 312 313 
+<pre><code>249 250 251 252 289 290 291 306 307 313 316 348 349 352 353 354 364 365 366 377 
   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-314 315 316 317 318 348 349 351 352 353 354 355 363 364 365 366 367 376 377 378 
+406 407 408 414 415 423 439 440 465 466 467 476 482 500 525 560 561 584 597 618 
   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-379 406 407 408 414 415 416 422 423 424 437 438 439 440 465 466 467 475 476 482 
+619 620 645 656 657 662 678 679 705 706 716 717 722 723 737 738 766 767 776 783 
   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-483 500 501 524 525 526 536 537 542 559 560 561 584 585 597 602 618 619 620 621 
+784 785 795 796 827 835 836 845 846 847 848 849 853 854 888 889 890 892 893 894 
   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-644 645 646 656 657 662 663 676 677 678 679 680 705 706 716 717 722 723 736 737 
-  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-738 765 766 767 775 776 777 783 784 785 786 794 795 796 797 827 829 834 835 836 
-  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-844 845 846 847 848 849 850 851 852 853 854 855 856 887 888 889 890 891 892 893 
-  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
-894 895 906 907 908 909 910 911 912 913 949 950 951 952 953 
-  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 </code></pre>
+909 910 951 953 
+  1   1   1   1 </code></pre>
 </div>
 </div>
-<p>In this case the species has abundance values of 1 in all populations from the cells that it occupies. This is because we set abundances to be binary: 1=present, 0=absent. We can see the species occupies cells 2767,2768,2769, etc.</p>
+<p>In this case the species has abundance values of 1 in all populations from the cells that it occupies. This is because we set abundances to be binary: 1=present, 0=absent. We can see the species occupies cells 247, 248, 249, etc.</p>
 <p>The species also has values of it’s traits for each of its populations.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(species_t_0[[<span class="dv">1</span>]]<span class="sc">$</span>traits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    dispersal temp_niche_centre temp_niche_width start_island
-247         5          20.84468                1            1
-248         5          20.82800                1            1
-249         5          20.83316                1            1
-250         5          20.83969                1            1
-251         5          20.82486                1            1
-252         5          20.83450                1            1</code></pre>
+249        10          20.77320              0.5            1
+250        10          20.78322              0.5            1
+251        10          20.84116              0.5            1
+252        10          20.76937              0.5            1
+289        10          20.77562              0.5            1
+290        10          20.85630              0.5            1</code></pre>
 </div>
 </div>
-<p>We can see the population that each row is linked by the rownames. Here you can see 2767, 2768, 2769, etc. Each of these populations have a dispersal trait of 5 (because we didn’t vary this) slightly different temp_mean traits (because these evolved stochastically under a Brownian motion model) and a temp width of 1 (again, we didn;t vary this in model 1).</p>
+<p>We can see the population that each row is linked by the rownames. Here you can see 247, 248, 249, etc. Each of these populations have a dispersal trait of 5 (because we didn’t vary this) slightly different temp_mean traits (because these evolved stochastically under a Brownian motion model) and a temp width of 1 (again, we didn;t vary this in model 1).</p>
 <p>So, if we want to map out the distribution of species 1 at timestep 0, we just need to link those cell names (267/268/etc) to the landscape object and make a raster. Why don;t we try and see what islands species 1 is found on.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
@@ -782,12 +789,12 @@ attr(,"class")
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(daf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        id mean_temp island1 island2 island3 island4 island_start
-1 species1  20.82727       1       1       0       0            1
-2 species2  20.98489       1       1       0       0            2
-3 species3  21.09256       0       0       1       0            3
-4 species4  22.00088       0       0       0       1            4
-5 species5  20.97409       1       1       0       0            2
-6 species6  20.82458       1       1       0       0            1</code></pre>
+1 species1  20.81620       1       1       0       0            1
+2 species2  20.89374       1       1       0       0            2
+3 species3  21.13878       0       0       1       0            3
+4 species4  21.97150       0       0       0       1            4
+5 species5  20.77629       1       1       0       0            1
+6 species6  20.79492       1       1       0       0            1</code></pre>
 </div>
 </div>
 <p>Plot out the continuously evolving temperature niche trait</p>
@@ -797,7 +804,7 @@ attr(,"class")
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(temp_niche) <span class="ot">&lt;-</span> daf<span class="sc">$</span>id</span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot it out with dots = trait</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dotTree</span>(phy,temp_niche,<span class="at">ftype=</span><span class="st">"i"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dotTree</span>(phy,temp_niche,<span class="at">ftype=</span><span class="st">"i"</span>, <span class="at">length=</span><span class="dv">8</span>, <span class="at">fsize=</span><span class="fl">1.2</span>, <span class="at">standardize=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -808,22 +815,26 @@ attr(,"class")
 </div>
 <p>Not much variation in that trait, due to the combined effects of trait homogenization and a low rate of change. Lets plot the tip states of the islands on the phylogeny using the phytools package</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># format each island</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>formatIsland <span class="ot">&lt;-</span> <span class="cf">function</span>(island, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf){</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  islandf <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(daf[, island])</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(islandf) <span class="ot">&lt;-</span> daf<span class="sc">$</span>id</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  islandmat<span class="ot">&lt;-</span><span class="fu">to.matrix</span>(islandf,<span class="fu">levels</span>(islandf))</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  islandmat<span class="ot">&lt;-</span>islandmat[phy<span class="sc">$</span>tip.label,]</span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(islandf, islandmat))</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plotTree</span>(phy,<span class="at">ftype=</span><span class="st">"i"</span>,<span class="at">offset=</span><span class="dv">1</span>,<span class="at">fsize=</span><span class="fl">0.9</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">75</span>))</span>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># format each island</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>formatIsland <span class="ot">&lt;-</span> <span class="cf">function</span>(island, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf){</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  islandf <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(daf[, island])</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(islandf) <span class="ot">&lt;-</span> daf<span class="sc">$</span>id</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  islandmat<span class="ot">&lt;-</span><span class="fu">to.matrix</span>(islandf,<span class="fu">levels</span>(islandf))</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  islandmat<span class="ot">&lt;-</span>islandmat[phy<span class="sc">$</span>tip.label,]</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(islandf, islandmat))</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island1"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island2"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">3</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">3</span>)</span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island3"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">5</span>)</span>
-<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island4"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plotTree</span>(phy,<span class="at">ftype=</span><span class="st">"i"</span>,<span class="at">offset=</span><span class="dv">1</span>,<span class="at">fsize=</span><span class="fl">0.9</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">75</span>))</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island1"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island2"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">3</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">3</span>)</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island3"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">5</span>)</span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island4"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">7</span>)</span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Interesting. What do you notice about the distribution of species on islands? Could you predict which island each lineage began on?</p>
 <p>We actually know which islands each lineage started on because we recorded this as a trait (we could also look at the past species objects to figure this out but we have used a shortcut though the traits).</p>
@@ -835,11 +846,12 @@ attr(,"class")
 <span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island2"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">3</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">3</span>)</span>
 <span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island3"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">5</span>)</span>
 <span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island4"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">7</span>)</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add the starting island as a fifth colum</span></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island_start"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">9</span>)</span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="co"># add island plot</span></span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co"># add the starting island as a fifth colum</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island_start"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)],<span class="at">cex=</span><span class="fl">1.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">9</span>, <span class="at">pch=</span><span class="dv">7</span>)</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add island plot</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So whats really apparent here is that the clade that originated on the green island has speciated allopatrically into the red island multiple times in the recent past. The same is true for the red clade, however the deeper divergence between species9 and species3 have had enough time to recolonize both islands.</p>
 </section>
@@ -1295,33 +1307,33 @@ F-statistic: 36.99 on 6 and 1377 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code>Confusion Matrix and Statistics
 
           Reference
-Prediction m0 m1 m2 m3
-        m0 97 18  4  8
-        m1 13 89  0  4
-        m2  3  1 81 20
-        m3  4  8 32 85
+Prediction  m0  m1  m2  m3
+        m0 110  15   5  13
+        m1   4  95   1   4
+        m2   0   0  83  27
+        m3   3   6  28  73
 
 Overall Statistics
                                           
-               Accuracy : 0.7537          
-                 95% CI : (0.7121, 0.7922)
+               Accuracy : 0.773           
+                 95% CI : (0.7323, 0.8102)
     No Information Rate : 0.2505          
-    P-Value [Acc &gt; NIR] : &lt;2e-16          
+    P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
                                           
-                  Kappa : 0.6716          
+                  Kappa : 0.6973          
                                           
- Mcnemar's Test P-Value : 0.2867          
+ Mcnemar's Test P-Value : 0.004102        
 
 Statistics by Class:
 
                      Class: m0 Class: m1 Class: m2 Class: m3
-Precision               0.7638    0.8396    0.7714    0.6589
-Recall                  0.8291    0.7672    0.6923    0.7265
-F1                      0.7951    0.8018    0.7297    0.6911
+Precision               0.7692    0.9135    0.7545    0.6636
+Recall                  0.9402    0.8190    0.7094    0.6239
+F1                      0.8462    0.8636    0.7313    0.6432
 Prevalence              0.2505    0.2484    0.2505    0.2505
-Detection Rate          0.2077    0.1906    0.1734    0.1820
-Detection Prevalence    0.2719    0.2270    0.2248    0.2762
-Balanced Accuracy       0.8717    0.8594    0.8119    0.8004</code></pre>
+Detection Rate          0.2355    0.2034    0.1777    0.1563
+Detection Prevalence    0.3062    0.2227    0.2355    0.2355
+Balanced Accuracy       0.9229    0.8967    0.8161    0.7591</code></pre>
 </div>
 </div>
 <p>Whats the overall accuracy? Are some models predicted better than others?</p>
@@ -1380,120 +1392,120 @@ Balanced Accuracy       0.8717    0.8594    0.8119    0.8004</code></pre>
 <span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a><span class="co"># sum the classes</span></span>
 <span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">do.call</span>(rbind, class_predictions)) <span class="co"># </span><span class="al">TODO</span><span class="co"> define class prediction table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 3 2 2 2 1 2 3 3 3 3 3 3 2 3 2 3 4 4 3 2 3 1 3 2 3 2 2 2 2 3 2 2 3 4 3 3 1 2
-[39] 2 4 1 3 2 3 3 2 4 3</code></pre>
+<pre><code> [1] 1 2 1 2 1 1 4 1 3 3 1 4 2 3 1 4 2 4 3 2 1 1 3 2 1 1 2 2 4 3 2 1 4 4 3 4 1 2
+[39] 1 4 1 3 4 3 4 2 4 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now we can see which model is the most supported for each order</span></span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(empirical_transformed<span class="sc">$</span>m, <span class="fu">as.character</span>(class_predictions[[<span class="dv">1</span>]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      [,1]                [,2]
- [1,] "serpentes"         "m2"
+ [1,] "serpentes"         "m0"
  [2,] "anguimorpha"       "m1"
- [3,] "dibamia"           "m1"
+ [3,] "dibamia"           "m0"
  [4,] "gekkota"           "m1"
  [5,] "iguania"           "m0"
- [6,] "lacertoidea"       "m1"
- [7,] "scincoidea"        "m2"
- [8,] "afrosoricida"      "m2"
+ [6,] "lacertoidea"       "m0"
+ [7,] "scincoidea"        "m3"
+ [8,] "afrosoricida"      "m0"
  [9,] "carnivora"         "m2"
 [10,] "cetartiodactyla"   "m2"
-[11,] "chiroptera"        "m2"
-[12,] "cingulata"         "m2"
+[11,] "chiroptera"        "m0"
+[12,] "cingulata"         "m3"
 [13,] "dasyuromorphia"    "m1"
 [14,] "didelphimorphia"   "m2"
-[15,] "diprotodontia"     "m1"
-[16,] "eulipotyphla"      "m2"
-[17,] "lagomorpha"        "m3"
+[15,] "diprotodontia"     "m0"
+[16,] "eulipotyphla"      "m3"
+[17,] "lagomorpha"        "m1"
 [18,] "primates"          "m3"
 [19,] "rodentia"          "m2"
 [20,] "scandentia"        "m1"
-[21,] "accipitriformes"   "m2"
+[21,] "accipitriformes"   "m0"
 [22,] "anseriformes"      "m0"
 [23,] "apodiformes"       "m2"
 [24,] "bucerotiformes"    "m1"
-[25,] "caprimulgiformes"  "m2"
-[26,] "charadriiformes"   "m1"
+[25,] "caprimulgiformes"  "m0"
+[26,] "charadriiformes"   "m0"
 [27,] "columbiformes"     "m1"
 [28,] "coraciiformes"     "m1"
-[29,] "cuculiformes"      "m1"
+[29,] "cuculiformes"      "m3"
 [30,] "falconiformes"     "m2"
 [31,] "galliformes"       "m1"
-[32,] "gruiformes"        "m1"
-[33,] "musophagiformes"   "m2"
+[32,] "gruiformes"        "m0"
+[33,] "musophagiformes"   "m3"
 [34,] "otidiformes"       "m3"
 [35,] "passeriformes"     "m2"
-[36,] "pelecaniformes"    "m2"
+[36,] "pelecaniformes"    "m3"
 [37,] "piciformes"        "m0"
 [38,] "procellariiformes" "m1"
-[39,] "psittaciformes"    "m1"
+[39,] "psittaciformes"    "m0"
 [40,] "strigiformes"      "m3"
 [41,] "suliformes"        "m0"
 [42,] "tinamiformes"      "m2"
-[43,] "trogoniformes"     "m1"
+[43,] "trogoniformes"     "m3"
 [44,] "anura"             "m2"
-[45,] "caudata"           "m2"
+[45,] "caudata"           "m3"
 [46,] "gymnophiona"       "m1"
 [47,] "crocodylia"        "m3"
-[48,] "testudines"        "m2"</code></pre>
+[48,] "testudines"        "m0"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(class_predictions[[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 m0 m1 m2 m3 
- 4 18 21  5 </code></pre>
+16 11  9 12 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can also look at the variation in this</span></span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(empirical_transformed<span class="sc">$</span>m, <span class="fu">round</span>(class_probabilities[[<span class="dv">1</span>]], <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   empirical_transformed$m    m0    m1    m2    m3
-1                serpentes 0.000 0.000 0.999 0.001
-2              anguimorpha 0.000 0.554 0.000 0.445
-3                  dibamia 0.000 0.941 0.000 0.059
-4                  gekkota 0.003 0.997 0.000 0.001
-5                  iguania 0.977 0.003 0.017 0.003
-6              lacertoidea 0.023 0.970 0.000 0.006
-7               scincoidea 0.000 0.000 1.000 0.000
-8             afrosoricida 0.185 0.006 0.809 0.000
+1                serpentes 0.517 0.000 0.483 0.000
+2              anguimorpha 0.000 0.598 0.000 0.402
+3                  dibamia 1.000 0.000 0.000 0.000
+4                  gekkota 0.000 0.999 0.000 0.001
+5                  iguania 1.000 0.000 0.000 0.000
+6              lacertoidea 1.000 0.000 0.000 0.000
+7               scincoidea 0.000 0.000 0.000 1.000
+8             afrosoricida 1.000 0.000 0.000 0.000
 9                carnivora 0.000 0.000 1.000 0.000
-10         cetartiodactyla 0.000 0.000 1.000 0.000
-11              chiroptera 0.000 0.000 1.000 0.000
-12               cingulata 0.000 0.000 1.000 0.000
+10         cetartiodactyla 0.041 0.000 0.959 0.000
+11              chiroptera 0.828 0.000 0.172 0.000
+12               cingulata 0.000 0.000 0.000 1.000
 13          dasyuromorphia 0.000 1.000 0.000 0.000
 15         didelphimorphia 0.000 0.000 1.000 0.000
-16           diprotodontia 0.000 1.000 0.000 0.000
-17            eulipotyphla 0.000 0.000 1.000 0.000
-19              lagomorpha 0.000 0.182 0.000 0.818
-28                primates 0.100 0.043 0.000 0.856
-30                rodentia 0.000 0.000 1.000 0.000
-31              scandentia 0.002 0.998 0.000 0.000
-33         accipitriformes 0.000 0.000 1.000 0.000
-34            anseriformes 0.959 0.006 0.033 0.003
+16           diprotodontia 1.000 0.000 0.000 0.000
+17            eulipotyphla 0.000 0.000 0.000 1.000
+19              lagomorpha 0.000 1.000 0.000 0.000
+28                primates 0.000 0.000 0.000 1.000
+30                rodentia 0.002 0.000 0.998 0.000
+31              scandentia 0.012 0.988 0.000 0.000
+33         accipitriformes 1.000 0.000 0.000 0.000
+34            anseriformes 1.000 0.000 0.000 0.000
 35             apodiformes 0.000 0.000 1.000 0.000
 37          bucerotiformes 0.000 1.000 0.000 0.000
-38        caprimulgiformes 0.000 0.000 0.943 0.057
-41         charadriiformes 0.336 0.664 0.000 0.000
-44           columbiformes 0.083 0.741 0.000 0.176
-45           coraciiformes 0.000 0.733 0.000 0.267
-46            cuculiformes 0.054 0.934 0.007 0.006
-48           falconiformes 0.000 0.000 1.000 0.000
-49             galliformes 0.155 0.515 0.000 0.330
-51              gruiformes 0.002 0.713 0.000 0.285
-53         musophagiformes 0.000 0.000 1.000 0.000
-54             otidiformes 0.016 0.402 0.039 0.543
-55           passeriformes 0.000 0.000 1.000 0.000
-56          pelecaniformes 0.000 0.000 1.000 0.000
-59              piciformes 0.979 0.001 0.018 0.002
+38        caprimulgiformes 1.000 0.000 0.000 0.000
+41         charadriiformes 0.979 0.021 0.000 0.000
+44           columbiformes 0.000 0.965 0.000 0.035
+45           coraciiformes 0.000 0.664 0.000 0.336
+46            cuculiformes 0.000 0.000 0.000 1.000
+48           falconiformes 0.147 0.000 0.853 0.000
+49             galliformes 0.000 0.983 0.000 0.017
+51              gruiformes 1.000 0.000 0.000 0.000
+53         musophagiformes 0.000 0.000 0.000 1.000
+54             otidiformes 0.000 0.000 0.000 1.000
+55           passeriformes 0.001 0.000 0.995 0.004
+56          pelecaniformes 0.000 0.000 0.291 0.709
+59              piciformes 0.998 0.000 0.001 0.000
 61       procellariiformes 0.000 1.000 0.000 0.000
-62          psittaciformes 0.004 0.996 0.000 0.000
-66            strigiformes 0.000 0.004 0.000 0.996
-67              suliformes 0.979 0.021 0.000 0.000
-68            tinamiformes 0.000 0.000 1.000 0.000
-69           trogoniformes 0.428 0.562 0.000 0.010
-70                   anura 0.002 0.000 0.991 0.007
-71                 caudata 0.000 0.000 1.000 0.000
-72             gymnophiona 0.148 0.844 0.000 0.008
-73              crocodylia 0.000 0.030 0.000 0.970
-74              testudines 0.000 0.000 1.000 0.000</code></pre>
+62          psittaciformes 0.767 0.233 0.000 0.000
+66            strigiformes 0.000 0.000 0.000 1.000
+67              suliformes 1.000 0.000 0.000 0.000
+68            tinamiformes 0.000 0.000 0.981 0.019
+69           trogoniformes 0.000 0.000 0.000 1.000
+70                   anura 0.001 0.000 0.885 0.114
+71                 caudata 0.000 0.000 0.000 1.000
+72             gymnophiona 0.000 1.000 0.000 0.000
+73              crocodylia 0.000 0.134 0.000 0.866
+74              testudines 1.000 0.000 0.000 0.000</code></pre>
 </div>
 </div>
 <p>What patterns do you see? Which models are the most supported?</p>
