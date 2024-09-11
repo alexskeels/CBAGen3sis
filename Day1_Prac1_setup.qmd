@@ -4,8 +4,10 @@ author: "Alex Skeels and Oskar Hagen"
 execute: 
   eval: TRUE
 ---
-
-The first step to a successful workshop is ensuring everyone has the necessary software up and running on everyone's machine. We'll take a few minutes to get everything set up and take a sneak peek at some of the  data we'll be working with throughout the session, before moving on to the nitty gritty.
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+The first step to a successful workshop is ensuring everyone has the necessary software up and running on everyone's machine. We'll take a few minutes to get everything set up and take a sneak peek at some of the data we'll be working with throughout the session, before moving on to the nitty gritty.
 
 ## Download workshop files Github Repository {.unnumbered}
 
@@ -63,7 +65,6 @@ library(gen3sis)
 
 Now, lets source our support functions, to load some of the functions we'll be going throughout the workshop. The first one is just a convenient way of installing packages if they are not already installed.
 
-
 You can also install these other packages we'll use throughout the workshop.
 
 ```{r, echo=FALSE}
@@ -83,8 +84,7 @@ All the data for the workshop is stored in the 'data' folder, for your convenien
 source("support.R")
 ```
 
-In this folder we include a paleoenvironmental reconstruction of South American temperature and aridity at a coarse spatial resolution of 2 degrees, and at a temporal resolution of 1 million years. This is a very rough temporal resolution but should do for our tutorial.
-Load it in and investigate some of it's features.
+In this folder we include a paleoenvironmental reconstruction of South American temperature and aridity at a coarse spatial resolution of 2 degrees, and at a temporal resolution of 1 million years. This is a very rough temporal resolution but should do for our tutorial. Load it in and investigate some of it's features.
 
 ```{r}
 # read the R data file

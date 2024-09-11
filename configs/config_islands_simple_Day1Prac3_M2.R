@@ -40,44 +40,41 @@ end_of_timestep_observer = function(data, vars, config){
 create_ancestor_species <- function(landscape, config) {
   # browser()
   co <- landscape$coordinates
-  sp1 <- co[which(co[,1]<20&co[,2]<30),]
-  sp2 <- co[which(co[,1]>20&co[,2]<30),]
-  sp3 <- co[which(co[,1]<20&co[,2]>30),]
-  sp4 <- co[which(co[,1]>20&co[,2]>30),]
   
-  species_coords <- list(sp1,
-                         sp2,
-                         sp3,
-                         sp4)
+  # If we wouldn't have passe the patches though the environment, we could have done this:
+  # sp1 <- co[which(co[,1]<20&co[,2]<30),]
+  # sp2 <- co[which(co[,1]>20&co[,2]<30),]
+  # sp3 <- co[which(co[,1]<20&co[,2]>30),]
+  # sp4 <- co[which(co[,1]>20&co[,2]>30),]
+  
+  # however, we made thinks simpler to you.
+  # get patches vector
+  pv <- landscape$environment[, "patch"]
+  
+  # species_coords <- list(sp1,
+  #                        sp2,
+  #                        sp3,
+  #                        sp4)
   new_species <- list()
   
-  # Species 1 - high dispersal, low niche breadth
-  new_species[[1]] <- create_species(rownames(species_coords[[1]]), config)
-  new_species[[1]]$traits[ , "dispersal"] <- 5
-  new_species[[1]]$traits[ , "temp_niche_centre"] <- mean(landscape$environment[rownames(species_coords[[1]]), "mean_temp"])
-  new_species[[1]]$traits[ , "temp_niche_width"] <- 1
-  new_species[[1]]$traits[ , "start_island"] <- unique(landscape$environment[rownames(species_coords[[1]]), "patch"])
   
-  # Species 2 - medium-high dispersal, medium-low niche breadth
-  new_species[[2]] <- create_species(rownames(species_coords[[2]]), config)
-  new_species[[2]]$traits[ , "dispersal"] <- 5
-  new_species[[2]]$traits[ , "temp_niche_centre"] <- mean(landscape$environment[rownames(species_coords[[2]]), "mean_temp"])
-  new_species[[2]]$traits[ , "temp_niche_width"] <- 1
-  new_species[[2]]$traits[ , "start_island"] <- unique(landscape$environment[rownames(species_coords[[2]]), "patch"])
+  manual_traits <- list(
+    "dispersal" = c(5, 5, 5, 5),
+    "temp_niche_width" = c(1, 1, 1, 1)
+  )
   
-  # Species 3 - medium-low dispersal, medium-high niche breadth
-  new_species[[3]] <- create_species(rownames(species_coords[[3]]), config)
-  new_species[[3]]$traits[ , "dispersal"] <- 5
-  new_species[[3]]$traits[ , "temp_niche_centre"] <- mean(landscape$environment[rownames(species_coords[[3]]), "mean_temp"])
-  new_species[[3]]$traits[ , "temp_niche_width"] <- 1
-  new_species[[3]]$traits[ , "start_island"] <- unique(landscape$environment[rownames(species_coords[[3]]), "patch"])
+  for (sp_i in 1:4){
+    # create a species empty object
+    new_species[[sp_i]] <- create_species(names(pv[pv==sp_i]), config)
+    # set manual dispersal and niche width
+    new_species[[sp_i]]$traits[ , "dispersal"] <- manual_traits$"dispersal"[sp_i]
+    new_species[[sp_i]]$traits[ , "temp_niche_width"] <- manual_traits$"temp_niche_width"[sp_i]
+    # set species 1 start to island 1, species 2 to island 2, etc...
+    new_species[[sp_i]]$traits[ , "start_island"] <- unique(landscape$environment[pv==sp_i, "patch"]) # this is just a sanity check
+    # set species mean temp to the mean temp of the patches
+    new_species[[sp_i]]$traits[ , "temp_niche_centre"] <- mean(landscape$environment[pv==sp_i, "mean_temp"])
+  }
   
-  # Species 4 -low dispersal,high niche breadth
-  new_species[[4]] <- create_species(rownames(species_coords[[4]]), config)
-  new_species[[4]]$traits[ , "dispersal"] <- 5
-  new_species[[4]]$traits[ , "temp_niche_centre"] <- mean(landscape$environment[rownames(species_coords[[4]]), "mean_temp"])
-  new_species[[4]]$traits[ , "temp_niche_width"] <- 1
-  new_species[[4]]$traits[ , "start_island"] <- unique(landscape$environment[rownames(species_coords[[4]]), "patch"])
   return(new_species)
 }
 
