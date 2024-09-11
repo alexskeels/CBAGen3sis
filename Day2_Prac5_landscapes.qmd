@@ -189,7 +189,7 @@ plot_multiple_persp(l, lcol=terrain.colors)
 ## Add more islands!
 It's time to create more complex terrains by adding multiple islands. We can simulate this by layering multiple Gaussian functions.
 
-```{r, height=50%}
+```{r}
 # par(mfrow=c(1,3), mai=c(1,1,1,1)*0.3)
 # First island
 x <- seq(-10, 10, length=nlg)
