@@ -2,7 +2,7 @@
 title: "🌋 Creating Worlds"
 author: "Oskar Hagen and Alex Skeels"
 execute: 
-  eval: FALSE
+  eval: TRUE
 ---
 
 # Introduction {.unnumbered}
@@ -47,7 +47,9 @@ plot_persp <- function(x, y, z, lcol=topo.colors, ...) {
 # 'shape
 
 drop <- function(x,y, a=3, ...) { 
-  r <- sqrt(x^2+y^2) 
+  r <- sqrt(x^2+y^2)
+  # avoid zero division
+  r[r==0] <- 1
   z <- a * sin(r)/r 
 }
 
@@ -85,15 +87,14 @@ set_landscape_t <- function(x=seq(-10, 10, length=60),y=NA, t=-4:0,
 
 ```
 
-
 Every world (i.e raster) needs a grid to hold it together.
 
 ```{r}
 # size of the grid
-nlg <- 30
+nlg <- 1
 
 ### single simple -----
-x <- seq(-10, 10, length=nlg)
+x <- seq(-20, 20, by=nlg)
 y <- x
 z <- outer(x, y, gaussian_2d, x0=0, y0=0, sdx=2, sdy=2, a=10)
 plot_persp(x, y, z)
@@ -106,20 +107,14 @@ The drop function can be used to create a terrain similar to an island by genera
 
 ```{r}
 ### single simple drop -----
-x <- seq(-10, 10, length=nlg)
-y <- x
-z <- outer(x, y, drop, x0=0, y0=0, a=10)
+z <- outer(x, y, drop, x0=20, y0=20, a=10)
 plot_persp(x, y, z)
 ```
 
-
-Now, let's make it dynamic!
-Here we use time (ti) as the input to dynamically adjust the standard deviation in the Gaussian function. This represents the idea of landscape evolving over time, as the terrain smoothens and flattens.
+Now, let's make it dynamic! Here we use time (ti) as the input to dynamically adjust the standard deviation in the Gaussian function. This represents the idea of landscape evolving over time, as the terrain smoothens and flattens.
 
 ```{r}
 ### multiple -----
-x <- seq(-10, 10, length=nlg)
-y <- x
 l <- list()
 for (ti in 1:6){ # set the number of time steps
   l[[ti]] <- outer(x, y, gaussian_2d, x0=0, y0=0, sdx=ti, sdy=ti, a=ti^-0.8)
@@ -131,7 +126,9 @@ for (ti in 1:6){ # set the number of time steps
 ```
 
 ## Build Your Own Tools Again, forget about steps... {.unnumbered}
+
 The process of creating and refining tools never stops in world-building. Below is a function to plot multiple landscapes at different time steps in one visualization. No need to dive in, there is probably a better method out there, rest assured.
+
 ```{r}
 plot_multiple_persp <- function(l, lcol = topo.colors, scol = "darkblue", legend_title = "Legend", ...) {
   # 'l' is the list of z values...
@@ -187,30 +184,31 @@ plot_multiple_persp(l, lcol=terrain.colors)
 ```
 
 ## Add more islands!
-It's time to create more complex terrains by adding multiple islands. We can simulate this by layering multiple Gaussian functions.
+
+It's time to create more complex terrains by adding multiple islands. We can simulate this by layering multiple Gaussian functions. In this example we will simply add the z values
 
 ```{r}
-# par(mfrow=c(1,3), mai=c(1,1,1,1)*0.3)
+par(mfrow=c(1,3), mai=c(1,1,1,1)*0.3)
 # First island
-x <- seq(-10, 10, length=nlg)
-y <- x
-z1 <- outer(x, y, gaussian_2d, x0=-5, y0=-5, sdx=2, sdy=2, a=7)
+z1 <- outer(x, y, gaussian_2d, x0=-10, y0=10, sdx=4, sdy=4, a=7)
 plot_persp(x, y, z1, main="z1")
 
 # Second island
-z2 <- outer(x, y, gaussian_2d, x0=4, y0=5, sdx=3, sdy=4, a=5)
+z2 <- outer(x, y, gaussian_2d, x0=10, y0=-10, sdx=5, sdy=6, a=5)
 plot_persp(x, y, z2, main="z2")
 
 # Combine the two islands
 zf <- z1 + z2
-plot_persp(x, y, zf, main="z1+z2")
+plot_persp(x, y, zf, main="z1 + z2")
 ```
+
 Now let's use the same concept to create a time-evolving landscape with three islands. The islands will grow and change over time, creating a dynamic world.
+
 ```{r}
 # Create a time-evolving landscape
 l <- list(z1 = zf,
-          z2 = zf + outer(x, y, gaussian_2d, x0 = 0, y0 = -3, sdx = 3, sdy = 1, a = 3),
-          z3 = zf + outer(x, y, gaussian_2d, x0 = 0, y0 = -3, sdx = 2.5, sdy = 0.8, a = 4))
+          z2 = zf + outer(x, y, gaussian_2d, x0 = 0, y0 = -3, sdx = 2, sdy = 2.5, a = 3),
+          z3 = zf + outer(x, y, gaussian_2d, x0 = 0, y0 = -3, sdx = 2.5, sdy = 2.8, a = 4))
 plot_multiple_persp(l, lcol=terrain.colors)
 
 # Convert the landscapes to raster bricks
@@ -229,40 +227,173 @@ plot(rb, col = viridis(255))
 
 
 ```
+
 ## Generating a Landscape with Multiple Peaks
+
 Now let's generate a more complex landscape with multiple peaks to add more details to our world.
 
 ```{r}
-nlg <- 50  
-x <- seq(-100, 100, length=nlg)
-y <- x
+noise <- random_lanscape(x, y, 80)
 # Few random peaks
-plot_persp(x, y, random_lanscape(x, y, 30))
+plot_persp(x, y, noise, main="Noise")
+
 ```
+
+Now we add to our previous landscape
+
+```{r}
+# add to previous landscape
+plot_persp(x, y, noise/10+zf, main="Noise + zf")
+```
+
 Play with it, it's beautiful!
+
 ```{r}
-# Many random peaks for a rougher landscape
 
-
-plot_persp(x, y, random_lanscape(x, y, 200), lcol=terrain.colors)
+plot_persp(x, y, (random_lanscape(x, y, 200)/10)+(zf), lcol=terrain.colors)
 
 ```
 
-## Prepare something simple to play with {.unnumbered}
+## Prepare something to play with {.unnumbered}
+
+For example, here we will use our previous more complex landscape and add 2 more islands
+
 ```{r}
-nlg <- 20  # decrease the grid size for faster calculations   
-x <- seq(-100, 100, length=nlg)
-y <- x
-# Few random peaks
-plot_persp(x, y, random_lanscape(x, y, 30))
+
+# Set the radius of the circle and the number of points
+radius <- 17  # For a circle within -20:20 range
+num_points <- 6
+
+# Generate equally spaced angles in radians
+angles <- seq(0, 2*pi, length.out = num_points + 1)[-7]  # Exclude the last angle as it repeats the first
+
+# Compute x and y coordinates based on angles (x = cos(angle) * radius, y = sin(angle) * radius)
+x_values <- radius * cos(angles)
+y_values <- radius * sin(angles)
+
+# create islands using centroids as well as an island id mask for later
+island_id <- 0 # island id's
+elevation <- 0 # elevation
+
+
+for (island_i in 1:num_points){
+  # island_i <- 1
+  z_i <- outer(x, y, gaussian_2d, x0=x_values[island_i], y0=y_values[island_i], sdx=2, sdy=2, a=island_i*100) # times 100 for meter
+  # plot_persp(x, y, z_i, main="z_i")
+  id_mask_temp <- (z_i>0.1)*island_i # this should be the lowest sealevel of all times
+  island_id <- island_id+id_mask_temp
+  elevation <- elevation+z_i
+}
+plot_persp(x,y, elevation)
+
 ```
 
+Like before, let's add a temporal dynamics, without noise and just some sea level and temperature fluctuations. We will delay the sea level change by 1 time steps, as we expect the temperature to increase before the sea level rises.
+
+```{r}
+# define number of timesteps
+n_step <- 24
+
+# cycles length in timesteps
+cycles_length <- 5
+
+# delay
+delay <- 1
+
+# generate a sequence of values that oscillates between -1 and 1 (using sine function), a sine wave
+oscillatory_values <- sin(seq(0, 2*pi*cycles_length, length.out = n_step+delay))
+#plot(oscillatory_values, type="l")
+
+# get the temperature and sea level values accounding for the delay
+temp <- tail(oscillatory_values, n_step)
+sealevel <- head(oscillatory_values, n_step)
+
+plot(temp, type="l", col="red")
+lines(sealevel, col="blue")
+
+# scale
+limts <- list(sealevel = c(1, 100), temperature = c(-2, 2))
+
+# function to scale oscillatory values to a given range
+scale_to_range <- function(values, low, high) {
+  return (((values + 1) / 2) * (high - low) + low)
+}
+
+# apply the scaling to each element in the list
+temp_vec <- scale_to_range(temp, limts$temperature[1], limts$temperature[2])
+sealevel_vec <- scale_to_range(sealevel, limts$sealevel[1], limts$sealevel[2])
+```
+Now let's change things though time and prepare out gen3sis input
+```{r}
+
+env <- list(elevation=list(), temp=list(), island_id=list())
+
+# temperature at absolute 0m
+temp_abs <- 27
+
+for (t_i in 1:n_step){
+  # t_i <- 1
+  # get matri of NA based on habitable sites (i.e. above sea level)
+  matrixNA <- elevation
+  matrixNA[] <- NA
+  matrixNA[elevation>sealevel_vec[t_i]] <- 1
+  #habitable_mask <- elevation>sealevel_vec[t_i]
+  # elevation
+  env$elevation[[t_i]] <- elevation*matrixNA
+  # temp
+  # decrese temperature by 0.65°C per 100 meters (mois)
+  env$temp[[t_i]] <- (temp_abs+temp_vec[t_i]) - (env$elevation[[t_i]]/100)*0.65
+  # island id
+  env$island_id[[t_i]] <- island_id*matrixNA
+}
+
+plot_multiple_persp(env$elevation, lcol=terrain.colors)
+
+# Convert the landscapes to raster bricks
+rball <- lapply(env, function(xa){
+  revx <- rev(xa) # rever to fit into data format... happy to hear your feedback here
+  lapply(revx, function(xaxa){
+    raster(xaxa, xmn=min(x)-0.5, xmx=max(x)+0.5, ymn=min(y)-0.5, ymx=max(y)+0.5)
+  })
+})
 
 
-Now you can see how your island evolved from humble beginnings to a rugged, dynamic landscape. It’s like watching a time-lapse video of a planet forming—very satisfying!
+# define cost function, crossing water as 4x as land sites
+cost_function_water <- function(source, habitable_src, dest, habitable_dest) {
+  if(!all(habitable_src, habitable_dest)) {
+    return(4)
+  } else {
+    return(1)
+  }
+}
+
+
+# create a gen3sis input
+create_input_landscape(
+  landscapes = rball,
+  cost_function = cost_function_water,
+  output_directory = file.path(here("output/myworld5")),
+  directions = 8, # surrounding sites for each site
+  timesteps = paste0((n_step-1):0, "step"),
+  calculate_full_distance_matrices = TRUE,
+  verbose = T) # full distance matrix
+
+```
+
+Okay, our landscape is ready to start getting some life on it! We have prepared a config with some changes, so that you can use it as a start.
+
+
+```{r, eval=FALSE}
+exp1 <- run_simulation(
+  config = file.path("configs", "config_islands_simple_Day2Prac5.R"),
+  landscape = file.path(here("output/myworld5")),
+  output_directory = file.path(here("output/outputs")),
+  verbose = 1
+)
+```
 
 ## Conclusion {.unnumbered}
 
-Congratulations, you’ve successfully created your very own world, played around with its shape, and made it evolve over time. It might not be ready for civilization just yet, but hey, Rome wasn’t built in a day either.
+Congratulations, you’ve successfully created your very own world, played around with its shape, and made life. It might not be ready for civilization just yet, but hey, Rome wasn’t built in a day either.
 
-Now go forth and continue your journey as a master world-builder. 🌍✨
+Well done master world-builder. 🌍✨

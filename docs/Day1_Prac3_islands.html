@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,7 +91,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -113,12 +106,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Day1_Prac3_islands.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🏝️ Island Hopping</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Day1_Prac3_islands.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🏝️ Island Hopping</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -128,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Center for Biodiversity Analysis: Gen3sis Workshop 2024</a> 
@@ -186,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -228,9 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
-
 
 <p>This practical uses a theoretical archipelago system which experiences changes in sea level, uplift, and temperature through time (<a href="https://royalsocietypublishing.org/doi/full/10.1098/rstb.2023.0140">Hagen et al 2024</a>). Each site (1x1 km), features temperature (i.e.&nbsp;mean, minimum and maximum temperature) and has a landscape structure that is generated by approximating topography, uplift dynamics, and a lapse rate of temperature with elevation. Additionally, it incorporates global temperature and sea level changes dating back to the past 5 million years (Ma).</p>
 <p>First make sure our packages are loaded.</p>
@@ -274,11 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot mean_temp for first and last time step</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">rast</span>(lc<span class="sc">$</span>mean_temp[ ,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, first_step_pos)]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Look to see if there are any temporal trends in temperature or elevation.</p>
@@ -292,11 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>mean_elevation <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(lc<span class="sc">$</span>elevation[, <span class="dv">3</span><span class="sc">:</span><span class="fu">ncol</span>(lc<span class="sc">$</span>elevation)], <span class="at">na.rm=</span>T)</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">by=</span><span class="sc">-</span><span class="fl">0.01</span>), mean_elevation, <span class="at">xlab=</span><span class="st">"time (Ma)"</span>, <span class="at">ylab=</span><span class="st">"mean elevation"</span>, <span class="at">type=</span><span class="st">'l'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -318,11 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize the outputs</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_summary</span>(sim_m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -332,11 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>rich_m1[na_mask,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">rast</span>(rich_m1, <span class="at">type=</span><span class="st">"xyz"</span>), <span class="at">main=</span><span class="st">"Richness"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Pick a couple of random time points to look at specifically.</p>
@@ -346,22 +321,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>lc32 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"output/islands/config_islands_simple_Day1Prac3_M1/landscapes/landscape_t_32.rds"</span>)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_richness</span>(sps32, lc32)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot richness at time step 12 using saved data</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sps12 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"output/islands/config_islands_simple_Day1Prac3_M1/species/species_t_12.rds"</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>lc12 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"output/islands/config_islands_simple_Day1Prac3_M1/landscapes/landscape_t_12.rds"</span>)</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_richness</span>(sps12, lc12)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Now look at the phylogeny</p>
@@ -372,11 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phy_m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -409,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     plot_richness(data$all_species, data$landscape)
     save_species()
 }
-&lt;environment: 0x000001d37511f498&gt;</code></pre>
+&lt;environment: 0x000001896534e4f0&gt;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># see modeified config</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>conf_m2<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>end_of_timestep_observer </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -419,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     plot_richness(data$all_species, data$landscape)
     save_species()
 }
-&lt;environment: 0x000001d37520d1b8&gt;</code></pre>
+&lt;environment: 0x0000018965281800&gt;</code></pre>
 </div>
 </div>
 <p>Run M2!</p>
@@ -431,21 +394,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># original dynamics</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_summary</span>(sim_m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modified dynamics</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>sim_m2 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"output/islands/config_islands_simple_Day1Prac3_M2/sgen3sis.rds"</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_summary</span>(sim_m2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -466,47 +421,23 @@ $create_ancestor_species
 function (landscape, config) 
 {
     co &lt;- landscape$coordinates
-    sp1 &lt;- co[which(co[, 1] &gt; 20 &amp; co[, 2] &gt; 30), ]
-    sp2 &lt;- co[which(co[, 1] &lt; 20 &amp; co[, 2] &lt; 30), ]
-    sp3 &lt;- co[which(co[, 1] &gt; 20 &amp; co[, 2] &lt; 30), ]
-    sp4 &lt;- co[which(co[, 1] &lt; 20 &amp; co[, 2] &gt; 30), ]
-    species_coords &lt;- list(sp1, sp2, sp3, sp4)
+    pv &lt;- landscape$environment[, "patch"]
     new_species &lt;- list()
-    new_species[[1]] &lt;- create_species(rownames(species_coords[[1]]), 
-        config)
-    new_species[[1]]$traits[, "dispersal"] &lt;- 10
-    new_species[[1]]$traits[, "temp_niche_centre"] &lt;- mean(landscape$environment[rownames(species_coords[[1]]), 
-        "mean_temp"])
-    new_species[[1]]$traits[, "temp_niche_width"] &lt;- 0.5
-    new_species[[1]]$traits[, "start_island"] &lt;- unique(landscape$environment[rownames(species_coords[[1]]), 
-        "patch"])
-    new_species[[2]] &lt;- create_species(rownames(species_coords[[2]]), 
-        config)
-    new_species[[2]]$traits[, "dispersal"] &lt;- 7.5
-    new_species[[2]]$traits[, "temp_niche_centre"] &lt;- mean(landscape$environment[rownames(species_coords[[2]]), 
-        "mean_temp"])
-    new_species[[2]]$traits[, "temp_niche_width"] &lt;- 1
-    new_species[[2]]$traits[, "start_island"] &lt;- unique(landscape$environment[rownames(species_coords[[2]]), 
-        "patch"])
-    new_species[[3]] &lt;- create_species(rownames(species_coords[[3]]), 
-        config)
-    new_species[[3]]$traits[, "dispersal"] &lt;- 5
-    new_species[[3]]$traits[, "temp_niche_centre"] &lt;- mean(landscape$environment[rownames(species_coords[[3]]), 
-        "mean_temp"])
-    new_species[[3]]$traits[, "temp_niche_width"] &lt;- 2
-    new_species[[3]]$traits[, "start_island"] &lt;- unique(landscape$environment[rownames(species_coords[[3]]), 
-        "patch"])
-    new_species[[4]] &lt;- create_species(rownames(species_coords[[4]]), 
-        config)
-    new_species[[4]]$traits[, "dispersal"] &lt;- 2.5
-    new_species[[4]]$traits[, "temp_niche_centre"] &lt;- mean(landscape$environment[rownames(species_coords[[4]]), 
-        "mean_temp"])
-    new_species[[4]]$traits[, "temp_niche_width"] &lt;- 4
-    new_species[[4]]$traits[, "start_island"] &lt;- unique(landscape$environment[rownames(species_coords[[4]]), 
-        "patch"])
+    manual_traits &lt;- list(dispersal = c(10, 7.5, 5, 2.5), temp_niche_width = c(0.5, 
+        1, 2, 4))
+    for (sp_i in 1:4) {
+        new_species[[sp_i]] &lt;- create_species(names(pv[pv == 
+            sp_i]), config)
+        new_species[[sp_i]]$traits[, "dispersal"] &lt;- manual_traits$dispersal[sp_i]
+        new_species[[sp_i]]$traits[, "temp_niche_width"] &lt;- manual_traits$temp_niche_width[sp_i]
+        new_species[[sp_i]]$traits[, "start_island"] &lt;- unique(landscape$environment[pv == 
+            sp_i, "patch"])
+        new_species[[sp_i]]$traits[, "temp_niche_centre"] &lt;- mean(landscape$environment[pv == 
+            sp_i, "mean_temp"])
+    }
     return(new_species)
 }
-&lt;environment: 0x000001d378ed7368&gt;</code></pre>
+&lt;environment: 0x000001895c8d3b70&gt;</code></pre>
 </div>
 </div>
 <p>There is a big differences here. In the initialization stage we give each species a different value of it’s dispersal ability and temperature width trait (niche breadth), and these are inversely related - high dispersing species have narrow niche breadths and low dispering species have wide niche breadths. This may create an interesting trade-off in dynamics of island colonization.</p>
@@ -523,27 +454,15 @@ function (landscape, config)
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the plot summaries</span></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_summary</span>(sim_m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_summary</span>(sim_m2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_summary</span>(sim_m3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-16-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-16-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -556,11 +475,7 @@ function (landscape, config)
 <span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>phy_m3 <span class="ot">&lt;-</span> <span class="fu">read.nexus</span>(<span class="st">"output/islands/config_islands_simple_Day1Prac3_M3/phy.nex"</span>)</span>
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phy_m3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">&lt;-</span> <span class="fu">list</span>(phy_m1, phy_m2, phy_m3)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ape"</span>)</span>
@@ -569,11 +484,7 @@ function (landscape, config)
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  mtn <span class="ot">&lt;-</span> (mt[,<span class="dv">1</span>]<span class="sc">-</span>mt[,<span class="dv">2</span>])<span class="sc">/</span><span class="fu">max</span>(mt)</span>
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(<span class="fu">abs</span>(mtn))})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
@@ -603,10 +514,10 @@ $breaks
 [1] 0.0 0.2 0.4 0.6 0.8 1.0
 
 $counts
-[1] 18  0  0  2  1
+[1] 21  2  0  1  1
 
 $density
-[1] 4.2857143 0.0000000 0.0000000 0.4761905 0.2380952
+[1] 4.2 0.4 0.0 0.2 0.2
 
 $mids
 [1] 0.1 0.3 0.5 0.7 0.9
@@ -625,11 +536,11 @@ $breaks
  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
 
 $counts
- [1] 60  2  2  0  0  0  0  0  1  2
+ [1] 73  1  1  0  0  0  1  0  0  2
 
 $density
- [1] 8.9552239 0.2985075 0.2985075 0.0000000 0.0000000 0.0000000 0.0000000
- [8] 0.0000000 0.1492537 0.2985075
+ [1] 9.3589744 0.1282051 0.1282051 0.0000000 0.0000000 0.0000000 0.1282051
+ [8] 0.0000000 0.0000000 0.2564103
 
 $mids
  [1] 0.05 0.15 0.25 0.35 0.45 0.55 0.65 0.75 0.85 0.95
@@ -747,27 +658,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -777,17 +671,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -799,130 +684,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -966,7 +728,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -992,32 +753,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1079,18 +814,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Day1_Prac2_basics.html" class="pagination-link" aria-label="⛸️ Configure Skating">
+      <a href="./Day1_Prac2_basics.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">⛸️ Configure Skating</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Day2_Prac4_outputs.html" class="pagination-link" aria-label="🖥️ Silicodiversity">
+      <a href="./Day2_Prac4_outputs.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">🖥️ Silicodiversity</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
