@@ -1,6 +1,6 @@
 ---
 title: "🌋 Creating Worlds"
-author: "Oskar Hagen and Alex Skeels"
+author: "Alex Skeels and Oskar Hagen"
 execute: 
   eval: TRUE
 ---
@@ -11,18 +11,19 @@ Welcome, brave explorer of virtual worlds! Today, you’ll learn how to create e
 
 In this tutorial, we will:
 
-1.  Create a spatial grid (our world map)
-2.  Add some random elevation and temperature (because flat worlds are boring)
-3.  Visualize your masterpiece (see your creation)
-4.  Modify the shape and dynamics of your island (why stop here?)
+1. **Create** a spatial grid (our world map).
+2. **Add** random elevation and temperature (because flat worlds are boring).
+3. **Visualize** your masterpiece (watch your creation come to life).
+4. **Modify** the shape and dynamics of your island (why stop here?).
+5. **Prepare** your world for Gen3sis (ready for simulation?).
+6. **Run** a simulation (let there be life!).
 
 ## Step 1: Setup (Gather Your Tools) {.unnumbered}
 
-Before we build our world, let’s make sure we have the right tools. No one builds a universe without a hammer... and `ggplot2`.
+Before we build our world, let’s make sure we have the right tools. No one builds a universe without a hammer... and a bunch of other R-packages.
 
 ```{r warning=FALSE, message=FALSE}
 # Load the necessary libraries for plotting and data wrangling
-# why not in another way as we did before?
 lib <- c("terra", "raster", "lattice", "rayimage", "viridis", "gen3sis", "ggplot2", "persp", "here")
 sapply(lib, require, character.only = TRUE, quietly = TRUE, warn.conflicts = TRUE)
 ```
@@ -87,7 +88,7 @@ set_landscape_t <- function(x=seq(-10, 10, length=60),y=NA, t=-4:0,
 
 ```
 
-Every world (i.e raster) needs a grid to hold it together. For simplicity, we will work without a coordinate system, using a simple grid of 1 unit. This will allow us to focus on the shape of the landscape without worrying about real-world coordinates. So we have grids and time steps as space and temporal units.
+Every world (i.e raster) needs a grid to hold it together. We will work without a coordinate system in a simple 1 unit grid. This will allow us to focus on the shape of the landscape without worrying about real-world problems (distortion). 
 
 ```{r}
 # size of the grid
@@ -101,9 +102,9 @@ plot_persp(x, y, z)
 
 ```
 
-Next, let's make an island-like shape
+Next, let's make it funky...
 
-The drop function can be used to create a terrain similar to an island by generating a peak that gradually descends towards the edges. This creates a radial pattern of decreasing elevation, much like a small volcanic island with some surrounding lagoons, this is not really realistic, ask Tristan!.
+The drop function can be used to create a terrain similar to an island by generating a peak that gradually descends towards the edges. This creates a radial pattern of decreasing elevation, much like a small volcanic island with surrounding lagoons. While this isn't a very realistic model (Ask Tristan), its fun 🤓.
 
 ```{r}
 ### single simple drop -----
@@ -111,7 +112,9 @@ z <- outer(x, y, drop, x0=20, y0=20, a=10)
 plot_persp(x, y, z)
 ```
 
-Now, let's make it dynamic! Here we use time (ti) as the input to dynamically adjust the standard deviation in the Gaussian function. This represents the idea of landscape evolving over time, as the terrain smoothens and flattens.
+## Step 3: Create a dynamic landscape {.unnumbered}
+
+Now, let's make it dynamic! Here we use time (ti) as the input to dynamically adjust the standard deviation in the Gaussian function. Our temporal unit is time-step and cells are our spacial units.
 
 ```{r}
 ### multiple -----
@@ -121,13 +124,11 @@ for (ti in 1:6){ # set the number of time steps
   # add constant sea level
   l[[ti]][l[[ti]]<0.1] <- 0.1
 }
-# plot_multiple_persp(l, lcol=terrain.colors)
-
 ```
 
 ## Build Your Own Tools Again, forget about steps... {.unnumbered}
 
-The process of creating and refining tools never stops in world-building. Below is a function to plot multiple landscapes at different time steps in one visualization. No need to dive in, there is probably a better method out there, rest assured.
+The process of creating and refining tools never stops in world-building. It would be nice to have a function to plot multiple landscapes no? Below is a function to plot multiple landscapes at different time steps in one visualization.
 
 ```{r}
 plot_multiple_persp <- function(l, lcol = topo.colors, scol = "darkblue", legend_title = "Legend", ...) {
@@ -179,9 +180,14 @@ plot_multiple_persp <- function(l, lcol = topo.colors, scol = "darkblue", legend
   }
 }
 
+```
+## See the landscape you’ve crafted take shape in all its 3D glory
 
+Use your new tool to visualize the dynamic landscape you’ve created.
+```{r}
 plot_multiple_persp(l, lcol=terrain.colors)
 ```
+
 
 ## Add more islands!
 
@@ -202,7 +208,8 @@ zf <- z1 + z2
 plot_persp(x, y, zf, main="z1 + z2")
 ```
 
-Now let's use the same concept to create a time-evolving landscape with three islands. The islands will grow and change over time, creating a dynamic world.
+
+Now let's use the same concept to create a time-evolving landscape with three islands. And see how the islands will grow and change over time. 
 
 ```{r}
 # Create a time-evolving landscape
@@ -228,7 +235,7 @@ plot(rb, col = viridis(255))
 
 ```
 
-## Generating a Landscape with Multiple Peaks
+## Random Landscapes
 
 Now let's generate a more complex landscape with multiple peaks to add more details to our world.
 
@@ -246,7 +253,7 @@ Now we add to our previous landscape
 plot_persp(x, y, noise/10+zf, main="Noise + zf")
 ```
 
-Play with it, it's beautiful!
+Experiment with it; there's a lot of room when creativity your own world!
 
 ```{r}
 
@@ -254,7 +261,7 @@ plot_persp(x, y, (random_lanscape(x, y, 200)/10)+(zf), lcol=terrain.colors)
 
 ```
 
-## Prepare something to play with {.unnumbered}
+## Creating an Archipelago {.unnumbered}
 
 For example, here we will use our previous more complex landscape and add 2 more islands
 
@@ -362,7 +369,9 @@ rball <- lapply(env, function(xa){
 
 ```
 
-Okay, our landscape is almoust ready to start getting some life on it! We will now prepare the gen3sis input using create_input_landscape, and run a simulation. We will use a config we prepared so that you can use it as a start and figure out what it is doing.
+## Prepare gen3sis input {.unnumbered}
+
+Okay, our landscape is almost ready to start getting some life on it! We will now prepare the gen3sis input using create_input_landscape, and run a simulation. We will use a config we prepared so that you can use it as a start and figure out what it is doing.
 
 
 ```{r, eval=FALSE}
@@ -398,6 +407,4 @@ exp1 <- run_simulation(
 
 ## Conclusion {.unnumbered}
 
-Congratulations, you’ve successfully created your very own world, played around with its shape, and made life. It might not be ready for civilization just yet, but hey, Rome wasn’t built in a day either.
-
-Well done master world-builder. 🌍✨
+Congratulations! You’ve successfully created your own world, shaped its terrain, and even made life thrive. Your world may not be ready for civilization just yet, but don’t worry—Rome wasn’t built in a day either. Keep experimenting and refining your creation. Well done, master world-builder! 🌍✨

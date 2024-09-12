@@ -42,12 +42,12 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 | **Time**        | **Event**                                                                                       |
 |-----------------|-------------------------------------------------------------------------------------------------|
 | 09:00 - 10:00   | 🎓 **Lecture 4** - Alex and Oskar: *Designing simulation experiments with Gen3sis*               |
-| 10:00 - 10:30   | 🛠️ **Practical 6** - Sandbox: Implementing models in Gen3sis                                         |
+| 10:00 - 10:30   | 🤝️ **Practical 6** - Sandbox: Implementing models in Gen3sis                                      |
 | 10:30 - 10:45   | ☕ **Coffee Break**                                                                               |
-| 10:45 - 12:30   | 🛠️ **Practical 6** - Sandbox: Implementing models in Gen3sis                                        )              |
+| 10:45 - 12:30   | 🤝️ **Practical 6** - Sandbox: Implementing models in Gen3sis                                    |
 | 12:30 - 13:30   | 🍽️ **Lunch Break**                                                                               |
-| 13:30 - 14:45   | 🛠️ **Wrapping up Sandbox**                                                                       |
+| 13:30 - 14:45   | 🤝️ **Wrapping up Sandbox**                                                                       |
 | 14:45 - 15:00   | ☕ **Coffee Break**                                                                               |
 | 15:00 - 16:00   | 🎤 **Presenting Sandbox models** / Wrap up Day 3                                                 |
-| 16:00 - 16:10   | 📝 **Feedback session** - Gathering final thoughts and suggestions                               |
+| 16:00 - 16:10   | 🔄 **Feedback session** - Gathering final thoughts and suggestions                               |
 | 16:10           | 🍻 **Pub!**                                                                                      |

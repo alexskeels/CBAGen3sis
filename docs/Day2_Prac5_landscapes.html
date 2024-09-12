@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Oskar Hagen and Alex Skeels">
+<meta name="author" content="Alex Skeels and Oskar Hagen">
 
 <title>Center for Biodiversity Analysis: Gen3sis Workshop 2024 - 5&nbsp; 🌋 Creating Worlds</title>
 <style>
@@ -190,10 +190,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#step-1-setup-gather-your-tools" id="toc-step-1-setup-gather-your-tools" class="nav-link" data-scroll-target="#step-1-setup-gather-your-tools">Step 1: Setup (Gather Your Tools)</a></li>
   <li><a href="#step-2-declare-your-functions-make-your-tools" id="toc-step-2-declare-your-functions-make-your-tools" class="nav-link" data-scroll-target="#step-2-declare-your-functions-make-your-tools">Step 2: Declare your functions (Make your tools)</a></li>
+  <li><a href="#step-3-create-a-dynamic-landscape" id="toc-step-3-create-a-dynamic-landscape" class="nav-link" data-scroll-target="#step-3-create-a-dynamic-landscape">Step 3: Create a dynamic landscape</a></li>
   <li><a href="#build-your-own-tools-again-forget-about-steps" id="toc-build-your-own-tools-again-forget-about-steps" class="nav-link" data-scroll-target="#build-your-own-tools-again-forget-about-steps">Build Your Own Tools Again, forget about steps…</a></li>
-  <li><a href="#add-more-islands" id="toc-add-more-islands" class="nav-link" data-scroll-target="#add-more-islands"><span class="header-section-number">5.1</span> Add more islands!</a></li>
-  <li><a href="#generating-a-landscape-with-multiple-peaks" id="toc-generating-a-landscape-with-multiple-peaks" class="nav-link" data-scroll-target="#generating-a-landscape-with-multiple-peaks"><span class="header-section-number">5.2</span> Generating a Landscape with Multiple Peaks</a></li>
-  <li><a href="#prepare-something-to-play-with" id="toc-prepare-something-to-play-with" class="nav-link" data-scroll-target="#prepare-something-to-play-with">Prepare something to play with</a></li>
+  <li><a href="#see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory" id="toc-see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory" class="nav-link" data-scroll-target="#see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory"><span class="header-section-number">5.1</span> See the landscape you’ve crafted take shape in all its 3D glory</a></li>
+  <li><a href="#add-more-islands" id="toc-add-more-islands" class="nav-link" data-scroll-target="#add-more-islands"><span class="header-section-number">5.2</span> Add more islands!</a></li>
+  <li><a href="#random-landscapes" id="toc-random-landscapes" class="nav-link" data-scroll-target="#random-landscapes"><span class="header-section-number">5.3</span> Random Landscapes</a></li>
+  <li><a href="#creating-an-archipelago" id="toc-creating-an-archipelago" class="nav-link" data-scroll-target="#creating-an-archipelago">Creating an Archipelago</a></li>
+  <li><a href="#prepare-gen3sis-input" id="toc-prepare-gen3sis-input" class="nav-link" data-scroll-target="#prepare-gen3sis-input">Prepare gen3sis input</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
@@ -214,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Oskar Hagen and Alex Skeels </p>
+             <p>Alex Skeels and Oskar Hagen </p>
           </div>
   </div>
     
@@ -230,19 +233,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Welcome, brave explorer of virtual worlds! Today, you’ll learn how to create entire landscapes (no pressure!) using R. We’ll shrink the universe to an <strong>experimental size</strong>, start with one island and gradually add more complexity; from rugosity to temperature, and even sea level changes.</p>
 <p>In this tutorial, we will:</p>
 <ol type="1">
-<li>Create a spatial grid (our world map)</li>
-<li>Add some random elevation and temperature (because flat worlds are boring)</li>
-<li>Visualize your masterpiece (see your creation)</li>
-<li>Modify the shape and dynamics of your island (why stop here?)</li>
+<li><strong>Create</strong> a spatial grid (our world map).</li>
+<li><strong>Add</strong> random elevation and temperature (because flat worlds are boring).</li>
+<li><strong>Visualize</strong> your masterpiece (watch your creation come to life).</li>
+<li><strong>Modify</strong> the shape and dynamics of your island (why stop here?).</li>
+<li><strong>Prepare</strong> your world for Gen3sis (ready for simulation?).</li>
+<li><strong>Run</strong> a simulation (let there be life!).</li>
 </ol>
 <section id="step-1-setup-gather-your-tools" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="step-1-setup-gather-your-tools">Step 1: Setup (Gather Your Tools)</h2>
-<p>Before we build our world, let’s make sure we have the right tools. No one builds a universe without a hammer… and <code>ggplot2</code>.</p>
+<p>Before we build our world, let’s make sure we have the right tools. No one builds a universe without a hammer… and a bunch of other R-packages.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the necessary libraries for plotting and data wrangling</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># why not in another way as we did before?</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>lib <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"terra"</span>, <span class="st">"raster"</span>, <span class="st">"lattice"</span>, <span class="st">"rayimage"</span>, <span class="st">"viridis"</span>, <span class="st">"gen3sis"</span>, <span class="st">"ggplot2"</span>, <span class="st">"persp"</span>, <span class="st">"here"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(lib, require, <span class="at">character.only =</span> <span class="cn">TRUE</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>, <span class="at">warn.conflicts =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>lib <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"terra"</span>, <span class="st">"raster"</span>, <span class="st">"lattice"</span>, <span class="st">"rayimage"</span>, <span class="st">"viridis"</span>, <span class="st">"gen3sis"</span>, <span class="st">"ggplot2"</span>, <span class="st">"persp"</span>, <span class="st">"here"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(lib, require, <span class="at">character.only =</span> <span class="cn">TRUE</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>, <span class="at">warn.conflicts =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   terra   raster  lattice rayimage  viridis  gen3sis  ggplot2    persp 
     TRUE     TRUE     TRUE     TRUE     TRUE     TRUE     TRUE    FALSE 
@@ -308,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(l)</span>
 <span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Every world (i.e raster) needs a grid to hold it together. For simplicity, we will work without a coordinate system, using a simple grid of 1 unit. This will allow us to focus on the shape of the landscape without worrying about real-world coordinates. So we have grids and time steps as space and temporal units.</p>
+<p>Every world (i.e raster) needs a grid to hold it together. We will work without a coordinate system in a simple 1 unit grid. This will allow us to focus on the shape of the landscape without worrying about real-world problems (distortion).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># size of the grid</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>nlg <span class="ot">&lt;-</span> <span class="dv">1</span></span>
@@ -322,8 +326,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Next, let’s make an island-like shape</p>
-<p>The drop function can be used to create a terrain similar to an island by generating a peak that gradually descends towards the edges. This creates a radial pattern of decreasing elevation, much like a small volcanic island with some surrounding lagoons, this is not really realistic, ask Tristan!.</p>
+<p>Next, let’s make it funky…</p>
+<p>The drop function can be used to create a terrain similar to an island by generating a peak that gradually descends towards the edges. This creates a radial pattern of decreasing elevation, much like a small volcanic island with surrounding lagoons. While this isn’t a very realistic model (Ask Tristan), its fun 🤓.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">### single simple drop -----</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, drop, <span class="at">x0=</span><span class="dv">20</span>, <span class="at">y0=</span><span class="dv">20</span>, <span class="at">a=</span><span class="dv">10</span>)</span>
@@ -332,7 +336,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Now, let’s make it dynamic! Here we use time (ti) as the input to dynamically adjust the standard deviation in the Gaussian function. This represents the idea of landscape evolving over time, as the terrain smoothens and flattens.</p>
+</section>
+<section id="step-3-create-a-dynamic-landscape" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="step-3-create-a-dynamic-landscape">Step 3: Create a dynamic landscape</h2>
+<p>Now, let’s make it dynamic! Here we use time (ti) as the input to dynamically adjust the standard deviation in the Gaussian function. Our temporal unit is time-step and cells are our spacial units.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">### multiple -----</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
@@ -340,13 +347,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  l[[ti]] <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, gaussian_2d, <span class="at">x0=</span><span class="dv">0</span>, <span class="at">y0=</span><span class="dv">0</span>, <span class="at">sdx=</span>ti, <span class="at">sdy=</span>ti, <span class="at">a=</span>ti<span class="sc">^-</span><span class="fl">0.8</span>)</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add constant sea level</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  l[[ti]][l[[ti]]<span class="sc">&lt;</span><span class="fl">0.1</span>] <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_multiple_persp(l, lcol=terrain.colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="build-your-own-tools-again-forget-about-steps" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="build-your-own-tools-again-forget-about-steps">Build Your Own Tools Again, forget about steps…</h2>
-<p>The process of creating and refining tools never stops in world-building. Below is a function to plot multiple landscapes at different time steps in one visualization. No need to dive in, there is probably a better method out there, rest assured.</p>
+<p>The process of creating and refining tools never stops in world-building. It would be nice to have a function to plot multiple landscapes no? Below is a function to plot multiple landscapes at different time steps in one visualization.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plot_multiple_persp <span class="ot">&lt;-</span> <span class="cf">function</span>(l, <span class="at">lcol =</span> topo.colors, <span class="at">scol =</span> <span class="st">"darkblue"</span>, <span class="at">legend_title =</span> <span class="st">"Legend"</span>, ...) {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 'l' is the list of z values...</span></span>
@@ -395,231 +401,237 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> <span class="fu">round</span>(breaks, <span class="dv">2</span>), <span class="at">fill =</span> cols, <span class="at">title =</span> legend_title, <span class="at">cex =</span> <span class="fl">0.7</span>, <span class="at">inset =</span> <span class="fl">0.05</span>)</span>
 <span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_multiple_persp</span>(l, <span class="at">lcol=</span>terrain.colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
-</div>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="add-more-islands" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="add-more-islands"><span class="header-section-number">5.1</span> Add more islands!</h2>
-<p>It’s time to create more complex terrains by adding multiple islands. We can simulate this by layering multiple Gaussian functions. In this example we will simply add the z values</p>
+<section id="see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory"><span class="header-section-number">5.1</span> See the landscape you’ve crafted take shape in all its 3D glory</h2>
+<p>Use your new tool to visualize the dynamic landscape you’ve created.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="at">mai=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fl">0.3</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># First island</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>z1 <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, gaussian_2d, <span class="at">x0=</span><span class="sc">-</span><span class="dv">10</span>, <span class="at">y0=</span><span class="dv">10</span>, <span class="at">sdx=</span><span class="dv">4</span>, <span class="at">sdy=</span><span class="dv">4</span>, <span class="at">a=</span><span class="dv">7</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x, y, z1, <span class="at">main=</span><span class="st">"z1"</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Second island</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>z2 <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, gaussian_2d, <span class="at">x0=</span><span class="dv">10</span>, <span class="at">y0=</span><span class="sc">-</span><span class="dv">10</span>, <span class="at">sdx=</span><span class="dv">5</span>, <span class="at">sdy=</span><span class="dv">6</span>, <span class="at">a=</span><span class="dv">5</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x, y, z2, <span class="at">main=</span><span class="st">"z2"</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the two islands</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>zf <span class="ot">&lt;-</span> z1 <span class="sc">+</span> z2</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x, y, zf, <span class="at">main=</span><span class="st">"z1 + z2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_multiple_persp</span>(l, <span class="at">lcol=</span>terrain.colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Now let’s use the same concept to create a time-evolving landscape with three islands. The islands will grow and change over time, creating a dynamic world.</p>
+</section>
+<section id="add-more-islands" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="add-more-islands"><span class="header-section-number">5.2</span> Add more islands!</h2>
+<p>It’s time to create more complex terrains by adding multiple islands. We can simulate this by layering multiple Gaussian functions. In this example we will simply add the z values</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a time-evolving landscape</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">z1 =</span> zf,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">z2 =</span> zf <span class="sc">+</span> <span class="fu">outer</span>(x, y, gaussian_2d, <span class="at">x0 =</span> <span class="dv">0</span>, <span class="at">y0 =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">sdx =</span> <span class="dv">2</span>, <span class="at">sdy =</span> <span class="fl">2.5</span>, <span class="at">a =</span> <span class="dv">3</span>),</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">z3 =</span> zf <span class="sc">+</span> <span class="fu">outer</span>(x, y, gaussian_2d, <span class="at">x0 =</span> <span class="dv">0</span>, <span class="at">y0 =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">sdx =</span> <span class="fl">2.5</span>, <span class="at">sdy =</span> <span class="fl">2.8</span>, <span class="at">a =</span> <span class="dv">4</span>))</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_multiple_persp</span>(l, <span class="at">lcol=</span>terrain.colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="at">mai=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fl">0.3</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># First island</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>z1 <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, gaussian_2d, <span class="at">x0=</span><span class="sc">-</span><span class="dv">10</span>, <span class="at">y0=</span><span class="dv">10</span>, <span class="at">sdx=</span><span class="dv">4</span>, <span class="at">sdy=</span><span class="dv">4</span>, <span class="at">a=</span><span class="dv">7</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x, y, z1, <span class="at">main=</span><span class="st">"z1"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Second island</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>z2 <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, gaussian_2d, <span class="at">x0=</span><span class="dv">10</span>, <span class="at">y0=</span><span class="sc">-</span><span class="dv">10</span>, <span class="at">sdx=</span><span class="dv">5</span>, <span class="at">sdy=</span><span class="dv">6</span>, <span class="at">a=</span><span class="dv">5</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x, y, z2, <span class="at">main=</span><span class="st">"z2"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the two islands</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>zf <span class="ot">&lt;-</span> z1 <span class="sc">+</span> z2</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x, y, zf, <span class="at">main=</span><span class="st">"z1 + z2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the landscapes to raster bricks</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>rb <span class="ot">&lt;-</span> <span class="fu">brick</span>(<span class="fu">lapply</span>(l, raster))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply sea level cuts to the landscapes</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>selev <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>ls <span class="ot">&lt;-</span> l</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (zi <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  ms <span class="ot">&lt;-</span> ls[[zi]] <span class="sc">&lt;=</span> selev[zi]</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  ls[[zi]][ms] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>rb <span class="ot">&lt;-</span> <span class="fu">brick</span>(<span class="fu">lapply</span>(ls, raster))</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rb, <span class="at">col =</span> <span class="fu">viridis</span>(<span class="dv">255</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="generating-a-landscape-with-multiple-peaks" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="generating-a-landscape-with-multiple-peaks"><span class="header-section-number">5.2</span> Generating a Landscape with Multiple Peaks</h2>
-<p>Now let’s generate a more complex landscape with multiple peaks to add more details to our world.</p>
+<p>Now let’s use the same concept to create a time-evolving landscape with three islands. And see how the islands will grow and change over time.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>noise <span class="ot">&lt;-</span> <span class="fu">random_lanscape</span>(x, y, <span class="dv">80</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Few random peaks</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x, y, noise, <span class="at">main=</span><span class="st">"Noise"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a time-evolving landscape</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">z1 =</span> zf,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">z2 =</span> zf <span class="sc">+</span> <span class="fu">outer</span>(x, y, gaussian_2d, <span class="at">x0 =</span> <span class="dv">0</span>, <span class="at">y0 =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">sdx =</span> <span class="dv">2</span>, <span class="at">sdy =</span> <span class="fl">2.5</span>, <span class="at">a =</span> <span class="dv">3</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">z3 =</span> zf <span class="sc">+</span> <span class="fu">outer</span>(x, y, gaussian_2d, <span class="at">x0 =</span> <span class="dv">0</span>, <span class="at">y0 =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">sdx =</span> <span class="fl">2.5</span>, <span class="at">sdy =</span> <span class="fl">2.8</span>, <span class="at">a =</span> <span class="dv">4</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_multiple_persp</span>(l, <span class="at">lcol=</span>terrain.colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the landscapes to raster bricks</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>rb <span class="ot">&lt;-</span> <span class="fu">brick</span>(<span class="fu">lapply</span>(l, raster))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid" width="672"></p>
 </div>
-<p>Now we add to our previous landscape</p>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply sea level cuts to the landscapes</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>selev <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ls <span class="ot">&lt;-</span> l</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (zi <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  ms <span class="ot">&lt;-</span> ls[[zi]] <span class="sc">&lt;=</span> selev[zi]</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  ls[[zi]][ms] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>rb <span class="ot">&lt;-</span> <span class="fu">brick</span>(<span class="fu">lapply</span>(ls, raster))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rb, <span class="at">col =</span> <span class="fu">viridis</span>(<span class="dv">255</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-9-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="random-landscapes" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="random-landscapes"><span class="header-section-number">5.3</span> Random Landscapes</h2>
+<p>Now let’s generate a more complex landscape with multiple peaks to add more details to our world.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add to previous landscape</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x, y, noise<span class="sc">/</span><span class="dv">10</span><span class="sc">+</span>zf, <span class="at">main=</span><span class="st">"Noise + zf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>noise <span class="ot">&lt;-</span> <span class="fu">random_lanscape</span>(x, y, <span class="dv">80</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Few random peaks</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x, y, noise, <span class="at">main=</span><span class="st">"Noise"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Play with it, it’s beautiful!</p>
+<p>Now we add to our previous landscape</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x, y, (<span class="fu">random_lanscape</span>(x, y, <span class="dv">200</span>)<span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span>(zf), <span class="at">lcol=</span>terrain.colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add to previous landscape</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x, y, noise<span class="sc">/</span><span class="dv">10</span><span class="sc">+</span>zf, <span class="at">main=</span><span class="st">"Noise + zf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
-<section id="prepare-something-to-play-with" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="prepare-something-to-play-with">Prepare something to play with</h2>
-<p>For example, here we will use our previous more complex landscape and add 2 more islands</p>
+<p>Experiment with it; there’s a lot of room when creativity your own world!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the radius of the circle and the number of points</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>radius <span class="ot">&lt;-</span> <span class="dv">17</span>  <span class="co"># For a circle within -20:20 range</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>num_points <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate equally spaced angles in radians</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>angles <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span><span class="sc">*</span>pi, <span class="at">length.out =</span> num_points <span class="sc">+</span> <span class="dv">1</span>)[<span class="sc">-</span><span class="dv">7</span>]  <span class="co"># Exclude the last angle as it repeats the first</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute x and y coordinates based on angles (x = cos(angle) * radius, y = sin(angle) * radius)</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>x_values <span class="ot">&lt;-</span> radius <span class="sc">*</span> <span class="fu">cos</span>(angles)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> radius <span class="sc">*</span> <span class="fu">sin</span>(angles)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create islands using centroids as well as an island id mask for later</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>island_id <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># island id's</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>elevation <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># elevation</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (island_i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_points){</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># island_i &lt;- 1</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  z_i <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, gaussian_2d, <span class="at">x0=</span>x_values[island_i], <span class="at">y0=</span>y_values[island_i], <span class="at">sdx=</span><span class="dv">2</span>, <span class="at">sdy=</span><span class="dv">2</span>, <span class="at">a=</span>island_i<span class="sc">*</span><span class="dv">100</span>) <span class="co"># times 100 for meter</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot_persp(x, y, z_i, main="z_i")</span></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  id_mask_temp <span class="ot">&lt;-</span> (z_i<span class="sc">&gt;</span><span class="fl">0.1</span>)<span class="sc">*</span>island_i <span class="co"># this should be the lowest sealevel of all times</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  island_id <span class="ot">&lt;-</span> island_id<span class="sc">+</span>id_mask_temp</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  elevation <span class="ot">&lt;-</span> elevation<span class="sc">+</span>z_i</span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x,y, elevation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x, y, (<span class="fu">random_lanscape</span>(x, y, <span class="dv">200</span>)<span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span>(zf), <span class="at">lcol=</span>terrain.colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Like before, let’s add a temporal dynamics, without noise and just some sea level and temperature fluctuations. We will delay the sea level change by 1 time steps, as we expect the temperature to increase before the sea level rises.</p>
+</section>
+<section id="creating-an-archipelago" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="creating-an-archipelago">Creating an Archipelago</h2>
+<p>For example, here we will use our previous more complex landscape and add 2 more islands</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define number of timesteps</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>n_step <span class="ot">&lt;-</span> <span class="dv">24</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># cycles length in timesteps</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>cycles_length <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># delay</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>delay <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># generate a sequence of values that oscillates between -1 and 1 (using sine function), a sine wave</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>oscillatory_values <span class="ot">&lt;-</span> <span class="fu">sin</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>cycles_length, <span class="at">length.out =</span> n_step<span class="sc">+</span>delay))</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(oscillatory_values, type="l")</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># get the temperature and sea level values accounding for the delay</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">tail</span>(oscillatory_values, n_step)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>sealevel <span class="ot">&lt;-</span> <span class="fu">head</span>(oscillatory_values, n_step)</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(temp, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>)</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(sealevel, <span class="at">col=</span><span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the radius of the circle and the number of points</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>radius <span class="ot">&lt;-</span> <span class="dv">17</span>  <span class="co"># For a circle within -20:20 range</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>num_points <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate equally spaced angles in radians</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>angles <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span><span class="sc">*</span>pi, <span class="at">length.out =</span> num_points <span class="sc">+</span> <span class="dv">1</span>)[<span class="sc">-</span><span class="dv">7</span>]  <span class="co"># Exclude the last angle as it repeats the first</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute x and y coordinates based on angles (x = cos(angle) * radius, y = sin(angle) * radius)</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>x_values <span class="ot">&lt;-</span> radius <span class="sc">*</span> <span class="fu">cos</span>(angles)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> radius <span class="sc">*</span> <span class="fu">sin</span>(angles)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create islands using centroids as well as an island id mask for later</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>island_id <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># island id's</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>elevation <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># elevation</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (island_i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_points){</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># island_i &lt;- 1</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  z_i <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, gaussian_2d, <span class="at">x0=</span>x_values[island_i], <span class="at">y0=</span>y_values[island_i], <span class="at">sdx=</span><span class="dv">2</span>, <span class="at">sdy=</span><span class="dv">2</span>, <span class="at">a=</span>island_i<span class="sc">*</span><span class="dv">100</span>) <span class="co"># times 100 for meter</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot_persp(x, y, z_i, main="z_i")</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  id_mask_temp <span class="ot">&lt;-</span> (z_i<span class="sc">&gt;</span><span class="fl">0.1</span>)<span class="sc">*</span>island_i <span class="co"># this should be the lowest sealevel of all times</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  island_id <span class="ot">&lt;-</span> island_id<span class="sc">+</span>id_mask_temp</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  elevation <span class="ot">&lt;-</span> elevation<span class="sc">+</span>z_i</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_persp</span>(x,y, elevation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scale</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>limts <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">sealevel =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">100</span>), <span class="at">temperature =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># function to scale oscillatory values to a given range</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>scale_to_range <span class="ot">&lt;-</span> <span class="cf">function</span>(values, low, high) {</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (((values <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">*</span> (high <span class="sc">-</span> low) <span class="sc">+</span> low)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># apply the scaling to each element in the list</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>temp_vec <span class="ot">&lt;-</span> <span class="fu">scale_to_range</span>(temp, limts<span class="sc">$</span>temperature[<span class="dv">1</span>], limts<span class="sc">$</span>temperature[<span class="dv">2</span>])</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>sealevel_vec <span class="ot">&lt;-</span> <span class="fu">scale_to_range</span>(sealevel, limts<span class="sc">$</span>sealevel[<span class="dv">1</span>], limts<span class="sc">$</span>sealevel[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now let’s change things though time and prepare out gen3sis input</p>
+<p>Like before, let’s add a temporal dynamics, without noise and just some sea level and temperature fluctuations. We will delay the sea level change by 1 time steps, as we expect the temperature to increase before the sea level rises.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>env <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">elevation=</span><span class="fu">list</span>(), <span class="at">temp=</span><span class="fu">list</span>(), <span class="at">island_id=</span><span class="fu">list</span>())</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># temperature at absolute 0m</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>temp_abs <span class="ot">&lt;-</span> <span class="dv">27</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (t_i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_step){</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># t_i &lt;- 1</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># get matri of NA based on habitable sites (i.e. above sea level)</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  matrixNA <span class="ot">&lt;-</span> elevation</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  matrixNA[] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  matrixNA[elevation<span class="sc">&gt;</span>sealevel_vec[t_i]] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#habitable_mask &lt;- elevation&gt;sealevel_vec[t_i]</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># elevation</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  env<span class="sc">$</span>elevation[[t_i]] <span class="ot">&lt;-</span> elevation<span class="sc">*</span>matrixNA</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># temp</span></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># decrese temperature by 0.65°C per 100 meters (mois)</span></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  env<span class="sc">$</span>temp[[t_i]] <span class="ot">&lt;-</span> (temp_abs<span class="sc">+</span>temp_vec[t_i]) <span class="sc">-</span> (env<span class="sc">$</span>elevation[[t_i]]<span class="sc">/</span><span class="dv">100</span>)<span class="sc">*</span><span class="fl">0.65</span></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># island id</span></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  env<span class="sc">$</span>island_id[[t_i]] <span class="ot">&lt;-</span> island_id<span class="sc">*</span>matrixNA</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_multiple_persp</span>(env<span class="sc">$</span>elevation, <span class="at">lcol=</span>terrain.colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define number of timesteps</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>n_step <span class="ot">&lt;-</span> <span class="dv">24</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># cycles length in timesteps</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>cycles_length <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># delay</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>delay <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># generate a sequence of values that oscillates between -1 and 1 (using sine function), a sine wave</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>oscillatory_values <span class="ot">&lt;-</span> <span class="fu">sin</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>cycles_length, <span class="at">length.out =</span> n_step<span class="sc">+</span>delay))</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(oscillatory_values, type="l")</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># get the temperature and sea level values accounding for the delay</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">tail</span>(oscillatory_values, n_step)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>sealevel <span class="ot">&lt;-</span> <span class="fu">head</span>(oscillatory_values, n_step)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(temp, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(sealevel, <span class="at">col=</span><span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the landscapes to raster bricks</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>rball <span class="ot">&lt;-</span> <span class="fu">lapply</span>(env, <span class="cf">function</span>(xa){</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  revx <span class="ot">&lt;-</span> <span class="fu">rev</span>(xa) <span class="co"># rever to fit into data format... happy to hear your feedback here</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(revx, <span class="cf">function</span>(xaxa){</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">raster</span>(xaxa, <span class="at">xmn=</span><span class="fu">min</span>(x)<span class="sc">-</span><span class="fl">0.5</span>, <span class="at">xmx=</span><span class="fu">max</span>(x)<span class="sc">+</span><span class="fl">0.5</span>, <span class="at">ymn=</span><span class="fu">min</span>(y)<span class="sc">-</span><span class="fl">0.5</span>, <span class="at">ymx=</span><span class="fu">max</span>(y)<span class="sc">+</span><span class="fl">0.5</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scale</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>limts <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">sealevel =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">100</span>), <span class="at">temperature =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># function to scale oscillatory values to a given range</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>scale_to_range <span class="ot">&lt;-</span> <span class="cf">function</span>(values, low, high) {</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (((values <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">*</span> (high <span class="sc">-</span> low) <span class="sc">+</span> low)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># apply the scaling to each element in the list</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>temp_vec <span class="ot">&lt;-</span> <span class="fu">scale_to_range</span>(temp, limts<span class="sc">$</span>temperature[<span class="dv">1</span>], limts<span class="sc">$</span>temperature[<span class="dv">2</span>])</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>sealevel_vec <span class="ot">&lt;-</span> <span class="fu">scale_to_range</span>(sealevel, limts<span class="sc">$</span>sealevel[<span class="dv">1</span>], limts<span class="sc">$</span>sealevel[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Okay, our landscape is almoust ready to start getting some life on it! We will now prepare the gen3sis input using create_input_landscape, and run a simulation. We will use a config we prepared so that you can use it as a start and figure out what it is doing.</p>
+<p>Now let’s change things though time and prepare out gen3sis input</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define cost function, crossing water as 4x as land sites</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>cost_function_water <span class="ot">&lt;-</span> <span class="cf">function</span>(source, habitable_src, dest, habitable_dest) {</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">all</span>(habitable_src, habitable_dest)) {</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">4</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">1</span>)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create a gen3sis input</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="fu">create_input_landscape</span>(</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">landscapes =</span> rball,</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">cost_function =</span> cost_function_water,</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_directory =</span> <span class="fu">file.path</span>(<span class="fu">here</span>(<span class="st">"output/myworld"</span>)),</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">directions =</span> <span class="dv">8</span>, <span class="co"># surrounding sites for each site</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">timesteps =</span> <span class="fu">paste0</span>((n_step<span class="dv">-1</span>)<span class="sc">:</span><span class="dv">0</span>, <span class="st">"step"</span>),</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">calculate_full_distance_matrices =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> T) <span class="co"># full distance matrix</span></span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>exp1 <span class="ot">&lt;-</span> <span class="fu">run_simulation</span>(</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">config =</span> <span class="fu">file.path</span>(<span class="st">"configs"</span>, <span class="st">"config_islands_simple_Day2Prac5.R"</span>),</span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">landscape =</span> <span class="fu">file.path</span>(<span class="fu">here</span>(<span class="st">"output/myworld5"</span>)),</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_directory =</span> <span class="fu">file.path</span>(<span class="fu">here</span>(<span class="st">"output/outputs"</span>)),</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="dv">1</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>env <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">elevation=</span><span class="fu">list</span>(), <span class="at">temp=</span><span class="fu">list</span>(), <span class="at">island_id=</span><span class="fu">list</span>())</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># temperature at absolute 0m</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>temp_abs <span class="ot">&lt;-</span> <span class="dv">27</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (t_i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_step){</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># t_i &lt;- 1</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># get matri of NA based on habitable sites (i.e. above sea level)</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  matrixNA <span class="ot">&lt;-</span> elevation</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  matrixNA[] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  matrixNA[elevation<span class="sc">&gt;</span>sealevel_vec[t_i]] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#habitable_mask &lt;- elevation&gt;sealevel_vec[t_i]</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># elevation</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  env<span class="sc">$</span>elevation[[t_i]] <span class="ot">&lt;-</span> elevation<span class="sc">*</span>matrixNA</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># temp</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># decrese temperature by 0.65°C per 100 meters (mois)</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  env<span class="sc">$</span>temp[[t_i]] <span class="ot">&lt;-</span> (temp_abs<span class="sc">+</span>temp_vec[t_i]) <span class="sc">-</span> (env<span class="sc">$</span>elevation[[t_i]]<span class="sc">/</span><span class="dv">100</span>)<span class="sc">*</span><span class="fl">0.65</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># island id</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  env<span class="sc">$</span>island_id[[t_i]] <span class="ot">&lt;-</span> island_id<span class="sc">*</span>matrixNA</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_multiple_persp</span>(env<span class="sc">$</span>elevation, <span class="at">lcol=</span>terrain.colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the landscapes to raster bricks</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>rball <span class="ot">&lt;-</span> <span class="fu">lapply</span>(env, <span class="cf">function</span>(xa){</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  revx <span class="ot">&lt;-</span> <span class="fu">rev</span>(xa) <span class="co"># rever to fit into data format... happy to hear your feedback here</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(revx, <span class="cf">function</span>(xaxa){</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">raster</span>(xaxa, <span class="at">xmn=</span><span class="fu">min</span>(x)<span class="sc">-</span><span class="fl">0.5</span>, <span class="at">xmx=</span><span class="fu">max</span>(x)<span class="sc">+</span><span class="fl">0.5</span>, <span class="at">ymn=</span><span class="fu">min</span>(y)<span class="sc">-</span><span class="fl">0.5</span>, <span class="at">ymx=</span><span class="fu">max</span>(y)<span class="sc">+</span><span class="fl">0.5</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="prepare-gen3sis-input" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="prepare-gen3sis-input">Prepare gen3sis input</h2>
+<p>Okay, our landscape is almost ready to start getting some life on it! We will now prepare the gen3sis input using create_input_landscape, and run a simulation. We will use a config we prepared so that you can use it as a start and figure out what it is doing.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define cost function, crossing water as 4x as land sites</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>cost_function_water <span class="ot">&lt;-</span> <span class="cf">function</span>(source, habitable_src, dest, habitable_dest) {</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">all</span>(habitable_src, habitable_dest)) {</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">4</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">1</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create a gen3sis input</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="fu">create_input_landscape</span>(</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">landscapes =</span> rball,</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">cost_function =</span> cost_function_water,</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_directory =</span> <span class="fu">file.path</span>(<span class="fu">here</span>(<span class="st">"output/myworld"</span>)),</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">directions =</span> <span class="dv">8</span>, <span class="co"># surrounding sites for each site</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">timesteps =</span> <span class="fu">paste0</span>((n_step<span class="dv">-1</span>)<span class="sc">:</span><span class="dv">0</span>, <span class="st">"step"</span>),</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">calculate_full_distance_matrices =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> T) <span class="co"># full distance matrix</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>exp1 <span class="ot">&lt;-</span> <span class="fu">run_simulation</span>(</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">config =</span> <span class="fu">file.path</span>(<span class="st">"configs"</span>, <span class="st">"config_islands_simple_Day2Prac5.R"</span>),</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">landscape =</span> <span class="fu">file.path</span>(<span class="fu">here</span>(<span class="st">"output/myworld5"</span>)),</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_directory =</span> <span class="fu">file.path</span>(<span class="fu">here</span>(<span class="st">"output/outputs"</span>)),</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="dv">1</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="conclusion" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Congratulations, you’ve successfully created your very own world, played around with its shape, and made life. It might not be ready for civilization just yet, but hey, Rome wasn’t built in a day either.</p>
-<p>Well done master world-builder. 🌍✨</p>
+<p>Congratulations! You’ve successfully created your own world, shaped its terrain, and even made life thrive. Your world may not be ready for civilization just yet, but don’t worry—Rome wasn’t built in a day either. Keep experimenting and refining your creation. Well done, master world-builder! 🌍✨</p>
 
 
 </section>
