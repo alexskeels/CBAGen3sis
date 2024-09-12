@@ -67,7 +67,7 @@ create_ancestor_species <- function(landscape, config) {
   
   manual_traits <- list(
     "dispersal" = rep(5, n_ids),
-    "temp_width" = rep(3, n_ids),
+    "temp_width" = rep(2, n_ids),
     "temp_niche_centre" = rep(27, n_ids)
   )
   
@@ -104,7 +104,7 @@ get_dispersal_values <- function(n, species, landscape, config){
 ##################
 
 # threshold for genetic distance after which a speciation event takes place
-divergence_threshold=10 # between 10 and 50 ? as 0.1 to 0.5 Myrs or 100 - 500 kyrs
+divergence_threshold=3
 
 # adds a value of 1 to each geographic population cluster
 get_divergence_factor <- function(species, cluster_indices, landscape, config) {
@@ -118,7 +118,7 @@ get_divergence_factor <- function(species, cluster_indices, landscape, config) {
 apply_evolution <- function(species, cluster_indices, landscape, config) {
   # browser()
   # cell names
-  trait_evolutionary_power <-0.01
+  trait_evolutionary_power <-0.1
   traits <- species[["traits"]]
   cells <- rownames(traits)
   #homogenize trait based on abundance
@@ -153,7 +153,9 @@ apply_ecology <- function(abundance, traits, landscape, config) {
   #old# get the difference between species and site mean temp
   #old# diff <- abs(traits[, "temp_niche_centre"]-landscape[,"temp"])
   
-  diff <- fg(landscape[,"temp"], a=10, b=traits[,"temp_niche_centre"], c=traits[,"temp_width"])
+  diff <- fg(landscape[,"temp"], a=5, b=traits[,"temp_niche_centre"], c=traits[,"temp_width"])
+  
+  
   
   # first set abundances that have diff bellow 1 to zero
   abundance[diff<1] <- 0

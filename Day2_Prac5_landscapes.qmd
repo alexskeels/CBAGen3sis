@@ -7,7 +7,7 @@ execute:
 
 # Introduction {.unnumbered}
 
-Welcome, brave explorer of virtual worlds! Today, you’ll learn how to create entire landscapes (no pressure!) using R. We'll shrink the universe to an **experimental size**.
+Welcome, brave explorer of virtual worlds! Today, you’ll learn how to create entire landscapes (no pressure!) using R. We'll shrink the universe to an **experimental size**, start with one island and gradually add more complexity; from rugosity to temperature, and even sea level changes.
 
 In this tutorial, we will:
 
@@ -87,7 +87,7 @@ set_landscape_t <- function(x=seq(-10, 10, length=60),y=NA, t=-4:0,
 
 ```
 
-Every world (i.e raster) needs a grid to hold it together.
+Every world (i.e raster) needs a grid to hold it together. For simplicity, we will work without a coordinate system, using a simple grid of 1 unit. This will allow us to focus on the shape of the landscape without worrying about real-world coordinates. So we have grids and time steps as space and temporal units.
 
 ```{r}
 # size of the grid
@@ -372,7 +372,7 @@ cost_function_water <- function(source, habitable_src, dest, habitable_dest) {
 create_input_landscape(
   landscapes = rball,
   cost_function = cost_function_water,
-  output_directory = file.path(here("output/myworld5")),
+  output_directory = file.path(here("output/myworld6")),
   directions = 8, # surrounding sites for each site
   timesteps = paste0((n_step-1):0, "step"),
   calculate_full_distance_matrices = TRUE,

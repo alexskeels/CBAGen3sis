@@ -117,7 +117,7 @@ plot_summary(readRDS("output/islands/config_islands_simple_Day1Prac3_M2/sgen3sis
 #
 
 # run the new model
-sim_m3 <- run_simulation(config="configs/config_islands_simple_Day1Prac3_M3_2.R", landscape="data/landscapes/islands", output_directory="output/islands")
+sim_m3 <- run_simulation(config=here("configs/config_islands_simple_Day1Prac3_M3.R"), landscape=here("data/landscapes/islands"), output_directory=here("output/islands"))
 
 sim_m4 <- run_simulation(config="configs/config_islands_simple_Day1Prac3_M4.R", landscape="data/landscapes/islands", output_directory="output/islands")
 
