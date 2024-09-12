@@ -20,10 +20,10 @@ In this tutorial, we will:
 
 Before we build our world, let’s make sure we have the right tools. No one builds a universe without a hammer... and `ggplot2`.
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 # Load the necessary libraries for plotting and data wrangling
 # why not in another way as we did before?
-lib <- c("terra", "raster", "lattice", "rayimage", "viridis", "gen3sis", "ggplot2", "persp")
+lib <- c("terra", "raster", "lattice", "rayimage", "viridis", "gen3sis", "ggplot2", "persp", "here")
 sapply(lib, require, character.only = TRUE, quietly = TRUE, warn.conflicts = TRUE)
 ```
 
@@ -40,7 +40,7 @@ plot_persp <- function(x, y, z, lcol=topo.colors, ...) {
   persp(x, y, z, col=as.character(zzz),
         phi=30, theta=-25, ltheta = -70,
         expand = 0.5, border = NA, box = FALSE, shade = 0.75, ...)
-  list(breaks=breaks)
+  # list(breaks=breaks)
 }
 
 
@@ -358,6 +358,15 @@ rball <- lapply(env, function(xa){
 })
 
 
+
+
+```
+
+Okay, our landscape is almoust ready to start getting some life on it! We will now prepare the gen3sis input using create_input_landscape, and run a simulation. We will use a config we prepared so that you can use it as a start and figure out what it is doing.
+
+
+```{r, eval=FALSE}
+
 # define cost function, crossing water as 4x as land sites
 cost_function_water <- function(source, habitable_src, dest, habitable_dest) {
   if(!all(habitable_src, habitable_dest)) {
@@ -372,18 +381,13 @@ cost_function_water <- function(source, habitable_src, dest, habitable_dest) {
 create_input_landscape(
   landscapes = rball,
   cost_function = cost_function_water,
-  output_directory = file.path(here("output/myworld6")),
+  output_directory = file.path(here("output/myworld")),
   directions = 8, # surrounding sites for each site
   timesteps = paste0((n_step-1):0, "step"),
   calculate_full_distance_matrices = TRUE,
   verbose = T) # full distance matrix
 
-```
 
-Okay, our landscape is ready to start getting some life on it! We have prepared a config with some changes, so that you can use it as a start.
-
-
-```{r, eval=FALSE}
 exp1 <- run_simulation(
   config = file.path("configs", "config_islands_simple_Day2Prac5.R"),
   landscape = file.path(here("output/myworld5")),

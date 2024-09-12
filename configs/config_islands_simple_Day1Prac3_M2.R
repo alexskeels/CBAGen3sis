@@ -2,7 +2,7 @@
 ### General settings ###
 ########################
 
-random_seed = 666
+random_seed = 663
 start_time = 50
 end_time = NA
 max_number_of_species =50000

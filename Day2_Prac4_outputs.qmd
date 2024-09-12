@@ -97,13 +97,15 @@ sim$flag
 Next is the system summary. This is information about the R version, R packages, and operating system used in the simulation. This ensures complete repeatability. It also tells us the runtime of the simulation.
 
 ```{r}
-sim$system
+names(sim$system)
+sim$system[1:2]
 ```
 
 Finally the summary object contains the config information and model parameters used.
 
 ```{r}
-sim$parameters
+names(sim$parameters)
+names(sim$parameters$gen3sis)
 ```
 
 #### Phylogeny object (phy.nex) {.unnumbered}
@@ -113,7 +115,6 @@ The phylogeny object is pretty straight forward. It is a nexus file containing t
 ```{r}
 # read phy
 phy <- read.nexus(file.path(output_dir, "config_islands_simple_Day1Prac3_M3/phy.nex"))
-
 # plot phy
 plot(phy)
 ```
