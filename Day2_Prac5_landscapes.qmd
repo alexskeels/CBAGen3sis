@@ -263,7 +263,7 @@ plot_persp(x, y, (random_lanscape(x, y, 200)/10)+(zf), lcol=terrain.colors)
 
 ## Creating an Archipelago {.unnumbered}
 
-For example, here we will use our previous more complex landscape and add 2 more islands
+Let's create an archipelago with multiple islands. We will use the same concept as before, but this time we will add more islands to the landscape. I.e 6, starting from the smallest to the largest island all spread evenly in a circle.
 
 ```{r}
 
@@ -295,7 +295,7 @@ plot_persp(x,y, elevation)
 
 ```
 
-Like before, let's add a temporal dynamics, without noise and just some sea level and temperature fluctuations. We will delay the sea level change by 1 time steps, as we expect the temperature to increase before the sea level rises.
+Like before, let's add a temporal dynamics and sea level and temperature fluctuations. We will use a sine wave to simulate temperature and sea level changes over time. We will delay the sea level change by 1 time steps, as we expect the temperature to increase before the sea level rises.
 
 ```{r}
 # define number of timesteps
@@ -330,7 +330,8 @@ scale_to_range <- function(values, low, high) {
 temp_vec <- scale_to_range(temp, limts$temperature[1], limts$temperature[2])
 sealevel_vec <- scale_to_range(sealevel, limts$sealevel[1], limts$sealevel[2])
 ```
-Now let's change things though time and prepare out gen3sis input
+
+Now let's apply these changes over time to our landscape.
 ```{r}
 
 env <- list(elevation=list(), temp=list(), island_id=list())

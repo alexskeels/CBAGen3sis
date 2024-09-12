@@ -493,7 +493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="creating-an-archipelago" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="creating-an-archipelago">Creating an Archipelago</h2>
-<p>For example, here we will use our previous more complex landscape and add 2 more islands</p>
+<p>Let’s create an archipelago with multiple islands. We will use the same concept as before, but this time we will add more islands to the landscape. I.e 6, starting from the smallest to the largest island all spread evenly in a circle.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the radius of the circle and the number of points</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>radius <span class="ot">&lt;-</span> <span class="dv">17</span>  <span class="co"># For a circle within -20:20 range</span></span>
@@ -524,7 +524,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="Day2_Prac5_landscapes_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Like before, let’s add a temporal dynamics, without noise and just some sea level and temperature fluctuations. We will delay the sea level change by 1 time steps, as we expect the temperature to increase before the sea level rises.</p>
+<p>Like before, let’s add a temporal dynamics and sea level and temperature fluctuations. We will use a sine wave to simulate temperature and sea level changes over time. We will delay the sea level change by 1 time steps, as we expect the temperature to increase before the sea level rises.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define number of timesteps</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>n_step <span class="ot">&lt;-</span> <span class="dv">24</span></span>
@@ -560,7 +560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>temp_vec <span class="ot">&lt;-</span> <span class="fu">scale_to_range</span>(temp, limts<span class="sc">$</span>temperature[<span class="dv">1</span>], limts<span class="sc">$</span>temperature[<span class="dv">2</span>])</span>
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>sealevel_vec <span class="ot">&lt;-</span> <span class="fu">scale_to_range</span>(sealevel, limts<span class="sc">$</span>sealevel[<span class="dv">1</span>], limts<span class="sc">$</span>sealevel[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now let’s change things though time and prepare out gen3sis input</p>
+<p>Now let’s apply these changes over time to our landscape.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>env <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">elevation=</span><span class="fu">list</span>(), <span class="at">temp=</span><span class="fu">list</span>(), <span class="at">island_id=</span><span class="fu">list</span>())</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
