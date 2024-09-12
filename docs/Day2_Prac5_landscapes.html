@@ -192,9 +192,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-2-declare-your-functions-make-your-tools" id="toc-step-2-declare-your-functions-make-your-tools" class="nav-link" data-scroll-target="#step-2-declare-your-functions-make-your-tools">Step 2: Declare your functions (Make your tools)</a></li>
   <li><a href="#step-3-create-a-dynamic-landscape" id="toc-step-3-create-a-dynamic-landscape" class="nav-link" data-scroll-target="#step-3-create-a-dynamic-landscape">Step 3: Create a dynamic landscape</a></li>
   <li><a href="#build-your-own-tools-again-forget-about-steps" id="toc-build-your-own-tools-again-forget-about-steps" class="nav-link" data-scroll-target="#build-your-own-tools-again-forget-about-steps">Build Your Own Tools Again, forget about steps…</a></li>
-  <li><a href="#see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory" id="toc-see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory" class="nav-link" data-scroll-target="#see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory"><span class="header-section-number">5.1</span> See the landscape you’ve crafted take shape in all its 3D glory</a></li>
-  <li><a href="#add-more-islands" id="toc-add-more-islands" class="nav-link" data-scroll-target="#add-more-islands"><span class="header-section-number">5.2</span> Add more islands!</a></li>
-  <li><a href="#random-landscapes" id="toc-random-landscapes" class="nav-link" data-scroll-target="#random-landscapes"><span class="header-section-number">5.3</span> Random Landscapes</a></li>
+  <li><a href="#see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory" id="toc-see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory" class="nav-link" data-scroll-target="#see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory">See the landscape you’ve crafted take shape in all its 3D glory</a></li>
+  <li><a href="#add-more-islands" id="toc-add-more-islands" class="nav-link" data-scroll-target="#add-more-islands">Add more islands!</a></li>
+  <li><a href="#random-landscapes" id="toc-random-landscapes" class="nav-link" data-scroll-target="#random-landscapes">Random Landscapes</a></li>
   <li><a href="#creating-an-archipelago" id="toc-creating-an-archipelago" class="nav-link" data-scroll-target="#creating-an-archipelago">Creating an Archipelago</a></li>
   <li><a href="#prepare-gen3sis-input" id="toc-prepare-gen3sis-input" class="nav-link" data-scroll-target="#prepare-gen3sis-input">Prepare gen3sis input</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
@@ -404,8 +404,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory"><span class="header-section-number">5.1</span> See the landscape you’ve crafted take shape in all its 3D glory</h2>
+<section id="see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory">See the landscape you’ve crafted take shape in all its 3D glory</h2>
 <p>Use your new tool to visualize the dynamic landscape you’ve created.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_multiple_persp</span>(l, <span class="at">lcol=</span>terrain.colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -414,8 +414,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="add-more-islands" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="add-more-islands"><span class="header-section-number">5.2</span> Add more islands!</h2>
+<section id="add-more-islands" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="add-more-islands">Add more islands!</h2>
 <p>It’s time to create more complex terrains by adding multiple islands. We can simulate this by layering multiple Gaussian functions. In this example we will simply add the z values</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="at">mai=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fl">0.3</span>)</span>
@@ -464,8 +464,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="random-landscapes" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="random-landscapes"><span class="header-section-number">5.3</span> Random Landscapes</h2>
+<section id="random-landscapes" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="random-landscapes">Random Landscapes</h2>
 <p>Now let’s generate a more complex landscape with multiple peaks to add more details to our world.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>noise <span class="ot">&lt;-</span> <span class="fu">random_lanscape</span>(x, y, <span class="dv">80</span>)</span>

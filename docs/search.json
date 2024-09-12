@@ -185,8 +185,8 @@
     "objectID": "Day2_Prac5_landscapes.html#add-more-islands",
     "href": "Day2_Prac5_landscapes.html#add-more-islands",
     "title": "5  🌋 Creating Worlds",
-    "section": "5.2 Add more islands!",
-    "text": "5.2 Add more islands!\nIt’s time to create more complex terrains by adding multiple islands. We can simulate this by layering multiple Gaussian functions. In this example we will simply add the z values\n\npar(mfrow=c(1,3), mai=c(1,1,1,1)*0.3)\n# First island\nz1 &lt;- outer(x, y, gaussian_2d, x0=-10, y0=10, sdx=4, sdy=4, a=7)\nplot_persp(x, y, z1, main=\"z1\")\n\n# Second island\nz2 &lt;- outer(x, y, gaussian_2d, x0=10, y0=-10, sdx=5, sdy=6, a=5)\nplot_persp(x, y, z2, main=\"z2\")\n\n# Combine the two islands\nzf &lt;- z1 + z2\nplot_persp(x, y, zf, main=\"z1 + z2\")\n\n\n\n\nNow let’s use the same concept to create a time-evolving landscape with three islands. And see how the islands will grow and change over time.\n\n# Create a time-evolving landscape\nl &lt;- list(z1 = zf,\n          z2 = zf + outer(x, y, gaussian_2d, x0 = 0, y0 = -3, sdx = 2, sdy = 2.5, a = 3),\n          z3 = zf + outer(x, y, gaussian_2d, x0 = 0, y0 = -3, sdx = 2.5, sdy = 2.8, a = 4))\nplot_multiple_persp(l, lcol=terrain.colors)\n\n\n\n# Convert the landscapes to raster bricks\nrb &lt;- brick(lapply(l, raster))\nplot(rb)\n\n\n\n# Apply sea level cuts to the landscapes\nselev &lt;- c(1, 2, 1)\nls &lt;- l\nfor (zi in 1:3) {\n  ms &lt;- ls[[zi]] &lt;= selev[zi]\n  ls[[zi]][ms] &lt;- NA\n}\nrb &lt;- brick(lapply(ls, raster))\nplot(rb, col = viridis(255))"
+    "section": "Add more islands!",
+    "text": "Add more islands!\nIt’s time to create more complex terrains by adding multiple islands. We can simulate this by layering multiple Gaussian functions. In this example we will simply add the z values\n\npar(mfrow=c(1,3), mai=c(1,1,1,1)*0.3)\n# First island\nz1 &lt;- outer(x, y, gaussian_2d, x0=-10, y0=10, sdx=4, sdy=4, a=7)\nplot_persp(x, y, z1, main=\"z1\")\n\n# Second island\nz2 &lt;- outer(x, y, gaussian_2d, x0=10, y0=-10, sdx=5, sdy=6, a=5)\nplot_persp(x, y, z2, main=\"z2\")\n\n# Combine the two islands\nzf &lt;- z1 + z2\nplot_persp(x, y, zf, main=\"z1 + z2\")\n\n\n\n\nNow let’s use the same concept to create a time-evolving landscape with three islands. And see how the islands will grow and change over time.\n\n# Create a time-evolving landscape\nl &lt;- list(z1 = zf,\n          z2 = zf + outer(x, y, gaussian_2d, x0 = 0, y0 = -3, sdx = 2, sdy = 2.5, a = 3),\n          z3 = zf + outer(x, y, gaussian_2d, x0 = 0, y0 = -3, sdx = 2.5, sdy = 2.8, a = 4))\nplot_multiple_persp(l, lcol=terrain.colors)\n\n\n\n# Convert the landscapes to raster bricks\nrb &lt;- brick(lapply(l, raster))\nplot(rb)\n\n\n\n# Apply sea level cuts to the landscapes\nselev &lt;- c(1, 2, 1)\nls &lt;- l\nfor (zi in 1:3) {\n  ms &lt;- ls[[zi]] &lt;= selev[zi]\n  ls[[zi]][ms] &lt;- NA\n}\nrb &lt;- brick(lapply(ls, raster))\nplot(rb, col = viridis(255))"
   },
   {
     "objectID": "Day2_Prac5_landscapes.html#generating-a-landscape-with-multiple-peaks",
@@ -227,15 +227,15 @@
     "objectID": "Day2_Prac5_landscapes.html#see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory",
     "href": "Day2_Prac5_landscapes.html#see-the-landscape-youve-crafted-take-shape-in-all-its-3d-glory",
     "title": "5  🌋 Creating Worlds",
-    "section": "5.1 See the landscape you’ve crafted take shape in all its 3D glory",
-    "text": "5.1 See the landscape you’ve crafted take shape in all its 3D glory\nUse your new tool to visualize the dynamic landscape you’ve created.\n\nplot_multiple_persp(l, lcol=terrain.colors)"
+    "section": "See the landscape you’ve crafted take shape in all its 3D glory",
+    "text": "See the landscape you’ve crafted take shape in all its 3D glory\nUse your new tool to visualize the dynamic landscape you’ve created.\n\nplot_multiple_persp(l, lcol=terrain.colors)"
   },
   {
     "objectID": "Day2_Prac5_landscapes.html#random-landscapes",
     "href": "Day2_Prac5_landscapes.html#random-landscapes",
     "title": "5  🌋 Creating Worlds",
-    "section": "5.3 Random Landscapes",
-    "text": "5.3 Random Landscapes\nNow let’s generate a more complex landscape with multiple peaks to add more details to our world.\n\nnoise &lt;- random_lanscape(x, y, 80)\n# Few random peaks\nplot_persp(x, y, noise, main=\"Noise\")\n\n\n\n\nNow we add to our previous landscape\n\n# add to previous landscape\nplot_persp(x, y, noise/10+zf, main=\"Noise + zf\")\n\n\n\n\nExperiment with it; there’s a lot of room when creativity your own world!\n\nplot_persp(x, y, (random_lanscape(x, y, 200)/10)+(zf), lcol=terrain.colors)"
+    "section": "Random Landscapes",
+    "text": "Random Landscapes\nNow let’s generate a more complex landscape with multiple peaks to add more details to our world.\n\nnoise &lt;- random_lanscape(x, y, 80)\n# Few random peaks\nplot_persp(x, y, noise, main=\"Noise\")\n\n\n\n\nNow we add to our previous landscape\n\n# add to previous landscape\nplot_persp(x, y, noise/10+zf, main=\"Noise + zf\")\n\n\n\n\nExperiment with it; there’s a lot of room when creativity your own world!\n\nplot_persp(x, y, (random_lanscape(x, y, 200)/10)+(zf), lcol=terrain.colors)"
   },
   {
     "objectID": "Day2_Prac5_landscapes.html#creating-an-archipelago",

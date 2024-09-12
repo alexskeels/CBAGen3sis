@@ -181,7 +181,7 @@ plot_multiple_persp <- function(l, lcol = topo.colors, scol = "darkblue", legend
 }
 
 ```
-## See the landscape you’ve crafted take shape in all its 3D glory
+## See the landscape you’ve crafted take shape in all its 3D glory {.unnumbered}
 
 Use your new tool to visualize the dynamic landscape you’ve created.
 ```{r}
@@ -189,7 +189,7 @@ plot_multiple_persp(l, lcol=terrain.colors)
 ```
 
 
-## Add more islands!
+## Add more islands! {.unnumbered}
 
 It's time to create more complex terrains by adding multiple islands. We can simulate this by layering multiple Gaussian functions. In this example we will simply add the z values
 
@@ -235,7 +235,7 @@ plot(rb, col = viridis(255))
 
 ```
 
-## Random Landscapes
+## Random Landscapes {.unnumbered}
 
 Now let's generate a more complex landscape with multiple peaks to add more details to our world.
 
