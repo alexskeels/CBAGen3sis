@@ -6,48 +6,47 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 
 ![ANU](figures/gen3sis_ANU_2024.gif){fig-align="center" width="50%"}
 
-## Day 1 {.unnumbered} 
+## Day 1 {.unnumbered}
 
+| **Time**      | **Event**                                                                                                                  |
+|---------------|---------------------------------------------------------|
+| 09:00 - 09:45 | 👋☕  **Welcome** (Platypus Room) - Coffee, introductions, and overview of Gen3sis workshop                                   |
+| 10:00 - 11:00 | 🎓 **Lecture 1** - Oskar Hagen (Eucalyptus Room): *History and philosophy of simulation modelling in biodiversity studies*                                                                            
 
-| **Time**        | **Event**                                                                                       |
-|-----------------|-------------------------------------------------------------------------------------------------|
-| 09:00 - 09:45   | 👋 **Welcome** (Platypus Room) - Coffee, introductions, and overview of Gen3sis workshop         |
-| 09:45 - 10:45   | 🎓 **Lecture 1** - Oskar Hagen (Eucalyptus Room): *History and philosophy of simulation modelling in biodiversity studies* |
-| 10:45 - 11:00   | ☕ **Coffee Break**                                                                               |
-| 11:00 - 12:00   | 🛠️ **Practical 1** - Gettin' Started: Installation and Set Up                                    |
-| 12:00 - 12:30   | 🛠️ **Practical 2** - Configure Skating: Gen3sis Config Basics                                    |
-| 12:30 - 13:30   | 🍽️ **Lunch Break**                                                                               |
-| 13:30 - 15:30   | 🛠️ **Practical 2** - Configure Skating: Gen3sis Config Basics                      )                           |
-| 15:30 - 15:45   | ☕ **Coffee Break**                                                                               |
-| 15:45 - 16:30   | 🏝️ **Practical 3** - Island Hopping: Explore a model island system                               |
-| 16:30 - 17:00   | ❓ **Questions** / Wrap up Day 1                                                                  |
+| 11:00 - 12:00 | 🛠️ **Practical 1** - Gettin' Started: Installation and Set Up                                                              |
+| 12:00 - 12:30 | 🛠️ **Practical 2** - Configure Skating: Gen3sis Config Basics                                                              |
+| 12:30 - 13:30 | 🍽️ **Lunch Break**                                                                                                         |
+| 13:30 - 15:30 | 🛠️ **Practical 2** - Configure Skating: Gen3sis Config Basics )                                                            |
+| 15:30 - 15:45 | ☕ **Coffee Break**                                                                                                        |
+| 15:45 - 16:30 | 🏝️ **Practical 3** - Island Hopping: Explore a model island system                                                         |
+| 16:30 - 17:00 | ❓ **Questions** / Wrap up Day 1                                                                                           |
 
 ## Day 2 {.unnumbered}
 
-| **Time**        | **Event**                                                                                       |
-|-----------------|-------------------------------------------------------------------------------------------------|
-| 09:00 - 10:00   | 🎓 **Lecture 2** - Alex and Oskar (Platypus Room): *Inference from simulated biodiversity data*  |
-| 10:00 - 10:30   | 🌍 **Practical 4.1** - Silicodiversity: Gen3sis outputs and patterns                             |
-| 10:30 - 10:45   | ☕ **Coffee Break**                                                                               |
-| 10:45 - 12:30   | 🌍 **Practical 4.2** - Silicodiversity: Gen3sis outputs and patterns                             |
-| 12:30 - 13:30   | 🍽️ **Lunch Break**                                                                               |
-| 13:30 - 14:15   | 🎓 **Lecture 3** - Tristan Salles (Platypus Room): *Paleoenvironmental models and data*          |
-| 14:15 - 14:45   | 💬 **Discussion**                                                                                |
-| 14:45 - 15:00   | ☕ **Coffee Break**                                                                               |
-| 15:00 - 16:30   | 🌍 **Practical 5** - Creating Worlds: Modifying landscapes as inputs for Gen3sis                 |
-| 16:30 - 17:00   | ❓ **Questions** / Wrap up Day 2                                                                  |
+| **Time**      | **Event**                                                                                       |
+|---------------|---------------------------------------------------------|
+| 09:00 - 10:00 | 🎓 **Lecture 2** - Alex and Oskar (Platypus Room): *Inference from simulated biodiversity data* |
+| 10:00 - 10:30 | 🌍 **Practical 4.1** - Silicodiversity: Gen3sis outputs and patterns                            |
+| 10:30 - 10:45 | ☕ **Coffee Break**                                                                             |
+| 10:45 - 12:30 | 🌍 **Practical 4.2** - Silicodiversity: Gen3sis outputs and patterns                            |
+| 12:30 - 13:30 | 🍽️ **Lunch Break**                                                                              |
+| 13:30 - 14:15 | 🎓 **Lecture 3** - Tristan Salles (Platypus Room): *Paleoenvironmental models and data*         |
+| 14:15 - 14:45 | 💬 **Discussion**                                                                               |
+| 14:45 - 15:00 | ☕ **Coffee Break**                                                                             |
+| 15:00 - 16:30 | 🌍 **Practical 5** - Creating Worlds: Modifying landscapes as inputs for Gen3sis                |
+| 16:30 - 17:00 | ❓ **Questions** / Wrap up Day 2                                                                |
 
 ## Day 3 {.unnumbered}
 
-| **Time**        | **Event**                                                                                       |
-|-----------------|-------------------------------------------------------------------------------------------------|
-| 09:00 - 10:00   | 🎓 **Lecture 4** - Alex and Oskar: *Designing simulation experiments with Gen3sis*               |
-| 10:00 - 10:30   | 🤝️ **Practical 6** - Sandbox: Implementing models in Gen3sis                                      |
-| 10:30 - 10:45   | ☕ **Coffee Break**                                                                               |
-| 10:45 - 12:30   | 🤝️ **Practical 6** - Sandbox: Implementing models in Gen3sis                                    |
-| 12:30 - 13:30   | 🍽️ **Lunch Break**                                                                               |
-| 13:30 - 14:45   | 🤝️ **Wrapping up Sandbox**                                                                       |
-| 14:45 - 15:00   | ☕ **Coffee Break**                                                                               |
-| 15:00 - 16:00   | 🎤 **Presenting Sandbox models** / Wrap up Day 3                                                 |
-| 16:00 - 16:10   | 🔄 **Feedback session** - Gathering final thoughts and suggestions                               |
-| 16:10           | 🍻 **Pub!**                                                                                      |
+| **Time**      | **Event**                                                                          |
+|---------------|---------------------------------------------------------|
+| 09:00 - 10:00 | 🎓 **Lecture 4** - Alex and Oskar: *Designing simulation experiments with Gen3sis* |
+| 10:00 - 10:30 | 🤝️ **Practical 6** - Sandbox: Implementing models in Gen3sis                       |
+| 10:30 - 10:45 | ☕ **Coffee Break**                                                                |
+| 10:45 - 12:30 | 🤝️ **Practical 6** - Sandbox: Implementing models in Gen3sis                       |
+| 12:30 - 13:30 | 🍽️ **Lunch Break**                                                                 |
+| 13:30 - 14:45 | 🤝️ **Wrapping up Sandbox**                                                         |
+| 14:45 - 15:00 | ☕ **Coffee Break**                                                                |
+| 15:00 - 16:00 | 🎤 **Presenting Sandbox models** / Wrap up Day 3                                   |
+| 16:00 - 16:10 | 🔄 **Feedback session** - Gathering final thoughts and suggestions                 |
+| 16:10         | 🍻 **Pub!**                                                                        |

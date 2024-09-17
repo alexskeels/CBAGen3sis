@@ -4,9 +4,11 @@ author: "Alex Skeels and Oskar Hagen"
 execute: 
   eval: TRUE
 ---
-```{r setup, include=FALSE} 
+
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
+
 The first step to a successful workshop is ensuring everyone has the necessary software up and running on everyone's machine. We'll take a few minutes to get everything set up and take a sneak peek at some of the data we'll be working with throughout the session, before moving on to the nitty gritty.
 
 ## Download workshop files Github Repository {.unnumbered}
@@ -63,32 +65,28 @@ load gen3sis
 library(gen3sis)
 ```
 
-Now, lets source our support functions, to load some of the functions we'll be going throughout the workshop. The first one is just a convenient way of installing packages if they are not already installed.
-
-You can also install these other packages we'll use throughout the workshop.
-
-```{r, echo=FALSE}
-# Vector of packages to load and install if necessary
-packages_to_load <- c("terra", "raster", "here", "ape", "phytools", "picante")
-
-# Call the function with the vector of package names
-unlist(lapply(packages_to_load, require, character.only = T))
-
-```
-
-## Access Data {.unnumbered}
-
-All the data for the workshop is stored in the 'data' folder, for your convenience, we set the paths to the variable data_dir (and others) on our support.R file
+Now, lets source our support functions, to load some of the functions we'll be going throughout the workshop. The first one is just a convenient way of installing packages if they are not already installed.  
 
 ```{r}
 source("support.R")
 ```
 
+You can also install these other packages we'll use throughout the workshop.
+
+```{r, echo=FALSE}
+# packages to load and install if necessary
+load_install_pkgs(c("terra", "raster", "here", "ape", "phytools", "picante"))
+```
+
+## Access Data {.unnumbered}
+
+All the data for the workshop is stored in the 'data' folder, for your convenience, we set the paths to the variable data_dir (and) others) on our support.R file. 
+
 In this folder we include a paleoenvironmental reconstruction of South American temperature and aridity at a coarse spatial resolution of 2 degrees, and at a temporal resolution of 1 million years. This is a very rough temporal resolution but should do for our tutorial. Load it in and investigate some of it's features.
 
 ```{r}
 # read the R data file
-landscape <- readRDS(file.path("data","landscapes", "SA_coarse", "landscapes.rds"))
+landscape <- readRDS(file.path(data_dir,"landscapes", "SA_coarse", "landscapes.rds"))
 
 # class
 class(landscape)
