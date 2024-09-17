@@ -391,7 +391,7 @@ cost_function_water <- function(source, habitable_src, dest, habitable_dest) {
 create_input_landscape(
   landscapes = rball,
   cost_function = cost_function_water,
-  output_directory = file.path(here("output/myworld")),
+  output_directory = file.path(here("data/landscapes/myworld")),
   directions = 8, # surrounding sites for each site
   timesteps = paste0((n_step-1):0, "step"),
   calculate_full_distance_matrices = TRUE,
@@ -400,7 +400,7 @@ create_input_landscape(
 
 exp1 <- run_simulation(
   config = file.path("configs", "config_islands_simple_Day2Prac5.R"),
-  landscape = file.path(here("output/myworld")),
+  landscape = file.path(here("data/landscapes/myworld")),
   output_directory = file.path(here("output/outputs")),
   verbose = 1
 )

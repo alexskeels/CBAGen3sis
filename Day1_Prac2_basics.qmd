@@ -31,13 +31,13 @@ So these two ways of editing the config lend themselves to two different ways of
 
 # run from config file
 sim <- run_simulation(config = file.path("configs", "config_southamerica_Day1Prac1.R"), 
-               landscape = file.path("data","landscapes", "SA_coarse"),
+               landscape = file.path("data","landscapes", "SouthAmerica"),
                output_directory = "output/SouthAmerica",
                verbose=1)
 
 # run from config in memory
 sim <- run_simulation(config = config, 
-               landscape = file.path("data","landscapes", "SA_coarse"),
+               landscape = file.path("data","landscapes", "SouthAmerica"),
                output_directory = "output/SouthAmerica",
                verbose=1)
 ```

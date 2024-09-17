@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./considerations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">👻 Important considerations</span></span></a>
   </div>
 </li>
     </ul>
@@ -242,13 +242,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># run from config file</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">run_simulation</span>(<span class="at">config =</span> <span class="fu">file.path</span>(<span class="st">"configs"</span>, <span class="st">"config_southamerica_Day1Prac1.R"</span>), </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">landscape =</span> <span class="fu">file.path</span>(<span class="st">"data"</span>,<span class="st">"landscapes"</span>, <span class="st">"SA_coarse"</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">landscape =</span> <span class="fu">file.path</span>(<span class="st">"data"</span>,<span class="st">"landscapes"</span>, <span class="st">"SouthAmerica"</span>),</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">output_directory =</span> <span class="st">"output/SouthAmerica"</span>,</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">verbose=</span><span class="dv">1</span>)</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># run from config in memory</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">run_simulation</span>(<span class="at">config =</span> config, </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">landscape =</span> <span class="fu">file.path</span>(<span class="st">"data"</span>,<span class="st">"landscapes"</span>, <span class="st">"SA_coarse"</span>),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">landscape =</span> <span class="fu">file.path</span>(<span class="st">"data"</span>,<span class="st">"landscapes"</span>, <span class="st">"SouthAmerica"</span>),</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">output_directory =</span> <span class="st">"output/SouthAmerica"</span>,</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">verbose=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -280,7 +280,7 @@ function (data, vars, config)
     save_species()
     plot_richness(data$all_species, data$landscape)
 }
-&lt;environment: 0x13b46eb00&gt;
+&lt;environment: 0x127058d68&gt;
 
 $gen3sis$general$trait_names
 [1] "temp"         "temp_breadth" "dispersal"   
@@ -324,7 +324,7 @@ function (landscape, config)
     }
     return(new_species)
 }
-&lt;environment: 0x13b46eb00&gt;
+&lt;environment: 0x127058d68&gt;
 
 
 $gen3sis$dispersal
@@ -337,7 +337,7 @@ function (n, species, landscape, config)
     values &lt;- rweibull(n, shape = 1.5, scale = 200)
     return(values)
 }
-&lt;environment: 0x13b46eb00&gt;
+&lt;environment: 0x127058d68&gt;
 
 
 $gen3sis$speciation
@@ -349,7 +349,7 @@ function (species, cluster_indices, landscape, config)
 {
     return(1)
 }
-&lt;environment: 0x13b46eb00&gt;
+&lt;environment: 0x127058d68&gt;
 
 
 $gen3sis$mutation
@@ -371,7 +371,7 @@ function (species, cluster_indices, landscape, config)
     traits[, "temp"] &lt;- traits[, "temp"] + mutation_deltas
     return(traits)
 }
-&lt;environment: 0x13b46eb00&gt;
+&lt;environment: 0x127058d68&gt;
 
 
 $gen3sis$ecology
@@ -382,7 +382,7 @@ function (abundance, traits, environment, config)
     abundance &lt;- env_diff &lt; traits[, "temp_breadth"]
     return(abundance)
 }
-&lt;environment: 0x13b46eb00&gt;
+&lt;environment: 0x127058d68&gt;
 
 
 
@@ -472,7 +472,7 @@ function (data, vars, config)
     save_species()
     plot_richness(data$all_species, data$landscape)
 }
-&lt;environment: 0x13b46eb00&gt;
+&lt;environment: 0x127058d68&gt;
 
 $trait_names
 [1] "temp"         "temp_breadth" "dispersal"   
@@ -583,7 +583,7 @@ function (landscape, config)
     }
     return(new_species)
 }
-&lt;environment: 0x13b46eb00&gt;</code></pre>
+&lt;environment: 0x127058d68&gt;</code></pre>
 </div>
 </div>
 <p>In this example, we are generating five species to begin. We first define a box from which we sample points to use to place the first species on the landscape. We randomly sample a single grid cell to place each initial species in. Next, we give each initial species values for the three traits. Here, we give the value for <em>temp</em> as the temperature value of the grid cell the species will occur in. We set a <em>dispersal</em> equal to 1. We repeat this 5 times, for 5 species. We can create more ancestor species by repeating this process in a loop , or we could manually create ancestral range by hand-selecting grid cells for the species to occur in.</p>
@@ -603,7 +603,7 @@ function (n, species, landscape, config)
     values &lt;- rweibull(n, shape = 1.5, scale = 200)
     return(values)
 }
-&lt;environment: 0x13b46eb00&gt;</code></pre>
+&lt;environment: 0x127058d68&gt;</code></pre>
 </div>
 </div>
 <p>Here we set the maximum dispersal distance as infinty (e.g., no maximum), and we draw the dispersal values from a Weibull distribution with shape parameter = 1.5 and scale = 133. We can see what this distribution looks like by plotting a histogram.</p>
@@ -643,7 +643,7 @@ function (species, cluster_indices, landscape, config)
 {
     return(1)
 }
-&lt;environment: 0x13b46eb00&gt;</code></pre>
+&lt;environment: 0x127058d68&gt;</code></pre>
 </div>
 </div>
 <p>In this example, the <em>get_divergence_funtion</em> returns a value of 1 each timestep, so the divergence accumulates by a value of 1 at each time step and populations become new species when divergence is greater than the divergence threshold, here given a value of 2. So a new species can form if two populations has been isolated for two timesteps.</p>
@@ -684,7 +684,7 @@ function (species, cluster_indices, landscape, config)
     traits[, "temp"] &lt;- traits[, "temp"] + mutation_deltas
     return(traits)
 }
-&lt;environment: 0x13b46eb00&gt;</code></pre>
+&lt;environment: 0x127058d68&gt;</code></pre>
 </div>
 </div>
 <p>Homogensation assigns each geographic cluster the avaerage trait value weighted by the abundance of each population. Here larger populations contribute more than smaller populations to the avergae.</p>
@@ -703,7 +703,7 @@ function (abundance, traits, environment, config)
     abundance &lt;- env_diff &lt; traits[, "temp_breadth"]
     return(abundance)
 }
-&lt;environment: 0x13b46eb00&gt;</code></pre>
+&lt;environment: 0x127058d68&gt;</code></pre>
 </div>
 </div>
 <p>Here we use the temp trait (temperature niche position) and temp_breadth (temperature niche breadth) to determine whether a population can survive in cell. We get the absolute difference between the niche position and the temperature value in the grid cell. We then ask if this difference is more than the niche breadth. If it is larger, this means the value of the grid cell is outside the population’s niche breadth and it goes extinct in that grid cell. Extinction is indicated by giving the abundance a value of 0 or setting the abundance to FALSE as done here.</p>
