@@ -70,7 +70,7 @@ Now, lets source our support functions, to load some of the functions we'll be g
 ```{r}
 source("support.R")
 # packages to load and install if necessary
-load_install_pkgs(c("terra", "raster", "here", "ape", "phytools", "picante"))
+load_install_pkgs(c("terra", "raster", "here", "ape", "phytools", "picante", "caret"))
 ```
 
 ## Access Data {.unnumbered}

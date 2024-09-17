@@ -116,7 +116,8 @@ The phylogeny object is pretty straight forward. It is a nexus file containing t
 # read phy
 phy <- read.nexus(file.path(output_dir, "config_islands_simple_Day1Prac3_M3/phy.nex"))
 # plot phy
-plot(phy)
+plot(phy, cex=0.4)
+axisPhylo()
 ```
 
 From this object we can look at lineages through time plots and estimate trends in diversification. The gamma statistic is one way to detect diversification slowdowns or speedups, with positive values indicating nodes are more closely pushed up towards the tips (speed up) and negative values indicating nodes are closer to the root (slowdown) ([Pybus and Harvey 2000](https://royalsocietypublishing.org/doi/10.1098/rspb.2000.1278)). There are lots of other kinds of measures of phylogenetic tree shape, such as metrics of tree imbalance (Colless's Index, Beta-Splitting Paramater, etc.)
@@ -300,7 +301,7 @@ We actually know which islands each lineage started on because we recorded this 
 par(mfrow=c(1,2))
 plotTree(phy,ftype="i",offset=1,fsize=0.4, xlim=c(0, 75))
 my_cex=0.9
-# add the starting island as a fifth colum
+# add the starting island as the first colum
 tiplabels(pie=formatIsland(island="island_start", phy=phy, daf=daf)[[2]],piecol=palette()[c(2,3,4,6)],cex=my_cex*3, adj=12)
 
 tiplabels(pie=formatIsland(island="island1", phy=phy, daf=daf)[[2]],piecol=palette()[c(8,2)],cex=my_cex, adj=12+1)

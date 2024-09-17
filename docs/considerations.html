@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Center for Biodiversity Analysis: Gen3sis Workshop 2024 - 7&nbsp; Considerations</title>
+<title>Center for Biodiversity Analysis: Gen3sis Workshop 2024 - 7&nbsp; 👻 Important considerations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./considerations.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerations</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./considerations.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">👻 Important considerations</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -142,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./considerations.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">👻 Important considerations</span></span></a>
   </div>
 </li>
     </ul>
@@ -169,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerations</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">👻 Important considerations</span></h1>
 </div>
 
 
@@ -207,11 +207,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="caveats" class="level3" data-number="7.0.6">
 <h3 data-number="7.0.6" class="anchored" data-anchor-id="caveats"><span class="header-section-number">7.0.6</span> Caveats</h3>
 <ul>
-<li></li>
 <li><p><strong>temporal behaviour:</strong> No variables in <em>gen3sis</em> have an explicit temporal component. It is always <strong>x/timestep</strong>. That means that most processes will either speed up or slow down if one changes the temporal resolution of the input. For example, a configured rate of dispersal of 1/timestep can become 10/million years or 2/million years for simulations with 10 and 2 timesteps per million years respectively.</p></li>
-<li></li>
 <li><p><strong>raster inputs:</strong> The behaviour of the species dispersal and geographic clustering depends on the spatial input resolution. Changing input resolution can have secondary effects. For example, a higher-resolution landscape input will have more cells. Not only will it be easier to reach neighbouring cells, but there will also be more chances for dispersal events to happen. As such there might be a non-linear dependency between dispersal values and input resolution.</p></li>
-<li></li>
 <li><p><strong>polar distortions:</strong> Our distance calculations correct for the distance distortions raster-based data experiences towards the polar regions. This does lead to many small cells being close together in the polar regions. This makes dispersal a lot easier compared to equatorial cells in two ways. First, the dispersal distances are often enough to reach multiple neighbours. And second, since there are many more cells closed by, more dispersal events can happen.</p></li>
 </ul>
 
