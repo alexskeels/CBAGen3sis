@@ -9,10 +9,9 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 ## Day 1 {.unnumbered}
 
 | **Time**      | **Event**                                                                                                                  |
-|---------------|---------------------------------------------------------|
-| 09:00 - 09:45 | 👋☕  **Welcome** (Platypus Room) - Coffee, introductions, and overview of Gen3sis workshop                                   |
-| 10:00 - 11:00 | 🎓 **Lecture 1** - Oskar Hagen (Eucalyptus Room): *History and philosophy of simulation modelling in biodiversity studies*                                                                            
-
+|--------------------|----------------------------------------------------|
+| 09:00 - 09:50 | 👋☕ **Welcome** (Platypus Room) - Coffee, introductions, and overview of Gen3sis workshop                                 |
+| 09:50 - 11:00 | 🎓 **Lecture 1** - Oskar Hagen (Eucalyptus Room): *History and philosophy of simulation modelling in biodiversity studies* |
 | 11:00 - 12:00 | 🛠️ **Practical 1** - Gettin' Started: Installation and Set Up                                                              |
 | 12:00 - 12:30 | 🛠️ **Practical 2** - Configure Skating: Gen3sis Config Basics                                                              |
 | 12:30 - 13:30 | 🍽️ **Lunch Break**                                                                                                         |
@@ -24,7 +23,7 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 ## Day 2 {.unnumbered}
 
 | **Time**      | **Event**                                                                                       |
-|---------------|---------------------------------------------------------|
+|--------------------|----------------------------------------------------|
 | 09:00 - 10:00 | 🎓 **Lecture 2** - Alex and Oskar (Platypus Room): *Inference from simulated biodiversity data* |
 | 10:00 - 10:30 | 🌍 **Practical 4.1** - Silicodiversity: Gen3sis outputs and patterns                            |
 | 10:30 - 10:45 | ☕ **Coffee Break**                                                                             |
@@ -39,7 +38,7 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 ## Day 3 {.unnumbered}
 
 | **Time**      | **Event**                                                                          |
-|---------------|---------------------------------------------------------|
+|--------------------|----------------------------------------------------|
 | 09:00 - 10:00 | 🎓 **Lecture 4** - Alex and Oskar: *Designing simulation experiments with Gen3sis* |
 | 10:00 - 10:30 | 🤝️ **Practical 6** - Sandbox: Implementing models in Gen3sis                       |
 | 10:30 - 10:45 | ☕ **Coffee Break**                                                                |

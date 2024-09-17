@@ -4,22 +4,24 @@ author: "Alex Skeels and Oskar Hagen"
 execute: 
   eval: TRUE
 ---
-```{r setup, include=FALSE} 
+
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
+
 To begin the dive into what Gen3sis is, and how it operates, we'll start by looking a config file. The config is the code for the ecological and evolutionary rules and other parameters of Gen3sis, such as the random seed, instructions on saving output.
 
 A config file is a a stand-alone R script which is modified by you. You can modify a config in two ways. The first way and most practical, is to open up a config.R file. For example you can navigate to the folder open the file, or you can use this line and it should appear in your RStudio window.
 
 ```{r, eval=F}
-file.edit('configs/config_southamerica_Day1_Prac1.R')
+file.edit('configs/config_southamerica_Day1Prac1.R')
 ```
 
 Alternatively you can load a config into the RAM and modify there. We'll do this now as its a bit easier to demonstrate, but you can do a local copy of the config file and modify it directly. Lets start with the config we used in the previous section. We should still have that config loaded in our workspaces, but if not run this code.
 
 ```{r}
 library(gen3sis)
-config <- create_input_config(config_file = "configs/config_southamerica_Day1_Prac1.R")
+config <- create_input_config(config_file = "configs/config_southamerica_Day1Prac1.R")
 ```
 
 So these two ways of editing the config lend themselves to two different ways of running the config. We can either point the *run_simulation* function to the config file or the config stored in memory.
