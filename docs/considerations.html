@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alexander Skeels and Oskar Hagen">
 
-<title>Center for Biodiversity Analysis: Gen3sis Workshop 2024</title>
+<title>Center for Biodiversity Analysis: Gen3sis Workshop 2024 - 7&nbsp; Considerations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Day1_Prac1_setup.html" rel="next">
+<link href="./Day3_Prac6_sandbox.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -73,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Program</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./considerations.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerations</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -100,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Program</span></a>
   </div>
 </li>
@@ -142,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./considerations.html" class="sidebar-item-text sidebar-link">
+  <a href="./considerations.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerations</span></span></a>
   </div>
 </li>
@@ -156,12 +155,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#program" id="toc-program" class="nav-link active" data-scroll-target="#program">Program</a>
-  <ul class="collapse">
-  <li><a href="#day-1" id="toc-day-1" class="nav-link" data-scroll-target="#day-1">Day 1</a></li>
-  <li><a href="#day-2" id="toc-day-2" class="nav-link" data-scroll-target="#day-2">Day 2</a></li>
-  <li><a href="#day-3" id="toc-day-3" class="nav-link" data-scroll-target="#day-3">Day 3</a></li>
-  </ul></li>
+  <li><a href="#paleo-environmental-data" id="toc-paleo-environmental-data" class="nav-link active" data-scroll-target="#paleo-environmental-data"><span class="header-section-number">7.0.1</span> Paleo-environmental data</a></li>
+  <li><a href="#distribution-fossil-and-phylogenetic-data" id="toc-distribution-fossil-and-phylogenetic-data" class="nav-link" data-scroll-target="#distribution-fossil-and-phylogenetic-data"><span class="header-section-number">7.0.2</span> Distribution, fossil and phylogenetic data</a></li>
+  <li><a href="#model-complexity" id="toc-model-complexity" class="nav-link" data-scroll-target="#model-complexity"><span class="header-section-number">7.0.3</span> Model complexity</a></li>
+  <li><a href="#computational-time" id="toc-computational-time" class="nav-link" data-scroll-target="#computational-time"><span class="header-section-number">7.0.4</span> Computational time</a></li>
+  <li><a href="#core-functions" id="toc-core-functions" class="nav-link" data-scroll-target="#core-functions"><span class="header-section-number">7.0.5</span> Core functions</a></li>
+  <li><a href="#caveats" id="toc-caveats" class="nav-link" data-scroll-target="#caveats"><span class="header-section-number">7.0.6</span> Caveats</a></li>
   </ul>
 </nav>
     </div>
@@ -170,26 +169,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Center for Biodiversity Analysis: Gen3sis Workshop 2024</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerations</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Alexander Skeels and Oskar Hagen </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">Invalid Date</p>
-    </div>
-  </div>
   
     
   </div>
@@ -197,190 +184,38 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation software! We’ll be using this Quarto book to navigate through the workshop practicals. Quarto allows us to embed R code throughout. The workshop will be (roughly) following this program. Enjoy!</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/fox.png" class="img-fluid figure-img" width="2646"></p>
-<figcaption class="figure-caption">Gen3sis</figcaption>
-</figure>
-</div>
-<section id="program" class="level1 unnumbered">
-<h1 class="unnumbered">Program</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/gen3sis_ANU_2024.gif" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption class="figure-caption">ANU</figcaption>
-</figure>
-</div>
-<section id="day-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="day-1">Day 1</h2>
-<table class="table">
-<colgroup>
-<col style="width: 27%">
-<col style="width: 72%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Time</strong></th>
-<th><strong>Event</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>09:00 - 09:50</td>
-<td>👋☕ <strong>Welcome</strong> (Platypus Room) - Coffee, introductions, and overview of Gen3sis workshop</td>
-</tr>
-<tr class="even">
-<td>09:50 - 11:00</td>
-<td>🎓 <strong>Lecture 1</strong> - Oskar Hagen (Eucalyptus Room): <em>History and philosophy of simulation modelling in biodiversity studies</em></td>
-</tr>
-<tr class="odd">
-<td>11:00 - 12:00</td>
-<td>🛠️ <strong>Practical 1</strong> - Gettin’ Started: Installation and Set Up</td>
-</tr>
-<tr class="even">
-<td>12:00 - 12:30</td>
-<td>🛠️ <strong>Practical 2</strong> - Configure Skating: Gen3sis Config Basics</td>
-</tr>
-<tr class="odd">
-<td>12:30 - 13:30</td>
-<td>🍽️ <strong>Lunch Break</strong></td>
-</tr>
-<tr class="even">
-<td>13:30 - 15:30</td>
-<td>🛠️ <strong>Practical 2</strong> - Configure Skating: Gen3sis Config Basics )</td>
-</tr>
-<tr class="odd">
-<td>15:30 - 15:45</td>
-<td>☕ <strong>Coffee Break</strong></td>
-</tr>
-<tr class="even">
-<td>15:45 - 16:30</td>
-<td>🏝️ <strong>Practical 3</strong> - Island Hopping: Explore a model island system</td>
-</tr>
-<tr class="odd">
-<td>16:30 - 17:00</td>
-<td>❓ <strong>Questions</strong> / Wrap up Day 1</td>
-</tr>
-</tbody>
-</table>
+<section id="paleo-environmental-data" class="level3" data-number="7.0.1">
+<h3 data-number="7.0.1" class="anchored" data-anchor-id="paleo-environmental-data"><span class="header-section-number">7.0.1</span> Paleo-environmental data</h3>
+<p>Investigations of deep-time paleoclimatic influences on biodiversity are still limited by our current mechanistic knowledge of eco-evolutionary processes and by computational power, as well as by the availability of paleo-environmental reconstructions (<a href="https://www.annualreviews.org/doi/abs/10.1146/annurev-ecolsys-112414-054314">Svenning et al., 2015</a>, <a href="https://scholar.google.ch/scholar?q=Big+data+for+forecasting+the+impacts+of+global+change+on+plant+communities.&amp;hl=zh-CN&amp;as_sdt=0&amp;as_vis=1&amp;oi=scholart">Franklin et al., 2017</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0169534718302805?casa_token=X2HR0EDV6csAAAAA:2FWB1soCJ0_4kllkds9pUiwYr4GVPaWhWAz3ELh8BIClJZ_E6k0LqoqQANSXRpySTkzScri6UxjU">Pontarp et al., 2019</a>). Biodiversity dynamics and climatic variations happening on smaller spatio-temporal scales have to be ignored due to the uncertainty in paleo-landscape reconstructions.</p>
 </section>
-<section id="day-2" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="day-2">Day 2</h2>
-<table class="table">
-<colgroup>
-<col style="width: 27%">
-<col style="width: 72%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Time</strong></th>
-<th><strong>Event</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>09:00 - 10:00</td>
-<td>🎓 <strong>Lecture 2</strong> - Alex and Oskar (Platypus Room): <em>Inference from simulated biodiversity data</em></td>
-</tr>
-<tr class="even">
-<td>10:00 - 10:30</td>
-<td>🌍 <strong>Practical 4.1</strong> - Silicodiversity: Gen3sis outputs and patterns</td>
-</tr>
-<tr class="odd">
-<td>10:30 - 10:45</td>
-<td>☕ <strong>Coffee Break</strong></td>
-</tr>
-<tr class="even">
-<td>10:45 - 12:30</td>
-<td>🌍 <strong>Practical 4.2</strong> - Silicodiversity: Gen3sis outputs and patterns</td>
-</tr>
-<tr class="odd">
-<td>12:30 - 13:30</td>
-<td>🍽️ <strong>Lunch Break</strong></td>
-</tr>
-<tr class="even">
-<td>13:30 - 14:15</td>
-<td>🎓 <strong>Lecture 3</strong> - Tristan Salles (Platypus Room): <em>Paleoenvironmental models and data</em></td>
-</tr>
-<tr class="odd">
-<td>14:15 - 14:45</td>
-<td>💬 <strong>Discussion</strong></td>
-</tr>
-<tr class="even">
-<td>14:45 - 15:00</td>
-<td>☕ <strong>Coffee Break</strong></td>
-</tr>
-<tr class="odd">
-<td>15:00 - 16:30</td>
-<td>🌍 <strong>Practical 5</strong> - Creating Worlds: Modifying landscapes as inputs for Gen3sis</td>
-</tr>
-<tr class="even">
-<td>16:30 - 17:00</td>
-<td>❓ <strong>Questions</strong> / Wrap up Day 2</td>
-</tr>
-</tbody>
-</table>
+<section id="distribution-fossil-and-phylogenetic-data" class="level3" data-number="7.0.2">
+<h3 data-number="7.0.2" class="anchored" data-anchor-id="distribution-fossil-and-phylogenetic-data"><span class="header-section-number">7.0.2</span> Distribution, fossil and phylogenetic data</h3>
+<p>Biodiversity data is of the essence when evaluating implemented processes of eco-evolutionary models with empirical biodiversity patterns. In order to perform the evaluation, multiple past and present biological empirical datasets can be used, such as: (i) fossil records, (ii) calibrated molecular phylogenies, (iii) population genetic data, (iv) trait measurements, and (v) species distribution maps. The combination of multiple datasets, such as phylogenies and fossils, provides a better picture of past dynamic processes (<a href="https://www.pnas.org/content/112/16/4903">Huang et al., 2015</a>, <a href="https://academic.oup.com/sysbio/article/67/3/458/4563320?login=true">Hagen et al., 2018</a>, <a href="https://nph.onlinelibrary.wiley.com/doi/10.1111/nph.15708">Coiro et al., 2019</a>). The main gaps remaining in biodiversity data, as pointed out in multiple studies (<a href="https://www.cambridge.org/core/books/mapping-species-distributions/58225AE5693AED8BD812F7CEBE35378A#">Franklin, 2010</a>, <a href="https://esajournals.onlinelibrary.wiley.com/doi/10.1890/ES14-00402.1">Hampton et al., 2015</a>, <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ele.12624?casa_token=kFuy9WzRyj4AAAAA%3ALVCEQOWfoFD_XCiTV2G5TacAJr1NWplmwHHR-h804vQxUyGZXFGyHpD0fCET0J7zWZGeFoBwwzgi2XFLvw">Meyer et al., 2016</a>), are: (i) sparse data with regional biases, (ii) a lack of non-occurrence data reporting, (iii) poor availability of public data, and (iv) high heterogeneity in data quality and methodologies.</p>
 </section>
-<section id="day-3" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="day-3">Day 3</h2>
-<table class="table">
-<colgroup>
-<col style="width: 27%">
-<col style="width: 72%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Time</strong></th>
-<th><strong>Event</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>09:00 - 10:00</td>
-<td>🎓 <strong>Lecture 4</strong> - Alex and Oskar: <em>Designing simulation experiments with Gen3sis</em></td>
-</tr>
-<tr class="even">
-<td>10:00 - 10:30</td>
-<td>🤝️ <strong>Practical 6</strong> - Sandbox: Implementing models in Gen3sis</td>
-</tr>
-<tr class="odd">
-<td>10:30 - 10:45</td>
-<td>☕ <strong>Coffee Break</strong></td>
-</tr>
-<tr class="even">
-<td>10:45 - 12:30</td>
-<td>🤝️ <strong>Practical 6</strong> - Sandbox: Implementing models in Gen3sis</td>
-</tr>
-<tr class="odd">
-<td>12:30 - 13:30</td>
-<td>🍽️ <strong>Lunch Break</strong></td>
-</tr>
-<tr class="even">
-<td>13:30 - 14:45</td>
-<td>🤝️ <strong>Wrapping up Sandbox</strong></td>
-</tr>
-<tr class="odd">
-<td>14:45 - 15:00</td>
-<td>☕ <strong>Coffee Break</strong></td>
-</tr>
-<tr class="even">
-<td>15:00 - 16:00</td>
-<td>🎤 <strong>Presenting Sandbox models</strong> / Wrap up Day 3</td>
-</tr>
-<tr class="odd">
-<td>16:00 - 16:10</td>
-<td>🔄 <strong>Feedback session</strong> - Gathering final thoughts and suggestions</td>
-</tr>
-<tr class="even">
-<td>16:10</td>
-<td>🍻 <strong>Pub!</strong></td>
-</tr>
-</tbody>
-</table>
+<section id="model-complexity" class="level3" data-number="7.0.3">
+<h3 data-number="7.0.3" class="anchored" data-anchor-id="model-complexity"><span class="header-section-number">7.0.3</span> Model complexity</h3>
+<p>The modelling engine <em>gen3sis</em> introduced here is predominantly a theoretical model rather than exclusively a calculating tool, since responses from possible natural processes are predicted (<a href="https://www.sciencedirect.com/science/article/pii/S0304380000003549?casa_token=xd2OXKLoMdwAAAAA:aD_z2LqztsitPV3aDCLTjylXMbkEu1Qi7QSJ3VaZ-FT1A1Aqsnx3N9GDDAhq_pMsrn0k6sP4_Ydp">Guisan and Zimmermann, 2000</a>). By prioritizing theoretical correctness of the predicted response over predicted precision, a spatio-temporal mechanistic model was created in the most flexible way possible in order to explore multiple hypotheses and processes.</p>
+</section>
+<section id="computational-time" class="level3" data-number="7.0.4">
+<h3 data-number="7.0.4" class="anchored" data-anchor-id="computational-time"><span class="header-section-number">7.0.4</span> Computational time</h3>
+<p>Runtimes are heavily dependent on the number of species emerging during a simulation and their geographical extent, and thus are highly dependent on the assumed model parameters and input landscape. The current state of optimizations is limited because no parallelization is implemented, as ease of maintenance and development are prioritized for this initial release.</p>
+</section>
+<section id="core-functions" class="level3" data-number="7.0.5">
+<h3 data-number="7.0.5" class="anchored" data-anchor-id="core-functions"><span class="header-section-number">7.0.5</span> Core functions</h3>
+<p>Given the inherent computational limitations, <em>gen3sis</em> tries to incorporate all the processes at the level of geographical ranges of populations, as realistically as possible. However, the modelled objects are limited to geographic populations and species. Also, it is not possible to track cluster phylogenies. Moreover, there is no within-cell variation within a species.</p>
+</section>
+<section id="caveats" class="level3" data-number="7.0.6">
+<h3 data-number="7.0.6" class="anchored" data-anchor-id="caveats"><span class="header-section-number">7.0.6</span> Caveats</h3>
+<ul>
+<li></li>
+<li><p><strong>temporal behaviour:</strong> No variables in <em>gen3sis</em> have an explicit temporal component. It is always <strong>x/timestep</strong>. That means that most processes will either speed up or slow down if one changes the temporal resolution of the input. For example, a configured rate of dispersal of 1/timestep can become 10/million years or 2/million years for simulations with 10 and 2 timesteps per million years respectively.</p></li>
+<li></li>
+<li><p><strong>raster inputs:</strong> The behaviour of the species dispersal and geographic clustering depends on the spatial input resolution. Changing input resolution can have secondary effects. For example, a higher-resolution landscape input will have more cells. Not only will it be easier to reach neighbouring cells, but there will also be more chances for dispersal events to happen. As such there might be a non-linear dependency between dispersal values and input resolution.</p></li>
+<li></li>
+<li><p><strong>polar distortions:</strong> Our distance calculations correct for the distance distortions raster-based data experiences towards the polar regions. This does lead to many small cells being close together in the polar regions. This makes dispersal a lot easier compared to equatorial cells in two ways. First, the dispersal distances are often enough to reach multiple neighbours. And second, since there are many more cells closed by, more dispersal events can happen.</p></li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -619,11 +454,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./Day3_Prac6_sandbox.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🥪 Sandbox</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Day1_Prac1_setup.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">🍍 Gettin’ Started</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -65,15 +65,10 @@ load gen3sis
 library(gen3sis)
 ```
 
-Now, lets source our support functions, to load some of the functions we'll be going throughout the workshop. The first one is just a convenient way of installing packages if they are not already installed.  
+Now, lets source our support functions, to load some of the functions we'll be going throughout the workshop. The first one is just a convenient way of installing packages if they are not already installed.
 
 ```{r}
 source("support.R")
-```
-
-You can also install these other packages we'll use throughout the workshop.
-
-```{r, echo=FALSE}
 # packages to load and install if necessary
 load_install_pkgs(c("terra", "raster", "here", "ape", "phytools", "picante"))
 ```

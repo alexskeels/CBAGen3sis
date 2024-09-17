@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -92,8 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -112,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Day1_Prac2_basics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">⛸️ Configure Skating</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -176,6 +175,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🥪 Sandbox</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./considerations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerations</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -224,12 +229,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To begin the dive into what Gen3sis is, and how it operates, we’ll start by looking a config file. The config is the code for the ecological and evolutionary rules and other parameters of Gen3sis, such as the random seed, instructions on saving output.</p>
 <p>A config file is a a stand-alone R script which is modified by you. You can modify a config in two ways. The first way and most practical, is to open up a config.R file. For example you can navigate to the folder open the file, or you can use this line and it should appear in your RStudio window.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.edit</span>(<span class="st">'configs/config_southamerica_Day1_Prac1.R'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.edit</span>(<span class="st">'configs/config_southamerica_Day1Prac1.R'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Alternatively you can load a config into the RAM and modify there. We’ll do this now as its a bit easier to demonstrate, but you can do a local copy of the config file and modify it directly. Lets start with the config we used in the previous section. We should still have that config loaded in our workspaces, but if not run this code.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gen3sis)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">create_input_config</span>(<span class="at">config_file =</span> <span class="st">"configs/config_southamerica_Day1_Prac1.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">create_input_config</span>(<span class="at">config_file =</span> <span class="st">"configs/config_southamerica_Day1Prac1.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So these two ways of editing the config lend themselves to two different ways of running the config. We can either point the <em>run_simulation</em> function to the config file or the config stored in memory.</p>
 <div class="cell">
@@ -255,32 +260,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>$gen3sis
 $gen3sis$general
 $gen3sis$general$random_seed
-[1] NA
+[1] 6
 
 $gen3sis$general$start_time
-[1] NA
+[1] 20
 
 $gen3sis$general$end_time
 [1] NA
 
 $gen3sis$general$max_number_of_species
-[1] NA
+[1] 50000
 
 $gen3sis$general$max_number_of_coexisting_species
-[1] NA
+[1] 10000
 
 $gen3sis$general$end_of_timestep_observer
-function (...) 
+function (data, vars, config) 
 {
+    save_species()
+    plot_richness(data$all_species, data$landscape)
 }
-&lt;bytecode: 0x000001cde541f070&gt;
-&lt;environment: 0x000001cde541f8c0&gt;
+&lt;environment: 0x13b46eb00&gt;
 
 $gen3sis$general$trait_names
-list()
+[1] "temp"         "temp_breadth" "dispersal"   
 
 $gen3sis$general$environmental_ranges
-list()
+$gen3sis$general$environmental_ranges$temp
+[1] -45  55
+
+$gen3sis$general$environmental_ranges$area
+[1]  2361.5 12923.4
+
+$gen3sis$general$environmental_ranges$arid
+[1] 1.0 0.5
+
 
 $gen3sis$general$verbose
 [1] FALSE
@@ -288,10 +302,29 @@ $gen3sis$general$verbose
 
 $gen3sis$initialization
 $gen3sis$initialization$initial_abundance
-NULL
+[1] 1
 
 $gen3sis$initialization$create_ancestor_species
-NULL
+function (landscape, config) 
+{
+    n_ancestors &lt;- 5
+    range &lt;- c(-95, -24, -68, 13)
+    co &lt;- landscape$coordinates
+    selection &lt;- co[, "x"] &gt;= range[1] &amp; co[, "x"] &lt;= range[2] &amp; 
+        co[, "y"] &gt;= range[3] &amp; co[, "y"] &lt;= range[4]
+    new_species &lt;- list()
+    for (i in 1:n_ancestors) {
+        initial_cells &lt;- rownames(co)[selection]
+        initial_cells &lt;- sample(initial_cells, 1)
+        new_species[[i]] &lt;- create_species(initial_cells, config)
+        new_species[[i]]$traits[, "temp"] &lt;- landscape$environment[initial_cells, 
+            "temp"]
+        new_species[[i]]$traits[, "temp_breadth"] &lt;- 0.05
+        new_species[[i]]$traits[, "dispersal"] &lt;- 1
+    }
+    return(new_species)
+}
+&lt;environment: 0x13b46eb00&gt;
 
 
 $gen3sis$dispersal
@@ -299,25 +332,57 @@ $gen3sis$dispersal$max_dispersal
 [1] Inf
 
 $gen3sis$dispersal$get_dispersal_values
-NULL
+function (n, species, landscape, config) 
+{
+    values &lt;- rweibull(n, shape = 1.5, scale = 200)
+    return(values)
+}
+&lt;environment: 0x13b46eb00&gt;
 
 
 $gen3sis$speciation
 $gen3sis$speciation$divergence_threshold
-NULL
+[1] 2
 
 $gen3sis$speciation$get_divergence_factor
-NULL
+function (species, cluster_indices, landscape, config) 
+{
+    return(1)
+}
+&lt;environment: 0x13b46eb00&gt;
 
 
 $gen3sis$mutation
 $gen3sis$mutation$apply_evolution
-NULL
+function (species, cluster_indices, landscape, config) 
+{
+    trait_evolutionary_power &lt;- 0.001
+    traits &lt;- species[["traits"]]
+    cells &lt;- rownames(traits)
+    for (cluster_index in unique(cluster_indices)) {
+        cells_cluster &lt;- cells[which(cluster_indices == cluster_index)]
+        mean_abd &lt;- mean(species$abundance[cells_cluster])
+        weight_abd &lt;- species$abundance[cells_cluster]/mean_abd
+        traits[cells_cluster, "temp"] &lt;- mean(traits[cells_cluster, 
+            "temp"] * weight_abd)
+    }
+    mutation_deltas &lt;- rnorm(length(traits[, "temp"]), mean = 0, 
+        sd = trait_evolutionary_power)
+    traits[, "temp"] &lt;- traits[, "temp"] + mutation_deltas
+    return(traits)
+}
+&lt;environment: 0x13b46eb00&gt;
 
 
 $gen3sis$ecology
 $gen3sis$ecology$apply_ecology
-NULL
+function (abundance, traits, environment, config) 
+{
+    env_diff &lt;- abs(traits[, "temp"] - environment[, "temp"])
+    abundance &lt;- env_diff &lt; traits[, "temp_breadth"]
+    return(abundance)
+}
+&lt;environment: 0x13b46eb00&gt;
 
 
 
@@ -338,28 +403,31 @@ attr(,"class")
 <pre><code>List of 3
  $ gen3sis    :List of 6
   ..$ general       :List of 9
-  .. ..$ random_seed                     : logi NA
-  .. ..$ start_time                      : logi NA
+  .. ..$ random_seed                     : num 6
+  .. ..$ start_time                      : num 20
   .. ..$ end_time                        : logi NA
-  .. ..$ max_number_of_species           : logi NA
-  .. ..$ max_number_of_coexisting_species: logi NA
-  .. ..$ end_of_timestep_observer        :function (...)  
-  .. ..$ trait_names                     : list()
-  .. ..$ environmental_ranges            : list()
+  .. ..$ max_number_of_species           : num 50000
+  .. ..$ max_number_of_coexisting_species: num 10000
+  .. ..$ end_of_timestep_observer        :function (data, vars, config)  
+  .. ..$ trait_names                     : chr [1:3] "temp" "temp_breadth" "dispersal"
+  .. ..$ environmental_ranges            :List of 3
+  .. .. ..$ temp: num [1:2] -45 55
+  .. .. ..$ area: num [1:2] 2362 12923
+  .. .. ..$ arid: num [1:2] 1 0.5
   .. ..$ verbose                         : logi FALSE
   ..$ initialization:List of 2
-  .. ..$ initial_abundance      : NULL
-  .. ..$ create_ancestor_species: NULL
+  .. ..$ initial_abundance      : num 1
+  .. ..$ create_ancestor_species:function (landscape, config)  
   ..$ dispersal     :List of 2
   .. ..$ max_dispersal       : num Inf
-  .. ..$ get_dispersal_values: NULL
+  .. ..$ get_dispersal_values:function (n, species, landscape, config)  
   ..$ speciation    :List of 2
-  .. ..$ divergence_threshold : NULL
-  .. ..$ get_divergence_factor: NULL
+  .. ..$ divergence_threshold : num 2
+  .. ..$ get_divergence_factor:function (species, cluster_indices, landscape, config)  
   ..$ mutation      :List of 1
-  .. ..$ apply_evolution: NULL
+  .. ..$ apply_evolution:function (species, cluster_indices, landscape, config)  
   ..$ ecology       :List of 1
-  .. ..$ apply_ecology: NULL
+  .. ..$ apply_ecology:function (abundance, traits, environment, config)  
  $ user       : list()
  $ directories: list()
  - attr(*, "class")= chr "gen3sis_config"</code></pre>
@@ -384,32 +452,41 @@ attr(,"class")
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>general</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$random_seed
-[1] NA
+[1] 6
 
 $start_time
-[1] NA
+[1] 20
 
 $end_time
 [1] NA
 
 $max_number_of_species
-[1] NA
+[1] 50000
 
 $max_number_of_coexisting_species
-[1] NA
+[1] 10000
 
 $end_of_timestep_observer
-function (...) 
+function (data, vars, config) 
 {
+    save_species()
+    plot_richness(data$all_species, data$landscape)
 }
-&lt;bytecode: 0x000001cde541f070&gt;
-&lt;environment: 0x000001cde541f8c0&gt;
+&lt;environment: 0x13b46eb00&gt;
 
 $trait_names
-list()
+[1] "temp"         "temp_breadth" "dispersal"   
 
 $environmental_ranges
-list()
+$environmental_ranges$temp
+[1] -45  55
+
+$environmental_ranges$area
+[1]  2361.5 12923.4
+
+$environmental_ranges$arid
+[1] 1.0 0.5
+
 
 $verbose
 [1] FALSE</code></pre>
@@ -419,7 +496,7 @@ $verbose
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>random_seed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
+<pre><code>[1] 6</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>random_seed <span class="ot">&lt;-</span> <span class="dv">777</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -427,7 +504,7 @@ $verbose
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>start_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
+<pre><code>[1] 20</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>start_time <span class="ot">&lt;-</span> <span class="dv">34</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -443,19 +520,26 @@ $verbose
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>max_number_of_species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
+<pre><code>[1] 50000</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>max_number_of_coexisting_species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
+<pre><code>[1] 10000</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>trait_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>list()</code></pre>
+<pre><code>[1] "temp"         "temp_breadth" "dispersal"   </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>environmental_ranges</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>list()</code></pre>
+<pre><code>$temp
+[1] -45  55
+
+$area
+[1]  2361.5 12923.4
+
+$arid
+[1] 1.0 0.5</code></pre>
 </div>
 </div>
 <p>Last but not least in the general setting is the oberserver function. At each time step in the simulation, users have the option to save different outputs and make different plots. The <em>species</em> object contains a list, where each element is a species. The <em>species</em> has information on the occupancy, abundance, and trait values of populations of that species in all inhabited grid cells. The <em>phylogeny</em> object contains information on the relatedness of all species to each other.</p>
@@ -477,10 +561,29 @@ $verbose
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>initialization</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$initial_abundance
-NULL
+[1] 1
 
 $create_ancestor_species
-NULL</code></pre>
+function (landscape, config) 
+{
+    n_ancestors &lt;- 5
+    range &lt;- c(-95, -24, -68, 13)
+    co &lt;- landscape$coordinates
+    selection &lt;- co[, "x"] &gt;= range[1] &amp; co[, "x"] &lt;= range[2] &amp; 
+        co[, "y"] &gt;= range[3] &amp; co[, "y"] &lt;= range[4]
+    new_species &lt;- list()
+    for (i in 1:n_ancestors) {
+        initial_cells &lt;- rownames(co)[selection]
+        initial_cells &lt;- sample(initial_cells, 1)
+        new_species[[i]] &lt;- create_species(initial_cells, config)
+        new_species[[i]]$traits[, "temp"] &lt;- landscape$environment[initial_cells, 
+            "temp"]
+        new_species[[i]]$traits[, "temp_breadth"] &lt;- 0.05
+        new_species[[i]]$traits[, "dispersal"] &lt;- 1
+    }
+    return(new_species)
+}
+&lt;environment: 0x13b46eb00&gt;</code></pre>
 </div>
 </div>
 <p>In this example, we are generating five species to begin. We first define a box from which we sample points to use to place the first species on the landscape. We randomly sample a single grid cell to place each initial species in. Next, we give each initial species values for the three traits. Here, we give the value for <em>temp</em> as the temperature value of the grid cell the species will occur in. We set a <em>dispersal</em> equal to 1. We repeat this 5 times, for 5 species. We can create more ancestor species by repeating this process in a loop , or we could manually create ancestral range by hand-selecting grid cells for the species to occur in.</p>
@@ -495,7 +598,12 @@ NULL</code></pre>
 [1] Inf
 
 $get_dispersal_values
-NULL</code></pre>
+function (n, species, landscape, config) 
+{
+    values &lt;- rweibull(n, shape = 1.5, scale = 200)
+    return(values)
+}
+&lt;environment: 0x13b46eb00&gt;</code></pre>
 </div>
 </div>
 <p>Here we set the maximum dispersal distance as infinty (e.g., no maximum), and we draw the dispersal values from a Weibull distribution with shape parameter = 1.5 and scale = 133. We can see what this distribution looks like by plotting a histogram.</p>
@@ -528,10 +636,14 @@ NULL</code></pre>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>speciation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$divergence_threshold
-NULL
+[1] 2
 
 $get_divergence_factor
-NULL</code></pre>
+function (species, cluster_indices, landscape, config) 
+{
+    return(1)
+}
+&lt;environment: 0x13b46eb00&gt;</code></pre>
 </div>
 </div>
 <p>In this example, the <em>get_divergence_funtion</em> returns a value of 1 each timestep, so the divergence accumulates by a value of 1 at each time step and populations become new species when divergence is greater than the divergence threshold, here given a value of 2. So a new species can form if two populations has been isolated for two timesteps.</p>
@@ -555,7 +667,24 @@ NULL</code></pre>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>mutation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$apply_evolution
-NULL</code></pre>
+function (species, cluster_indices, landscape, config) 
+{
+    trait_evolutionary_power &lt;- 0.001
+    traits &lt;- species[["traits"]]
+    cells &lt;- rownames(traits)
+    for (cluster_index in unique(cluster_indices)) {
+        cells_cluster &lt;- cells[which(cluster_indices == cluster_index)]
+        mean_abd &lt;- mean(species$abundance[cells_cluster])
+        weight_abd &lt;- species$abundance[cells_cluster]/mean_abd
+        traits[cells_cluster, "temp"] &lt;- mean(traits[cells_cluster, 
+            "temp"] * weight_abd)
+    }
+    mutation_deltas &lt;- rnorm(length(traits[, "temp"]), mean = 0, 
+        sd = trait_evolutionary_power)
+    traits[, "temp"] &lt;- traits[, "temp"] + mutation_deltas
+    return(traits)
+}
+&lt;environment: 0x13b46eb00&gt;</code></pre>
 </div>
 </div>
 <p>Homogensation assigns each geographic cluster the avaerage trait value weighted by the abundance of each population. Here larger populations contribute more than smaller populations to the avergae.</p>
@@ -568,7 +697,13 @@ NULL</code></pre>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>config<span class="sc">$</span>gen3sis<span class="sc">$</span>ecology</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$apply_ecology
-NULL</code></pre>
+function (abundance, traits, environment, config) 
+{
+    env_diff &lt;- abs(traits[, "temp"] - environment[, "temp"])
+    abundance &lt;- env_diff &lt; traits[, "temp_breadth"]
+    return(abundance)
+}
+&lt;environment: 0x13b46eb00&gt;</code></pre>
 </div>
 </div>
 <p>Here we use the temp trait (temperature niche position) and temp_breadth (temperature niche breadth) to determine whether a population can survive in cell. We get the absolute difference between the niche position and the temperature value in the grid cell. We then ask if this difference is more than the niche breadth. If it is larger, this means the value of the grid cell is outside the population’s niche breadth and it goes extinct in that grid cell. Extinction is indicated by giving the abundance a value of 0 or setting the abundance to FALSE as done here.</p>
