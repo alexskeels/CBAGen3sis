@@ -26,8 +26,13 @@ trait_names = c("dispersal", "temp_niche_centre", "temp_niche_width", "start_isl
 #########################
 
 end_of_timestep_observer = function(data, vars, config){  
-  
-  plot_richness(data$all_species, data$landscape)
+  par(mfrow=c(2,2), mar=c(2,1,1,1))
+  for (sp_i in 1:4){
+    # sp_i <- 1
+    plot_species_presence(data$all_species[[sp_i]], data$landscape)
+  }
+  par(mfrow=c(1,1)) # reset to default
+  #plot_richness(data$all_species, data$landscape)
   save_species() # saves a species and landscape objects for desired timesteps
   
 }
