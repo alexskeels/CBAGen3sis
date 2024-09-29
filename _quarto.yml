@@ -14,6 +14,7 @@ book:
     - Day2_Prac5_landscapes.qmd
     - Day3_Prac6_sandbox.qmd
     - considerations.qmd
+    - resources.qmd
 
 format:
   html:

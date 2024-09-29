@@ -1,0 +1,55 @@
+---
+title: "Further Resources"
+---
+
+### CRAN {.unnumbered}
+
+1.  [Package](https://cran.r-project.org/web/packages/gen3sis/index.html)
+
+2.  [Manual](https://cran.r-project.org/web/packages/gen3sis/gen3sis.pdf)
+
+### Vignettes {.unnumbered}
+
+1.  [Introducing Gen3sis](https://cran.r-project.org/web/packages/gen3sis/vignettes/introduction.html)
+
+2.  [Creating landscapes (gen3sis input)](https://cran.r-project.org/web/packages/gen3sis/vignettes/create_input_landscape.html)
+
+3.  [Creating configurations (gen3sis input)](https://cran.r-project.org/web/packages/gen3sis/vignettes/create_config.html)
+
+4.  [Example designing landscapes](https://cran.r-project.org/web/packages/gen3sis/vignettes/design_landscape.html)
+
+### Previous Workshops
+
+1.  [MS3BM](https://github.com/ohagen/202211_14-18_WS_MS3BM) (2022, iDiv, Leipzig)
+
+2.  [YOMOS](https://github.com/ohagen/gen3sis_yomos_2024) (2023)
+
+### Ecosystems & Landscape Ecology Group {.unnumbered}
+
+1.  [Wiki](https://gitlab.ethz.ch/ele-public/gen3sis_wiki/-/wikis/home)
+
+### Papers {.unnumbered}
+
+1.  [Hagen, O., Flück, B., Fopp, F., Cabral, J.S., Hartig, F., Pontarp, M., Rangel, T.F. and Pellissier, L., 2021. gen3sis: A general e ngine for e co-e volutionary si mulation s of the processes that shape Earth's biodiversity. PLoS Biology, 19(7), p.e3001340.](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3001340)
+
+2.  [Hagen, O., Skeels, A., Onstein, R.E., Jetz, W. and Pellissier, L., 2021. Earth history events shaped the evolution of uneven biodiversity across tropical moist forests. *Proceedings of the National Academy of Sciences*, *118*(40), p.e2026347118.](https://www.pnas.org/doi/abs/10.1073/pnas.2026347118)
+
+3.  [Leugger, F., Broquet, T., Karger, D.N., Rioux, D., Buzan, E., Corlatti, L., Crestanello, B., Curt‐Grand‐Gaudin, N., Hauffe, H.C., Rolečková, B. and Šprem, N., 2022. Dispersal and habitat dynamics shape the genetic structure of the Northern chamois in the Alps. *Journal of Biogeography*, *49*(10), pp.1848-1861.](https://onlinelibrary.wiley.com/doi/full/10.1111/jbi.14363)
+
+4.  [Hagen, O., 2023. Coupling eco‐evolutionary mechanisms with deep‐time environmental dynamics to understand biodiversity patterns. *Ecography*, *2023*(4), p.e06132.](https://nsojournals.onlinelibrary.wiley.com/doi/full/10.1111/ecog.06132)
+
+5.  [Skeels, A., Bach, W., Hagen, O., Jetz, W. and Pellissier, L., 2023. Temperature-dependent evolutionary speed shapes the evolution of biodiversity patterns across tetrapod radiations. *Systematic Biology*, *72*(2), pp.341-356.](https://academic.oup.com/sysbio/article/72/2/341/6637530)
+
+6.  [Skeels, A., Boschman, L.M., McFadden, I.R., Joyce, E.M., Hagen, O., Jiménez Robles, O., Bach, W., Boussange, V., Keggin, T., Jetz, W. and Pellissier, L., 2023. Paleoenvironments shaped the exchange of terrestrial vertebrates across Wallace's Line. *Science*, *381*(6653), pp.86-92.](https://www.science.org/doi/full/10.1126/science.adf7122?casa_token=Chdu8chkWZUAAAAA%3ATpjgHVrROFJwB4zuDmOxi2o8nA9EJYSw_3q_YISeXepQEVGoQ_m_Vd2WjV730IkbaBTmaJfnuGu_AQg)
+
+7.  [Boschman, L.M., Carraro, L., Cassemiro, F.A., de Vries, J., Altermatt, F., Hagen, O., Hoorn, C. and Pellissier, L., 2023. Freshwater fish diversity in the western Amazon basin shaped by Andean uplift since the Late Cretaceous. *Nature Ecology & Evolution*, *7*(12), pp.2037-2044.](https://www.nature.com/articles/s41559-023-02220-8)
+
+8.  [Skeels, A., Esquerré, D., Lipsky, D., Pellissier, L. and Boschman, L.M., 2023. Elevational Goldilocks zone underlies the exceptional diversity of a large lizard radiation (Liolaemus; Liolaemidae). *Evolution*, *77*(12), pp.2672-2686.](https://academic.oup.com/evolut/article/77/12/2672/7282544)
+
+9.  [Keggin, T., Waldock, C., Skeels, A., Hagen, O., Albouy, C., Manel, S. and Pellissier, L., 2023. Diversity across organisational scale emerges through dispersal ability and speciation dynamics in tropical fish. *BMC biology*, *21*(1), p.282.](https://link.springer.com/article/10.1186/s12915-023-01771-3)
+
+10. [Rogger, J., Mills, B.J., Gerya, T.V. and Pellissier, L., 2024. Speed of thermal adaptation of terrestrial vegetation alters Earth's long-term climate. *Science Advances*, *10*(9), p.eadj4408.](https://www.science.org/doi/full/10.1126/sciadv.adj4408)
+
+11. [Hagen, O., Viana, D.S., Wiegand, T., Chase, J.M. and Onstein, R.E., 2024. The macro-eco-evolutionary interplay between dispersal, competition and landscape structure in generating biodiversity. *Philosophical Transactions B*, *379*(1907), p.20230140.](https://royalsocietypublishing.org/doi/full/10.1098/rstb.2023.0140)
+
+12. [Rogger, J., Judd, E.J., Mills, B.J., Goddéris, Y., Gerya, T.V. and Pellissier, L., 2024. Biogeographic climate sensitivity controls Earth system response to large igneous province carbon degassing. *Science*, *385*(6709), pp.661-666.](https://www.science.org/doi/full/10.1126/science.adn3450?casa_token=rG-otl2YMC4AAAAA%3ANFRDJWV6FbRAf--224N3iSomedB_FGbZ9lhK9_N_scL4noWC33b2RedkEOkHJTf0GM-XNTUO6ROjCHM)
