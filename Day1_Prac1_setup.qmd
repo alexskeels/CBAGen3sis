@@ -81,7 +81,7 @@ In this folder we include a paleoenvironmental reconstruction of South American 
 
 ```{r}
 # read the R data file
-landscape <- readRDS(file.path(data_dir,"landscapes", "SA_coarse", "landscapes.rds"))
+landscape <- readRDS(file.path("data","landscapes", "SouthAmerica", "landscapes.rds"))
 
 # class
 class(landscape)
@@ -139,7 +139,7 @@ Now time to run a simulation in South America. We'll just run from 20 million ye
 
 ```{r eval=F}
 sim <- run_simulation(config = file.path("configs", "config_southamerica_Day1Prac1.R"), 
-               landscape = file.path(data_dir,"landscapes", "SA_coarse"),
+               landscape = file.path(data_dir,"landscapes", "SouthAmerica"),
                output_directory = "output/SouthAmerica",
                verbose=1)
 ```
