@@ -18,7 +18,7 @@ title: "Further Resources"
 
 4.  [Example designing landscapes](https://cran.r-project.org/web/packages/gen3sis/vignettes/design_landscape.html)
 
-### Previous Workshops
+### Previous Workshops {.unnumbered}
 
 1.  [MS3BM](https://github.com/ohagen/202211_14-18_WS_MS3BM) (2022, iDiv, Leipzig)
 
