@@ -6,17 +6,17 @@ Welcome to the CBA sponsored workshop on the Gen3sis biodiversity simulation sof
 
 ## Day 1 {.unnumbered}
 
-| **Time**      | **Event**                                                                                                                  |
+| **Time**      | **Event**                                                                                                               |
 |---------------------|---------------------------------------------------|
-| 09:00 - 09:50 | 👋☕ **Welcome** (Platypus Room) - Coffee, introductions, and overview of Gen3sis workshop                                 |
-| 09:50 - 11:00 | 🎓 **Lecture 1** - Oskar Hagen (Eucalyptus Room): *History and philosophy of simulation modelling in biodiversity studies* |
-| 11:00 - 12:00 | 🛠️ **Practical 1** - Gettin' Started: Installation and Set Up                                                              |
-| 12:00 - 12:30 | 🛠️ **Practical 2** - Configure Skating: Gen3sis Config Basics                                                              |
-| 12:30 - 13:30 | 🍽️ **Lunch Break**                                                                                                         |
-| 13:30 - 15:30 | 🛠️ **Practical 2** - Configure Skating: Gen3sis Config Basics )                                                            |
-| 15:30 - 15:45 | ☕ **Coffee Break**                                                                                                        |
-| 15:45 - 16:30 | 🏝️ **Practical 3** - Island Hopping: Explore a model island system                                                         |
-| 16:30 - 17:00 | ❓ **Questions** / Wrap up Day 1                                                                                           |
+| 09:00 - 09:50 | 👋☕ **Welcome** (Platypus Room) - Coffee, introductions, and overview of Gen3sis workshop                              |
+| 09:50 - 11:00 | 🎓 **Lecture 1** - Oskar Hagen (Eucalyptus Room): *From German Romanticism to modern computational biodiversity models* |
+| 11:00 - 12:00 | 🛠️ **Practical 1** - Gettin' Started: Installation and Set Up                                                           |
+| 12:00 - 12:30 | 🛠️ **Practical 2** - Configure Skating: Gen3sis Config Basics                                                           |
+| 12:30 - 13:30 | 🍽️ **Lunch Break**                                                                                                      |
+| 13:30 - 15:30 | 🛠️ **Practical 2** - Configure Skating: Gen3sis Config Basics )                                                         |
+| 15:30 - 15:45 | ☕ **Coffee Break**                                                                                                     |
+| 15:45 - 16:30 | 🏝️ **Practical 3** - Island Hopping: Explore a model island system                                                      |
+| 16:30 - 17:00 | ❓ **Questions** / Wrap up Day 1                                                                                        |
 
 ## Day 2 {.unnumbered}
 
