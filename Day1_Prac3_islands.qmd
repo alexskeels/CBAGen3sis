@@ -189,27 +189,9 @@ plot_summary(sim_m3)
 
 ```
 
-```{r}
-# lets also compare the phylogenies
-par(mfrow=c(1,3))
-phy_m1 <- read.nexus("output/islands/config_islands_simple_Day1Prac3_M1/phy.nex")
-plot(phy_m1)
-phy_m2 <- read.nexus("output/islands/config_islands_simple_Day1Prac3_M2/phy.nex")
-plot(phy_m2)
-phy_m3 <- read.nexus("output/islands/config_islands_simple_Day1Prac3_M3/phy.nex")
-plot(phy_m3)
-
-trees <- list(phy_m1, phy_m2, phy_m3)
-library("ape")
-lapply(trees, function(x){
-  mt <- ape::balance(x)
-  mtn <- (mt[,1]-mt[,2])/max(mt)
-  hist(abs(mtn))})
-```
-
 ### Exercise {.unnumbered}
 
-From the small tweak to the divergence factor and the initial conditions, we can see more species being generated in M2 and M3 compared to M1. We can also see extremely asymmetrical trees.
+From the small tweak to the divergence factor and the initial conditions, we can see more species being generated in M2 and M3 compared to M1.
 
 Review the M2 and M3 config files and try to understand what they're doing.
 

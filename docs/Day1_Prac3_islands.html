@@ -378,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     plot_richness(data$all_species, data$landscape)
     save_species()
 }
-&lt;environment: 0x11de54f20&gt;</code></pre>
+&lt;environment: 0x1498ac5c0&gt;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># see modeified config</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>conf_m2<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>end_of_timestep_observer </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -392,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     par(mfrow = c(1, 1))
     save_species()
 }
-&lt;environment: 0x11df32e78&gt;</code></pre>
+&lt;environment: 0x149b54518&gt;</code></pre>
 </div>
 </div>
 <p>Run M2!</p>
@@ -447,7 +447,7 @@ function (landscape, config)
     }
     return(new_species)
 }
-&lt;environment: 0x153cb6240&gt;</code></pre>
+&lt;environment: 0x1480f2340&gt;</code></pre>
 </div>
 </div>
 <p>There is a big differences here. In the initialization stage we give each species a different value of it’s dispersal ability and temperature width trait (niche breadth), and these are inversely related - high dispersing species have narrow niche breadths and low dispering species have wide niche breadths. This may create an interesting trade-off in dynamics of island colonization.</p>
@@ -475,99 +475,9 @@ function (landscape, config)
 <p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-16-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets also compare the phylogenies</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>phy_m1 <span class="ot">&lt;-</span> <span class="fu">read.nexus</span>(<span class="st">"output/islands/config_islands_simple_Day1Prac3_M1/phy.nex"</span>)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phy_m1)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>phy_m2 <span class="ot">&lt;-</span> <span class="fu">read.nexus</span>(<span class="st">"output/islands/config_islands_simple_Day1Prac3_M2/phy.nex"</span>)</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phy_m2)</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>phy_m3 <span class="ot">&lt;-</span> <span class="fu">read.nexus</span>(<span class="st">"output/islands/config_islands_simple_Day1Prac3_M3/phy.nex"</span>)</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phy_m3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">&lt;-</span> <span class="fu">list</span>(phy_m1, phy_m2, phy_m3)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ape"</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(trees, <span class="cf">function</span>(x){</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  mt <span class="ot">&lt;-</span> ape<span class="sc">::</span><span class="fu">balance</span>(x)</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  mtn <span class="ot">&lt;-</span> (mt[,<span class="dv">1</span>]<span class="sc">-</span>mt[,<span class="dv">2</span>])<span class="sc">/</span><span class="fu">max</span>(mt)</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(<span class="fu">abs</span>(mtn))})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Day1_Prac3_islands_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-$breaks
-[1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7
-
-$counts
-[1] 6 0 0 1 1 0 1
-
-$density
-[1] 6.666667 0.000000 0.000000 1.111111 1.111111 0.000000 1.111111
-
-$mids
-[1] 0.05 0.15 0.25 0.35 0.45 0.55 0.65
-
-$xname
-[1] "abs(mtn)"
-
-$equidist
-[1] TRUE
-
-attr(,"class")
-[1] "histogram"
-
-[[2]]
-$breaks
-[1] 0.0 0.2 0.4 0.6 0.8 1.0
-
-$counts
-[1] 21  2  0  1  1
-
-$density
-[1] 4.2 0.4 0.0 0.2 0.2
-
-$mids
-[1] 0.1 0.3 0.5 0.7 0.9
-
-$xname
-[1] "abs(mtn)"
-
-$equidist
-[1] TRUE
-
-attr(,"class")
-[1] "histogram"
-
-[[3]]
-$breaks
- [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
-
-$counts
-[1] 30  3  1  0  0  0  0  0  2
-
-$density
-[1] 8.3333333 0.8333333 0.2777778 0.0000000 0.0000000 0.0000000 0.0000000
-[8] 0.0000000 0.5555556
-
-$mids
-[1] 0.05 0.15 0.25 0.35 0.45 0.55 0.65 0.75 0.85
-
-$xname
-[1] "abs(mtn)"
-
-$equidist
-[1] TRUE
-
-attr(,"class")
-[1] "histogram"</code></pre>
-</div>
-</div>
 <section id="exercise" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise">Exercise</h3>
-<p>From the small tweak to the divergence factor and the initial conditions, we can see more species being generated in M2 and M3 compared to M1. We can also see extremely asymmetrical trees.</p>
+<p>From the small tweak to the divergence factor and the initial conditions, we can see more species being generated in M2 and M3 compared to M1.</p>
 <p>Review the M2 and M3 config files and try to understand what they’re doing.</p>
 <ul>
 <li><p>How are the dynamics through time in M2 and M3 different to M1, and how are they similar?</p></li>
@@ -582,7 +492,7 @@ attr(,"class")
 <h2 class="unnumbered anchored" data-anchor-id="model-4-real">Model 4: Real👀</h2>
 <p>If you’ve managed to get through all of this, run M4 config and using what you’ve learned, plot some of the outputs. What has changed about this config?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sim_m4 <span class="ot">&lt;-</span> <span class="fu">run_simulation</span>(<span class="at">config=</span><span class="st">"configs/config_islands_simple_Day1Prac3_M4.R"</span>, <span class="at">landscape=</span><span class="st">"data/landscapes/islands"</span>, <span class="at">output_directory=</span><span class="st">"output/islands"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sim_m4 <span class="ot">&lt;-</span> <span class="fu">run_simulation</span>(<span class="at">config=</span><span class="st">"configs/config_islands_simple_Day1Prac3_M4.R"</span>, <span class="at">landscape=</span><span class="st">"data/landscapes/islands"</span>, <span class="at">output_directory=</span><span class="st">"output/islands"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
