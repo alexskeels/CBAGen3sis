@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./considerations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">👻 Important considerations</span></span></a>
   </div>
 </li>
     </ul>
@@ -378,17 +378,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     plot_richness(data$all_species, data$landscape)
     save_species()
 }
-&lt;environment: 0x1548d7b68&gt;</code></pre>
+&lt;environment: 0x11de54f20&gt;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># see modeified config</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>conf_m2<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>end_of_timestep_observer </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (data, vars, config) 
 {
-    plot_richness(data$all_species, data$landscape)
+    par(mfrow = c(2, 2), mar = c(2, 1, 1, 1))
+    for (sp_i in 1:4) {
+        plot_species_presence(data$all_species[[sp_i]], data$landscape)
+    }
+    par(mfrow = c(1, 1))
     save_species()
 }
-&lt;environment: 0x1549b3ac0&gt;</code></pre>
+&lt;environment: 0x11df32e78&gt;</code></pre>
 </div>
 </div>
 <p>Run M2!</p>
@@ -443,7 +447,7 @@ function (landscape, config)
     }
     return(new_species)
 }
-&lt;environment: 0x14f309bd8&gt;</code></pre>
+&lt;environment: 0x153cb6240&gt;</code></pre>
 </div>
 </div>
 <p>There is a big differences here. In the initialization stage we give each species a different value of it’s dispersal ability and temperature width trait (niche breadth), and these are inversely related - high dispersing species have narrow niche breadths and low dispering species have wide niche breadths. This may create an interesting trade-off in dynamics of island colonization.</p>

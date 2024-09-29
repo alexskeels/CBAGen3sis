@@ -38,25 +38,11 @@ end_of_timestep_observer = function(data, vars, config){
 ### Initialization ###
 ######################
 create_ancestor_species <- function(landscape, config) {
-  # browser()
   co <- landscape$coordinates
-  
-  # If we wouldn't have passe the patches though the environment, we could have done this:
-  # sp1 <- co[which(co[,1]<20&co[,2]<30),]
-  # sp2 <- co[which(co[,1]>20&co[,2]<30),]
-  # sp3 <- co[which(co[,1]<20&co[,2]>30),]
-  # sp4 <- co[which(co[,1]>20&co[,2]>30),]
-  
-  # however, we made thinks simpler to you.
   # get patches vector
   pv <- landscape$environment[, "patch"]
-  
-  # species_coords <- list(sp1,
-  #                        sp2,
-  #                        sp3,
-  #                        sp4)
+
   new_species <- list()
-  
   
   manual_traits <- list(
     "dispersal" = c(10, 7.5, 5, 2.5),
