@@ -35,8 +35,9 @@ end_of_timestep_observer = function(data, vars, config){
 ### Initialization ###
 ######################
 
+fun_1 <- function(x){x+1}
 create_ancestor_species <- function(landscape, config) {
-  # browser()
+  #browser()
   co <- landscape$coordinates
   
   # If we wouldn't have passe the patches though the environment, we could have done this:
