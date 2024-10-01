@@ -36,6 +36,8 @@ end_of_timestep_observer = function(data, vars, config){
 ######################
 
 create_ancestor_species <- function(landscape, config) {
+  #### BROWSER ! ----------
+  browser()
   co <- landscape$coordinates
   new_species <- create_species(rownames(co), config)
   new_species$traits[ , "dispersal"] <- 5 # denominator of exponential distribution

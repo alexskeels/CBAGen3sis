@@ -21,10 +21,10 @@
 ######################################
 
 # set the random seed for the simulation
-random_seed = 6 
+random_seed = NA 
 
 # set the starting time step or leave NA to use the earliest/highest time-step
-start_time = 20
+start_time = NA
 
 # set the end time step or leave as NA to use the latest/lowest time-step (0)
 end_time = NA
@@ -62,7 +62,10 @@ initial_abundance = 1
 #place species within rectangle, our case entire globe
 
 create_ancestor_species <- function(landscape, config) {
-  n_ancestors <- 5
+  #### BROWSER ! ----------
+   #browser()
+  
+  n_ancestors <- 2
   # define bounding box to sample species within
   range <- c(-95, -24, -68, 13)
   co <- landscape$coordinates
@@ -75,6 +78,7 @@ create_ancestor_species <- function(landscape, config) {
   new_species <- list()
   
   for(i in 1:n_ancestors){
+    # i <- 1
     initial_cells <- rownames(co)[selection]
     initial_cells <- sample(initial_cells, 1)
     new_species[[i]] <- create_species(initial_cells, config)
@@ -95,6 +99,8 @@ create_ancestor_species <- function(landscape, config) {
 
 # returns n dispersal values
 get_dispersal_values <- function(n, species, landscape, config) {
+  browser()
+  #values <- rep(400, n)
   values <- rweibull(n, shape = 1.5, scale = 200)
 
   return(values)
@@ -104,8 +110,9 @@ get_dispersal_values <- function(n, species, landscape, config) {
 ###          Speciation            ###
 ######################################
 
-# threshold for genetic distance after which a speciation event takes place
-divergence_threshold = 2 #this is 1Myrs
+
+my_function <- function(x){x+1}
+
 
 # factor by which the divergence is increased between geographically isolated population
 # can also be a matrix between the different population clusters
@@ -114,6 +121,8 @@ get_divergence_factor <- function(species, cluster_indices, landscape, config) {
   return(1)
 }
 
+# threshold for genetic distance after which a speciation event takes place
+divergence_threshold = 2 #this is 1Myrs
 
 ######################################
 ###            Evolution           ###
@@ -121,7 +130,7 @@ get_divergence_factor <- function(species, cluster_indices, landscape, config) {
 
 # mutate the traits of a species and return the new traits matrix
 apply_evolution <- function(species, cluster_indices, landscape, config) {
-  
+
   trait_evolutionary_power <- 0.001
   traits <- species[["traits"]]
   cells <- rownames(traits)
@@ -151,6 +160,8 @@ apply_evolution <- function(species, cluster_indices, landscape, config) {
 # set the abundance to 0 for every species supposed to die
 
 apply_ecology <- function(abundance, traits, environment, config) {
+  #### BROWSER ! ----------
+  # browser()
   env_diff <- abs( traits[, "temp"] - environment[, "temp"])
   abundance <- env_diff < traits[, "temp_breadth"] 
   return(abundance)

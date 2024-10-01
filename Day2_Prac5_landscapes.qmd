@@ -240,7 +240,7 @@ plot(rb, col = viridis(255))
 Now let's generate a more complex landscape with multiple peaks to add more details to our world.
 
 ```{r}
-noise <- random_lanscape(x, y, 80)
+noise <- random_lanscape(x, y, 20)
 # Few random peaks
 plot_persp(x, y, noise, main="Noise")
 
@@ -250,7 +250,7 @@ Now we add to our previous landscape
 
 ```{r}
 # add to previous landscape
-plot_persp(x, y, noise/10+zf, main="Noise + zf")
+plot_persp(x, y, (noise/10)+zf, main="Noise + zf")
 ```
 
 Experiment with it; there's a lot of room when creativity your own world!
@@ -382,7 +382,8 @@ cost_function_water <- function(source, habitable_src, dest, habitable_dest) {
   if(!all(habitable_src, habitable_dest)) {
     return(4)
   } else {
-    return(1)
+    elev_diff <- 1-(source["elevation"] - dest["elevation"])/600
+    return(elev_diff)
   }
 }
 
@@ -391,7 +392,7 @@ cost_function_water <- function(source, habitable_src, dest, habitable_dest) {
 create_input_landscape(
   landscapes = rball,
   cost_function = cost_function_water,
-  output_directory = file.path(here("data/landscapes/myworld")),
+  output_directory = file.path(here("data/landscapes/hard_to_climb_easy_to_roll")),
   directions = 8, # surrounding sites for each site
   timesteps = paste0((n_step-1):0, "step"),
   calculate_full_distance_matrices = TRUE,
