@@ -395,7 +395,8 @@ create_input_landscape(
   directions = 8, # surrounding sites for each site
   timesteps = paste0((n_step-1):0, "step"),
   calculate_full_distance_matrices = TRUE,
-  verbose = T) # full distance matrix
+  verbose = T,
+  overwrite_output = T) # full distance matrix
 
 
 exp1 <- run_simulation(
