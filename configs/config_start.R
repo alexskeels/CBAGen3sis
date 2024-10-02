@@ -26,6 +26,18 @@ fg <- function(x,a,b,c,ns=1){
   return(v)
 }
 
+# temperature performance curve
+ftpc <- function(x, opt, breadth, rate, amplitude){
+  # hard coded trade-off between amplitude and breadth
+  amplitude <- amplitude/breadth
+  p <- amplitude*exp(-(x-opt)^2/(amplitude*breadth^2))*pnorm(rate*(x-opt)/breadth)
+  return(p)
+}
+# plot the temperature performance curve along a gradient
+# plot(ftpc(seq(5,40,0.3), 26, 2, -8, 8), type="l")
+# lines(ftpc(seq(5,40,0.3), 26, 5, -8, 8), type="l")
+
+
 # set for first time
 # assign("ss_eff", ss_eff_emp, envir = .GlobalEnv)
 # a list of traits to include with each species, traits with ss_eff_ are hack traits to extract in site processes
@@ -46,7 +58,7 @@ end_of_timestep_observer = function(data, vars, config){
   # jpeg(paste0(config$directories$output_plots, "/ranges_t", vars$ti, ".jpeg"))
   # {
   #   par(mfrow=c(1,1))
-    plot_ranges(data$all_species[c(1:3)], data$landscape)
+    plot_ranges(data$all_species, data$landscape)
   # }
   # dev.off()
   
@@ -81,22 +93,23 @@ end_of_timestep_observer = function(data, vars, config){
 ######################
 
 create_ancestor_species <- function(landscape, config) {
-  #### BROWSER ! ----------
-  browser()
   co <- landscape$coordinates
   new_species <- list()
-  for(i in unique(landscape$environment[,"patch"])){
-    initial_sites <- rownames(co)[landscape$environment[,"patch"]==i]
+  for(i in unique(landscape$environment[,"island_id"])){
+    # i <- 1
+    initial_sites <- rownames(co)[landscape$environment[,"island_id"]==i]
     # initial_sites <- sample(initial_sites, 1)
     new_species[[i]] <- create_species(initial_sites, config)
     #set local adaptation to max optimal temp equals local temp
-    new_species[[i]]$traits[ , "dispersal"] <-1
-    new_species[[i]]$traits[ ,  "tpc_breadth"] <- 9
+    new_species[[i]]$traits[ , "dispersal"] <- 1
+    new_species[[i]]$traits[ ,  "tpc_breadth"] <- 3
     new_species[[i]]$traits[ ,  "tpc_opt"] <- landscape$environment[initial_sites,"mean_temp"]
-    new_species[[i]]$traits[ ,  "tpc_rate"] <- -15
+    new_species[[i]]$traits[ ,  "tpc_rate"] <- -8
     new_species[[i]]$traits[ ,  "plasticity"] <- 2
-    new_species[[i]]$traits[ ,  "sd_g"] <- 0.1
-    plot_species_presence(landscape, species=new_species[[i]])
+    new_species[[i]]$traits[ ,  "sd_breath"] <- 0.8
+    new_species[[i]]$traits[ ,  "sd_opt"] <- 2
+    new_species[[i]]$traits[ ,  "sd_rate"] <- 0.01
+    # plot_species_presence(landscape, species=new_species[[i]])
   }
   return(new_species)
 }
@@ -109,10 +122,9 @@ create_ancestor_species <- function(landscape, config) {
 # returns n dispersal values (proba distrib function)
 get_dispersal_values <- function(n, species, landscape, config){
   # hist(rweibull(117546,shape=2, scale=50)) # sample of # of drawn max for this simulation per time step.
-  # print(n)
   mean_abd <- mean(species$abundance)
   weight_abd <- species$abundance/mean_abd
-  values <- rweibull(n, shape = 2, scale = 1+(mean(species$traits[,"dispersal"]*weight_abd)*49))  #from 5 to 50
+  values <- rweibull(n, shape = 2, scale = 1+(mean(species$traits[,"dispersal"]*weight_abd)*10))  #from 5 to 50
   return(values)
 }
 
@@ -122,7 +134,7 @@ get_dispersal_values <- function(n, species, landscape, config){
 ##################
 
 # threshold for genetic distance after which a speciation event takes place
-divergence_threshold =65 # between 10 and 50 ? as 0.1 to 0.5 Myrs or 100 - 500 kyrs
+divergence_threshold = 4 # between 10 and 50 ? as 0.1 to 0.5 Myrs or 100 - 500 kyrs
 
 # adds a value of 1 to each geographic population cluster
 get_divergence_factor <- function(species, cluster_indices, landscape, config) {
@@ -134,7 +146,7 @@ get_divergence_factor <- function(species, cluster_indices, landscape, config) {
 #######################
 
 apply_evolution <- function(species, cluster_indices, landscape, config) {
-  trait_evolutionary_power <-0.01
+  trait_evolutionary_power <-0.01 # variance 
   pw_tr_hom <- 0.5 # percentage of movement of local trait towards weighted trait mean within each population cluster 
   # pw_tr_hom = ZERO means no change while a value of ONE means that traits are equal within each populations cluster)
   traits <- species[["traits"]]
@@ -148,37 +160,33 @@ apply_evolution <- function(species, cluster_indices, landscape, config) {
   for(cluster_index in unique(cluster_indices)){
     # cluster_index <- 1
     sites_cluster <- sites[which(cluster_indices == cluster_index)]
-    B_t <- sum(species$abundance[sites_cluster])# total biomass
-    B_r <- species$abundance[sites_cluster]/B_t# relative biomass
+    N_t <- sum(species$abundance[sites_cluster])# total abundance
+    N_r <- species$abundance[sites_cluster]/N_t# relative abundance vector
     for (ti in trn){
+      # ti <- trn[1]
       # par(mfrow=c(1,2))
       # hist(traits[sites_cluster, ti], main="before")
       traits_ti <- traits[sites_cluster, ti]
-      mean_trait <- sum(traits_ti*B_r)
+      mean_trait <- sum(traits_ti*N_r)
       tr_hom <- mean_trait-traits_ti
       traits[sites_cluster, ti] <- traits_ti+(tr_hom*pw_tr_hom)
-      # hist(traits[sites_cluster, ti], main="after")
     }
   }
   
   #mutate all traits except dispersal and competitive ability M0 and summary effective traits, which where excluded previously
-  for (ti in c("mean_temp", "temp_width", "competition", "dispersal")){#trn[!trn%in%"dispersal"]){ # do not evolve dispersal
-    if(ti=="competition"){ # check if competition and scale proportionally 0.1 variance /10 = 1, while 1 variance /1 = 1
-      tep_sd=trait_evolutionary_power/10
-    } else {
-      tep_sd=trait_evolutionary_power
-    }
-    mutation_deltas <-rnorm(length(traits[, ti]), mean=0, sd=tep_sd)
+  for (ti in c("dispersal", "tpc_breadth", "tpc_opt")){#trn[!trn%in%"dispersal"]){ # do not evolve dispersal
+    # hsqr <- (traits[,"sd_breath"]^2+trait_evolutionary_power)
+    # hsqr <- hsqr/(hsqr+landscape$environment[sites, "sd_breath"]^2)
+    # traits[, ti] <- traits[, ti]*hsqr
+    mutation_deltas <-rnorm(length(traits[, ti]), mean=0, sd=trait_evolutionary_power)
     traits[, ti] <- traits[, ti] + mutation_deltas
   }
   # set bounds so that the species cant evolve a niche beyond that present in the data 
   # note that all temperature values are scaled between 0 and 1
-  if(any(traits[, "temp_width"] > 1)){traits[which(traits[,"temp_width"]>1), "temp_width"] <- 1}
-  if(any(traits[, "temp_width"] <= 0)){traits[which(traits[,"temp_width"]<=0), "temp_width"] <- 0.001} #limit of zero to avoid zero divisions on specialist/generalist trade-off
-  if(any(traits[, "competition"] > 1)){traits[which(traits[,"competition"]>1), "competition"] <- 1}
-  if(any(traits[, "competition"] < 0.9)){traits[which(traits[,"competition"]<0.9), "competition"] <- 0.9}
   if(any(traits[, "dispersal"] > 1)){traits[which(traits[,"dispersal"]>1), "dispersal"] <- 1}
   if(any(traits[, "dispersal"] < 0)){traits[which(traits[,"dispersal"]<0), "dispersal"] <- 0}
+  if(any(traits[, "tpc_breadth"] < 0.1)){traits[which(traits[,"tpc_breadth"]>0.1), "tpc_breadth"] <- 0.1}
+
   
   return(traits)
 }
@@ -191,21 +199,25 @@ apply_ecology <- function(abundance, traits, landscape, config) {
   ns <- length(abundance)
   #### get rf, here r_f is the per capita growth rate of biomass that depends on the local site conditions 
   # set env niche
-  env_min_fg <- fg(x=landscape[,"min_temp"], a=1, b=traits[, "mean_temp"], c=traits[, "temp_width"])
-  env_max_fg <- fg(x=landscape[,"max_temp"], a=1, b=traits[, "mean_temp"], c=traits[, "temp_width"])
-  # set growth rate
-  g <- .1
-  # abundance_tii first is only what the env. determines to be the new abundances
-  r_f <- g*sqrt(env_min_fg*env_max_fg) # geometric mean
   
-  ###### get (a_ff) = same species interaction coefficient and (afh)= heterospecific interaction coefficient 
-  # get traits Competition
-  c_c <- rep(0.8,ns) # intra competition
-  c_l <- traits[,"competition"]
+  random_local_temps <- rnorm(10, mean=landscape[,"mean_temp"], sd=landscape[,"sd_temp"])
   
+  
+  
+  r_f <- rep(NA, ns)
+  for (sp_i in 1:ns){
+     env_performance <- ftpc(x=random_local_temps, 
+                     opt=traits[sp_i, "tpc_opt"], 
+                     breadth=traits[sp_i, "tpc_breadth"], 
+                     rate=traits[sp_i, "tpc_rate"], 
+                     amplitude=20)
+     r_f[sp_i] <- mean(env_performance)
+  }
+  
+  # intra and inter specific competition coeficient
   # set a_ff and a_fh
-  a_ff <- 1-c_c
-  a_fh <- 1-c_l
+  a_ff <- rep(0.5, ns)
+  a_fh <- rep(0.2, ns)
   
   # check if conditions are met in order to continue
   if (any(a_ff<=a_fh)){
@@ -224,6 +236,7 @@ apply_ecology <- function(abundance, traits, landscape, config) {
       B_f <- as.numeric(shall_live) # set all to zero, since we only have shall_live==FALSE
       wistop <- TRUE
     }
+    # 
     if (all(shall_live[keep_on_while])){
       B_f <- ((a_ff*K_f)-(a_fh*J))/(a_ff-a_fh)
       B_f[!shall_live] <- 0
